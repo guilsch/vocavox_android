@@ -8,32 +8,40 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 
-public class RevisionActivity extends AppCompatActivity {
+public class RevisionActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final int REQUEST_CODE_QUESTION_ACTIVITY = 42;
-    public static final String BUNDLE_EXTRA_ITEM1 = "BUNDLE_EXTRA_ITEM1";
+    private TextView mTextViewQuestion;
+    private Button mSeeAnswerButton;
 
-    private static final int REQUEST_CODE_ANSWER_ACTIVITY = 52;
-    public static final String BUNDLE_EXTRA_ITEM2 = "BUNDLE_EXTRA_ITEM2";
+    private Button mAnswerButton1;
+    private Button mAnswerButton2;
+    private Button mAnswerButton3;
+    private Button mAnswerButton4;
+
+    private Button mBackToMenuRevisionButton;
 
     public static Boolean finishedQuestion;
     public static Boolean finishedAnswer;
 
     private Card card;
+    private Iterator<Card> cardIterator;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("RevisionActivity", "onCreate() called");
+//        Log.d("RevisionActivity", "onCreate() called");
 
-        finishedQuestion = Boolean.TRUE;
-        finishedAnswer = Boolean.TRUE;
-
-        setContentView(R.layout.activity_revision);
+//        finishedQuestion = Boolean.TRUE;
+//        finishedAnswer = Boolean.TRUE;
 
         // Manually create a deck of 2 cards
         Card card1 = new Card();
@@ -45,45 +53,83 @@ public class RevisionActivity extends AppCompatActivity {
         deck.add(card2);
         //
 
-        deck.showCards();
+        this.cardIterator = deck.iterator();
+        this.card = cardIterator.next();
+        showQuestionSide();
 
-        Iterator<Card> cardIterator = deck.iterator();
+    }
 
-        // Iterate through the deck
-        while(cardIterator.hasNext() & finishedQuestion & finishedAnswer) {
+    @Override
+    public void onClick(View v) {
+        int index;
 
-            finishedQuestion = Boolean.FALSE;
-            finishedAnswer = Boolean.FALSE;
-
-            card = cardIterator.next();
-
-            sendToQuestionActivity(card);
+        if (v == mSeeAnswerButton) {
+            System.out.println("yes");
+            showAnswerSide();
+        } else if (v == mAnswerButton1){
+            index = 0;
+            NextOrEnd();
+        } else if (v == mAnswerButton2) {
+            index = 1;
+            NextOrEnd();
+        } else if (v == mAnswerButton3) {
+            index = 2;
+            NextOrEnd();
+        } else if (v == mAnswerButton4) {
+            index = 3;
+            NextOrEnd();
+        } else if (v == mBackToMenuRevisionButton) {
+            Intent MenuActivityIntent = new Intent(RevisionActivity.this, MenuActivity.class);
+            startActivity(MenuActivityIntent);
+        } else {
+            throw new IllegalStateException("Unknown clicked view : " + v);
         }
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("RevisionActivity", "onActivityResult() called");
-        switch(requestCode) {
-            case REQUEST_CODE_QUESTION_ACTIVITY:
-                sendToAnswerActivity(card);
-                break;
-            case REQUEST_CODE_ANSWER_ACTIVITY:
-                break;
+    private void NextOrEnd() {
+        if (cardIterator.hasNext()) {
+            this.card = cardIterator.next();
+            showQuestionSide();
         }
-        super.onActivityResult(requestCode, resultCode, data);
+        else {
+            this.card = new Card();
+            showEndOfRevision();
+        }
     }
 
-    private void sendToQuestionActivity(Card card) {
-        Log.d("RevisionActivity", "sendToQuestionActivity() called");
-        Intent intent = new Intent(RevisionActivity.this, QuestionActivity.class);
-        intent.putExtra(BUNDLE_EXTRA_ITEM1, card.getItem1());
-        startActivityForResult(intent, REQUEST_CODE_QUESTION_ACTIVITY);
+    private void showEndOfRevision() {
+        setContentView(R.layout.end_of_revision);
+
+        mBackToMenuRevisionButton = findViewById(R.id.end_of_revision_back_to_menu);
+        mBackToMenuRevisionButton.setOnClickListener(this);
     }
 
-    private void sendToAnswerActivity(Card card) {
-        Log.d("RevisionActivity", "sendToAnswerActivity() called");
-        Intent intent = new Intent(RevisionActivity.this, AnswerActivity.class);
-        intent.putExtra(BUNDLE_EXTRA_ITEM2, card.getItem2());
-        startActivityForResult(intent, REQUEST_CODE_ANSWER_ACTIVITY);
+    private void showQuestionSide() {
+        setContentView(R.layout.question_side);
+
+        mTextViewQuestion = findViewById(R.id.question_side_item1);
+        mSeeAnswerButton = findViewById(R.id.question_side_button);
+        mSeeAnswerButton.setOnClickListener(this);
+
+        mTextViewQuestion.setText(this.card.getItem1());
+
+    }
+
+    private void showAnswerSide() {
+        setContentView(R.layout.answer_side);
+
+        mTextViewQuestion = findViewById(R.id.answer_side_item2);
+        mAnswerButton1 = findViewById(R.id.answer_side_button1);
+        mAnswerButton2 = findViewById(R.id.answer_side_button2);
+        mAnswerButton3 = findViewById(R.id.answer_side_button3);
+        mAnswerButton4 = findViewById(R.id.answer_side_button4);
+
+        mAnswerButton1.setOnClickListener(this);
+        mAnswerButton2.setOnClickListener(this);
+        mAnswerButton3.setOnClickListener(this);
+        mAnswerButton4.setOnClickListener(this);
+
+        mTextViewQuestion.setText(this.card.getItem2());
+
     }
 }

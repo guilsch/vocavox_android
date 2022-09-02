@@ -31,22 +31,14 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'org.jetbrains:annotations:15.0'
-//    implementation files('libs\\poi-3.7.jar')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation 'org.apache.poi:poi:4.0.0'
-    implementation 'org.apache.poi:poi-ooxml:4.0.0'
+    implementation 'org.apache.poi:poi:3.9'
+    implementation 'org.apache.poi:poi-ooxml:3.9'
     implementation 'androidx.multidex:multidex:2.0.1'
-
-//    implementation 'javax.xml.stream:stax-api:1.0'
-//    implementation 'com.fasterxml:aalto-xml:1.0.0'
-//    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
-//    implementation group: 'org.apache.xmlbeans', name: 'xmlbeans', version: '3.1.0'
-//    implementation 'com.fasterxml:aalto-xml:1.2.2'
 }

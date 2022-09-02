@@ -3,35 +3,16 @@ package com.guilsch.multivoc;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Iterator;
 
 public class RevisionActivity extends AppCompatActivity implements View.OnClickListener {
-
-//    static {
-//        System.setProperty(
-//                "org.apache.poi.javax.xml.stream.XMLInputFactory",
-//                "com.fasterxml.aalto.stax.InputFactoryImpl"
-//        );
-//        System.setProperty(
-//                "org.apache.poi.javax.xml.stream.XMLOutputFactory",
-//                "com.fasterxml.aalto.stax.OutputFactoryImpl"
-//        );
-//        System.setProperty(
-//                "org.apache.poi.javax.xml.stream.XMLEventFactory",
-//                "com.fasterxml.aalto.stax.EventFactoryImpl"
-//        );}
 
     private TextView mTextViewQuestion;
     private Button mSeeAnswerButton;
@@ -71,17 +52,13 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
             System.out.println("yes");
             showAnswerSide();
         } else if (v == mAnswerButton1){
-            index = 0;
-            NextOrEnd();
+            NextOrEnd(1);
         } else if (v == mAnswerButton2) {
-            index = 1;
-            NextOrEnd();
+            NextOrEnd(2);
         } else if (v == mAnswerButton3) {
-            index = 2;
-            NextOrEnd();
+            NextOrEnd(3);
         } else if (v == mAnswerButton4) {
-            index = 3;
-            NextOrEnd();
+            NextOrEnd(4);
         } else if (v == mBackToMenuRevisionButton) {
             Intent MenuActivityIntent = new Intent(RevisionActivity.this, MenuActivity.class);
             startActivity(MenuActivityIntent);
@@ -90,7 +67,8 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void NextOrEnd() {
+    private void NextOrEnd(int quality) {
+        MemoAlgo.SuperMemo2(this.card, quality);
         if (cardIterator.hasNext()) {
             this.card = cardIterator.next();
             showQuestionSide();

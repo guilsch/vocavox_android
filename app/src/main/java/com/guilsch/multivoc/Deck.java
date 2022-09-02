@@ -1,7 +1,6 @@
 package com.guilsch.multivoc;
 
 import android.os.Build;
-import android.os.Environment;
 
 import androidx.annotation.RequiresApi;
 
@@ -18,10 +17,7 @@ import java.util.function.Predicate;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
-//import org.apache.poi.xssf.usermodel.XSSFSheet;
-//import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Deck extends ArrayList<Card> {
 
@@ -116,8 +112,6 @@ public class Deck extends ArrayList<Card> {
             card.updateDatabase(card.getItem1());
             
         }
-
-        
     }
 
     public void showCards() {

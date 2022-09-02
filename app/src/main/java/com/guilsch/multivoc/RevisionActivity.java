@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,20 @@ import java.util.Iterator;
 
 public class RevisionActivity extends AppCompatActivity implements View.OnClickListener {
 
+//    static {
+//        System.setProperty(
+//                "org.apache.poi.javax.xml.stream.XMLInputFactory",
+//                "com.fasterxml.aalto.stax.InputFactoryImpl"
+//        );
+//        System.setProperty(
+//                "org.apache.poi.javax.xml.stream.XMLOutputFactory",
+//                "com.fasterxml.aalto.stax.OutputFactoryImpl"
+//        );
+//        System.setProperty(
+//                "org.apache.poi.javax.xml.stream.XMLEventFactory",
+//                "com.fasterxml.aalto.stax.EventFactoryImpl"
+//        );}
+
     private TextView mTextViewQuestion;
     private Button mSeeAnswerButton;
 
@@ -28,9 +43,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
     private Button mBackToMenuRevisionButton;
 
-    public static Boolean finishedQuestion;
-    public static Boolean finishedAnswer;
-
+    private Deck deck;
     private Card card;
     private Iterator<Card> cardIterator;
 
@@ -38,20 +51,11 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Log.d("RevisionActivity", "onCreate() called");
 
-//        finishedQuestion = Boolean.TRUE;
-//        finishedAnswer = Boolean.TRUE;
+        this.deck = new Deck();
+        this.deck.init();
 
-        // Manually create a deck of 2 cards
-        Card card1 = new Card();
-        Card card2 = new Card();
-        card2.setItem1("maison");
-        card2.setItem2("casa");
-        Deck deck = new Deck();
-        deck.add(card1);
-        deck.add(card2);
-        //
+        this.deck.showCards();
 
         this.cardIterator = deck.iterator();
         this.card = cardIterator.next();

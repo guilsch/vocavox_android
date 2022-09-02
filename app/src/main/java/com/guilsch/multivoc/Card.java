@@ -57,7 +57,7 @@ public class Card implements Serializable {
     public void updateDatabase(String cardKey) {
         try {
 
-            FileInputStream inputFile = new FileInputStream(new File("src/data/fr_it.xlsx"));   
+            FileInputStream inputFile = new FileInputStream(new File("storage/emulated/0/Multivoc/fr_it.xls"));
             Workbook workbook = WorkbookFactory.create(inputFile);
             Sheet sheet = workbook.getSheetAt(0);
 
@@ -97,7 +97,7 @@ public class Card implements Serializable {
 
             FileOutputStream outputStream = new FileOutputStream("src/data/fr_it.xlsx");
             workbook.write(outputStream);
-            workbook.close();
+//            workbook.close();
             outputStream.close();
             
             } catch (Exception e) {

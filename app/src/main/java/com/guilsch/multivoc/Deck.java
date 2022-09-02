@@ -1,6 +1,7 @@
 package com.guilsch.multivoc;
 
 import android.os.Build;
+import android.os.Environment;
 
 import androidx.annotation.RequiresApi;
 
@@ -14,10 +15,13 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.function.Predicate;
 
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+//import org.apache.poi.xssf.usermodel.XSSFSheet;
+//import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Deck extends ArrayList<Card> {
 
@@ -32,13 +36,13 @@ public class Deck extends ArrayList<Card> {
             // Create date formater
             SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
 
-            FileInputStream file = new FileInputStream(new File("src/data/fr_it.xlsx"));
+            FileInputStream file = new FileInputStream(new File("storage/emulated/0/Multivoc/fr_it.xls"));
 
             // Create Workbook instance holding reference to .xlsx file
-            XSSFWorkbook workbook = new XSSFWorkbook(file);
+            HSSFWorkbook workbook = new HSSFWorkbook(file);
 
             // Get first/desired sheet from the workbook
-            XSSFSheet sheet = workbook.getSheetAt(0);
+            HSSFSheet sheet = workbook.getSheetAt(0);
 
             // Iterate through each rows one by one
             Iterator<Row> rowIterator = sheet.iterator();
@@ -73,7 +77,7 @@ public class Deck extends ArrayList<Card> {
 
                 }
             }
-            workbook.close();
+//            workbook.close();
             file.close();
         } catch (Exception e) {
             e.printStackTrace();

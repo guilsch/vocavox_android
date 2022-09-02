@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +19,8 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         this.revision = (ImageView) findViewById(R.id.Revision);
+
+        System.out.println(Environment.getRootDirectory());
 
         revision.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -13,7 +13,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Iterator;
 
-
 public class Card implements Serializable {
 
     private String item1;
@@ -25,6 +24,8 @@ public class Card implements Serializable {
     private Boolean active;
     private String pack;
 
+    private int numFields;
+
     Card (String item1, String item2, Boolean active, String pack, Date nextPracticeDate, int repetitions, float easinessFactor, int interval){
         this.item1 = item1;
         this.item2 = item2;
@@ -34,6 +35,7 @@ public class Card implements Serializable {
         this.nextPracticeDate = nextPracticeDate;
         this.active = active;
         this.pack = pack;
+        this.numFields = 8;
     }
 
     Card() {
@@ -57,7 +59,7 @@ public class Card implements Serializable {
     public void updateDatabase(String cardKey) {
         try {
 
-            FileInputStream inputFile = new FileInputStream(new File("storage/emulated/0/Multivoc/fr_it.xls"));
+            FileInputStream inputFile = new FileInputStream(new File(Constants.getDataPath()));
             Workbook workbook = WorkbookFactory.create(inputFile);
             Sheet sheet = workbook.getSheetAt(0);
 
@@ -95,12 +97,57 @@ public class Card implements Serializable {
             // workbook.close();
             inputFile.close();
 
-            FileOutputStream outputStream = new FileOutputStream("src/data/fr_it.xlsx");
+            FileOutputStream outputStream = new FileOutputStream(Constants.getDataPath());
             workbook.write(outputStream);
 //            workbook.close();
             outputStream.close();
             
             } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addToDatabase() {
+        try {
+
+            FileInputStream inputFile = new FileInputStream(new File(Constants.getDataPath()));
+            Workbook workbook = WorkbookFactory.create(inputFile);
+            Sheet sheet = workbook.getSheetAt(0);
+
+            Row header = sheet.getRow(sheet.getFirstRowNum());
+            Row newRow = sheet.createRow(sheet.getLastRowNum() + 1);
+
+            System.out.println("Last row num :");
+            System.out.println(sheet.getLastRowNum());
+
+            int item1Index = utils.getHeaderIndex(header, "Item 1");
+            int item2Index = utils.getHeaderIndex(header, "Item 2");
+            int activeIndex = utils.getHeaderIndex(header, "Active");
+            int packIndex = utils.getHeaderIndex(header, "Pack");
+            int nextPracticeDateIndex = utils.getHeaderIndex(header, "Next Date");
+            int repetitionsIndex = utils.getHeaderIndex(header, "Repetitions");
+            int easinessFactorIndex = utils.getHeaderIndex(header, "Easiness Factor");
+            int intervalIndex = utils.getHeaderIndex(header, "Interval");
+
+            for (int i = 0; i < numFields; i++) {
+                newRow.createCell(i);
+            }
+
+            newRow.getCell(item1Index).setCellValue(this.item1);
+            newRow.getCell(item2Index).setCellValue(this.item2);
+            newRow.getCell(activeIndex).setCellValue(this.active.toString());
+            newRow.getCell(packIndex).setCellValue(this.pack);
+            newRow.getCell(nextPracticeDateIndex).setCellValue(this.nextPracticeDate.toString());
+            newRow.getCell(repetitionsIndex).setCellValue(this.repetitions);
+            newRow.getCell(easinessFactorIndex).setCellValue(this.easinessFactor);
+            newRow.getCell(intervalIndex).setCellValue(this.interval);
+
+            inputFile.close();
+            FileOutputStream outputStream = new FileOutputStream(Constants.getDataPath());
+            workbook.write(outputStream);
+            outputStream.close();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

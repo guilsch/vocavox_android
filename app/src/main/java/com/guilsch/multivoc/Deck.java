@@ -32,9 +32,9 @@ public class Deck extends ArrayList<Card> {
             // Create date formater
             SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
 
-            FileInputStream file = new FileInputStream(new File("storage/emulated/0/Multivoc/fr_it.xls"));
+            FileInputStream file = new FileInputStream(new File(Constants.getDataPath()));
 
-            // Create Workbook instance holding reference to .xlsx file
+            // Create Workbook instance holding reference to excel file
             HSSFWorkbook workbook = new HSSFWorkbook(file);
 
             // Get first/desired sheet from the workbook
@@ -130,6 +130,12 @@ public class Deck extends ArrayList<Card> {
         }
     }
 
+    public void keepNFirst(int N) {
+        if (this.size() > N) {
+            this.subList(0, N);
+        }
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void filter() {
 
@@ -155,6 +161,22 @@ public class Deck extends ArrayList<Card> {
             Card card = iterator.next();
 
             if (!pred.test(card)) {
+                iterator.remove();
+            }
+        }
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void filterToLearn() {
+
+        Iterator<Card> iterator = this.iterator();
+        Predicate<Card> pred = x -> x.getActive();
+
+        while (iterator.hasNext()) {
+            Card card = iterator.next();
+
+            if (pred.test(card)) {
                 iterator.remove();
             }
         }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -28,7 +29,10 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     private Card card;
     private Iterator<Card> cardIterator;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    private TextView mTextView;
+
+
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,20 +40,24 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         this.deck = new Deck();
         this.deck.init();
 
-        this.deck.showCards();
-
         this.cardIterator = deck.iterator();
-        this.card = cardIterator.next();
-        showQuestionSide();
+
+        if (this.cardIterator.hasNext()) {
+            this.card = cardIterator.next();
+            showQuestionSide();
+        }
+        else {
+            showEndOfRevision();
+        }
 
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     public void onClick(View v) {
-        int index;
 
         if (v == mSeeAnswerButton) {
-            System.out.println("yes");
             showAnswerSide();
         } else if (v == mAnswerButton1){
             NextOrEnd(1);
@@ -67,8 +75,11 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.R)
     private void NextOrEnd(int quality) {
         MemoAlgo.SuperMemo2(this.card, quality);
+        this.card.updateDatabase(this.card.getItem1());
         if (cardIterator.hasNext()) {
             this.card = cardIterator.next();
             showQuestionSide();
@@ -79,8 +90,12 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     private void showEndOfRevision() {
         setContentView(R.layout.end_of_revision);
+
+        mTextView = (TextView) findViewById(R.id.textView2);
+        mTextView.setText(getFilesDir().toString());
 
         mBackToMenuRevisionButton = findViewById(R.id.end_of_revision_back_to_menu);
         mBackToMenuRevisionButton.setOnClickListener(this);
@@ -113,5 +128,12 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         mTextViewQuestion.setText(this.card.getItem2());
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        startActivity(menuActivity);
+        finish();
     }
 }

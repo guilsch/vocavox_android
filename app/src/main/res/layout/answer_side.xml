@@ -3,60 +3,86 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg">
 
     <TextView
         android:id="@+id/answer_side_item2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="310dp"
+        android:layout_height="349dp"
+        android:layout_marginTop="32dp"
+        android:background="#32D47F00"
+        android:gravity="center"
+        android:padding="20dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/answer_side_button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="160dp"
-        android:text="Button"
+        android:layout_width="66dp"
+        android:layout_height="36dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/wrong"
+        android:textSize="8sp"
+        app:backgroundTint="#C1BA2121"
+        app:iconPadding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/answer_side_button2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answer_side_item2" />
 
     <Button
         android:id="@+id/answer_side_button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="160dp"
-        android:text="Button"
+        android:layout_width="66dp"
+        android:layout_height="36dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/hard"
+        android:textSize="8sp"
+        app:backgroundTint="#C19548"
+        app:iconPadding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/answer_side_button3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/answer_side_button1" />
+        app:layout_constraintStart_toEndOf="@+id/answer_side_button1"
+        app:layout_constraintTop_toBottomOf="@+id/answer_side_item2" />
 
     <Button
         android:id="@+id/answer_side_button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="160dp"
-        android:text="Button"
+        android:layout_width="66dp"
+        android:layout_height="36dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/good"
+        android:textSize="8sp"
+        app:backgroundTint="#1994AA"
+        app:iconPadding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/answer_side_button4"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/answer_side_button2" />
+        app:layout_constraintStart_toEndOf="@+id/answer_side_button2"
+        app:layout_constraintTop_toBottomOf="@+id/answer_side_item2" />
 
     <Button
         android:id="@+id/answer_side_button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="160dp"
-        android:text="Button"
+        android:layout_width="66dp"
+        android:layout_height="36dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/perfect"
+        android:textSize="8sp"
+        app:backgroundTint="#4CAF50"
+        app:iconPadding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/answer_side_button3" />
+        app:layout_constraintStart_toEndOf="@+id/answer_side_button3"
+        app:layout_constraintTop_toBottomOf="@+id/answer_side_item2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

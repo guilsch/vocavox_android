@@ -3,14 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fini !"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/end_train"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/end_of_revision_back_to_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,10 +22,25 @@
         android:id="@+id/end_of_revision_back_to_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="180dp"
+        android:ellipsize="none"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="6dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="6dp"
         android:text="Menu"
+        android:textColor="#B0FFFFFF"
+        android:textColorHint="#00FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:backgroundTint="#00BCD4"
+        app:elevation="0dp"
+        app:iconPadding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,15 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context=".MenuActivity">
 
     <ImageView
         android:id="@+id/Revision"
-        android:layout_width="69dp"
-        android:layout_height="74dp"
-        android:layout_marginTop="173dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/Learning"
+        app:layout_constraintHorizontal_bias="0.597"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        app:srcCompat="@drawable/ic_revision"
+        tools:ignore="VectorDrawableCompat"
+        tools:layout_editor_absoluteY="315dp" />
+
+    <ImageView
+        android:id="@+id/Learning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/flow"
+        app:layout_constraintTop_toTopOf="@+id/Revision"
+        app:srcCompat="@drawable/ic_learn"
+        tools:ignore="VectorDrawableCompat" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        app:constraint_referenced_ids="Revision"
+        app:layout_constraintEnd_toStartOf="@+id/Learning"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MenuMessage"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/Settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@+id/Revision"
+        app:layout_constraintTop_toBottomOf="@+id/New_Card"
+        app:srcCompat="@drawable/ic_settings"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/Language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/Learning"
+        app:layout_constraintTop_toTopOf="@+id/Settings"
+        app:srcCompat="@drawable/ic_languages"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/flag"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:srcCompat="@drawable/ic_de"
+        tools:ignore="MissingConstraints,VectorDrawableCompat"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:autoText="false"
+        android:background="@color/head_color"
+        android:gravity="center"
+        android:text="Welcome"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/MenuMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:padding="25dp"
+        android:text="@string/menu_msg"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <ImageView
+        android:id="@+id/Explore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/Learning"
+        app:layout_constraintTop_toTopOf="@+id/New_Card"
+        app:srcCompat="@drawable/ic_explore"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/New_Card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@+id/Revision"
+        app:layout_constraintTop_toBottomOf="@+id/Revision"
+        app:srcCompat="@drawable/ic_new_card"
+        tools:ignore="VectorDrawableCompat" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

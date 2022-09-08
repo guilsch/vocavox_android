@@ -2,4 +2,24 @@
     <string name="app_name">Multivoc</string>
     <string name="welcome_msg">Nice to see you</string>
     <string name="see_answer">See answer</string>
+    <string name="menu_msg">Congratulations ! You are on your way to speak German. You have already learned x words in this language, keep going !</string>
+    <string name="choose_language">Please select the language you want to learn today</string>
+    <string name="wrong">wrong</string>
+    <string name="hard">hard</string>
+    <string name="good">good</string>
+    <string name="perfect">perfect</string>
+    <string name="end_train">End of training !</string>
+    <string name="end_learn">End of learning !</string>
+    <string name="save_setting">Save</string>
+    <string name="data_path_setting">Data path :</string>
+    <string name="default_setting">Default</string>
+
+    <!-- New Card !-->
+    <string name="item1">First word</string>
+    <string name="item2">Second word</string>
+    <string name="pack">Pack</string>
+    <string name="save_card">Save</string>
+    <string name="next_new_card">New</string>
+
+
 </resources>

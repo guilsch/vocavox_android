@@ -29,9 +29,6 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     private Card card;
     private Iterator<Card> cardIterator;
 
-    private TextView mTextView;
-
-
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +90,6 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void showEndOfRevision() {
         setContentView(R.layout.end_of_revision);
-
-        mTextView = (TextView) findViewById(R.id.textView2);
-        mTextView.setText(getFilesDir().toString());
 
         mBackToMenuRevisionButton = findViewById(R.id.end_of_revision_back_to_menu);
         mBackToMenuRevisionButton.setOnClickListener(this);

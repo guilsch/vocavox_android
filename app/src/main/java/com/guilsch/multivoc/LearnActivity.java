@@ -3,6 +3,7 @@ package com.guilsch.multivoc;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -77,7 +78,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
     private void NextOrEnd(int quality) {
 
-        this.card.setActive(Boolean.TRUE);
+        this.card.setState(Param.ACTIVE);
         MemoAlgo.SuperMemo2(this.card, quality);
         this.card.updateDatabase(this.card.getItem1());
 

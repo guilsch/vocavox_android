@@ -2,22 +2,22 @@ package com.guilsch.multivoc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 public class MenuActivity extends AppCompatActivity {
 
     private ImageView revision;
     private ImageView settings;
-    private ImageView language;
     private ImageView learning;
     private ImageView explore;
     private ImageView newCard;
+    private ImageView flag;
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +25,33 @@ public class MenuActivity extends AppCompatActivity {
 
         revision = (ImageView) findViewById(R.id.Revision);
         settings = (ImageView) findViewById(R.id.Settings);
-        language = (ImageView) findViewById(R.id.Language);
         learning = (ImageView) findViewById(R.id.Learning);
         explore = (ImageView) findViewById(R.id.Explore);
         newCard = (ImageView) findViewById(R.id.New_Card);
+        flag = (ImageView) findViewById(R.id.flag);
+
+        // Prepare Excel file
+        utils.prepareDataFile();
+
+        switch (Param.getLanguage()) {
+            case "English" :
+                flag.setImageDrawable(getResources().getDrawable(R.drawable.ic_gb));
+                break;
+
+            case "German" :
+                flag.setImageDrawable(getResources().getDrawable(R.drawable.ic_de));
+                break;
+
+            case "Italian" :
+                flag.setImageDrawable(getResources().getDrawable(R.drawable.ic_it));
+                break;
+
+            case "Russian" :
+                flag.setImageDrawable(getResources().getDrawable(R.drawable.ic_ru));
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + Param.getLanguage());
+        }
 
         newCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +98,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        language.setOnClickListener(new View.OnClickListener() {
+        flag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent languageActivity = new Intent(getApplicationContext(), MainActivity.class);
@@ -83,8 +106,5 @@ public class MenuActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
     }
 }

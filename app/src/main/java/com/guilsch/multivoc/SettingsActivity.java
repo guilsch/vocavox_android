@@ -10,36 +10,35 @@ import android.widget.EditText;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private Button dataPathButton;
-    private Button dataPathDefaultButton;
-    private EditText dataPathText;
+    private Button folderPathButton;
+    private Button folderPathDefaultButton;
+    private EditText folderPathText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        dataPathButton = (Button) findViewById(R.id.data_path_button);
-        dataPathDefaultButton = (Button) findViewById(R.id.data_path_default);
-        dataPathText = (EditText) findViewById(R.id.data_path_text);
+        folderPathButton = (Button) findViewById(R.id.folder_path_button);
+        folderPathDefaultButton = (Button) findViewById(R.id.folder_path_default);
+        folderPathText = (EditText) findViewById(R.id.folder_path_text);
 
-        dataPathText.setText(Constants.getDataPath());
+        folderPathText.setText(Param.getDataPath());
 
-        dataPathButton.setOnClickListener(new View.OnClickListener() {
+        folderPathButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Constants.setDataPath(dataPathText.getText().toString());
+                Param.setFolderPath(folderPathText.getText().toString());
             }
         });
 
-        dataPathDefaultButton.setOnClickListener(new View.OnClickListener() {
+        folderPathDefaultButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Constants.setDataPath(Constants.getDataPathDefault());
-                dataPathText.setText(Constants.getDataPath());
+                Param.setFolderPath(Param.getFolderPathDefault());
+                folderPathText.setText(Param.getDataPath());
             }
         });
-
     }
 
     @Override
@@ -48,5 +47,4 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(menuActivity);
         finish();
     }
-
 }

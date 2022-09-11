@@ -2,13 +2,20 @@ package com.guilsch.multivoc;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 //import org.apache.poi.xssf.usermodel.XSSFSheet;
 //import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -71,13 +78,96 @@ public class utils {
             if (columnName.compareTo("") == 0) {
                 System.out.println("No column at index " + columnIndex);
             }
-//            workbook.close();
+
             file.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return (columnName);
+    }
+
+    public static void prepareDataFile() {
+        try {
+            FileInputStream inputFile = new FileInputStream(new File(Param.getDataPath()));
+            Workbook workbook = WorkbookFactory.create(inputFile);
+            Sheet sheet = workbook.getSheetAt(0);
+
+            // Iterate through each rows one by one
+            Iterator<Row> rowIterator = sheet.iterator();
+            Row header = rowIterator.next();
+            Cell currentCell;
+            Cell stateCell;
+
+            int item1Index = utils.getHeaderIndex(header, "Item 1");
+            int item2Index = utils.getHeaderIndex(header, "Item 2");
+            int stateIndex = utils.getHeaderIndex(header, "State");
+            int packIndex = utils.getHeaderIndex(header, "Pack");
+            int nextPracticeDateIndex = utils.getHeaderIndex(header, "Next Date");
+            int repetitionsIndex = utils.getHeaderIndex(header, "Repetitions");
+            int easinessFactorIndex = utils.getHeaderIndex(header, "Easiness Factor");
+            int intervalIndex = utils.getHeaderIndex(header, "Interval");
+
+            while (rowIterator.hasNext()) {
+
+                Row row = rowIterator.next();
+
+                if (row.getCell(item1Index) == null || row.getCell(item2Index) == null) {
+                    stateCell = row.createCell(stateIndex);
+                    stateCell.setCellValue(Param.INVALID);
+                }
+
+                currentCell = row.getCell(stateIndex);
+                if (currentCell == null) {
+                    currentCell = row.createCell(stateIndex);
+                    currentCell.setCellValue(Param.INACTIVE);
+                }
+
+                currentCell = row.getCell(packIndex);
+                if (currentCell == null) {
+                    currentCell = row.createCell(packIndex);
+                    currentCell.setCellValue(Param.DEFAULT_PACK);
+                }
+
+                currentCell = row.getCell(nextPracticeDateIndex);
+                if (currentCell == null) {
+                    currentCell = row.createCell(nextPracticeDateIndex);
+                    currentCell.setCellValue(Param.DEFAULT_DATE.toString());
+                    System.out.println(Param.DEFAULT_DATE);
+                }
+
+                currentCell = row.getCell(repetitionsIndex);
+                if (currentCell == null) {
+                    currentCell = row.createCell(repetitionsIndex);
+                    currentCell.setCellValue(Param.DEFAULT_REP);
+                }
+
+                currentCell = row.getCell(easinessFactorIndex);
+                if (currentCell == null) {
+                    currentCell = row.createCell(easinessFactorIndex);
+                    currentCell.setCellValue(Param.DEFAULT_EF);
+                }
+
+                currentCell = row.getCell(intervalIndex);
+                if (currentCell == null) {
+                    currentCell = row.createCell(intervalIndex);
+                    currentCell.setCellValue(Param.DEFAULT_INTER);
+                }
+            }
+
+        inputFile.close();
+        FileOutputStream outputStream = new FileOutputStream(Param.getDataPath());
+        workbook.write(outputStream);
+        outputStream.close();
+
+        } catch (InvalidFormatException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

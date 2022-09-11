@@ -37,7 +37,7 @@ public class NewCardActivity extends AppCompatActivity {
         saveCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                newCard = new Card(item1Text.getText().toString(), item2Text.getText().toString(), Boolean.FALSE, packText.getText().toString(), utils.giveDate(), 0, 0, 0);
+                newCard = new Card(item1Text.getText().toString(), item2Text.getText().toString(), Param.INACTIVE, packText.getText().toString(), utils.giveDate(), 0, 0, 0);
                 newCard.addToDatabase();
                 newCard.info();
                 Intent saveCardActivity = new Intent(getApplicationContext(), MenuActivity.class);

@@ -11,7 +11,7 @@
     <string name="end_train">End of training !</string>
     <string name="end_learn">End of learning !</string>
     <string name="save_setting">Save</string>
-    <string name="data_path_setting">Data path :</string>
+    <string name="folder_path_setting">Folder path :</string>
     <string name="default_setting">Default</string>
 
     <!-- New Card !-->

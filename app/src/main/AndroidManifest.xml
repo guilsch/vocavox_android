@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Multivoc">
-        <activity android:name=".NewCardActivity"></activity>
+        <activity android:name=".ListViewActivity"></activity>
+        <activity android:name=".NewCardActivity" />
         <activity android:name=".ExploreActivity" />
         <activity android:name=".LearnActivity" />
         <activity android:name=".SettingsActivity" />

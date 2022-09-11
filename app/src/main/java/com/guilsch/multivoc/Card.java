@@ -21,19 +21,19 @@ public class Card implements Serializable {
     private float easinessFactor;
     private int interval;
     private Date nextPracticeDate;
-    private Boolean active;
+    private int state;
     private String pack;
 
     private int numFields;
 
-    Card (String item1, String item2, Boolean active, String pack, Date nextPracticeDate, int repetitions, float easinessFactor, int interval){
+    Card (String item1, String item2, int state, String pack, Date nextPracticeDate, int repetitions, float easinessFactor, int interval){
         this.item1 = item1;
         this.item2 = item2;
         this.repetitions = repetitions;
         this.easinessFactor = easinessFactor;
         this.interval = interval;
         this.nextPracticeDate = nextPracticeDate;
-        this.active = active;
+        this.state = state;
         this.pack = pack;
         this.numFields = 8;
     }
@@ -44,9 +44,9 @@ public class Card implements Serializable {
         this.repetitions = 0;
         this.easinessFactor = (float) 2.3;
         this.interval = 1;
-        this.nextPracticeDate = utils.giveDate();
-        this.active = Boolean.TRUE;
-        this.pack = "Default";
+        this.nextPracticeDate = Param.DEFAULT_DATE;
+        this.state = 2;
+        this.pack = Param.DEFAULT_PACK;
     }
 
     public void updateParameters(Date nextPracticeDate, int repetitions, float easinessFactor, int interval) {
@@ -59,7 +59,7 @@ public class Card implements Serializable {
     public void updateDatabase(String cardKey) {
         try {
 
-            FileInputStream inputFile = new FileInputStream(new File(Constants.getDataPath()));
+            FileInputStream inputFile = new FileInputStream(new File(Param.getDataPath()));
             Workbook workbook = WorkbookFactory.create(inputFile);
             Sheet sheet = workbook.getSheetAt(0);
 
@@ -69,7 +69,7 @@ public class Card implements Serializable {
             
             int item1Index = utils.getHeaderIndex(header, "Item 1");
             int item2Index = utils.getHeaderIndex(header, "Item 2");
-            int activeIndex = utils.getHeaderIndex(header, "Active");
+            int stateIndex = utils.getHeaderIndex(header, "State");
             int packIndex = utils.getHeaderIndex(header, "Pack");
             int nextPracticeDateIndex = utils.getHeaderIndex(header, "Next Date");
             int repetitionsIndex = utils.getHeaderIndex(header, "Repetitions");
@@ -85,7 +85,7 @@ public class Card implements Serializable {
                     
                     row.getCell(item1Index).setCellValue(this.item1);
                     row.getCell(item2Index).setCellValue(this.item2);
-                    row.getCell(activeIndex).setCellValue(this.active.toString());
+                    row.getCell(stateIndex).setCellValue(this.state);
                     row.getCell(packIndex).setCellValue(this.pack);
                     row.getCell(nextPracticeDateIndex).setCellValue(this.nextPracticeDate.toString());
                     row.getCell(repetitionsIndex).setCellValue(this.repetitions);
@@ -94,12 +94,9 @@ public class Card implements Serializable {
                 }
             }
 
-            // workbook.close();
             inputFile.close();
-
-            FileOutputStream outputStream = new FileOutputStream(Constants.getDataPath());
+            FileOutputStream outputStream = new FileOutputStream(Param.getDataPath());
             workbook.write(outputStream);
-//            workbook.close();
             outputStream.close();
             
             } catch (Exception e) {
@@ -110,7 +107,7 @@ public class Card implements Serializable {
     public void addToDatabase() {
         try {
 
-            FileInputStream inputFile = new FileInputStream(new File(Constants.getDataPath()));
+            FileInputStream inputFile = new FileInputStream(new File(Param.getDataPath()));
             Workbook workbook = WorkbookFactory.create(inputFile);
             Sheet sheet = workbook.getSheetAt(0);
 
@@ -122,7 +119,7 @@ public class Card implements Serializable {
 
             int item1Index = utils.getHeaderIndex(header, "Item 1");
             int item2Index = utils.getHeaderIndex(header, "Item 2");
-            int activeIndex = utils.getHeaderIndex(header, "Active");
+            int stateIndex = utils.getHeaderIndex(header, "State");
             int packIndex = utils.getHeaderIndex(header, "Pack");
             int nextPracticeDateIndex = utils.getHeaderIndex(header, "Next Date");
             int repetitionsIndex = utils.getHeaderIndex(header, "Repetitions");
@@ -135,7 +132,7 @@ public class Card implements Serializable {
 
             newRow.getCell(item1Index).setCellValue(this.item1);
             newRow.getCell(item2Index).setCellValue(this.item2);
-            newRow.getCell(activeIndex).setCellValue(this.active.toString());
+            newRow.getCell(stateIndex).setCellValue(this.state);
             newRow.getCell(packIndex).setCellValue(this.pack);
             newRow.getCell(nextPracticeDateIndex).setCellValue(this.nextPracticeDate.toString());
             newRow.getCell(repetitionsIndex).setCellValue(this.repetitions);
@@ -143,7 +140,7 @@ public class Card implements Serializable {
             newRow.getCell(intervalIndex).setCellValue(this.interval);
 
             inputFile.close();
-            FileOutputStream outputStream = new FileOutputStream(Constants.getDataPath());
+            FileOutputStream outputStream = new FileOutputStream(Param.getDataPath());
             workbook.write(outputStream);
             outputStream.close();
 
@@ -155,7 +152,7 @@ public class Card implements Serializable {
     public void info() {
         System.out.println("Item 1 : " + this.item1);
         System.out.println("Item 2 : " + this.item2);
-        System.out.println(String.format("Active : %b", this.active));
+        System.out.println(String.format("State : %b", this.state));
         System.out.println("Pack : " + this.pack);
         System.out.println(String.format("Next practice : %s", nextPracticeDate.toString()));
         System.out.println(String.format("Repetitions : %d", this.repetitions));
@@ -173,8 +170,8 @@ public class Card implements Serializable {
         return item2;
     }
 
-    public Boolean getActive() {
-        return active;
+    public int getState() {
+        return state;
     }
 
     public String getPack() {
@@ -213,8 +210,8 @@ public class Card implements Serializable {
         this.item2 = item2;
     }
 
-    public void setActive(Boolean active) {
-        this.active = active;
+    public void setState(int state) {
+        this.state = state;
     }
 
     public void setPack(String pack) {

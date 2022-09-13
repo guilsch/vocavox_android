@@ -21,6 +21,70 @@ import java.util.Iterator;
 
 public class utils {
 
+    public static int nextStateForButton (int currentState) {
+        int nextState;
+
+        switch (currentState) {
+
+            case Param.INACTIVE:
+                nextState = Param.TO_LEARN;
+                break;
+
+            case Param.ACTIVE:
+                nextState = Param.STOP_LEARNING;
+                break;
+
+            case Param.TO_LEARN:
+                nextState = Param.INACTIVE;
+                break;
+
+            case Param.STOP_LEARNING:
+                nextState = Param.ACTIVE;
+                break;
+
+            default:
+                nextState = Param.INACTIVE;
+                break;
+
+        }
+
+        return nextState;
+    }
+
+    public static String getStringState (int state) {
+
+        String stringState;
+
+        switch (state){
+
+            case Param.ACTIVE :
+                stringState = "Learning";
+                break;
+
+            case Param.INACTIVE :
+                stringState = "Inactive";
+                break;
+
+            case Param.TO_LEARN :
+                stringState = "To Learn";
+                break;
+
+            case Param.INVALID:
+                stringState = "Invalid";
+                break;
+
+            case Param.STOP_LEARNING:
+                stringState = "On pause";
+                break;
+
+            default:
+                stringState = "Error";
+                break;
+        }
+
+        return stringState;
+    }
+
     public static Date toDate(long nextPracticeTime) {
         Date nextPracticeDate = new Date(nextPracticeTime);
         return (nextPracticeDate);

@@ -22,6 +22,7 @@ public class Param {
     public static final int ACTIVE = 1;
     public static final int TO_LEARN = 2;
     public static final int INVALID = 3;
+    public static final int STOP_LEARNING = 4;
 
     public static final String DEFAULT_PACK = "";
     public static final Date DEFAULT_DATE = utils.giveDate();

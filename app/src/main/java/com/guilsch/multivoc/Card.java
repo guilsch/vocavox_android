@@ -59,22 +59,22 @@ public class Card implements Serializable {
     public void updateDatabase(String cardKey) {
         try {
 
-            FileInputStream inputFile = new FileInputStream(new File(Param.getDataPath()));
+            FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
             Workbook workbook = WorkbookFactory.create(inputFile);
             Sheet sheet = workbook.getSheetAt(0);
 
             // Iterate through each rows one by one
             Iterator<Row> rowIterator = sheet.iterator();
             Row header = rowIterator.next();
-            
-            int item1Index = utils.getHeaderIndex(header, "Item 1");
-            int item2Index = utils.getHeaderIndex(header, "Item 2");
-            int stateIndex = utils.getHeaderIndex(header, "State");
-            int packIndex = utils.getHeaderIndex(header, "Pack");
-            int nextPracticeDateIndex = utils.getHeaderIndex(header, "Next Date");
-            int repetitionsIndex = utils.getHeaderIndex(header, "Repetitions");
-            int easinessFactorIndex = utils.getHeaderIndex(header, "Easiness Factor");
-            int intervalIndex = utils.getHeaderIndex(header, "Interval");
+
+            int item1Index = utils.getHeaderIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = utils.getHeaderIndex(header, Param.ITEM2_FIELD_NAME);
+            int stateIndex = utils.getHeaderIndex(header, Param.STATE_FIELD_NAME);
+            int packIndex = utils.getHeaderIndex(header, Param.PACK_FIELD_NAME);
+            int nextPracticeDateIndex = utils.getHeaderIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int repetitionsIndex = utils.getHeaderIndex(header, Param.REPETITIONS_FIELD_NAME);
+            int easinessFactorIndex = utils.getHeaderIndex(header, Param.EF_FIELD_NAME);
+            int intervalIndex = utils.getHeaderIndex(header, Param.INTERVAL_FIELD_NAME);
 
             while (rowIterator.hasNext()) {
 
@@ -95,7 +95,7 @@ public class Card implements Serializable {
             }
 
             inputFile.close();
-            FileOutputStream outputStream = new FileOutputStream(Param.getDataPath());
+            FileOutputStream outputStream = new FileOutputStream(Param.DATA_PATH);
             workbook.write(outputStream);
             outputStream.close();
             
@@ -107,7 +107,7 @@ public class Card implements Serializable {
     public void addToDatabase() {
         try {
 
-            FileInputStream inputFile = new FileInputStream(new File(Param.getDataPath()));
+            FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
             Workbook workbook = WorkbookFactory.create(inputFile);
             Sheet sheet = workbook.getSheetAt(0);
 
@@ -117,14 +117,14 @@ public class Card implements Serializable {
             System.out.println("Last row num :");
             System.out.println(sheet.getLastRowNum());
 
-            int item1Index = utils.getHeaderIndex(header, "Item 1");
-            int item2Index = utils.getHeaderIndex(header, "Item 2");
-            int stateIndex = utils.getHeaderIndex(header, "State");
-            int packIndex = utils.getHeaderIndex(header, "Pack");
-            int nextPracticeDateIndex = utils.getHeaderIndex(header, "Next Date");
-            int repetitionsIndex = utils.getHeaderIndex(header, "Repetitions");
-            int easinessFactorIndex = utils.getHeaderIndex(header, "Easiness Factor");
-            int intervalIndex = utils.getHeaderIndex(header, "Interval");
+            int item1Index = utils.getHeaderIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = utils.getHeaderIndex(header, Param.ITEM2_FIELD_NAME);
+            int stateIndex = utils.getHeaderIndex(header, Param.STATE_FIELD_NAME);
+            int packIndex = utils.getHeaderIndex(header, Param.PACK_FIELD_NAME);
+            int nextPracticeDateIndex = utils.getHeaderIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int repetitionsIndex = utils.getHeaderIndex(header, Param.REPETITIONS_FIELD_NAME);
+            int easinessFactorIndex = utils.getHeaderIndex(header, Param.EF_FIELD_NAME);
+            int intervalIndex = utils.getHeaderIndex(header, Param.INTERVAL_FIELD_NAME);
 
             for (int i = 0; i < numFields; i++) {
                 newRow.createCell(i);
@@ -140,7 +140,7 @@ public class Card implements Serializable {
             newRow.getCell(intervalIndex).setCellValue(this.interval);
 
             inputFile.close();
-            FileOutputStream outputStream = new FileOutputStream(Param.getDataPath());
+            FileOutputStream outputStream = new FileOutputStream(Param.DATA_PATH);
             workbook.write(outputStream);
             outputStream.close();
 

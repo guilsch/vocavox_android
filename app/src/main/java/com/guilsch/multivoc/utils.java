@@ -8,6 +8,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 //import org.apache.poi.xssf.usermodel.XSSFSheet;
 //import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -18,8 +21,73 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class utils {
+
+    public static String generateDataFileName () {
+        return getLanguageStringName(Param.USER_LANGUAGE) + "_" + getLanguageStringName(Param.TARGET_LANGUAGE) + ".xlsx";
+    }
+
+    public static String getLanguageStringName (String language) {
+        String languageStringName;
+
+        switch (language) {
+            case "English":
+                languageStringName = "en";
+                break;
+
+            case "German":
+                languageStringName = "ge";
+                break;
+
+            case "French":
+                languageStringName = "fr";
+                break;
+
+            case "Italian":
+                languageStringName = "it";
+                break;
+
+            case "Russian":
+                languageStringName = "ru";
+                break;
+
+            case "Spanish":
+                languageStringName = "sp";
+                break;
+
+            default:
+                languageStringName = "unknown";
+                break;
+        }
+
+        return languageStringName;
+    }
+
+    public static void createDataFile () throws IOException {
+        // workbook object
+        XSSFWorkbook workbook = new XSSFWorkbook();
+
+        // spreadsheet object
+        XSSFSheet sheet = workbook.createSheet(Param.USER_LANGUAGE + " - " + Param.TARGET_LANGUAGE + " vocabulary");
+
+        // creating a row object
+        XSSFRow header = sheet.createRow(0);
+
+        int cellid = 0;
+
+        for (Object obj : Param.FIELDS) {
+            Cell cell = header.createCell(cellid++);
+            cell.setCellValue((String)obj);
+        }
+
+        FileOutputStream out = new FileOutputStream(new File(Param.DATA_PATH));
+
+        workbook.write(out);
+        out.close();
+    }
 
     public static int nextStateForButton (int currentState) {
         int nextState;
@@ -153,7 +221,7 @@ public class utils {
 
     public static void prepareDataFile() {
         try {
-            FileInputStream inputFile = new FileInputStream(new File(Param.getDataPath()));
+            FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
             Workbook workbook = WorkbookFactory.create(inputFile);
             Sheet sheet = workbook.getSheetAt(0);
 
@@ -220,7 +288,7 @@ public class utils {
             }
 
         inputFile.close();
-        FileOutputStream outputStream = new FileOutputStream(Param.getDataPath());
+        FileOutputStream outputStream = new FileOutputStream(Param.DATA_PATH);
         workbook.write(outputStream);
         outputStream.close();
 

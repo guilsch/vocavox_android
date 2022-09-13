@@ -23,20 +23,20 @@ public class SettingsActivity extends AppCompatActivity {
         folderPathDefaultButton = (Button) findViewById(R.id.folder_path_default);
         folderPathText = (EditText) findViewById(R.id.folder_path_text);
 
-        folderPathText.setText(Param.getDataPath());
+        folderPathText.setText(Param.DATA_PATH);
 
         folderPathButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Param.setFolderPath(folderPathText.getText().toString());
+                Param.FOLDER_PATH = folderPathText.getText().toString();
             }
         });
 
         folderPathDefaultButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Param.setFolderPath(Param.getFolderPathDefault());
-                folderPathText.setText(Param.getDataPath());
+                Param.FOLDER_PATH = Param.FOLDER_PATH_DEFAULT;
+                folderPathText.setText(Param.DATA_PATH);
             }
         });
     }

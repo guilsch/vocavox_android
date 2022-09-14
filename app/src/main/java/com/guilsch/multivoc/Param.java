@@ -39,6 +39,8 @@ public class Param {
     public static final int DEFAULT_EF = 0;
     public static final int DEFAULT_INTER = 0;
 
+    public static int LEARNING_NB = 5;
+
 
     public static void setDataPath() {
         DATA_PATH = FOLDER_PATH + DATA_FILE;

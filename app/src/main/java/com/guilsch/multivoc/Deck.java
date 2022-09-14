@@ -117,6 +117,8 @@ public class Deck extends ArrayList<Card> {
     }
 
     public void showCards() {
+
+        System.out.println("Cards in deck :");
         Iterator<Card> cardIterator = this.iterator();
 
         while(cardIterator.hasNext()){

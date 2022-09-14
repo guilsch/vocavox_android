@@ -8,11 +8,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Iterator;
 
 public class LearnActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private Button mStartLearningButton;
 
     private TextView mTextViewQuestion;
     private Button mSeeAnswerButton;
@@ -24,7 +27,10 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
     private Button mBackToMenuRevisionButton;
 
+    ListView simpleList;
+
     private Deck deck;
+    private static Deck learningDeck;
     private Card card;
     private Iterator<Card> cardIterator;
 
@@ -34,24 +40,34 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
 
         this.deck = new Deck();
+        this.learningDeck = new Deck();
         this.deck.init();
-
         this.deck.filterToLearn();
-        this.deck.keepNFirst(5);
 
-        this.deck.showCards();
-
-        this.cardIterator = deck.iterator();
-
-        if (this.cardIterator.hasNext()) {
-            this.card = cardIterator.next();
-            showQuestionSide();
+        if (this.deck.isEmpty()) {
+            showNoCardsToLearn();
         }
         else {
-            showEndOfLearning();
+
+            showCardsSelection();
+            simpleList = (ListView) findViewById(R.id.cardsSelectionListView);
+            CardsSelectionDeckAdapter adapter = new CardsSelectionDeckAdapter(getApplicationContext(), deck);
+            simpleList.setAdapter(adapter);
+
+            mStartLearningButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    cardIterator = learningDeck.iterator();
+                    learningDeck.showCards();
+                    if (cardIterator.hasNext()) {
+                        card = cardIterator.next();
+                        showQuestionSide();
+                    } else {
+                        showEndOfLearning();
+                    }
+                }
+            });
         }
-
-
     }
 
     @Override
@@ -91,8 +107,21 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    private void showCardsSelection() {
+        setContentView(R.layout.cards_selection);
+
+        mStartLearningButton = findViewById(R.id.cards_selection_start_button);
+    }
+
     private void showEndOfLearning() {
         setContentView(R.layout.end_of_learning);
+
+        mBackToMenuRevisionButton = findViewById(R.id.end_of_learning_back_to_menu);
+        mBackToMenuRevisionButton.setOnClickListener(this);
+    }
+
+    private void showNoCardsToLearn() {
+        setContentView(R.layout.no_cards_to_learn);
 
         mBackToMenuRevisionButton = findViewById(R.id.end_of_learning_back_to_menu);
         mBackToMenuRevisionButton.setOnClickListener(this);
@@ -125,6 +154,20 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
         mTextViewQuestion.setText(this.card.getItem2());
 
+    }
+
+    public static void addToLearningDeck(Card card) {
+        System.out.println(card.getItem1() + " is added");
+        learningDeck.add(card);
+    }
+
+    public static void removeFromLearningDeck(Card card) {
+        System.out.println(card.getItem1() + " is removed");
+        learningDeck.remove(card);
+    }
+
+    public static Boolean learningDeckContains(Card card) {
+        return learningDeck.contains(card);
     }
 
     @Override

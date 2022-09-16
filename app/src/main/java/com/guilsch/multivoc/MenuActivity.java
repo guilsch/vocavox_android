@@ -6,7 +6,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+
+import java.io.IOException;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -16,6 +19,8 @@ public class MenuActivity extends AppCompatActivity {
     private ImageView explore;
     private ImageView newCard;
     private ImageView flag;
+
+    private Button uploadButton;
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
@@ -29,6 +34,8 @@ public class MenuActivity extends AppCompatActivity {
         explore = (ImageView) findViewById(R.id.Explore);
         newCard = (ImageView) findViewById(R.id.New_Card);
         flag = (ImageView) findViewById(R.id.flag);
+
+        uploadButton = findViewById(R.id.uploadButton);
 
         // Prepare Excel file
         utils.prepareDataFile();
@@ -52,6 +59,15 @@ public class MenuActivity extends AppCompatActivity {
             default:
                 throw new IllegalStateException("Unexpected value: " + Param.getLanguage());
         }
+
+        uploadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newCardActivity = new Intent(getApplicationContext(), DriveActivity.class);
+                startActivity(newCardActivity);
+                finish();
+            }
+        });
 
         newCard.setOnClickListener(new View.OnClickListener() {
             @Override

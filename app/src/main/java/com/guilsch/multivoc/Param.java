@@ -39,8 +39,9 @@ public class Param {
     public static final int DEFAULT_EF = 0;
     public static final int DEFAULT_INTER = 0;
 
+    public static String FR_IT_FILE_ID = "12JOEr-6m5tsoLvg3RF14vLMvJhPPdohQ";
+    
     public static int LEARNING_NB = 5;
-
 
     public static void setDataPath() {
         DATA_PATH = FOLDER_PATH + DATA_FILE;

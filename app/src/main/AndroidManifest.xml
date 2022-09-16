@@ -4,7 +4,10 @@
     package="com.guilsch.multivoc">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Permissions required by GoogleAuthUtil -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +15,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Multivoc">
-        <activity android:name=".ListViewActivity"></activity>
+        android:theme="@style/Theme.Multivoc"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".DriveActivity"></activity>
+        <activity android:name=".ListViewActivity" />
         <activity android:name=".NewCardActivity" />
         <activity android:name=".ExploreActivity" />
         <activity android:name=".LearnActivity" />

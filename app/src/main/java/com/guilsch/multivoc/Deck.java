@@ -32,8 +32,8 @@ public class Deck extends ArrayList<Card> {
         try {
             // Create date formater
             SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
-            System.out.println(Param.getDataPath());
-            FileInputStream file = new FileInputStream(new File(Param.getDataPath()));
+
+            FileInputStream file = new FileInputStream(new File(Param.DATA_PATH));
 
             // Create Workbook instance holding reference to excel file
             XSSFWorkbook workbook = new XSSFWorkbook(file);
@@ -45,30 +45,30 @@ public class Deck extends ArrayList<Card> {
             Iterator<Row> rowIterator = sheet.iterator();
             Row header = rowIterator.next();
 
-            int indexItem1 = utils.getHeaderIndex(header, "Item 1");
-            int indexItem2 = utils.getHeaderIndex(header, "Item 2");
-            int indexState = utils.getHeaderIndex(header, "State");
-            int indexPack = utils.getHeaderIndex(header, "Pack");
-            int indexNextPracticeDate = utils.getHeaderIndex(header, "Next Date");
-            int indexRepetitions = utils.getHeaderIndex(header, "Repetitions");
-            int indexEasinessFactor = utils.getHeaderIndex(header, "Easiness Factor");
-            int indexInterval = utils.getHeaderIndex(header, "Interval");
+            int item1Index = utils.getHeaderIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = utils.getHeaderIndex(header, Param.ITEM2_FIELD_NAME);
+            int stateIndex = utils.getHeaderIndex(header, Param.STATE_FIELD_NAME);
+            int packIndex = utils.getHeaderIndex(header, Param.PACK_FIELD_NAME);
+            int nextPracticeDateIndex = utils.getHeaderIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int repetitionsIndex = utils.getHeaderIndex(header, Param.REPETITIONS_FIELD_NAME);
+            int easinessFactorIndex = utils.getHeaderIndex(header, Param.EF_FIELD_NAME);
+            int intervalIndex = utils.getHeaderIndex(header, Param.INTERVAL_FIELD_NAME);
 
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
 
                 Cell currentCell = row.getCell(0);
 
-                if (currentCell != null && row.getCell(indexState).getNumericCellValue() != Param.INVALID) {
+                if (currentCell != null && row.getCell(stateIndex).getNumericCellValue() != Param.INVALID) {
 
-                    String item1 = row.getCell(indexItem1).getStringCellValue();
-                    String item2 = row.getCell(indexItem2).getStringCellValue();
-                    int state = (int) row.getCell(indexState).getNumericCellValue();
-                    String pack = row.getCell(indexPack).getStringCellValue();
-                    Date nextPracticeDate = formatter.parse(row.getCell(indexNextPracticeDate).getStringCellValue());
-                    int repetitions = (int) row.getCell(indexRepetitions).getNumericCellValue();
-                    float easinessFactor = (float) row.getCell(indexEasinessFactor).getNumericCellValue();
-                    int interval = (int) row.getCell(indexInterval).getNumericCellValue();
+                    String item1 = row.getCell(item1Index).getStringCellValue();
+                    String item2 = row.getCell(item2Index).getStringCellValue();
+                    int state = (int) row.getCell(stateIndex).getNumericCellValue();
+                    String pack = row.getCell(packIndex).getStringCellValue();
+                    Date nextPracticeDate = formatter.parse(row.getCell(nextPracticeDateIndex).getStringCellValue());
+                    int repetitions = (int) row.getCell(repetitionsIndex).getNumericCellValue();
+                    float easinessFactor = (float) row.getCell(easinessFactorIndex).getNumericCellValue();
+                    int interval = (int) row.getCell(intervalIndex).getNumericCellValue();
 
                     this.add(new Card(item1, item2, state, pack, nextPracticeDate, repetitions, easinessFactor, interval));
 
@@ -117,6 +117,8 @@ public class Deck extends ArrayList<Card> {
     }
 
     public void showCards() {
+
+        System.out.println("Cards in deck :");
         Iterator<Card> cardIterator = this.iterator();
 
         while(cardIterator.hasNext()){

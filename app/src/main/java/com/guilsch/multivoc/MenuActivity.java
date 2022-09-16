@@ -40,7 +40,7 @@ public class MenuActivity extends AppCompatActivity {
         // Prepare Excel file
         utils.prepareDataFile();
 
-        switch (Param.getLanguage()) {
+        switch (Param.TARGET_LANGUAGE) {
             case "English" :
                 flag.setImageDrawable(getResources().getDrawable(R.drawable.ic_gb));
                 break;
@@ -57,7 +57,7 @@ public class MenuActivity extends AppCompatActivity {
                 flag.setImageDrawable(getResources().getDrawable(R.drawable.ic_ru));
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + Param.getLanguage());
+                throw new IllegalStateException("Unexpected value: " + Param.TARGET_LANGUAGE);
         }
 
         uploadButton.setOnClickListener(new View.OnClickListener() {

@@ -13,6 +13,7 @@
     <string name="save_setting">Save</string>
     <string name="folder_path_setting">Folder path :</string>
     <string name="default_setting">Default</string>
+    <string name="no_cards_to_learn_message">No cards to learn...</string>
 
     <!-- New Card !-->
     <string name="item1">First word</string>

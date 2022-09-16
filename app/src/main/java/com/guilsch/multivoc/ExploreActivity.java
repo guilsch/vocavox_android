@@ -11,7 +11,6 @@ import android.widget.ListView;
 public class ExploreActivity extends AppCompatActivity {
 
     ListView simpleList;
-    Button chooseButton;
 
     Deck deck;
 
@@ -25,20 +24,10 @@ public class ExploreActivity extends AppCompatActivity {
 
         deck.showCards();
 
-//        chooseButton = (Button) findViewById(R.id.chooseButton);
         simpleList = (ListView) findViewById(R.id.deckListView);
         DeckAdapter adapter = new DeckAdapter(getApplicationContext(), deck);
         simpleList.setAdapter(adapter);
 
-//        chooseButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
-//                startActivity(menuActivity);
-//                finish();
-//            }
-//        });
 
     }
 

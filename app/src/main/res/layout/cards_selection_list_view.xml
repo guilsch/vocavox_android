@@ -29,7 +29,7 @@
         android:padding="5dp"
         android:text="TextView"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/setStateButton"
+        app:layout_constraintEnd_toStartOf="@+id/selectCardButton"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="117dp" />
 
@@ -44,30 +44,19 @@
         app:layout_constraintStart_toStartOf="@+id/item1_textView"
         app:layout_constraintTop_toBottomOf="@+id/item1_textView" />
 
-    <Button
-        android:id="@+id/setStateButton"
+    <ToggleButton
+        android:id="@+id/selectCardButton"
         android:layout_width="64dp"
         android:layout_height="39dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:checked="true"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:text="Button"
         android:textSize="8sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/item2_textView" />
-
-    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/chooseButton"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:layout_marginRight="16dp"-->
-<!--        android:clickable="true"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/item1_textView"-->
-<!--        app:srcCompat="@drawable/ic_explore"-->
-<!--        tools:ignore="VectorDrawableCompat" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

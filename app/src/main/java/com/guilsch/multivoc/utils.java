@@ -8,6 +8,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 //import org.apache.poi.xssf.usermodel.XSSFSheet;
 //import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -18,8 +21,137 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class utils {
+
+    public static String generateDataFileName () {
+        return getLanguageStringName(Param.USER_LANGUAGE) + "_" + getLanguageStringName(Param.TARGET_LANGUAGE) + ".xlsx";
+    }
+
+    public static String getLanguageStringName (String language) {
+        String languageStringName;
+
+        switch (language) {
+            case "English":
+                languageStringName = "en";
+                break;
+
+            case "German":
+                languageStringName = "ge";
+                break;
+
+            case "French":
+                languageStringName = "fr";
+                break;
+
+            case "Italian":
+                languageStringName = "it";
+                break;
+
+            case "Russian":
+                languageStringName = "ru";
+                break;
+
+            case "Spanish":
+                languageStringName = "sp";
+                break;
+
+            default:
+                languageStringName = "unknown";
+                break;
+        }
+
+        return languageStringName;
+    }
+
+    public static void createDataFile () throws IOException {
+        // workbook object
+        XSSFWorkbook workbook = new XSSFWorkbook();
+
+        // spreadsheet object
+        XSSFSheet sheet = workbook.createSheet(Param.USER_LANGUAGE + " - " + Param.TARGET_LANGUAGE + " vocabulary");
+
+        // creating a row object
+        XSSFRow header = sheet.createRow(0);
+
+        int cellid = 0;
+
+        for (Object obj : Param.FIELDS) {
+            Cell cell = header.createCell(cellid++);
+            cell.setCellValue((String)obj);
+        }
+
+        FileOutputStream out = new FileOutputStream(new File(Param.DATA_PATH));
+
+        workbook.write(out);
+        out.close();
+    }
+
+    public static int nextStateForButton (int currentState) {
+        int nextState;
+
+        switch (currentState) {
+
+            case Param.INACTIVE:
+                nextState = Param.TO_LEARN;
+                break;
+
+            case Param.ACTIVE:
+                nextState = Param.STOP_LEARNING;
+                break;
+
+            case Param.TO_LEARN:
+                nextState = Param.INACTIVE;
+                break;
+
+            case Param.STOP_LEARNING:
+                nextState = Param.ACTIVE;
+                break;
+
+            default:
+                nextState = Param.INACTIVE;
+                break;
+
+        }
+
+        return nextState;
+    }
+
+    public static String getStringState (int state) {
+
+        String stringState;
+
+        switch (state){
+
+            case Param.ACTIVE :
+                stringState = "Learning";
+                break;
+
+            case Param.INACTIVE :
+                stringState = "Inactive";
+                break;
+
+            case Param.TO_LEARN :
+                stringState = "To Learn";
+                break;
+
+            case Param.INVALID:
+                stringState = "Invalid";
+                break;
+
+            case Param.STOP_LEARNING:
+                stringState = "On pause";
+                break;
+
+            default:
+                stringState = "Error";
+                break;
+        }
+
+        return stringState;
+    }
 
     public static Date toDate(long nextPracticeTime) {
         Date nextPracticeDate = new Date(nextPracticeTime);
@@ -89,7 +221,7 @@ public class utils {
 
     public static void prepareDataFile() {
         try {
-            FileInputStream inputFile = new FileInputStream(new File(Param.getDataPath()));
+            FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
             Workbook workbook = WorkbookFactory.create(inputFile);
             Sheet sheet = workbook.getSheetAt(0);
 
@@ -99,64 +231,63 @@ public class utils {
             Cell currentCell;
             Cell stateCell;
 
-            int item1Index = utils.getHeaderIndex(header, "Item 1");
-            int item2Index = utils.getHeaderIndex(header, "Item 2");
-            int stateIndex = utils.getHeaderIndex(header, "State");
-            int packIndex = utils.getHeaderIndex(header, "Pack");
-            int nextPracticeDateIndex = utils.getHeaderIndex(header, "Next Date");
-            int repetitionsIndex = utils.getHeaderIndex(header, "Repetitions");
-            int easinessFactorIndex = utils.getHeaderIndex(header, "Easiness Factor");
-            int intervalIndex = utils.getHeaderIndex(header, "Interval");
+            int item1Index = utils.getHeaderIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = utils.getHeaderIndex(header, Param.ITEM2_FIELD_NAME);
+            int stateIndex = utils.getHeaderIndex(header, Param.STATE_FIELD_NAME);
+            int packIndex = utils.getHeaderIndex(header, Param.PACK_FIELD_NAME);
+            int nextPracticeDateIndex = utils.getHeaderIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int repetitionsIndex = utils.getHeaderIndex(header, Param.REPETITIONS_FIELD_NAME);
+            int easinessFactorIndex = utils.getHeaderIndex(header, Param.EF_FIELD_NAME);
+            int intervalIndex = utils.getHeaderIndex(header, Param.INTERVAL_FIELD_NAME);
 
             while (rowIterator.hasNext()) {
 
                 Row row = rowIterator.next();
 
-                if (row.getCell(item1Index) == null || row.getCell(item2Index) == null) {
+                if (checkCellEmptiness(row.getCell(item1Index), row) || checkCellEmptiness(row.getCell(item2Index), row)) {
                     stateCell = row.createCell(stateIndex);
                     stateCell.setCellValue(Param.INVALID);
                 }
 
                 currentCell = row.getCell(stateIndex);
-                if (currentCell == null) {
+                if (checkCellEmptiness(currentCell, row)) {
                     currentCell = row.createCell(stateIndex);
                     currentCell.setCellValue(Param.INACTIVE);
                 }
 
                 currentCell = row.getCell(packIndex);
-                if (currentCell == null) {
+                if (checkCellEmptiness(currentCell, row)) {
                     currentCell = row.createCell(packIndex);
                     currentCell.setCellValue(Param.DEFAULT_PACK);
                 }
 
                 currentCell = row.getCell(nextPracticeDateIndex);
-                if (currentCell == null) {
+                if (checkCellEmptiness(currentCell, row)) {
                     currentCell = row.createCell(nextPracticeDateIndex);
                     currentCell.setCellValue(Param.DEFAULT_DATE.toString());
-                    System.out.println(Param.DEFAULT_DATE);
                 }
 
                 currentCell = row.getCell(repetitionsIndex);
-                if (currentCell == null) {
+                if (checkCellEmptiness(currentCell, row)) {
                     currentCell = row.createCell(repetitionsIndex);
                     currentCell.setCellValue(Param.DEFAULT_REP);
                 }
 
                 currentCell = row.getCell(easinessFactorIndex);
-                if (currentCell == null) {
+                if (checkCellEmptiness(currentCell, row)) {
                     currentCell = row.createCell(easinessFactorIndex);
                     currentCell.setCellValue(Param.DEFAULT_EF);
                 }
 
                 currentCell = row.getCell(intervalIndex);
-                if (currentCell == null) {
+                if (checkCellEmptiness(currentCell, row)) {
                     currentCell = row.createCell(intervalIndex);
                     currentCell.setCellValue(Param.DEFAULT_INTER);
                 }
             }
 
         inputFile.close();
-        FileOutputStream outputStream = new FileOutputStream(Param.getDataPath());
+        FileOutputStream outputStream = new FileOutputStream(Param.DATA_PATH);
         workbook.write(outputStream);
         outputStream.close();
 
@@ -168,6 +299,19 @@ public class utils {
             e.printStackTrace();
         }
 
+    }
+
+    public static Boolean checkCellEmptiness(Cell cell, Row row) {
+        if (cell == null) {
+            return Boolean.TRUE;
+        }
+        else if (cell.getCellType() == Cell.CELL_TYPE_BLANK) {
+            row.removeCell(cell);
+            return Boolean.TRUE;
+        }
+        else {
+            return Boolean.FALSE;
+        }
     }
 
 }

@@ -39,8 +39,17 @@ public class Param {
     public static final int DEFAULT_EF = 0;
     public static final int DEFAULT_INTER = 0;
 
-    public static String FR_IT_FILE_ID = "12JOEr-6m5tsoLvg3RF14vLMvJhPPdohQ";
-    
+    public static String FOLDER_ID = "1JEIT59Bq_2zxyhDgZRuBtPtXyTufeG4-";
+    public static String FILE_ID = "12JOEr-6m5tsoLvg3RF14vLMvJhPPdohQ";
+    public static String EN_FILE_ID = "Undefined";
+    public static String FR_FILE_ID = "Undefined";
+    public static String GE_FILE_ID = "Undefined";
+    public static String IT_FILE_ID = "Undefined";
+    public static String RU_FILE_ID = "Undefined";
+    public static String SP_FILE_ID = "Undefined";
+
+    public static String DATA_MIME_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
     public static int LEARNING_NB = 5;
 
     public static void setDataPath() {

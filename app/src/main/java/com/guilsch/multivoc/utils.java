@@ -26,6 +26,40 @@ import java.util.TreeMap;
 
 public class utils {
 
+    public static void setFileID (String fileID) {
+        switch (Param.TARGET_LANGUAGE) {
+            case "English":
+                Param.EN_FILE_ID = fileID;
+                break;
+
+            case "German":
+                Param.GE_FILE_ID = fileID;
+                break;
+
+            case "French":
+                Param.FR_FILE_ID = fileID;
+                break;
+
+            case "Italian":
+                Param.IT_FILE_ID = fileID;
+                break;
+
+            case "Russian":
+                Param.RU_FILE_ID = fileID;
+                break;
+
+            case "Spanish":
+                Param.SP_FILE_ID = fileID;
+                break;
+
+            default:
+                System.out.println("Error : target language unknown");
+                break;
+        }
+
+        Param.FILE_ID = fileID;
+    }
+
     public static String generateDataFileName () {
         return getLanguageStringName(Param.USER_LANGUAGE) + "_" + getLanguageStringName(Param.TARGET_LANGUAGE) + ".xlsx";
     }

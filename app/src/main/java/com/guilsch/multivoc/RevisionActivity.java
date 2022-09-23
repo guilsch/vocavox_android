@@ -103,6 +103,8 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         mSeeAnswerButton = findViewById(R.id.question_side_button);
         mSeeAnswerButton.setOnClickListener(this);
 
+        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
+
         mTextViewQuestion.setText(this.card.getItem1());
 
     }

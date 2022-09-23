@@ -8,19 +8,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.io.IOException;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private ImageView revision;
-    private ImageView settings;
-    private ImageView learning;
-    private ImageView explore;
-    private ImageView newCard;
+    private LinearLayout revision;
+    private LinearLayout settings;
+    private LinearLayout learning;
+    private LinearLayout explore;
+    private LinearLayout newCard;
     private ImageView flag;
-
-    private Button uploadButton;
+    private LinearLayout drive;
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
@@ -28,14 +28,14 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        revision = (ImageView) findViewById(R.id.Revision);
-        settings = (ImageView) findViewById(R.id.Settings);
-        learning = (ImageView) findViewById(R.id.Learning);
-        explore = (ImageView) findViewById(R.id.Explore);
-        newCard = (ImageView) findViewById(R.id.New_Card);
-        flag = (ImageView) findViewById(R.id.flag);
+        revision = findViewById(R.id.Revision);
+        settings = findViewById(R.id.Settings);
+        learning = findViewById(R.id.Learning);
+        explore = findViewById(R.id.Explore);
+        newCard = findViewById(R.id.New_Card);
+        flag = findViewById(R.id.flag);
 
-        uploadButton = findViewById(R.id.uploadButton);
+        drive = findViewById(R.id.Drive);
 
         // Prepare Excel file
         utils.prepareDataFile();
@@ -60,7 +60,7 @@ public class MenuActivity extends AppCompatActivity {
                 throw new IllegalStateException("Unexpected value: " + Param.TARGET_LANGUAGE);
         }
 
-        uploadButton.setOnClickListener(new View.OnClickListener() {
+        drive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent newCardActivity = new Intent(getApplicationContext(), DriveActivity.class);

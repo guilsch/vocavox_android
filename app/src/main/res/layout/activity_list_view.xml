@@ -8,66 +8,101 @@
 
     <TextView
         android:id="@+id/item1_textView"
-        android:layout_width="97dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_width="141dp"
+        android:layout_height="28dp"
         android:padding="5dp"
         android:text="TextView"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="117dp" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/item2_textView"
-        android:layout_width="98dp"
-        android:layout_height="27dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_width="140dp"
+        android:layout_height="26dp"
         android:padding="5dp"
         android:text="TextView"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/setStateButton"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="117dp" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/item1_textView"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/pack_textView"
-        android:layout_width="300dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="69dp"
+        android:layout_height="29dp"
         android:padding="3dp"
         android:text="TextView"
         android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="@+id/item1_textView"
-        app:layout_constraintTop_toBottomOf="@+id/item1_textView" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/setStateButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/item2_textView"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <Button
         android:id="@+id/setStateButton"
-        android:layout_width="64dp"
+        android:layout_width="50dp"
         android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
         android:text="Button"
-        android:textSize="8sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/item2_textView" />
+        android:textSize="6sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/deleteCardButton"
+        app:layout_constraintStart_toEndOf="@+id/pack_textView"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <Button
+        android:id="@+id/deleteCardButton"
+        android:layout_width="30dp"
+        android:layout_height="39dp"
+        android:text="-"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.97" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="57dp" />
 
     <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/chooseButton"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:layout_marginRight="16dp"-->
-<!--        android:clickable="true"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/item1_textView"-->
-<!--        app:srcCompat="@drawable/ic_explore"-->
-<!--        tools:ignore="VectorDrawableCompat" />-->
+    <!--        android:id="@+id/chooseButton"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:layout_marginEnd="16dp"-->
+    <!--        android:layout_marginRight="16dp"-->
+    <!--        android:clickable="true"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/item1_textView"-->
+    <!--        app:srcCompat="@drawable/ic_explore"-->
+    <!--        tools:ignore="VectorDrawableCompat" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

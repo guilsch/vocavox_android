@@ -110,11 +110,15 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private void showCardsSelection() {
         setContentView(R.layout.cards_selection);
 
+        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
+
         mStartLearningButton = findViewById(R.id.cards_selection_start_button);
     }
 
     private void showEndOfLearning() {
         setContentView(R.layout.end_of_learning);
+
+        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         mBackToMenuRevisionButton = findViewById(R.id.end_of_learning_back_to_menu);
         mBackToMenuRevisionButton.setOnClickListener(this);
@@ -123,12 +127,16 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private void showNoCardsToLearn() {
         setContentView(R.layout.no_cards_to_learn);
 
+        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
+
         mBackToMenuRevisionButton = findViewById(R.id.end_of_learning_back_to_menu);
         mBackToMenuRevisionButton.setOnClickListener(this);
     }
 
     private void showQuestionSide() {
         setContentView(R.layout.question_side);
+
+        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         mTextViewQuestion = findViewById(R.id.question_side_item1);
         mSeeAnswerButton = findViewById(R.id.question_side_button);
@@ -140,6 +148,8 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
     private void showAnswerSide() {
         setContentView(R.layout.answer_side);
+
+        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         mTextViewQuestion = findViewById(R.id.answer_side_item2);
         mAnswerButton1 = findViewById(R.id.answer_side_button1);

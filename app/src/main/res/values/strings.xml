@@ -22,5 +22,7 @@
     <string name="save_card">Save</string>
     <string name="next_new_card">New</string>
 
+    <!-- Start !-->
+    <string name="start_button">Start</string>
 
 </resources>

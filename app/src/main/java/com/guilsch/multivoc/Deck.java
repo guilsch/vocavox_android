@@ -17,6 +17,9 @@ import java.util.function.Predicate;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -24,6 +27,38 @@ public class Deck extends ArrayList<Card> {
 
     Deck() {
         super(1);
+    }
+
+    public void deleteCard(String cardKey) {
+        try {
+
+            FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
+            Workbook workbook = WorkbookFactory.create(inputFile);
+            Sheet sheet = workbook.getSheetAt(0);
+
+            // Iterate through each rows one by one
+            Iterator<Row> rowIterator = sheet.iterator();
+            Row header = rowIterator.next();
+
+            while (rowIterator.hasNext()) {
+
+                Row row = rowIterator.next();
+                Cell keyCell = row.getCell(0);
+
+                if (keyCell.getStringCellValue().compareTo(cardKey) == 0){
+                    sheet.removeRow(row);
+                    break;
+                }
+            }
+
+            inputFile.close();
+            FileOutputStream outputStream = new FileOutputStream(Param.DATA_PATH);
+            workbook.write(outputStream);
+            outputStream.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void init() {

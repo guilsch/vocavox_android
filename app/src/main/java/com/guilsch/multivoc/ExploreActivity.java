@@ -19,6 +19,8 @@ public class ExploreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore);
 
+        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
+
         deck = new Deck();
         deck.init();
 

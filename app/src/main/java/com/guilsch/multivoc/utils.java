@@ -1,5 +1,8 @@
 package com.guilsch.multivoc;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -26,30 +29,119 @@ import java.util.TreeMap;
 
 public class utils {
 
-    public static void setFileID (String fileID) {
+    public static void initParam() {
+
+        // Set Data path
+        Param.DATA_FILE = utils.generateDataFileName();
+        Param.setDataPath();
+
+        // Set File ID
+        utils.setFileID();
+    }
+
+    public static void setFileID () {
+        switch (Param.TARGET_LANGUAGE) {
+            case "English":
+                Param.FILE_ID = Param.EN_FILE_ID;
+                break;
+
+            case "German":
+                Param.FILE_ID = Param.GE_FILE_ID;
+                break;
+
+            case "French":
+                Param.FILE_ID = Param.FR_FILE_ID;
+                break;
+
+            case "Italian":
+                Param.FILE_ID = Param.IT_FILE_ID;
+                break;
+
+            case "Russian":
+                Param.FILE_ID = Param.RU_FILE_ID;
+                break;
+
+            case "Spanish":
+                Param.FILE_ID = Param.SP_FILE_ID;
+                break;
+
+            default:
+                Param.FILE_ID = Param.FILE_ID_UNDEFINED;
+                break;
+        }
+    }
+
+    public static void resetFileID (Context context) {
+        switch (Param.TARGET_LANGUAGE) {
+            case "English":
+                Param.EN_FILE_ID = Param.FILE_ID_UNDEFINED;
+                Pref.savePreference(context, Param.EN_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
+                break;
+
+            case "German":
+                Param.GE_FILE_ID = Param.FILE_ID_UNDEFINED;
+                Pref.savePreference(context, Param.GE_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
+                break;
+
+            case "French":
+                Param.FR_FILE_ID = Param.FILE_ID_UNDEFINED;
+                Pref.savePreference(context, Param.FR_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
+                break;
+
+            case "Italian":
+                Param.IT_FILE_ID = Param.FILE_ID_UNDEFINED;
+                Pref.savePreference(context, Param.IT_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
+                break;
+
+            case "Russian":
+                Param.RU_FILE_ID = Param.FILE_ID_UNDEFINED;
+                Pref.savePreference(context, Param.RU_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
+                break;
+
+            case "Spanish":
+                Param.SP_FILE_ID = Param.FILE_ID_UNDEFINED;
+                Pref.savePreference(context, Param.SP_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
+                break;
+
+            default:
+                System.out.println("Target language error");
+                break;
+        }
+
+        Param.FILE_ID = Param.FILE_ID_UNDEFINED;
+
+    }
+
+    public static void setAndSaveFileID (Context context, String fileID) {
         switch (Param.TARGET_LANGUAGE) {
             case "English":
                 Param.EN_FILE_ID = fileID;
+                Pref.savePreference(context, Param.EN_FILE_ID_KEY, fileID);
                 break;
 
             case "German":
                 Param.GE_FILE_ID = fileID;
+                Pref.savePreference(context, Param.GE_FILE_ID_KEY, fileID);
                 break;
 
             case "French":
                 Param.FR_FILE_ID = fileID;
+                Pref.savePreference(context, Param.FR_FILE_ID_KEY, fileID);
                 break;
 
             case "Italian":
                 Param.IT_FILE_ID = fileID;
+                Pref.savePreference(context, Param.IT_FILE_ID_KEY, fileID);
                 break;
 
             case "Russian":
                 Param.RU_FILE_ID = fileID;
+                Pref.savePreference(context, Param.RU_FILE_ID_KEY, fileID);
                 break;
 
             case "Spanish":
                 Param.SP_FILE_ID = fileID;
+                Pref.savePreference(context, Param.SP_FILE_ID_KEY, fileID);
                 break;
 
             default:
@@ -348,4 +440,7 @@ public class utils {
         }
     }
 
+    public static String URLtoID(String url) {
+        return url.substring(url.lastIndexOf("/") + 1);
+    }
 }

@@ -7,6 +7,35 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="bg">#14D49800</color>
+    <color name="bg">#E4F0F8</color>
     <color name="head_color">#3100BCD4</color>
+
+
+    <color name="main">#C24F25</color>
+
+    <color name="back_ground">#FAFDFF</color>
+    <color name="back_ground2">#F3F2ED</color>
+    <color name="back_ground3">#D3F0FF</color>
+
+    <color name="blue1">#00111C</color>
+    <color name="blue2">#001523</color>
+    <color name="blue3">#001A2C</color>
+    <color name="blue4">#002137</color>
+    <color name="blue5">#00253E</color>
+    <color name="blue6">#002945</color>
+    <color name="blue7">#002E4E</color>
+    <color name="blue8">#003356</color>
+    <color name="blue9">#003A61</color>
+    <color name="blue10">#00406C</color>
+
+<!--buttons-->
+    <color name="button_std_text">@color/white</color>
+    <color name="button_std_bg">@color/blue9</color>
+    <color name="button_std_bg2">#81B4D8</color>
+    <color name="button_std_bg_on_click">#84A1B5</color>
+
+<!--question-->
+    <color name="rectangle_bg">@color/back_ground2</color>
+
+
 </resources>

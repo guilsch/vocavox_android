@@ -4,67 +4,169 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/back_ground"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp"
-        tools:context=".MainActivity">
 
-        <EditText
-            android:id="@+id/file_title_edittext"
-            android:layout_height="48dp"
-            android:layout_width="match_parent"
-            android:layout_alignParentTop="true" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
 
-        <EditText
-            android:id="@+id/doc_content_edittext"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_below="@id/file_title_edittext"
-            android:layout_above="@id/btn_layout" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
 
-        <LinearLayout
-            android:id="@+id/btn_layout"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical_central_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
-            <Button
-                android:id="@+id/open_btn"
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="Open"
-                style="?attr/buttonBarButtonStyle" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.085" />
 
-            <Button
-                android:id="@+id/create_btn"
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="Create"
-                style="?attr/buttonBarButtonStyle" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.927" />
 
-            <Button
-                android:id="@+id/save_btn"
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="Save"
-                style="?attr/buttonBarButtonStyle" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_central_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
 
-            <Button
-                android:id="@+id/query_btn"
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="Query"
-                style="?attr/buttonBarButtonStyle" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_central_guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.62" />
 
-        </LinearLayout>
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/blue7"
+        android:fontFamily="@font/oxygen_bold"
+        android:gravity="center"
+        android:text="Google Drive"
+        android:textColor="@color/white"
+        android:textSize="@dimen/header"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+        app:layout_constraintStart_toStartOf="@+id/header"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic__back_arrow_white"
+        tools:ignore="VectorDrawableCompat" />
+
+    <Button
+        android:id="@+id/download_btn"
+        style="?attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:text="Download"
+        android:textColor="@color/blue10"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_central_guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline" />
+
+    <Button
+        android:id="@+id/upload_btn"
+        style="?attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:text="Upload"
+        android:textColor="@color/blue10"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_central_guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline"
+        app:srcCompat="@drawable/ic__cloud"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="66dp"
+        android:layout_height="62dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_central_guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:srcCompat="@drawable/ic__phone"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="67dp"
+        android:layout_height="139dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/vertical_central_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.504"
+        app:srcCompat="@drawable/ic__arrow_down2"
+        tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="67dp"
+        android:layout_height="139dp"
+        android:rotation="180"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/vertical_central_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.504"
+        app:srcCompat="@drawable/ic__arrow_down2"
+        tools:ignore="VectorDrawableCompat" />
+
+    <Button
+        android:id="@+id/reset_id_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

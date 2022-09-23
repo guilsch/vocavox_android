@@ -34,6 +34,8 @@ public class NewCardActivity extends AppCompatActivity {
         item2Text = (EditText) findViewById(R.id.item2_text);
         packText = (EditText) findViewById(R.id.pack_text);
 
+        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
+
         saveCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

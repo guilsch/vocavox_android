@@ -1,6 +1,7 @@
 package com.guilsch.multivoc;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -107,8 +108,15 @@ public class DriveServiceHelper {
         });
     }
 
-    public Task<String> createDataFile(String filePath) {
+    public Task<String> createDataFile(Context context, String filePath) {
         return Tasks.call(mExecutor, () -> {
+
+            System.out.println("filepath = " + filePath);
+            System.out.println("Param.DATA_FILE.substring(0, 5) = " + Param.DATA_FILE.substring(0, 5));
+            System.out.println("Arrays.asList(Param.FOLDER_ID) = " + Arrays.asList(Param.FOLDER_ID));
+            System.out.println("Param.FOLDER_ID = " + Param.FOLDER_ID);
+
+
             File fileMetaData = new File();
             fileMetaData
                     .setName(Param.DATA_FILE.substring(0, 5))
@@ -122,7 +130,7 @@ public class DriveServiceHelper {
 
             try {
                 myFile = mDriveService.files().create(fileMetaData, mediaContent).execute();
-                utils.setFileID(myFile.getId());
+                utils.setAndSaveFileID(context, myFile.getId());
                 System.out.println("ID : " + myFile.getId());
             } catch (Exception e)
             {

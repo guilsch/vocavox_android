@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
@@ -46,8 +47,10 @@ public class DriveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drive);
 
         // Set the onClick listeners for the button bar.
-        findViewById(R.id.open_btn).setOnClickListener(view -> updateOrUpload());
-        findViewById(R.id.create_btn).setOnClickListener(view -> download());
+        findViewById(R.id.upload_btn).setOnClickListener(view -> updateOrUpload());
+        findViewById(R.id.download_btn).setOnClickListener(view -> download());
+        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
+        findViewById(R.id.reset_id_button).setOnClickListener(view -> utils.resetFileID(this));
 
         // Authenticate the user. For most apps, this should be done when the user performs an
         // action that requires Drive access rather than in onCreate.
@@ -92,12 +95,24 @@ public class DriveActivity extends AppCompatActivity {
     }
 
     public void updateOrUpload() {
+
+        System.out.println("FileID : " + Param.FILE_ID);
+
+        // First time uploading
+        if (Param.FILE_ID == Param.FILE_ID_UNDEFINED) {
+            uploadDataFile();
+            return;
+        }
+
+        // Else
+        System.out.println("FileID 2 : " + Param.FILE_ID);
         mDriveServiceHelper.updateOrCreate(Param.FILE_ID)
                 .addOnSuccessListener(new OnSuccessListener<String>() {
                     @Override
                     public void onSuccess(String s) {
                         if (s == null) {
-                            Toast.makeText(getApplicationContext(), "Data file not detected", Toast.LENGTH_LONG).show();
+                            System.out.println("FileID received : " + s);
+                            Toast.makeText(getApplicationContext(), "First time uploading", Toast.LENGTH_LONG).show();
                             uploadDataFile();
                         } else {
                             System.out.println("String received : " + s);
@@ -125,8 +140,9 @@ public class DriveActivity extends AppCompatActivity {
         progressDialog.setMessage("Please wait...");
         progressDialog.show();
 
-        mDriveServiceHelper.createDataFile(Param.DATA_PATH).addOnSuccessListener(new OnSuccessListener<String>() {
-//        mDriveServiceHelper.updateFile(Param.FR_IT_FILE_ID, filePath).addOnSuccessListener(new OnSuccessListener<String>() {
+        System.out.println("enter uploadDataFile, datapath = " + Param.DATA_PATH);
+
+        mDriveServiceHelper.createDataFile(this, Param.DATA_PATH).addOnSuccessListener(new OnSuccessListener<String>() {
             @Override
             public void onSuccess(String s) {
 

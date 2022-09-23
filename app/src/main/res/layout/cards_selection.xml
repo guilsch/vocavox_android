@@ -4,27 +4,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="@color/back_ground"
     tools:context=".ExploreActivity">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.085" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.927" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_central_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_central_guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/blue7"
+        android:fontFamily="@font/oxygen_bold"
+        android:gravity="center"
+        android:text="Learn"
+        android:textColor="@color/white"
+        android:textSize="@dimen/header"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+        app:layout_constraintStart_toStartOf="@+id/header"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic__back_arrow_white"
+        tools:ignore="VectorDrawableCompat" />
 
     <ListView
         android:id="@+id/cardsSelectionListView"
-        android:layout_width="296dp"
-        android:layout_height="506dp"
-        android:background="#1403A9F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/card_select_lv_bg"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_central_guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline" />
 
     <Button
         android:id="@+id/cards_selection_start_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/button_std_width"
+        android:layout_height="@dimen/button_std_height"
+        android:background="@drawable/button_selector"
         android:text="Start"
+        android:textColor="@color/button_std_text"
+        android:textStyle="bold"
+        app:backgroundTint="#00FFFFFF"
+        app:backgroundTintMode="src_atop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardsSelectionListView" />
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline2" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="Select the cards you want to learn :"
+        android:textSize="@dimen/titles"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_central_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

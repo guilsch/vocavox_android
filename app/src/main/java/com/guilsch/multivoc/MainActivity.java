@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -54,23 +55,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Param.TARGET_LANGUAGE = spinner.getSelectedItem().toString();
-                Param.DATA_FILE = utils.generateDataFileName();
-                Param.setDataPath();
 
-                if (!(new File(Param.DATA_PATH)).exists()) {
-                    System.out.println(Param.DATA_PATH + " doesn't exist yet");
-                    try {
-                        utils.createDataFile();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                else {
-                    System.out.println(Param.DATA_PATH + " already exists");
-                }
-
-                Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
-                startActivity(menuActivity);
+                Intent initActivity = new Intent(getApplicationContext(), InitActivity.class);
+                startActivity(initActivity);
                 finish();
             }
         });

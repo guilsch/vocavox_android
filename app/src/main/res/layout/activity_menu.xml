@@ -4,120 +4,266 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="@color/back_ground"
     tools:context=".MenuActivity">
 
-    <ImageView
-        android:id="@+id/Revision"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/Learning"
-        app:layout_constraintHorizontal_bias="0.597"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_revision"
-        tools:ignore="VectorDrawableCompat"
-        tools:layout_editor_absoluteY="315dp" />
-
-    <ImageView
-        android:id="@+id/Learning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/flow"
-        app:layout_constraintTop_toTopOf="@+id/Revision"
-        app:srcCompat="@drawable/ic_learn"
-        tools:ignore="VectorDrawableCompat" />
-
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/flow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        app:constraint_referenced_ids="Revision"
-        app:layout_constraintEnd_toStartOf="@+id/Learning"
-        app:layout_constraintHorizontal_bias="0.522"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MenuMessage"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/Settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="@+id/Revision"
-        app:layout_constraintTop_toBottomOf="@+id/New_Card"
-        app:srcCompat="@drawable/ic_settings"
-        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/flag"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_de"
         tools:ignore="MissingConstraints,VectorDrawableCompat" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginLeft="68dp"
-        android:autoText="false"
-        android:background="@color/head_color"
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/blue7"
+        android:fontFamily="@font/oxygen_bold"
         android:gravity="center"
         android:text="Welcome"
-        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/header"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/flag"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/MenuMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/oxygen"
         android:gravity="center"
-        android:padding="25dp"
+        android:padding="20dp"
         android:text="@string/menu_msg"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_central_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline"
+        tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/Explore"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/Learning"
-        app:layout_constraintTop_toTopOf="@+id/New_Card"
-        app:srcCompat="@drawable/ic_explore"
-        tools:ignore="VectorDrawableCompat" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
 
-    <ImageView
-        android:id="@+id/New_Card"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="@+id/Revision"
-        app:layout_constraintTop_toBottomOf="@+id/Revision"
-        app:srcCompat="@drawable/ic_new_card"
-        tools:ignore="VectorDrawableCompat" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
 
-    <Button
-        android:id="@+id/uploadButton"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:text="up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.085" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.927" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_central_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical_central_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/vertical_central_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline">
+
+        <LinearLayout
+            android:id="@+id/Revision"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/revision_image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_revision"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/revision_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Revision"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/New_Card"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/new_card_image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_new_card"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/new_card_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="New Card"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Settings"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/settings_image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_settings"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/settings_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Setting"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/vertical_central_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline">
+
+        <LinearLayout
+            android:id="@+id/Learning"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/learning_image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_learn"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/learning_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Learning"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Explore"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/explore_image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_explore"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/explore_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Explore"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Drive"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/DriveImage"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_drive"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/DriveText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Drive sync"
+                android:textAlignment="center" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 package com.guilsch.multivoc;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -14,6 +13,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jetbrains.annotations.NotNull;
 //import org.apache.poi.xssf.usermodel.XSSFSheet;
 //import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -22,12 +22,72 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.UUID;
 
 public class utils {
+
+//    public static List<Integer> getFieldsIndexFromHeader(Row header) {
+//        List<Integer> indexList = new ArrayList<Integer>(Param.FIELDS_NB);
+//
+//        for (ListIterator<String> fieldsListIterator = Param.FIELDS.listIterator(); fieldsListIterator.hasNext(); ) {
+//            indexList.add(utils.getHeaderIndex(header, fieldsListIterator.next()));
+//        }
+//
+//        return indexList;
+//    }
+
+    public static void cleanDataFile() {
+        try {
+            FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
+            Workbook workbook = WorkbookFactory.create(inputFile);
+            Sheet sheet = workbook.getSheetAt(0);
+
+            List<Integer> rowsToRemoveIndex = new ArrayList<Integer>();
+
+            // Iterate through each rows one by one
+            Iterator<Row> rowIterator = sheet.iterator();
+            Row header = rowIterator.next();
+            Row row;
+
+            int item1Index = utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
+            int rowIndex;
+
+            while (rowIterator.hasNext()) {
+
+                row = rowIterator.next();
+                Cell item1Cell = row.getCell(item1Index);
+                Cell item2Cell = row.getCell(item2Index);
+
+                if (item1Cell == null || item2Cell == null) {
+//                    System.out.println("Removed : " + row.getRowNum());
+//                    sheet.removeRow(row);
+                    rowsToRemoveIndex.add(row.getRowNum());
+                }
+            }
+
+            Iterator<Integer> rowToRemoveIndexIterator = rowsToRemoveIndex.iterator();
+            while (rowToRemoveIndexIterator.hasNext()) {
+                rowIndex = rowToRemoveIndexIterator.next();
+                sheet.removeRow(sheet.getRow(rowIndex));
+                System.out.println("Removed : " + rowIndex);
+            }
+
+            inputFile.close();
+            FileOutputStream outputStream = new FileOutputStream(Param.DATA_PATH);
+            workbook.write(outputStream);
+            outputStream.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void initParam() {
 
@@ -284,13 +344,13 @@ public class utils {
         return (nextPracticeDate);
     }
 
-    public static Date giveDate() {
+    public static Date giveCurrentDate() {
         long now = System.currentTimeMillis();
         Date currentDate = toDate(now);
         return (currentDate);
     }
 
-    public static int getHeaderIndex(Row header, String column) {
+    public static int getFieldIndex(Row header, String field) {
 
         Iterator<Cell> cellIterator = header.cellIterator();
         int index = -1;
@@ -298,52 +358,55 @@ public class utils {
         while (cellIterator.hasNext()) {
             Cell cell = cellIterator.next();
 
-            if (column.compareTo(cell.getStringCellValue()) == 0) {
+            if (field.compareTo(cell.getStringCellValue()) == 0) {
                 index = cell.getColumnIndex();
             }
         }
 
         if (index == -1) {
-            System.out.println("No column named " + column);
+            System.out.println("No field named : " + field);
+            index = header.getLastCellNum();
+            header.createCell(index).setCellValue(field);
+            System.out.println("Added new field : " + field);
         }
 
         return (index);
     }
 
-    public static String getHeaderName(int columnIndex) {
-
-        String columnName = "";
-
-        try {
-            FileInputStream file = new FileInputStream(new File("storage/emulated/0/Multivoc/fr_it.xls"));
-            HSSFWorkbook workbook = new HSSFWorkbook(file);
-            HSSFSheet sheet = workbook.getSheetAt(0);
-
-            // Iterate through each rows one by one
-            Iterator<Row> rowIterator = sheet.iterator();
-            Row header = rowIterator.next();
-
-            Iterator<Cell> cellIterator = header.cellIterator();
-
-            while (cellIterator.hasNext()) {
-                Cell cell = cellIterator.next();
-
-                if (columnIndex == cell.getColumnIndex()) {
-                    columnName = cell.getStringCellValue();
-                }
-            }
-
-            if (columnName.compareTo("") == 0) {
-                System.out.println("No column at index " + columnIndex);
-            }
-
-            file.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return (columnName);
-    }
+//    public static String getHeaderName(int columnIndex) {
+//
+//        String columnName = "";
+//
+//        try {
+//            FileInputStream file = new FileInputStream(new File(Param.DATA_PATH));
+//            HSSFWorkbook workbook = new HSSFWorkbook(file);
+//            HSSFSheet sheet = workbook.getSheetAt(0);
+//
+//            // Iterate through each rows one by one
+//            Iterator<Row> rowIterator = sheet.iterator();
+//            Row header = rowIterator.next();
+//
+//            Iterator<Cell> cellIterator = header.cellIterator();
+//
+//            while (cellIterator.hasNext()) {
+//                Cell cell = cellIterator.next();
+//
+//                if (columnIndex == cell.getColumnIndex()) {
+//                    columnName = cell.getStringCellValue();
+//                }
+//            }
+//
+//            if (columnName.compareTo("") == 0) {
+//                System.out.println("No column at index " + columnIndex);
+//            }
+//
+//            file.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return (columnName);
+//    }
 
     public static void prepareDataFile() {
         try {
@@ -357,14 +420,15 @@ public class utils {
             Cell currentCell;
             Cell stateCell;
 
-            int item1Index = utils.getHeaderIndex(header, Param.ITEM1_FIELD_NAME);
-            int item2Index = utils.getHeaderIndex(header, Param.ITEM2_FIELD_NAME);
-            int stateIndex = utils.getHeaderIndex(header, Param.STATE_FIELD_NAME);
-            int packIndex = utils.getHeaderIndex(header, Param.PACK_FIELD_NAME);
-            int nextPracticeDateIndex = utils.getHeaderIndex(header, Param.NEXT_DATE_FIELD_NAME);
-            int repetitionsIndex = utils.getHeaderIndex(header, Param.REPETITIONS_FIELD_NAME);
-            int easinessFactorIndex = utils.getHeaderIndex(header, Param.EF_FIELD_NAME);
-            int intervalIndex = utils.getHeaderIndex(header, Param.INTERVAL_FIELD_NAME);
+            int item1Index = utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
+            int stateIndex = utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
+            int packIndex = utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
+            int nextPracticeDateIndex = utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int repetitionsIndex = utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
+            int easinessFactorIndex = utils.getFieldIndex(header, Param.EF_FIELD_NAME);
+            int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
+            int uuidIndex = utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
 
             while (rowIterator.hasNext()) {
 
@@ -410,6 +474,12 @@ public class utils {
                     currentCell = row.createCell(intervalIndex);
                     currentCell.setCellValue(Param.DEFAULT_INTER);
                 }
+
+                currentCell = row.getCell(uuidIndex);
+                if (checkCellEmptiness(currentCell, row)) {
+                    currentCell = row.createCell(uuidIndex);
+                    currentCell.setCellValue(utils.getNewUUID());
+                }
             }
 
         inputFile.close();
@@ -425,6 +495,10 @@ public class utils {
             e.printStackTrace();
         }
 
+    }
+
+    public static String getNewUUID() {
+        return UUID.randomUUID().toString();
     }
 
     public static Boolean checkCellEmptiness(Cell cell, Row row) {

@@ -18,7 +18,7 @@ public class ExampleUnitTest {
 
     @Test
     public void test() {
-        System.out.println("test : " + utils.URLtoID("1JEIT59Bq_2zxyhDgZRuBtPtXyTufeG4-"));
+        System.out.println("uuid : " + utils.getNewUuid());
     }
 
 }

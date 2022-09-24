@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Locale;
-import java.util.Scanner;
 import java.util.function.Predicate;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -29,7 +28,7 @@ public class Deck extends ArrayList<Card> {
         super(1);
     }
 
-    public void deleteCard(String cardKey) {
+    public void deleteCard(String cardUuid) {
         try {
 
             FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
@@ -40,12 +39,14 @@ public class Deck extends ArrayList<Card> {
             Iterator<Row> rowIterator = sheet.iterator();
             Row header = rowIterator.next();
 
+            int uuidIndex = utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
+
             while (rowIterator.hasNext()) {
 
                 Row row = rowIterator.next();
-                Cell keyCell = row.getCell(0);
+                Cell uuidCell = row.getCell(uuidIndex);
 
-                if (keyCell.getStringCellValue().compareTo(cardKey) == 0){
+                if (uuidCell.getStringCellValue().compareTo(cardUuid) == 0){
                     sheet.removeRow(row);
                     break;
                 }
@@ -62,6 +63,8 @@ public class Deck extends ArrayList<Card> {
     }
 
     public void init() {
+
+        utils.cleanDataFile();
         // Adapted from
         // https://howtodoinjava.com/java/library/readingwriting-excel-files-in-java-poi-tutorial/
         try {
@@ -80,14 +83,15 @@ public class Deck extends ArrayList<Card> {
             Iterator<Row> rowIterator = sheet.iterator();
             Row header = rowIterator.next();
 
-            int item1Index = utils.getHeaderIndex(header, Param.ITEM1_FIELD_NAME);
-            int item2Index = utils.getHeaderIndex(header, Param.ITEM2_FIELD_NAME);
-            int stateIndex = utils.getHeaderIndex(header, Param.STATE_FIELD_NAME);
-            int packIndex = utils.getHeaderIndex(header, Param.PACK_FIELD_NAME);
-            int nextPracticeDateIndex = utils.getHeaderIndex(header, Param.NEXT_DATE_FIELD_NAME);
-            int repetitionsIndex = utils.getHeaderIndex(header, Param.REPETITIONS_FIELD_NAME);
-            int easinessFactorIndex = utils.getHeaderIndex(header, Param.EF_FIELD_NAME);
-            int intervalIndex = utils.getHeaderIndex(header, Param.INTERVAL_FIELD_NAME);
+            int item1Index = utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
+            int stateIndex = utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
+            int packIndex = utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
+            int nextPracticeDateIndex = utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int repetitionsIndex = utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
+            int easinessFactorIndex = utils.getFieldIndex(header, Param.EF_FIELD_NAME);
+            int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
+            int uuidIndex = utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
 
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
@@ -104,8 +108,9 @@ public class Deck extends ArrayList<Card> {
                     int repetitions = (int) row.getCell(repetitionsIndex).getNumericCellValue();
                     float easinessFactor = (float) row.getCell(easinessFactorIndex).getNumericCellValue();
                     int interval = (int) row.getCell(intervalIndex).getNumericCellValue();
+                    String uuid = row.getCell(uuidIndex).getStringCellValue();
 
-                    this.add(new Card(item1, item2, state, pack, nextPracticeDate, repetitions, easinessFactor, interval));
+                    this.add(new Card(item1, item2, state, pack, nextPracticeDate, repetitions, easinessFactor, interval, uuid));
 
                 }
             }
@@ -114,40 +119,6 @@ public class Deck extends ArrayList<Card> {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    public void flip() {
-        Iterator<Card> cardIterator = this.iterator();
-          
-        while(cardIterator.hasNext()){
-            Card card = cardIterator.next();
-            Scanner scanner = new Scanner(System.in);
-            String a = "";
-            int quality = -1;
-
-            // Question side
-            System.out.println(card.getItem1());
-            do {
-                System.out.println("Press a to see answer : ");
-                a = scanner.nextLine();
-            }
-            while (a.compareTo("a") != 0);
-            
-            // Answer side
-            System.out.println(card.getItem2());
-            do {
-                System.out.println("Enter quality of your answer (0-5) : ");
-                quality = Integer.parseInt(scanner.nextLine());
-            }
-            while (quality < 0 || quality > 5);
-
-            // scanner.close();            
-
-            // Process algo and store data
-            MemoAlgo.SuperMemo2(card, quality);
-            card.updateDatabase(card.getItem1());
-            
         }
     }
 
@@ -165,7 +136,8 @@ public class Deck extends ArrayList<Card> {
             "  |   Next practice date : " + card.getNextPracticeDate() + 
             "  |   Repetitions : " + card.getRepetitions() + 
             "  |   Easiness factor : " + card.getEasinessFactor() + 
-            "  |   Interval : " + card.getInterval());
+            "  |   Interval : " + card.getInterval() +
+            "  |   UUID : " + card.getUuid());
         }
     }
 
@@ -194,7 +166,7 @@ public class Deck extends ArrayList<Card> {
     public void filterToTrain() {
 
         Iterator<Card> iterator = this.iterator();
-        Predicate<Card> pred = x -> x.getNextPracticeDate().compareTo(utils.giveDate()) < 0 && x.getState() == Param.ACTIVE ;
+        Predicate<Card> pred = x -> x.getNextPracticeDate().compareTo(utils.giveCurrentDate()) < 0 && x.getState() == Param.ACTIVE ;
 
         while (iterator.hasNext()) {
             Card card = iterator.next();

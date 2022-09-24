@@ -2,14 +2,12 @@ package com.guilsch.multivoc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-
-import java.util.Date;
 
 public class NewCardActivity extends AppCompatActivity {
 
@@ -39,7 +37,21 @@ public class NewCardActivity extends AppCompatActivity {
         saveCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                newCard = new Card(item1Text.getText().toString(), item2Text.getText().toString(), Param.INACTIVE, packText.getText().toString(), utils.giveDate(), 0, 0, 0);
+
+                String item1 = item1Text.getText().toString();
+                String item2 = item2Text.getText().toString();
+
+                if (item1.isEmpty() || item2.isEmpty()) {
+                    new AlertDialog.Builder(NewCardActivity.this)
+                            .setTitle("Unvalid card")
+                            .setMessage("At least words in both languages have to be set")
+                            .setNegativeButton(android.R.string.ok, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                    return;
+                }
+
+                newCard = new Card(item1, item2, Param.INACTIVE, packText.getText().toString(), utils.giveCurrentDate(), 0, 0, 0, utils.getNewUUID());
                 newCard.addToDatabase();
                 newCard.info();
                 Intent saveCardActivity = new Intent(getApplicationContext(), MenuActivity.class);

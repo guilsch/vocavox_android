@@ -23,10 +23,10 @@ public class Card implements Serializable {
     private Date nextPracticeDate;
     private int state;
     private String pack;
+    private String uuid;
 
-    private int numFields;
-
-    Card (String item1, String item2, int state, String pack, Date nextPracticeDate, int repetitions, float easinessFactor, int interval){
+    Card (String item1, String item2, int state, String pack, Date nextPracticeDate, int repetitions,
+          float easinessFactor, int interval, String uuid){
         this.item1 = item1;
         this.item2 = item2;
         this.repetitions = repetitions;
@@ -35,7 +35,7 @@ public class Card implements Serializable {
         this.nextPracticeDate = nextPracticeDate;
         this.state = state;
         this.pack = pack;
-        this.numFields = 8;
+        this.uuid = uuid;
     }
 
     Card() {
@@ -56,7 +56,7 @@ public class Card implements Serializable {
         this.setInterval(interval);
     }
 
-    public void updateDatabase(String cardKey) {
+    public void updateDatabase(String cardUuid) {
         try {
 
             FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
@@ -67,21 +67,22 @@ public class Card implements Serializable {
             Iterator<Row> rowIterator = sheet.iterator();
             Row header = rowIterator.next();
 
-            int item1Index = utils.getHeaderIndex(header, Param.ITEM1_FIELD_NAME);
-            int item2Index = utils.getHeaderIndex(header, Param.ITEM2_FIELD_NAME);
-            int stateIndex = utils.getHeaderIndex(header, Param.STATE_FIELD_NAME);
-            int packIndex = utils.getHeaderIndex(header, Param.PACK_FIELD_NAME);
-            int nextPracticeDateIndex = utils.getHeaderIndex(header, Param.NEXT_DATE_FIELD_NAME);
-            int repetitionsIndex = utils.getHeaderIndex(header, Param.REPETITIONS_FIELD_NAME);
-            int easinessFactorIndex = utils.getHeaderIndex(header, Param.EF_FIELD_NAME);
-            int intervalIndex = utils.getHeaderIndex(header, Param.INTERVAL_FIELD_NAME);
+            int item1Index = utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
+            int stateIndex = utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
+            int packIndex = utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
+            int nextPracticeDateIndex = utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int repetitionsIndex = utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
+            int easinessFactorIndex = utils.getFieldIndex(header, Param.EF_FIELD_NAME);
+            int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
+            int uuidIndex = utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
 
             while (rowIterator.hasNext()) {
 
                 Row row = rowIterator.next();
-                Cell keyCell = row.getCell(0);
+                Cell uuidCell = row.getCell(uuidIndex);
 
-                if (keyCell.getStringCellValue().compareTo(cardKey) == 0){
+                if (uuidCell.getStringCellValue().compareTo(cardUuid) == 0){
                     
                     row.getCell(item1Index).setCellValue(this.item1);
                     row.getCell(item2Index).setCellValue(this.item2);
@@ -114,19 +115,17 @@ public class Card implements Serializable {
             Row header = sheet.getRow(sheet.getFirstRowNum());
             Row newRow = sheet.createRow(sheet.getLastRowNum() + 1);
 
-            System.out.println("Last row num :");
-            System.out.println(sheet.getLastRowNum());
+            int item1Index = utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
+            int stateIndex = utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
+            int packIndex = utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
+            int nextPracticeDateIndex = utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int repetitionsIndex = utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
+            int easinessFactorIndex = utils.getFieldIndex(header, Param.EF_FIELD_NAME);
+            int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
+            int uuidIndex = utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
 
-            int item1Index = utils.getHeaderIndex(header, Param.ITEM1_FIELD_NAME);
-            int item2Index = utils.getHeaderIndex(header, Param.ITEM2_FIELD_NAME);
-            int stateIndex = utils.getHeaderIndex(header, Param.STATE_FIELD_NAME);
-            int packIndex = utils.getHeaderIndex(header, Param.PACK_FIELD_NAME);
-            int nextPracticeDateIndex = utils.getHeaderIndex(header, Param.NEXT_DATE_FIELD_NAME);
-            int repetitionsIndex = utils.getHeaderIndex(header, Param.REPETITIONS_FIELD_NAME);
-            int easinessFactorIndex = utils.getHeaderIndex(header, Param.EF_FIELD_NAME);
-            int intervalIndex = utils.getHeaderIndex(header, Param.INTERVAL_FIELD_NAME);
-
-            for (int i = 0; i < numFields; i++) {
+            for (int i = 0; i < Param.FIELDS_NB; i++) {
                 newRow.createCell(i);
             }
 
@@ -138,6 +137,8 @@ public class Card implements Serializable {
             newRow.getCell(repetitionsIndex).setCellValue(this.repetitions);
             newRow.getCell(easinessFactorIndex).setCellValue(this.easinessFactor);
             newRow.getCell(intervalIndex).setCellValue(this.interval);
+            newRow.getCell(uuidIndex).setCellValue(this.uuid);
+
 
             inputFile.close();
             FileOutputStream outputStream = new FileOutputStream(Param.DATA_PATH);
@@ -158,6 +159,8 @@ public class Card implements Serializable {
         System.out.println(String.format("Repetitions : %d", this.repetitions));
         System.out.println(String.format("Easiness Factor : %.2f", this.easinessFactor));
         System.out.println(String.format("Interval : %d", this.interval));
+        System.out.println("UUID : " + this.uuid);
+
     }
 
     // Getters
@@ -194,11 +197,7 @@ public class Card implements Serializable {
         return nextPracticeDate;
     }
 
-    // public String getNextPracticeDateInString() {
-    //     SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
-    //     String nextPracticeDateInString = formatter.format(this.nextPracticeDate);
-    //     return nextPracticeDateInString;
-    // }
+    public String getUuid() { return uuid; }
 
     // Setters
 

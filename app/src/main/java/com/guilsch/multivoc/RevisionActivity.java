@@ -36,7 +36,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         this.deck = new Deck();
         this.deck.init();
-//        this.deck.filterToTrain();
+        this.deck.filterToTrain();
 
         this.cardIterator = deck.iterator();
 

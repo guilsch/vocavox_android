@@ -8,15 +8,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DeckAdapter extends BaseAdapter {
 
     LayoutInflater inflater;
 
     Deck deck;
+    Context context;
 
     public DeckAdapter(Context applicationContext, Deck deck) {
         this.deck = deck;
+        this.context = applicationContext;
         inflater = (LayoutInflater.from(applicationContext));
     }
 
@@ -56,13 +59,15 @@ public class DeckAdapter extends BaseAdapter {
                 deck.get(i).setState(utils.nextStateForButton(deck.get(i).getState()));
                 deck.get(i).updateDatabase(deck.get(i).getItem1());
                 setStateButton.setText(utils.getStringState(deck.get(i).getState()));
+                Toast.makeText(context, "State changed to " + deck.get(i).getState(), Toast.LENGTH_LONG).show();
             }
         });
 
         deleteCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deck.deleteCard(deck.get(i).getItem1());
+                deck.deleteCard(deck.get(i).getUuid());
+                Toast.makeText(context, "Card -" + deck.get(i).getItem1() + "- has been removed", Toast.LENGTH_LONG).show();
             }
         });
 

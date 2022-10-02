@@ -6,6 +6,8 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
+    useLibrary 'org.apache.http.legacy'
+
     defaultConfig {
         applicationId "com.guilsch.multivoc"
         minSdkVersion 16
@@ -24,6 +26,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -39,8 +42,9 @@ android {
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/ASL2.0'
         exclude("META-INF/*.kotlin_module")
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'project.properties'
     }
-
 }
 
 dependencies {
@@ -49,6 +53,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'org.jetbrains:annotations:15.0'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation files('libs\\commons-codec-1.10-rep.jar')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -72,13 +77,25 @@ dependencies {
 //    implementation 'com.google.api-client:google-api-client-appengine:2.0.0'
 //    implementation 'com.google.apis:google-api-services-urlshortener:v1-rev49-1.23.0'
 
+//    implementation 'com.google.api-client:google-api-client:1.32.1'
+//    implementation 'com.google.auth:google-auth-library-oauth2-http:0.1.0'
+
     //mesahdan version
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
-    implementation 'com.google.http-client:google-http-client-gson:1.26.0'
+    implementation('com.google.http-client:google-http-client-gson:1.26.0') {
+        exclude group: 'org.apache.http.legacy.boot.jar'
+    }
     implementation('com.google.api-client:google-api-client-android:1.26.0') {
         exclude group: 'org.apache.httpcomponents'
     }
     implementation('com.google.apis:google-api-services-drive:v3-rev136-1.25.0') {
         exclude group: 'org.apache.httpcomponents'
     }
+
+    // Google Translate
+    implementation('com.google.cloud:google-cloud-translate:1.12.0') {
+        exclude group: 'org.apache.httpcomponents'
+        exclude group: 'org.json', module: 'json'
+    }
+    annotationProcessor 'com.google.cloud:google-cloud-translate:1.12.0'
 }

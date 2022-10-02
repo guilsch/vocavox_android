@@ -25,4 +25,7 @@
     <!-- Start !-->
     <string name="start_button">Start</string>
 
+    <!-- Translation !-->
+    <string name="no_connection">No internet connection! Cannot be translated!</string>
+
 </resources>

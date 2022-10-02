@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.guilsch.multivoc">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Permissions required by GoogleAuthUtil -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -25,6 +26,7 @@
         <activity android:name=".LearnActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".RevisionActivity" />
+        <activity android:name=".TranslationActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

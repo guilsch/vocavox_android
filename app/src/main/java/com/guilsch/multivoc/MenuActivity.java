@@ -14,13 +14,7 @@ import java.io.IOException;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private LinearLayout revision;
-    private LinearLayout settings;
-    private LinearLayout learning;
-    private LinearLayout explore;
-    private LinearLayout newCard;
     private ImageView flag;
-    private LinearLayout drive;
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
@@ -28,18 +22,24 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        revision = findViewById(R.id.Revision);
-        settings = findViewById(R.id.Settings);
-        learning = findViewById(R.id.Learning);
-        explore = findViewById(R.id.Explore);
-        newCard = findViewById(R.id.New_Card);
-        flag = findViewById(R.id.flag);
+        findViewById(R.id.Revision).setOnClickListener(view -> changeActivity(RevisionActivity.class));
+        findViewById(R.id.Settings).setOnClickListener(view -> changeActivity(SettingsActivity.class));
+        findViewById(R.id.Learning).setOnClickListener(view -> changeActivity(LearnActivity.class));
+        findViewById(R.id.Explore).setOnClickListener(view -> changeActivity(ExploreActivity.class));
+        findViewById(R.id.New_Card).setOnClickListener(view -> changeActivity(NewCardActivity.class));
+        findViewById(R.id.Drive).setOnClickListener(view -> changeActivity(DriveActivity.class));
+        findViewById(R.id.Translation).setOnClickListener(view -> changeActivity(TranslationActivity.class));
 
-        drive = findViewById(R.id.Drive);
+        flag = findViewById(R.id.flag);
 
         // Prepare Excel file
         utils.prepareDataFile();
 
+        setLanguageVisuals();
+
+    }
+
+    public void setLanguageVisuals() {
         switch (Param.TARGET_LANGUAGE) {
             case "English" :
                 flag.setImageDrawable(getResources().getDrawable(R.drawable.ic_gb));
@@ -59,68 +59,12 @@ public class MenuActivity extends AppCompatActivity {
             default:
                 throw new IllegalStateException("Unexpected value: " + Param.TARGET_LANGUAGE);
         }
-
-        drive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent newCardActivity = new Intent(getApplicationContext(), DriveActivity.class);
-                startActivity(newCardActivity);
-                finish();
-            }
-        });
-
-        newCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent newCardActivity = new Intent(getApplicationContext(), NewCardActivity.class);
-                startActivity(newCardActivity);
-                finish();
-            }
-        });
-
-        explore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent exploreActivity = new Intent(getApplicationContext(), ExploreActivity.class);
-                startActivity(exploreActivity);
-                finish();
-            }
-        });
-
-        revision.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent revisionActivity = new Intent(getApplicationContext(), RevisionActivity.class);
-                startActivity(revisionActivity);
-                finish();
-            }
-        });
-
-        learning.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent learnActivity = new Intent(getApplicationContext(), LearnActivity.class);
-                startActivity(learnActivity);
-                finish();
-            }
-        });
-
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent settingsActivity = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(settingsActivity);
-                finish();
-            }
-        });
-
-        flag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent languageActivity = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(languageActivity);
-                finish();
-            }
-        });
     }
+
+    public void changeActivity(Class newActivityClass) {
+        Intent newActivity = new Intent(getApplicationContext(), newActivityClass);
+        startActivity(newActivity);
+        finish();
+    }
+
 }

@@ -37,6 +37,18 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <ImageView
+        android:id="@+id/Drive"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+        app:layout_constraintEnd_toEndOf="@+id/header"
+        app:layout_constraintStart_toStartOf="@+id/right_guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_drive"
+        tools:ignore="VectorDrawableCompat" />
+
     <TextView
         android:id="@+id/MenuMessage"
         android:layout_width="0dp"
@@ -242,7 +254,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/Drive"
+            android:id="@+id/Translation"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_weight="1"
@@ -250,7 +262,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/DriveImage"
+                android:id="@+id/TranslationImage"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center"
@@ -258,11 +270,11 @@
                 tools:ignore="VectorDrawableCompat" />
 
             <TextView
-                android:id="@+id/DriveText"
+                android:id="@+id/TranslationText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Drive sync"
+                android:text="Translation"
                 android:textAlignment="center" />
         </LinearLayout>
     </LinearLayout>

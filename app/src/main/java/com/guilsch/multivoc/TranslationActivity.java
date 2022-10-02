@@ -3,14 +3,11 @@ package com.guilsch.multivoc;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.InputStream;
 
 public class TranslationActivity extends AppCompatActivity {
 
@@ -24,14 +21,10 @@ public class TranslationActivity extends AppCompatActivity {
 
     private Card newCard;
 
-    private TranslationService translationService;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_translation);
-
-        translationService = new TranslationService(this);
 
         nextNewCardButton = (Button) findViewById(R.id.next_new_card);
         saveCardButton = (Button) findViewById(R.id.save_new_card);
@@ -72,21 +65,6 @@ public class TranslationActivity extends AppCompatActivity {
         translate.execute(item1Text.getText().toString(), "fr", "en");
 
     }
-
-//    public void translateButtonClick() {
-//        if (translationService.checkInternetConnection()) {
-//            //If there is internet connection, get translate service and start translation:
-//            translationService.getTranslateService(this);
-//
-//            String translation = translationService.translate(item1Text.getText().toString());
-//            item2Text.setText(translation);
-//
-//        } else {
-//            //If not, display "no connection" warning:
-//            item2Text.setText(getResources().getString(R.string.no_connection));
-//        }
-//
-//    }
 
     public void saveCardButtonClick() {
         String item1 = item1Text.getText().toString();

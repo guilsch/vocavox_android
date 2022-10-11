@@ -83,6 +83,6 @@ public class TranslationAPI extends AsyncTask<String, String, String> {
         void onError(Exception e);
     }
     public void setOnTranslationCompleteListener(OnTranslationCompleteListener listener){
-        this.listener=listener;
+        this.listener = listener;
     }
 }

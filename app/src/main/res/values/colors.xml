@@ -31,11 +31,26 @@
 <!--buttons-->
     <color name="button_std_text">@color/white</color>
     <color name="button_std_bg">@color/blue9</color>
-    <color name="button_std_bg2">#81B4D8</color>
+    <color name="button_std_bg2">@color/blue_standard</color>
     <color name="button_std_bg_on_click">#84A1B5</color>
 
 <!--question-->
-    <color name="rectangle_bg">@color/back_ground2</color>
+    <color name="rectangle_bg">@color/navy1</color>
+
+<!--    Font-->
+    <color name="font_hint">#81EFEFEF</color>
+    <color name="font_standard">@color/blue1</color>
+
+
+
+<!--    altrenative palette-->
+    <color name="navy1">#06283D</color>
+    <color name="navy2">#1363DF</color>
+    <color name="navy3">#47B5FF</color>
+    <color name="navy4">#DFF6FF</color>
+
+    <color name="blue_standard">#81B4D8</color>
+
 
 
 </resources>

@@ -42,11 +42,25 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.15" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_middle_central_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_bottom_central_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
     <TextView
         android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/blue7"
+        android:background="@color/navy1"
         android:fontFamily="@font/oxygen_bold"
         android:gravity="center"
         android:text="Edit new card"
@@ -79,8 +93,8 @@
         android:background="@drawable/button_selector"
         android:text="Save"
         android:textColor="@color/button_std_text"
-        android:textStyle="bold"
         android:textSize="@dimen/button_std_text_size"
+        android:textStyle="bold"
         app:backgroundTint="#00FFFFFF"
         app:backgroundTintMode="src_atop"
         app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
@@ -103,52 +117,42 @@
         app:layout_constraintStart_toEndOf="@+id/save_new_card" />
 
 
-
-    <TextView
-        android:id="@+id/item1_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="@string/item1"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/horizontal_central_guideline" />
-
     <EditText
         android:id="@+id/item1_text"
         android:layout_width="0dp"
-        android:layout_height="43dp"
+        android:layout_height="0dp"
         android:ems="10"
+        android:gravity="top|left"
         android:inputType="text"
-        android:textSize="12sp"
+        android:textColor="@null"
+        android:paddingStart="10dp"
+        android:paddingTop="17dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="@dimen/titles"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_middle_central_guideline"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/item1_title"
-        app:layout_constraintTop_toBottomOf="@+id/item1_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/item2_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="@string/item2"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/item1_text" />
-
-    <TextView
+    <EditText
         android:id="@+id/item2_text"
         android:layout_width="0dp"
-        android:layout_height="43dp"
+        android:layout_height="0dp"
         android:ems="10"
-        android:textSize="12sp"
+        android:gravity="top|left"
+        android:textColor="@null"
+        android:paddingStart="10dp"
+        android:paddingTop="17dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="@dimen/titles"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_bottom_central_guideline"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/item2_title"
-        app:layout_constraintTop_toBottomOf="@+id/item2_title"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_middle_central_guideline"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -167,23 +171,13 @@
         android:id="@+id/pack_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="24dp"
         android:text="@string/pack"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/item2_text" />
-
-    <Button
-        android:id="@+id/translate_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Translate"
-        app:layout_constraintBottom_toTopOf="@+id/save_new_card"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/pack_text" />
+        app:layout_constraintTop_toTopOf="@+id/horizontal_bottom_central_guideline" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

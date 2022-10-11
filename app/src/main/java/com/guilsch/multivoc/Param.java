@@ -15,6 +15,8 @@ public class Param {
     public static final String[] TARGET_LANGUAGES = {"English", "German", "French", "Italian", "Russian", "Spanish"};
     public static final String[] USER_LANGUAGES = {"English", "German", "French", "Italian", "Russian", "Spanish"};
     public static String TARGET_LANGUAGE;
+    public static String TARGET_LANGUAGE_ISO;
+    public static String USER_LANGUAGE_ISO;
     public static String USER_LANGUAGE_DEFAULT = "French";
 
     public static final String ITEM1_FIELD_NAME = "Item 1";

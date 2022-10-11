@@ -2,8 +2,6 @@ package com.guilsch.multivoc;
 
 import android.content.Context;
 
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -13,7 +11,6 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.jetbrains.annotations.NotNull;
 //import org.apache.poi.xssf.usermodel.XSSFSheet;
 //import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -26,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.UUID;
 
 public class utils {
@@ -90,6 +86,10 @@ public class utils {
 
 
     public static void initParam() {
+
+        // Set languages variables
+        Param.USER_LANGUAGE_ISO = utils.getLanguageISOName(Param.USER_LANGUAGE);
+        Param.TARGET_LANGUAGE_ISO = utils.getLanguageISOName(Param.TARGET_LANGUAGE);
 
         // Set Data path
         Param.DATA_FILE = utils.generateDataFileName();
@@ -213,10 +213,10 @@ public class utils {
     }
 
     public static String generateDataFileName () {
-        return getLanguageStringName(Param.USER_LANGUAGE) + "_" + getLanguageStringName(Param.TARGET_LANGUAGE) + ".xlsx";
+        return Param.USER_LANGUAGE_ISO + "_" + Param.TARGET_LANGUAGE_ISO + ".xlsx";
     }
 
-    public static String getLanguageStringName (String language) {
+    public static String getLanguageISOName(String language) {
         String languageStringName;
 
         switch (language) {
@@ -225,7 +225,7 @@ public class utils {
                 break;
 
             case "German":
-                languageStringName = "ge";
+                languageStringName = "de";
                 break;
 
             case "French":
@@ -241,7 +241,7 @@ public class utils {
                 break;
 
             case "Spanish":
-                languageStringName = "sp";
+                languageStringName = "es";
                 break;
 
             default:

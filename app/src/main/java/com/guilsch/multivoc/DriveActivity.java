@@ -26,6 +26,8 @@ import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.FileList;
+import com.google.auth.http.HttpCredentialsAdapter;
+import com.google.auth.oauth2.GoogleCredentials;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -401,8 +403,28 @@ public class DriveActivity extends AppCompatActivity {
                                     .setApplicationName("Multivoc Drive")
                                     .build();
 
+                    //
+
+//                    GoogleCredentials credentials = null;
+//                    try {
+//                        credentials = GoogleCredentials.getApplicationDefault()
+//                                .createScoped(Arrays.asList(DriveScopes.DRIVE_FILE));
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    HttpRequestInitializer requestInitializer = new HttpCredentialsAdapter(
+//                            credentials);
+//
+//                    // Build a new authorized API client service.
+//                    Drive service = new Drive.Builder(new NetHttpTransport(),
+//                            GsonFactory.getDefaultInstance(),
+//                            requestInitializer)
+//                            .setApplicationName("Drive samples")
+//                            .build();
+
                     // The DriveServiceHelper encapsulates all REST API and SAF functionality.
                     // Its instantiation is required before handling any onClick actions.
+//                    mDriveServiceHelper = new DriveServiceHelper(service);
                     mDriveServiceHelper = new DriveServiceHelper(googleDriveService);
                 })
                 .addOnFailureListener(exception -> Log.e(TAG, "Unable to sign in.", exception));

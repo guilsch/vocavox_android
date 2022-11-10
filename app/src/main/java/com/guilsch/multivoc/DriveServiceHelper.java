@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-
+import java.util.logging.Logger;
 
 
 /**
@@ -52,7 +52,7 @@ public class DriveServiceHelper {
     public Task<Pair<Integer, String>> checkDriveFileService() {
         return  Tasks.call(mExecutor, ()  -> {
 
-//            try {
+            try {
 
                 List<File> files = new ArrayList<>();
 
@@ -60,14 +60,22 @@ public class DriveServiceHelper {
 
                 do {
 
-                    FileList result = mDriveService.files().list()
+                    Drive.Files.List request = mDriveService.files().list()
                             .setQ("mimeType='" + Param.DATA_MIME_TYPE + "' and '" + Param.FOLDER_ID
                                     + "' in parents and name = '" + Param.DATA_FILE + "'")
                             .setSpaces("drive")
                             .setFields("nextPageToken, items(id, title)")
-                            .setPageToken(pageToken)
-                            .execute();
+                            .setPageToken(pageToken);
+
+                    FileList result = request.execute();
                     // execute() make the thread crash
+
+//                    FileList result = mDriveService.files().list()
+//                            .setQ("mimeType='image/jpeg'")
+//                            .setSpaces("drive")
+//                            .setFields("nextPageToken, items(id, title)")
+//                            .setPageToken(pageToken)
+//                            .execute();
 
                     System.out.println("result = " + result);
 
@@ -91,10 +99,10 @@ public class DriveServiceHelper {
                 Pair<Integer, String> result2 = new Pair<>(files_nb, id);
 
                 return result2;
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            return null;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
         });
     }
 

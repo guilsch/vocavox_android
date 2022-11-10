@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import java.io.File;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button start;
     private Spinner spinner;
+    private ProgressBar progressBar;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.start = (Button) findViewById(R.id.start);
         this.spinner = (Spinner) findViewById(R.id.spinner);
+        this.progressBar = findViewById(R.id.progressBar);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Param.TARGET_LANGUAGES);
         spinner.setAdapter(adapter);
@@ -56,8 +59,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Param.TARGET_LANGUAGE = spinner.getSelectedItem().toString();
 
-                Intent initActivity = new Intent(getApplicationContext(), InitActivity.class);
-                startActivity(initActivity);
+                start.setTextColor(getResources().getColor(R.color.button_std_text_on_click));
+
+                progressBar.setVisibility(View.VISIBLE);
+
+                initAppData();
+
+                Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+                startActivity(menuActivity);
                 finish();
             }
         });
@@ -68,6 +77,24 @@ public class MainActivity extends AppCompatActivity {
         Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
         startActivity(menuActivity);
         finish();
+    }
+
+    public void initAppData() {
+        // Retrieve preferences
+        Pref.retrieveAllPreferences(this);
+        utils.initParam();
+
+        if (!(new File(Param.DATA_PATH)).exists()) {
+            System.out.println(Param.DATA_PATH + " doesn't exist yet");
+            try {
+                utils.createDataFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            System.out.println(Param.DATA_PATH + " already exists");
+        }
     }
 
 }

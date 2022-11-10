@@ -40,6 +40,6 @@
     </style>
 
     <!--    font-->
-    <string name="header_text_size">16</string>
+    <string name="header_text_size">18</string>
 
 </resources>

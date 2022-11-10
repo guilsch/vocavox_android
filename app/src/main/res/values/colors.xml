@@ -40,6 +40,7 @@
 <!--    Font-->
     <color name="font_hint">#81EFEFEF</color>
     <color name="font_standard">@color/blue1</color>
+    <color name="button_std_text_on_click">#787E81</color>
 
 
 

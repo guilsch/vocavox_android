@@ -182,7 +182,7 @@ public class TranslationActivity extends AppCompatActivity {
             return;
         }
 
-        newCard = new Card(item1, item2, Param.INACTIVE, packText.getText().toString(), utils.giveCurrentDate(), 0, 0, 0, utils.getNewUUID());
+        newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), utils.giveCurrentDate(), 0, 0, 0, utils.getNewUUID());
         newCard.addToDatabase();
         newCard.info();
 

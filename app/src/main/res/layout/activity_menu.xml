@@ -37,18 +37,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/Drive"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
-        app:layout_constraintEnd_toEndOf="@+id/header"
-        app:layout_constraintStart_toStartOf="@+id/right_guideline"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_drive"
-        tools:ignore="VectorDrawableCompat" />
-
     <TextView
         android:id="@+id/MenuMessage"
         android:layout_width="0dp"
@@ -167,7 +155,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/Settings"
+            android:id="@+id/Explore"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_weight="1"
@@ -175,19 +163,19 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/settings_image"
+                android:id="@+id/explore_image"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/ic_settings"
+                app:srcCompat="@drawable/ic_explore"
                 tools:ignore="VectorDrawableCompat" />
 
             <TextView
-                android:id="@+id/settings_text"
+                android:id="@+id/explore_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Setting"
+                android:text="Explore"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -229,31 +217,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/Explore"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/explore_image"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/ic_explore"
-                tools:ignore="VectorDrawableCompat" />
-
-            <TextView
-                android:id="@+id/explore_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Explore"
-                android:textAlignment="center" />
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/Translation"
             android:layout_width="120dp"
             android:layout_height="120dp"
@@ -266,7 +229,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/ic_drive"
+                app:srcCompat="@drawable/ic_translate"
                 tools:ignore="VectorDrawableCompat" />
 
             <TextView
@@ -277,5 +240,32 @@
                 android:text="Translation"
                 android:textAlignment="center" />
         </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/Settings"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/settings_image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_settings"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:id="@+id/settings_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Setting"
+                android:textAlignment="center" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,7 +57,7 @@ public class DeckAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 deck.get(i).setState(utils.nextStateForButton(deck.get(i).getState()));
-                deck.get(i).updateDatabase(deck.get(i).getItem1());
+                deck.get(i).updateDatabase(deck.get(i).getUuid());
                 setStateButton.setText(utils.getStringState(deck.get(i).getState()));
                 Toast.makeText(context, "State changed to " + deck.get(i).getState(), Toast.LENGTH_LONG).show();
             }

@@ -22,15 +22,16 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        flag = findViewById(R.id.flag);
+
         findViewById(R.id.Revision).setOnClickListener(view -> changeActivity(RevisionActivity.class));
         findViewById(R.id.Settings).setOnClickListener(view -> changeActivity(SettingsActivity.class));
         findViewById(R.id.Learning).setOnClickListener(view -> changeActivity(LearnActivity.class));
         findViewById(R.id.Explore).setOnClickListener(view -> changeActivity(ExploreActivity.class));
         findViewById(R.id.New_Card).setOnClickListener(view -> changeActivity(NewCardActivity.class));
-        findViewById(R.id.Drive).setOnClickListener(view -> changeActivity(DriveActivity.class));
         findViewById(R.id.Translation).setOnClickListener(view -> changeActivity(TranslationActivity.class));
+        flag.setOnClickListener((view -> changeActivity(MainActivity.class)));
 
-        flag = findViewById(R.id.flag);
 
         // Prepare Excel file
         utils.prepareDataFile();

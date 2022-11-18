@@ -77,7 +77,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void NextOrEnd(int quality) {
         MemoAlgo.SuperMemo2(this.card, quality);
-        this.card.updateDatabase(this.card.getItem1());
+        this.card.updateDatabase(this.card.getUuid());
         if (cardIterator.hasNext()) {
             this.card = cardIterator.next();
             showQuestionSide();

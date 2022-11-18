@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Param.TARGET_LANGUAGE = spinner.getSelectedItem().toString();
+                setLanguageVisuals();
 
                 start.setTextColor(getResources().getColor(R.color.button_std_text_on_click));
 
@@ -94,6 +95,33 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             System.out.println(Param.DATA_PATH + " already exists");
+        }
+    }
+
+    public void setLanguageVisuals() {
+        switch (Param.TARGET_LANGUAGE) {
+            case "English" :
+                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_gb);
+                break;
+
+            case "German" :
+                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_de);
+                break;
+
+            case "Italian" :
+                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_it);
+                break;
+
+            case "Russian" :
+                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_ru);
+                break;
+
+            case "Spanish" :
+                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_es);
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + Param.TARGET_LANGUAGE);
         }
     }
 

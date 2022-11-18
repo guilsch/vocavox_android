@@ -1,5 +1,6 @@
 package com.guilsch.multivoc;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,16 +8,27 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
 
 public class TranslationActivity extends AppCompatActivity {
 
     private Button nextNewCardButton;
+    private Button OKButton;
+    private Button cancelButton;
     private Button saveCardButton;
+
+    private ImageView targetLanguageFlag;
+    private ImageView userLanguageFlag;
 
     private EditText item1Text;
     private EditText item2Text;
+    private EditText item1TextCheckCardLayout;
+    private EditText item2TextCheckCardLayout;
     private EditText packText;
 
     private TranslationAPI translator;
@@ -25,40 +37,43 @@ public class TranslationActivity extends AppCompatActivity {
 
     private Card newCard;
 
+    private Integer currentLayoutNum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initMainTranslationLayout();
+    }
+
+    private void initMainTranslationLayout() {
         setContentView(R.layout.activity_translation);
+        currentLayoutNum = 1;
 
         nextNewCardButton = findViewById(R.id.next_new_card);
-        saveCardButton = findViewById(R.id.save_new_card);
+        OKButton = findViewById(R.id.ok_button);
 
         item1Text = findViewById(R.id.item1_text);
         item2Text = findViewById(R.id.item2_text);
-        packText = findViewById(R.id.pack_text);
 
-        saveCardButton.setOnClickListener(view -> saveCardButtonClick());
+        targetLanguageFlag = findViewById(R.id.targetLanguageFlag);
+        userLanguageFlag = findViewById(R.id.userLanguageFlag);
+
+        targetLanguageFlag.setImageDrawable(Param.FLAG_ICON_TARGET);
+
+        OKButton.setOnClickListener(view -> {
+            try {
+                setCheckCardLayout();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
 
         findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         item1Text.setOnTouchListener((view, motionEvent) -> onTouchItem1Side());
         item2Text.setOnTouchListener((view, motionEvent) -> onTouchItem2Side());
-
-//        item1Text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if(!hasFocus && item1Text.getText().equals(""))
-//                {
-//                    item1Text.setText("Write word in " + Param.USER_LANGUAGE);
-//                    item1Text.setTypeface(null, Typeface.ITALIC);
-//                    item1Text.setTextColor(getResources().getColor(R.color.font_hint));
-//                }
-//                else{
-//                    item1Text.setTypeface(null, Typeface.NORMAL);
-//                    item1Text.setTextColor(getResources().getColor(R.color.font_standard));
-//                }
-//            }
-//        });
 
         item1Text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -102,6 +117,46 @@ public class TranslationActivity extends AppCompatActivity {
         });
 
         initSides();
+    }
+
+    private void setCheckCardLayout() throws ExecutionException, InterruptedException {
+        setContentView(R.layout.activity_translation_check);
+        currentLayoutNum = 2;
+
+        item1TextCheckCardLayout = findViewById(R.id.userLanguageText);
+        item2TextCheckCardLayout = findViewById(R.id.targetLanguageText);
+        packText = findViewById(R.id.pack_text);
+        targetLanguageFlag = findViewById(R.id.targetLanguageFlag);
+        userLanguageFlag = findViewById(R.id.userLanguageFlag);
+        targetLanguageFlag.setImageDrawable(Param.FLAG_ICON_TARGET);
+
+        saveCardButton = findViewById(R.id.save_new_card);
+        saveCardButton.setOnClickListener(view -> saveCardButtonClick());
+
+        cancelButton = findViewById(R.id.cancel_button);
+        cancelButton.setOnClickListener(view -> initMainTranslationLayout());
+
+        String item1 = item1Text.getText().toString();
+        String item2 = item2Text.getText().toString();
+
+        item1Text.setEnabled(Boolean.FALSE);
+        item2Text.setEnabled(Boolean.FALSE);
+
+        String mainTranslation = translateWaitForIt(item1, Boolean.TRUE);
+
+        System.out.println("item2 : " + item2);
+        System.out.println("translation : " + mainTranslation);
+
+        String item2WithoutWhitespace = item2.replaceAll("\\s", "");
+        String mainTranslationWithoutWhitespace = mainTranslation.replaceAll("\\s", "");
+
+        if (!item2WithoutWhitespace.equalsIgnoreCase(mainTranslationWithoutWhitespace)) {
+            item2 = mainTranslation + ", " + item2;
+        }
+
+        item1TextCheckCardLayout.setText(item1);
+        item2TextCheckCardLayout.setText(item2);
+
     }
 
     private Boolean initSides() {
@@ -157,6 +212,9 @@ public class TranslationActivity extends AppCompatActivity {
             public void onError(Exception e) {}
         });
 
+        System.out.println("userToTarget : ");
+        System.out.println(userToTarget);
+
         if (userToTarget) {
             translator.execute(source, Param.USER_LANGUAGE_ISO, Param.TARGET_LANGUAGE_ISO);
         }
@@ -168,9 +226,38 @@ public class TranslationActivity extends AppCompatActivity {
 
     }
 
+    public String translateWaitForIt(String source, Boolean toTarget) throws ExecutionException, InterruptedException {
+        TranslationAPI translatorOneShot = new TranslationAPI();
+        translatorOneShot.setOnTranslationCompleteListener(new TranslationAPI.OnTranslationCompleteListener() {
+            @Override
+            public void onStartTranslation() {}
+
+            @Override
+            public void onCompleted(String text) {
+//                translationResultOneShot = text;
+            }
+
+            @Override
+            public void onError(Exception e) {}
+        }
+        );
+
+        String res;
+
+        if (toTarget) {
+            res = translatorOneShot.execute(source, Param.USER_LANGUAGE_ISO, Param.TARGET_LANGUAGE_ISO).get();
+        }
+        else {
+            res = translatorOneShot.execute(source, Param.TARGET_LANGUAGE_ISO, Param.USER_LANGUAGE_ISO).get();
+        }
+
+        return res;
+
+    }
+
     public void saveCardButtonClick() {
-        String item1 = item1Text.getText().toString();
-        String item2 = item2Text.getText().toString();
+        String item1 = item1TextCheckCardLayout.getText().toString();
+        String item2 = item2TextCheckCardLayout.getText().toString();
 
         if (item1.isEmpty() || item2.isEmpty()) {
             new AlertDialog.Builder(TranslationActivity.this)
@@ -195,8 +282,15 @@ public class TranslationActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
-        startActivity(menuActivity);
-        finish();
+
+        if (currentLayoutNum == 1) {
+            Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+            startActivity(menuActivity);
+            finish();
+        }
+
+        else if (currentLayoutNum == 2){
+            initMainTranslationLayout();
+        }
     }
 }

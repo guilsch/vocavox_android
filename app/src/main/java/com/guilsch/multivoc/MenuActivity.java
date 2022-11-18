@@ -36,31 +36,11 @@ public class MenuActivity extends AppCompatActivity {
         // Prepare Excel file
         utils.prepareDataFile();
 
-        setLanguageVisuals();
+        flag.setImageDrawable(Param.FLAG_ICON_TARGET);
 
     }
 
-    public void setLanguageVisuals() {
-        switch (Param.TARGET_LANGUAGE) {
-            case "English" :
-                flag.setImageDrawable(getResources().getDrawable(R.drawable.ic_gb));
-                break;
 
-            case "German" :
-                flag.setImageDrawable(getResources().getDrawable(R.drawable.ic_de));
-                break;
-
-            case "Italian" :
-                flag.setImageDrawable(getResources().getDrawable(R.drawable.ic_it));
-                break;
-
-            case "Russian" :
-                flag.setImageDrawable(getResources().getDrawable(R.drawable.ic_ru));
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + Param.TARGET_LANGUAGE);
-        }
-    }
 
     public void changeActivity(Class newActivityClass) {
         Intent newActivity = new Intent(getApplicationContext(), newActivityClass);

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back_ground"
+    android:background="@color/back_ground2"
     tools:context=".NewCardActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -47,118 +47,115 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_bottom_central_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
-
-    <TextView
-        android:id="@+id/header"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/navy1"
-        android:fontFamily="@font/oxygen_bold"
-        android:gravity="center"
-        android:text="Edit new card"
-        android:textColor="@color/white"
-        android:textSize="@dimen/header"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/back_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:adjustViewBounds="true"
-        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
-        app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic__back_arrow_white"
-        tools:ignore="VectorDrawableCompat" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <Button
-        android:id="@+id/ok_button"
+        android:id="@+id/save_new_card"
         android:layout_width="@dimen/button_std_width"
         android:layout_height="@dimen/button_std_height"
         android:layout_marginBottom="44dp"
         android:background="@drawable/button_selector"
-        android:text="OK"
+        android:text="Save"
         android:textColor="@color/button_std_text"
         android:textSize="@dimen/button_std_text_size"
         android:textStyle="bold"
         app:backgroundTint="#00FFFFFF"
         app:backgroundTintMode="src_atop"
         app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/cancel_button"
         app:layout_constraintStart_toStartOf="@+id/left_guideline" />
 
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="@dimen/button_std_width"
+        android:layout_height="@dimen/button_std_height"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/button_selector"
+        android:text="Cancel"
+        android:textColor="@color/button_std_text"
+        android:textSize="@dimen/button_std_text_size"
+        android:textStyle="bold"
+        app:backgroundTint="#00FFFFFF"
+        app:backgroundTintMode="src_atop"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/save_new_card" />
 
     <EditText
-        android:id="@+id/item1_text"
+        android:id="@+id/pack_text"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="43dp"
         android:ems="10"
-        android:gravity="top|left"
         android:inputType="text"
-        android:textColor="@null"
-        android:paddingStart="10dp"
-        android:paddingTop="17dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="@dimen/titles"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_middle_central_guideline"
+        android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline"
+        app:layout_constraintStart_toStartOf="@+id/pack_title"
+        app:layout_constraintTop_toBottomOf="@+id/pack_title"
         tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/item2_text"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:gravity="top|left"
-        android:textColor="@null"
-        android:paddingStart="10dp"
-        android:paddingTop="17dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="@dimen/titles"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_bottom_central_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+    <TextView
+        android:id="@+id/pack_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/pack"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_middle_central_guideline"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="@+id/horizontal_bottom_central_guideline" />
 
     <ImageView
         android:id="@+id/userLanguageFlag"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:layout_constraintEnd_toStartOf="@+id/left_guideline"
-        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
         app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline"
         app:srcCompat="@drawable/ic_de"
-        tools:ignore="VectorDrawableCompat"
-        android:visibility="invisible"/>
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/targetLanguageFlag"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:layout_constraintEnd_toStartOf="@+id/left_guideline"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
         app:layout_constraintTop_toTopOf="@+id/horizontal_middle_central_guideline"
         app:srcCompat="@drawable/ic_it"
         tools:ignore="VectorDrawableCompat" />
+
+    <EditText
+        android:id="@+id/userLanguageText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_middle_central_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toEndOf="@+id/userLanguageFlag"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline" />
+
+    <EditText
+        android:id="@+id/targetLanguageText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_bottom_central_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/userLanguageFlag"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_middle_central_guideline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

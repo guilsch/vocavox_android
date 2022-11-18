@@ -95,7 +95,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
         this.card.setState(Param.ACTIVE);
         MemoAlgo.SuperMemo2(this.card, quality);
-        this.card.updateDatabase(this.card.getItem1());
+        this.card.updateDatabase(this.card.getUuid());
 
         if (cardIterator.hasNext()) {
             this.card = cardIterator.next();

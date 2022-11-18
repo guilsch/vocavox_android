@@ -1,5 +1,8 @@
 package com.guilsch.multivoc;
 
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +21,8 @@ public class Param {
     public static String TARGET_LANGUAGE_ISO;
     public static String USER_LANGUAGE_ISO;
     public static String USER_LANGUAGE_DEFAULT = "French";
+
+    public static Drawable FLAG_ICON_TARGET;
 
     public static final String ITEM1_FIELD_NAME = "Item 1";
     public static final String ITEM2_FIELD_NAME = "Item 2";

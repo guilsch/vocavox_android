@@ -50,26 +50,22 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
         } else {
 
-            this.learningQueue = new LinkedList<>();
-
-            // Adding deck's cards to the queue
-            for (Card card : this.deck) {
-                this.learningQueue.add(card);
-            }
-
             showCardsSelection();
+
             simpleList = (ListView) findViewById(R.id.cardsSelectionListView);
             CardsSelectionDeckAdapter adapter = new CardsSelectionDeckAdapter(getApplicationContext(), deck);
             simpleList.setAdapter(adapter);
+
+            learningQueue = new LinkedList<>();
+
+            mStartLearningButton.setOnClickListener(v -> initCardsFlip());
         }
     }
 
     @Override
     public void onClick(View v) {
 
-        if (v == mStartLearningButton) {
-            initCardsFlip();
-        } else if (v == mSeeAnswerButton) {
+        if (v == mSeeAnswerButton) {
             showAnswerSide();
         } else if (v == mAnswerButton1){
             // Makes the card appear again
@@ -90,6 +86,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initCardsFlip() {
+
         card = learningQueue.poll();
 
         if (card != null) {

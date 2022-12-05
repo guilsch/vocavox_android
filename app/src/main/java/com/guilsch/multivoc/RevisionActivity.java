@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class RevisionActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,7 +27,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
     private Deck deck;
     private Card card;
-    private Iterator<Card> cardIterator;
+    private static Queue<Card> revisionQueue;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -38,18 +38,32 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         this.deck.init();
         this.deck.filterToTrain();
 
-        this.cardIterator = deck.iterator();
-
-        if (this.cardIterator.hasNext()) {
-            this.card = cardIterator.next();
-            showQuestionSide();
-        }
-        else {
+        if (this.deck.isEmpty()) {
             showEndOfRevision();
-        }
 
+        } else {
+
+            this.revisionQueue = new LinkedList<>();
+
+            // Adding deck's cards to the queue
+            for (Card card : this.deck) {
+                this.revisionQueue.add(card);
+            }
+
+            initCardsFlip();
+        }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    private void initCardsFlip() {
+        card = revisionQueue.poll();
+
+        if (card != null) {
+            showQuestionSide();
+        } else {
+            showEndOfRevision();
+        }
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -58,6 +72,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         if (v == mSeeAnswerButton) {
             showAnswerSide();
         } else if (v == mAnswerButton1){
+            revisionQueue.add(card);
             NextOrEnd(1);
         } else if (v == mAnswerButton2) {
             NextOrEnd(2);
@@ -73,17 +88,19 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void NextOrEnd(int quality) {
+
+        this.card.setState(Param.ACTIVE);
         MemoAlgo.SuperMemo2(this.card, quality);
         this.card.updateDatabase(this.card.getUuid());
-        if (cardIterator.hasNext()) {
-            this.card = cardIterator.next();
+
+        card = revisionQueue.poll();
+
+        if (card != null) {
             showQuestionSide();
         }
         else {
-            this.card = new Card();
             showEndOfRevision();
         }
     }

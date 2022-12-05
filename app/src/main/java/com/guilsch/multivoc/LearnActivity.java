@@ -12,6 +12,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class LearnActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,9 +33,8 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     ListView simpleList;
 
     private Deck deck;
-    private static Deck learningDeck;
     private Card card;
-    private Iterator<Card> cardIterator;
+    private static Queue<Card> learningQueue;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -40,42 +42,38 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
 
         this.deck = new Deck();
-        this.learningDeck = new Deck();
         this.deck.init();
         this.deck.filterToLearn();
 
         if (this.deck.isEmpty()) {
             showNoCardsToLearn();
-        }
-        else {
+
+        } else {
+
+            this.learningQueue = new LinkedList<>();
+
+            // Adding deck's cards to the queue
+            for (Card card : this.deck) {
+                this.learningQueue.add(card);
+            }
 
             showCardsSelection();
             simpleList = (ListView) findViewById(R.id.cardsSelectionListView);
             CardsSelectionDeckAdapter adapter = new CardsSelectionDeckAdapter(getApplicationContext(), deck);
             simpleList.setAdapter(adapter);
-
-            mStartLearningButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    cardIterator = learningDeck.iterator();
-                    learningDeck.showCards();
-                    if (cardIterator.hasNext()) {
-                        card = cardIterator.next();
-                        showQuestionSide();
-                    } else {
-                        showEndOfLearning();
-                    }
-                }
-            });
         }
     }
 
     @Override
     public void onClick(View v) {
 
-        if (v == mSeeAnswerButton) {
+        if (v == mStartLearningButton) {
+            initCardsFlip();
+        } else if (v == mSeeAnswerButton) {
             showAnswerSide();
         } else if (v == mAnswerButton1){
+            // Makes the card appear again
+            learningQueue.add(this.card);
             NextOrEnd(1);
         } else if (v == mAnswerButton2) {
             NextOrEnd(2);
@@ -91,18 +89,28 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    private void initCardsFlip() {
+        card = learningQueue.poll();
+
+        if (card != null) {
+            showQuestionSide();
+        } else {
+            showEndOfLearning();
+        }
+    }
+
     private void NextOrEnd(int quality) {
 
         this.card.setState(Param.ACTIVE);
         MemoAlgo.SuperMemo2(this.card, quality);
         this.card.updateDatabase(this.card.getUuid());
 
-        if (cardIterator.hasNext()) {
-            this.card = cardIterator.next();
+        card = learningQueue.poll();
+
+        if (card != null) {
             showQuestionSide();
         }
         else {
-            this.card = new Card();
             showEndOfLearning();
         }
     }
@@ -168,16 +176,17 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
     public static void addToLearningDeck(Card card) {
         System.out.println(card.getItem1() + " is added");
-        learningDeck.add(card);
+        learningQueue.add(card);
     }
 
     public static void removeFromLearningDeck(Card card) {
         System.out.println(card.getItem1() + " is removed");
-        learningDeck.remove(card);
+        learningQueue.remove(card);
     }
 
     public static Boolean learningDeckContains(Card card) {
-        return learningDeck.contains(card);
+        Boolean contains = learningQueue.contains(card);
+        return contains;
     }
 
     @Override

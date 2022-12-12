@@ -56,7 +56,7 @@ public class Card implements Serializable {
         this.setInterval(interval);
     }
 
-    public void updateDatabase(String cardUuid) {
+    public void updateDatabase() {
         try {
 
             FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
@@ -82,7 +82,7 @@ public class Card implements Serializable {
                 Row row = rowIterator.next();
                 Cell uuidCell = row.getCell(uuidIndex);
 
-                if (uuidCell.getStringCellValue().compareTo(cardUuid) == 0){
+                if (uuidCell.getStringCellValue().compareTo(uuid) == 0){
                     
                     row.getCell(item1Index).setCellValue(this.item1);
                     row.getCell(item2Index).setCellValue(this.item2);

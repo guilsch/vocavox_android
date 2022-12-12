@@ -1,14 +1,14 @@
 package com.guilsch.multivoc;
 
-import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class DeckAdapter extends BaseAdapter {
 
@@ -16,10 +16,17 @@ public class DeckAdapter extends BaseAdapter {
 
     Deck deck;
     Context context;
+    TextView item1;
+    TextView item2;
+    TextView pack;
+    Button setStateButton;
+    Button deleteCard;
+    Activity currentActivity;
 
-    public DeckAdapter(Context applicationContext, Deck deck) {
+    public DeckAdapter(Context applicationContext, Deck deck, Activity activity) {
         this.deck = deck;
         this.context = applicationContext;
+        this.currentActivity = activity;
         inflater = (LayoutInflater.from(applicationContext));
     }
 
@@ -42,35 +49,45 @@ public class DeckAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflater.inflate(R.layout.activity_list_view, null);
 
-        TextView item1 = view.findViewById(R.id.item1_textView);
-        TextView item2 = view.findViewById(R.id.item2_textView);
-        TextView pack = view.findViewById(R.id.pack_textView);
-        Button setStateButton = view.findViewById(R.id.setStateButton);
-        Button deleteCard = view.findViewById(R.id.deleteCardButton);
+        item1 = view.findViewById(R.id.item1_textView);
+        item2 = view.findViewById(R.id.item2_textView);
+        pack = view.findViewById(R.id.pack_textView);
+        setStateButton = view.findViewById(R.id.setStateButton);
+        deleteCard = view.findViewById(R.id.deleteCardButton);
 
-        item1.setText(deck.get(i).getItem1());
-        item2.setText(deck.get(i).getItem2());
-        pack.setText(deck.get(i).getPack());
-        setStateButton.setText(utils.getStringState(deck.get(i).getState()));
+        Card card = deck.get(i);
 
-        setStateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deck.get(i).setState(utils.nextStateForButton(deck.get(i).getState()));
-                deck.get(i).updateDatabase(deck.get(i).getUuid());
-                setStateButton.setText(utils.getStringState(deck.get(i).getState()));
-                Toast.makeText(context, "State changed to " + deck.get(i).getState(), Toast.LENGTH_LONG).show();
-            }
-        });
+        item1.setText(card.getItem1());
+        item2.setText(card.getItem2());
+        pack.setText(card.getPack());
+        setStateButton.setText(utils.getStringStateFromInt(card.getState()));
 
-        deleteCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deck.deleteCard(deck.get(i).getUuid());
-                Toast.makeText(context, "Card -" + deck.get(i).getItem1() + "- has been removed", Toast.LENGTH_LONG).show();
-            }
-        });
+        setStateButton.setOnClickListener(v -> onStateButtonPressed(i));
+        deleteCard.setOnClickListener(v -> onDeleteCardPressed(i));
+        item1.setOnClickListener(v -> setEditCardLayout(card));
 
         return view;
     }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+    }
+
+    public void setEditCardLayout(Card card) {
+        Intent editCardActivity = new Intent(currentActivity.getApplicationContext(), EditCardActivity.class);
+        editCardActivity.putExtra("CARD", card);
+        currentActivity.startActivity(editCardActivity);
+    }
+
+    private void onDeleteCardPressed(int i) {
+        deck.deleteCard(deck.get(i).getUuid());
+    }
+
+    private void onStateButtonPressed(int i) {
+        deck.get(i).setState(utils.nextStateForButton(deck.get(i).getState()));
+        deck.get(i).updateDatabase();
+        setStateButton.setText(utils.getStringStateFromInt(deck.get(i).getState()));
+    }
+
 }

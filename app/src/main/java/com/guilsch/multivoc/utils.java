@@ -305,7 +305,7 @@ public class utils {
         return nextState;
     }
 
-    public static String getStringState (int state) {
+    public static String getStringStateFromInt(int state) {
 
         String stringState;
 
@@ -337,6 +337,40 @@ public class utils {
         }
 
         return stringState;
+    }
+
+    public static int getIntStateFromString (String state) {
+
+        int intState;
+
+        switch (state){
+
+            case  "Learning":
+                intState = Param.ACTIVE;
+                break;
+
+            case "Inactive" :
+                intState = Param.INACTIVE;
+                break;
+
+            case "To Learn" :
+                intState = Param.TO_LEARN;
+                break;
+
+            case "Invalid":
+                intState = Param.INVALID;
+                break;
+
+            case "On pause":
+                intState = Param.STOP_LEARNING;
+                break;
+
+            default:
+                intState = -1;
+                break;
+        }
+
+        return intState;
     }
 
     public static Date toDate(long nextPracticeTime) {
@@ -372,41 +406,6 @@ public class utils {
 
         return (index);
     }
-
-//    public static String getHeaderName(int columnIndex) {
-//
-//        String columnName = "";
-//
-//        try {
-//            FileInputStream file = new FileInputStream(new File(Param.DATA_PATH));
-//            HSSFWorkbook workbook = new HSSFWorkbook(file);
-//            HSSFSheet sheet = workbook.getSheetAt(0);
-//
-//            // Iterate through each rows one by one
-//            Iterator<Row> rowIterator = sheet.iterator();
-//            Row header = rowIterator.next();
-//
-//            Iterator<Cell> cellIterator = header.cellIterator();
-//
-//            while (cellIterator.hasNext()) {
-//                Cell cell = cellIterator.next();
-//
-//                if (columnIndex == cell.getColumnIndex()) {
-//                    columnName = cell.getStringCellValue();
-//                }
-//            }
-//
-//            if (columnName.compareTo("") == 0) {
-//                System.out.println("No column at index " + columnIndex);
-//            }
-//
-//            file.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        return (columnName);
-//    }
 
     public static void prepareDataFile() {
         try {

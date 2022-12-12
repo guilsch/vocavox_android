@@ -2,6 +2,7 @@ package com.guilsch.multivoc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +13,8 @@ public class ExploreActivity extends AppCompatActivity {
 
     ListView simpleList;
 
-    Deck deck;
+    static Deck deck;
+    DeckAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +29,16 @@ public class ExploreActivity extends AppCompatActivity {
         deck.showCards();
 
         simpleList = (ListView) findViewById(R.id.deckListView);
-        DeckAdapter adapter = new DeckAdapter(getApplicationContext(), deck);
+        adapter = new DeckAdapter(getApplicationContext(), deck, this);
         simpleList.setAdapter(adapter);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        System.out.println("Bonj");
+        adapter.notifyDataSetChanged();
 
     }
 

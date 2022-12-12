@@ -42,7 +42,10 @@
     <color name="font_standard">@color/blue1</color>
     <color name="button_std_text_on_click">#787E81</color>
 
-
+<!--    Answer buttons bg -->
+    <color name="ok">#CDDC39</color>
+    <color name="good">#8BC34A</color>
+    <color name="perfect">#4CAF50</color>
 
 <!--    altrenative palette-->
     <color name="navy1">#06283D</color>

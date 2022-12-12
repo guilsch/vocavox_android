@@ -93,7 +93,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         this.card.setState(Param.ACTIVE);
         MemoAlgo.SuperMemo2(this.card, quality);
-        this.card.updateDatabase(this.card.getUuid());
+        this.card.updateDatabase();
 
         card = revisionQueue.poll();
 

@@ -19,8 +19,10 @@
     <string name="item1">First word</string>
     <string name="item2">Second word</string>
     <string name="pack">Pack</string>
+    <string name="next_date">Next revision Date</string>
     <string name="save_card">Save</string>
     <string name="next_new_card">New</string>
+    <string name="card_state">Current state</string>
 
     <!-- Start !-->
     <string name="start_button">Start</string>

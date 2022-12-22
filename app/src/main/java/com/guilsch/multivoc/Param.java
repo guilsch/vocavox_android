@@ -80,8 +80,13 @@ public class Param {
     public static String FOLDER_ID = "Undefined";
     public static final String FOLDER_ID_KEY = "folder_id_key";
 
-
     public static void setDataPath() {
         DATA_PATH = FOLDER_PATH + DATA_FILE;
     }
+
+
+    public static final float LANG_DIRECTION_FREQ_DEFAULT = 1.0f;
+    public static float LANG_DIRECTION_FREQ;
+    public static final String LANG_DIRECTION_FREQ_KEY = "lang_direction_freq_key";
+
 }

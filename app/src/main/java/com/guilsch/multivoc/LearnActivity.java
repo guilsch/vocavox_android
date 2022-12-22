@@ -58,7 +58,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
             learningQueue = new LinkedList<>();
 
-            mStartLearningButton.setOnClickListener(v -> initCardsFlip());
+            mStartLearningButton.setOnClickListener(v -> NextOrEnd());
         }
     }
 
@@ -67,41 +67,41 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
         if (v == mSeeAnswerButton) {
             showAnswerSide();
+
         } else if (v == mAnswerButton1){
             // Makes the card appear again
             learningQueue.add(this.card);
-            NextOrEnd(1);
+            setCardParam(1);
+            NextOrEnd();
+
         } else if (v == mAnswerButton2) {
-            NextOrEnd(2);
+            setCardParam(2);
+            NextOrEnd();
+
         } else if (v == mAnswerButton3) {
-            NextOrEnd(3);
+            setCardParam(3);
+            NextOrEnd();
+
         } else if (v == mAnswerButton4) {
-            NextOrEnd(4);
+            setCardParam(4);
+            NextOrEnd();
+
         } else if (v == mBackToMenuRevisionButton) {
             Intent MenuActivityIntent = new Intent(LearnActivity.this, MenuActivity.class);
             startActivity(MenuActivityIntent);
+
         } else {
             throw new IllegalStateException("Unknown clicked view : " + v);
         }
     }
 
-    private void initCardsFlip() {
-
-        card = learningQueue.poll();
-
-        if (card != null) {
-            showQuestionSide();
-        } else {
-            showEndOfLearning();
-        }
-    }
-
-    private void NextOrEnd(int quality) {
-
+    private void setCardParam(int quality) {
         this.card.setState(Param.ACTIVE);
         MemoAlgo.SuperMemo2(this.card, quality);
         this.card.updateDatabase();
+    }
 
+    private void NextOrEnd() {
         card = learningQueue.poll();
 
         if (card != null) {

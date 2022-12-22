@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
 
 public class RevisionActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +30,9 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     private Card card;
     private static Queue<Card> revisionQueue;
 
+    private Random rand;
+    private int langDirection;
+
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         } else {
 
+            this.rand = new Random();
             this.revisionQueue = new LinkedList<>();
 
             // Adding deck's cards to the queue
@@ -50,17 +55,28 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
                 this.revisionQueue.add(card);
             }
 
-            initCardsFlip();
+            NextOrEnd();
         }
     }
 
+    private void setCardParam(int quality) {
+        this.card.setState(Param.ACTIVE);
+        MemoAlgo.SuperMemo2(this.card, quality);
+        this.card.updateDatabase();
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.R)
-    private void initCardsFlip() {
+    private void NextOrEnd() {
         card = revisionQueue.poll();
 
         if (card != null) {
+
+            // Attribute the translation direction
+            this.langDirection = (this.rand.nextDouble() < Param.LANG_DIRECTION_FREQ_DEFAULT) ? 1 : -1;
+
             showQuestionSide();
-        } else {
+        }
+        else {
             showEndOfRevision();
         }
     }
@@ -71,39 +87,33 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         if (v == mSeeAnswerButton) {
             showAnswerSide();
+
         } else if (v == mAnswerButton1){
             revisionQueue.add(card);
-            NextOrEnd(1);
+            setCardParam(1);
+            NextOrEnd();
+
         } else if (v == mAnswerButton2) {
-            NextOrEnd(2);
+            setCardParam(2);
+            NextOrEnd();
+
         } else if (v == mAnswerButton3) {
-            NextOrEnd(3);
+            setCardParam(3);
+            NextOrEnd();
+
         } else if (v == mAnswerButton4) {
-            NextOrEnd(4);
+            setCardParam(4);
+            NextOrEnd();
+
         } else if (v == mBackToMenuRevisionButton) {
             Intent MenuActivityIntent = new Intent(RevisionActivity.this, MenuActivity.class);
             startActivity(MenuActivityIntent);
+
         } else {
             throw new IllegalStateException("Unknown clicked view : " + v);
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.R)
-    private void NextOrEnd(int quality) {
-
-        this.card.setState(Param.ACTIVE);
-        MemoAlgo.SuperMemo2(this.card, quality);
-        this.card.updateDatabase();
-
-        card = revisionQueue.poll();
-
-        if (card != null) {
-            showQuestionSide();
-        }
-        else {
-            showEndOfRevision();
-        }
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void showEndOfRevision() {
@@ -122,7 +132,13 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
-        mTextViewQuestion.setText(this.card.getItem1());
+        if (this.langDirection == 1) {
+            mTextViewQuestion.setText(this.card.getItem1());
+        }
+        else {
+            mTextViewQuestion.setText(this.card.getItem2());
+        }
+
 
     }
 
@@ -140,7 +156,12 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         mAnswerButton3.setOnClickListener(this);
         mAnswerButton4.setOnClickListener(this);
 
-        mTextViewQuestion.setText(this.card.getItem2());
+        if (this.langDirection == 1) {
+            mTextViewQuestion.setText(this.card.getItem2());
+        }
+        else {
+            mTextViewQuestion.setText(this.card.getItem1());
+        }
 
     }
 

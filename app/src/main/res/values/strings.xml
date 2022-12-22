@@ -12,8 +12,10 @@
     <string name="end_learn">End of learning !</string>
     <string name="save_setting">Save</string>
     <string name="folder_path_setting">Folder path :</string>
+    <string name="lang_direction_freq_setting">Language direction frequency :</string>
     <string name="default_setting">Default</string>
     <string name="no_cards_to_learn_message">No cards to learn...</string>
+    <string name="settings_lang_direction_freq_error">The frequency must be a number between 0 and 1</string>
 
     <!-- New Card !-->
     <string name="item1">First word</string>

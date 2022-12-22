@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.text.NumberFormat;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -14,9 +17,10 @@ public class SettingsActivity extends AppCompatActivity {
     private Button folderPathDefaultButton;
     private EditText folderPathText;
 
-    private Button folderURLSaveButton;
-    private Button folderURLDefaultButton;
-    private EditText folderURLText;
+    private Button langDirectionFreqSaveButton;
+    private Button langDirectionFreqDefaultButton;
+    private EditText langDirectionFreqText;
+    private NumberFormat nbrFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +39,18 @@ public class SettingsActivity extends AppCompatActivity {
         folderPathSaveButton.setOnClickListener(view -> folderPathSaveClick());
         folderPathDefaultButton.setOnClickListener(view -> folderPathDefaultClick());
 
+//      Language direction frequency
 
-//        URL Drive Folder
+        this.nbrFormat = NumberFormat.getInstance();
 
-        folderURLSaveButton = (Button) findViewById(R.id.folder_url_save_button);
-        folderURLDefaultButton = (Button) findViewById(R.id.folder_url_default);
-        folderURLText = (EditText) findViewById(R.id.folder_url_edit_text);
-        folderURLText.setText(Param.FOLDER_ID);
+        langDirectionFreqSaveButton = (Button) findViewById(R.id.lang_direction_save_button);
+        langDirectionFreqDefaultButton = (Button) findViewById(R.id.lang_direction_default_button);
+        langDirectionFreqText = (EditText) findViewById(R.id.lang_direction_freq_edit_text);
+        langDirectionFreqText.setText(this.nbrFormat.format(Param.LANG_DIRECTION_FREQ));
 
-        folderURLSaveButton.setOnClickListener(view -> folderURLSaveClick());
-        folderURLDefaultButton.setOnClickListener(view -> folderURLDefaultClick());
+        langDirectionFreqSaveButton.setOnClickListener(view -> langDirectionFreqSaveClick());
+        langDirectionFreqDefaultButton.setOnClickListener(view -> langDirectionFreqDefaultClick());
+
     }
 
     public void folderPathSaveClick() {
@@ -58,17 +64,33 @@ public class SettingsActivity extends AppCompatActivity {
         folderPathText.setText(Param.FOLDER_PATH);
     }
 
-    public void folderURLSaveClick() {
-        Param.FOLDER_ID = utils.URLtoID(folderURLText.getText().toString());
-        Pref.savePreference(SettingsActivity.this, Param.FOLDER_ID_KEY, Param.FOLDER_ID);
-        System.out.println(Param.FOLDER_ID);
+    public void langDirectionFreqSaveClick() {
+
+        String langDirectionFreqString = langDirectionFreqText.getText().toString();
+
+        if (utils.tryAndCheckParseFloat(langDirectionFreqString)) {
+            Param.LANG_DIRECTION_FREQ = Float.parseFloat(langDirectionFreqString);
+            Pref.savePreference(SettingsActivity.this, Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ);
+
+        } else {
+            langDirectionFreqText.setText(this.nbrFormat.format(Param.LANG_DIRECTION_FREQ));
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.settings_lang_direction_freq_error, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+        Pref.savePreference(SettingsActivity.this, Param.FOLDER_PATH_KEY, Param.FOLDER_PATH);
     }
 
-    public void folderURLDefaultClick() {
-        Param.FOLDER_ID = Param.FOLDER_ID_DEFAULT;
-        Pref.savePreference(SettingsActivity.this, Param.FOLDER_ID_KEY, Param.FOLDER_ID);
-        folderURLText.setText(Param.FOLDER_ID);
+    public void langDirectionFreqDefaultClick() {
+
+        Param.LANG_DIRECTION_FREQ = Param.LANG_DIRECTION_FREQ_DEFAULT;
+        langDirectionFreqText.setText(this.nbrFormat.format(Param.LANG_DIRECTION_FREQ));
+
+        Param.FOLDER_PATH = Param.FOLDER_PATH_DEFAULT;
+        Pref.savePreference(SettingsActivity.this, Param.FOLDER_PATH_KEY, Param.FOLDER_PATH);
+        folderPathText.setText(Param.FOLDER_PATH);
     }
+
 
     @Override
     public void onBackPressed() {

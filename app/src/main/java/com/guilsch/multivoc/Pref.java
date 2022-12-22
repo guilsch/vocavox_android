@@ -39,12 +39,24 @@ public class Pref {
         Param.RU_FILE_ID = getPrefs(context).getString(Param.RU_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
         Param.SP_FILE_ID = getPrefs(context).getString(Param.SP_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
         Param.FOLDER_ID = getPrefs(context).getString(Param.FOLDER_ID_KEY, Param.FOLDER_ID_DEFAULT);
+        Param.LANG_DIRECTION_FREQ = getPrefs(context).getFloat(Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ_DEFAULT);
         editor.commit();
     }
 
-    public static void savePreference(Context context, String key, String value){
+    public static <T> void savePreference(Context context, String key, T value){
         SharedPreferences.Editor editor = getPrefs(context).edit();
-        editor.putString(key, value);
+
+        if (value instanceof String) {
+            editor.putString(key, (String) value);
+        }
+        else if (value instanceof Float){
+            editor.putFloat(key, (Float) value);
+        }
+        else {
+            AssertionError error = new AssertionError("Preference to be saved is not a String or a Float");
+            throw error;
+        }
+
         editor.commit();
     }
 

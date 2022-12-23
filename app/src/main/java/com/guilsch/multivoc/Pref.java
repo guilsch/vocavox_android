@@ -39,7 +39,7 @@ public class Pref {
         Param.RU_FILE_ID = getPrefs(context).getString(Param.RU_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
         Param.SP_FILE_ID = getPrefs(context).getString(Param.SP_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
         Param.FOLDER_ID = getPrefs(context).getString(Param.FOLDER_ID_KEY, Param.FOLDER_ID_DEFAULT);
-        Param.LANG_DIRECTION_FREQ = getPrefs(context).getFloat(Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ_DEFAULT);
+        Param.LANG_DIRECTION_FREQ = getPrefs(context).getInt(Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ_DEFAULT);
         editor.commit();
     }
 
@@ -49,11 +49,11 @@ public class Pref {
         if (value instanceof String) {
             editor.putString(key, (String) value);
         }
-        else if (value instanceof Float){
-            editor.putFloat(key, (Float) value);
+        else if (value instanceof Integer){
+            editor.putInt(key, (Integer) value);
         }
         else {
-            AssertionError error = new AssertionError("Preference to be saved is not a String or a Float");
+            AssertionError error = new AssertionError("Preference to be saved is not a String or an Integer");
             throw error;
         }
 

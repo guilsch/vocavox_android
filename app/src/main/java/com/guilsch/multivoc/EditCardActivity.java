@@ -60,7 +60,7 @@ public class EditCardActivity extends AppCompatActivity {
     }
 
     private void onDeleteCardPressed() {
-        ExploreActivity.deck.deleteCard(card.getUuid());
+        ExploreActivity.originalDeck.deleteCard(card.getUuid());
 
         finish();
     }

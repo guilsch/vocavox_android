@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 public class DeckAdapter extends BaseAdapter {
@@ -47,7 +49,11 @@ public class DeckAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = inflater.inflate(R.layout.activity_list_view, null);
+
+        // Check if it is possible to reuse a view
+        if (view == null) {
+            view = inflater.inflate(R.layout.activity_list_view, null);
+        }
 
         item1 = view.findViewById(R.id.item1_textView);
         item2 = view.findViewById(R.id.item2_textView);

@@ -85,8 +85,8 @@ public class Param {
     }
 
 
-    public static final float LANG_DIRECTION_FREQ_DEFAULT = 1.0f;
-    public static float LANG_DIRECTION_FREQ;
+    public static final int LANG_DIRECTION_FREQ_DEFAULT = 0;
+    public static int LANG_DIRECTION_FREQ;
     public static final String LANG_DIRECTION_FREQ_KEY = "lang_direction_freq_key";
 
 }

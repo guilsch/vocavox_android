@@ -72,7 +72,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         if (card != null) {
 
             // Attribute the translation direction
-            this.langDirection = (this.rand.nextDouble() < Param.LANG_DIRECTION_FREQ_DEFAULT) ? 1 : -1;
+            this.langDirection = (this.rand.nextDouble() > Param.LANG_DIRECTION_FREQ / 10) ? 1 : -1;
 
             showQuestionSide();
         }

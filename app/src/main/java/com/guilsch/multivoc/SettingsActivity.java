@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
@@ -19,8 +20,9 @@ public class SettingsActivity extends AppCompatActivity {
 
     private Button langDirectionFreqSaveButton;
     private Button langDirectionFreqDefaultButton;
-    private EditText langDirectionFreqText;
-    private NumberFormat nbrFormat;
+//    private EditText langDirectionFreqText;
+    private SeekBar langDirectionFreqSeekBar;
+//    private NumberFormat nbrFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +43,13 @@ public class SettingsActivity extends AppCompatActivity {
 
 //      Language direction frequency
 
-        this.nbrFormat = NumberFormat.getInstance();
-
         langDirectionFreqSaveButton = (Button) findViewById(R.id.lang_direction_save_button);
         langDirectionFreqDefaultButton = (Button) findViewById(R.id.lang_direction_default_button);
-        langDirectionFreqText = (EditText) findViewById(R.id.lang_direction_freq_edit_text);
-        langDirectionFreqText.setText(this.nbrFormat.format(Param.LANG_DIRECTION_FREQ));
+//        langDirectionFreqText = (EditText) findViewById(R.id.lang_direction_freq_edit_text);
+//        langDirectionFreqText.setText(this.nbrFormat.format(Param.LANG_DIRECTION_FREQ));
+
+        langDirectionFreqSeekBar = findViewById(R.id.lang_direction_freq_seekBar);
+        langDirectionFreqSeekBar.setProgress(Param.LANG_DIRECTION_FREQ);
 
         langDirectionFreqSaveButton.setOnClickListener(view -> langDirectionFreqSaveClick());
         langDirectionFreqDefaultButton.setOnClickListener(view -> langDirectionFreqDefaultClick());
@@ -65,30 +68,14 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void langDirectionFreqSaveClick() {
-
-        String langDirectionFreqString = langDirectionFreqText.getText().toString();
-
-        if (utils.tryAndCheckParseFloat(langDirectionFreqString)) {
-            Param.LANG_DIRECTION_FREQ = Float.parseFloat(langDirectionFreqString);
-            Pref.savePreference(SettingsActivity.this, Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ);
-
-        } else {
-            langDirectionFreqText.setText(this.nbrFormat.format(Param.LANG_DIRECTION_FREQ));
-            Toast toast = Toast.makeText(getApplicationContext(), R.string.settings_lang_direction_freq_error, Toast.LENGTH_SHORT);
-            toast.show();
-        }
-
-        Pref.savePreference(SettingsActivity.this, Param.FOLDER_PATH_KEY, Param.FOLDER_PATH);
+        Param.LANG_DIRECTION_FREQ = langDirectionFreqSeekBar.getProgress();
+        Pref.savePreference(SettingsActivity.this, Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ);
     }
 
     public void langDirectionFreqDefaultClick() {
-
         Param.LANG_DIRECTION_FREQ = Param.LANG_DIRECTION_FREQ_DEFAULT;
-        langDirectionFreqText.setText(this.nbrFormat.format(Param.LANG_DIRECTION_FREQ));
-
-        Param.FOLDER_PATH = Param.FOLDER_PATH_DEFAULT;
-        Pref.savePreference(SettingsActivity.this, Param.FOLDER_PATH_KEY, Param.FOLDER_PATH);
-        folderPathText.setText(Param.FOLDER_PATH);
+        langDirectionFreqSeekBar.setProgress(Param.LANG_DIRECTION_FREQ);
+        Pref.savePreference(SettingsActivity.this, Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ);
     }
 
 

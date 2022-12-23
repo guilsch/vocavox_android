@@ -108,7 +108,7 @@
         android:textSize="8sp"
         app:backgroundTint="#707070"
         app:layout_constraintEnd_toStartOf="@+id/lang_direction_default_button"
-        app:layout_constraintStart_toEndOf="@+id/lang_direction_freq_edit_text"
+        app:layout_constraintStart_toEndOf="@+id/lang_direction_freq_seekBar"
         app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
 
     <Button
@@ -161,14 +161,13 @@
         app:layout_constraintTop_toBottomOf="@+id/folder_path_edit_text" />
 
 
-    <EditText
-        android:id="@+id/lang_direction_freq_edit_text"
-        android:layout_width="179dp"
-        android:layout_height="43dp"
-        android:ems="10"
-        android:inputType="text"
-        android:textSize="12sp"
+    <SeekBar
+        android:id="@+id/lang_direction_freq_seekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="173dp"
+        android:layout_height="39dp"
+        android:max="10"
+        android:progress="3"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>

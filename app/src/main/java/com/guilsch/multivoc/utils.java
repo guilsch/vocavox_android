@@ -517,18 +517,18 @@ public class utils {
         return url.substring(url.lastIndexOf("/") + 1);
     }
 
-    public static boolean tryAndCheckParseFloat(String value) {
-        try {
-            double val = Float.parseFloat(value);
-            if (val >= 0 && val <=1) {
-                return true;
-            }
-            else {
-                return false;
-            }
-
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
+//    public static boolean tryAndCheckParseFloat(String value) {
+//        try {
+//            double val = Float.parseFloat(value);
+//            if (val >= 0 && val <=1) {
+//                return true;
+//            }
+//            else {
+//                return false;
+//            }
+//
+//        } catch (NumberFormatException e) {
+//            return false;
+//        }
+//    }
 }

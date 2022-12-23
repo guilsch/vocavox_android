@@ -10,10 +10,16 @@ import java.util.List;
 public class Param {
 
     public static final String FOLDER_PATH_DEFAULT = "storage/emulated/0/Multivoc/";
+    public static String FOLDER_PATH = "storage/emulated/0/Multivoc/";
     public static final String FOLDER_ID_DEFAULT = "";
     public static final String FILE_ID_UNDEFINED = "undefined";
     public static String DATA_FILE;
     public static String DATA_PATH;
+
+    public static void setDataPath() {
+        DATA_PATH = FOLDER_PATH + DATA_FILE;
+    }
+
 
     public static final String[] TARGET_LANGUAGES = {"English", "German", "French", "Italian", "Russian", "Spanish"};
     public static final String[] USER_LANGUAGES = {"English", "German", "French", "Italian", "Russian", "Spanish"};
@@ -58,35 +64,40 @@ public class Param {
 
     public static String DATA_MIME_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
+    public static final int LANG_DIRECTION_FREQ_DEFAULT = 0;
 
     public static String APP_PREF = "app_pref";
 
-    public static String FOLDER_PATH = "storage/emulated/0/Multivoc/";
-    public static final String FOLDER_PATH_KEY = "folder_path_key";
+    // Cards data
+    public static Deck GLOBAL_DECK;
+    public static int CARDS_TO_REVIEW_NB;
+    public static int CARDS_NB;
+    public static int ACTIVE_CARDS_NB;
+
+
+    // Shared preferences variables
+
+    // Variables
     public static String USER_LANGUAGE = "French";
-    public static final String USER_LANGUAGE_KEY = "user_language_key";
     public static String EN_FILE_ID = "Undefined";
-    public static final String EN_FILE_ID_KEY = "en_file_id_key";
     public static String FR_FILE_ID = "Undefined";
-    public static final String FR_FILE_ID_KEY = "fr_file_id_key";
     public static String GE_FILE_ID = "Undefined";
-    public static final String GE_FILE_ID_KEY = "ge_file_id_key";
     public static String IT_FILE_ID = "Undefined";
-    public static final String IT_FILE_ID_KEY = "it_file_id_key";
     public static String RU_FILE_ID = "Undefined";
-    public static final String RU_FILE_ID_KEY = "ru_file_id_key";
     public static String SP_FILE_ID = "Undefined";
-    public static final String SP_FILE_ID_KEY = "sp_file_id_key";
     public static String FOLDER_ID = "Undefined";
-    public static final String FOLDER_ID_KEY = "folder_id_key";
-
-    public static void setDataPath() {
-        DATA_PATH = FOLDER_PATH + DATA_FILE;
-    }
-
-
-    public static final int LANG_DIRECTION_FREQ_DEFAULT = 0;
     public static int LANG_DIRECTION_FREQ;
+
+    // Keys
+    public static final String FOLDER_PATH_KEY = "folder_path_key";
+    public static final String USER_LANGUAGE_KEY = "user_language_key";
+    public static final String EN_FILE_ID_KEY = "en_file_id_key";
+    public static final String FR_FILE_ID_KEY = "fr_file_id_key";
+    public static final String GE_FILE_ID_KEY = "ge_file_id_key";
+    public static final String IT_FILE_ID_KEY = "it_file_id_key";
+    public static final String RU_FILE_ID_KEY = "ru_file_id_key";
+    public static final String SP_FILE_ID_KEY = "sp_file_id_key";
+    public static final String FOLDER_ID_KEY = "folder_id_key";
     public static final String LANG_DIRECTION_FREQ_KEY = "lang_direction_freq_key";
 
 }

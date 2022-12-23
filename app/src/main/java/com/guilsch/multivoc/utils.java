@@ -97,6 +97,33 @@ public class utils {
 
         // Set File ID
         utils.setFileID();
+
+        // Check data file
+        if (!(new File(Param.DATA_PATH)).exists()) {
+            System.out.println(Param.DATA_PATH + " doesn't exist yet");
+            try {
+                utils.createDataFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            System.out.println(Param.DATA_PATH + " already exists");
+        }
+
+        // Set global deck
+        Param.GLOBAL_DECK = new Deck();
+        Param.GLOBAL_DECK.init();
+
+        // Get deck data (nb of cards to review...)
+        updateDeckDataVariables(Param.GLOBAL_DECK);
+
+    }
+
+    private static void updateDeckDataVariables(Deck deck) {
+        Param.CARDS_TO_REVIEW_NB = deck.getCardsToReviewNb();
+        Param.CARDS_NB = deck.size();
+        Param.ACTIVE_CARDS_NB = deck.getCardsWithStateSNb(1);
     }
 
     public static void setFileID () {
@@ -382,6 +409,8 @@ public class utils {
         long now = System.currentTimeMillis();
         Date currentDate = toDate(now);
         return (currentDate);
+
+        // A voir avec LocalDate.now() (java.time.LocalDate)
     }
 
     public static int getFieldIndex(Row header, String field) {

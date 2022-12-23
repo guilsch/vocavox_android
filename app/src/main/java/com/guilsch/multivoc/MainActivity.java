@@ -81,21 +81,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initAppData() {
-        // Retrieve preferences
+        // Retrieve preferences variables
         Pref.retrieveAllPreferences(this);
-        utils.initParam();
 
-        if (!(new File(Param.DATA_PATH)).exists()) {
-            System.out.println(Param.DATA_PATH + " doesn't exist yet");
-            try {
-                utils.createDataFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        else {
-            System.out.println(Param.DATA_PATH + " already exists");
-        }
+        // Init other static variables
+        utils.initParam();
     }
 
     public void setLanguageVisuals() {

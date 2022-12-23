@@ -2,7 +2,6 @@
     <string name="app_name">Multivoc</string>
     <string name="welcome_msg">Nice to see you</string>
     <string name="see_answer">See answer</string>
-    <string name="menu_msg">Congratulations ! You are on your way to speak a new language, keep going !</string>
     <string name="choose_language">Please select the language you want to learn today</string>
     <string name="wrong">wrong</string>
     <string name="hard">hard</string>
@@ -16,6 +15,11 @@
     <string name="default_setting">Default</string>
     <string name="no_cards_to_learn_message">No cards to learn...</string>
     <string name="settings_lang_direction_freq_error">The frequency must be a number between 0 and 1</string>
+
+    <!-- Menu -->
+    <string name="menu_nb_of_cards_to_review_title_str">Number of cards to review now</string>
+    <string name="menu_nb_of_cards_title_str">Total number of cards</string>
+    <string name="menu_msg">Congratulations ! You are on your way to speak a new language, keep going !</string>
 
     <!-- New Card !-->
     <string name="item1">First word</string>

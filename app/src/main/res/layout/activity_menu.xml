@@ -37,20 +37,20 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/MenuMessage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:fontFamily="@font/oxygen"
-        android:gravity="center"
-        android:padding="20dp"
-        android:text="@string/menu_msg"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_central_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/top_guideline"
-        tools:ignore="MissingConstraints" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/MenuMessage"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:fontFamily="@font/oxygen"-->
+    <!--        android:gravity="center"-->
+    <!--        android:padding="20dp"-->
+    <!--        android:text="@string/menu_msg"-->
+    <!--        android:textSize="18sp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/horizontal_central_guideline"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/right_guideline"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/left_guideline"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/top_guideline"-->
+    <!--        tools:ignore="MissingConstraints" />-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/left_guideline"
@@ -94,7 +94,15 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_first_panel_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_horizontal"
@@ -268,4 +276,66 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/cards_to_review"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/oxygen_bold"
+        android:gravity="center|center_horizontal"
+        android:text=""
+        android:textColor="#00453F"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_first_panel_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/vertical_central_guideline"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/cards_to_review_title"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:gravity="center|top"
+        android:text="@string/menu_nb_of_cards_to_review_title_str"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/vertical_central_guideline"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_first_panel_guideline" />
+
+    <TextView
+        android:id="@+id/total_cards_nb"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/oxygen_bold"
+        android:gravity="center|center_horizontal"
+        android:text=""
+        android:textColor="#00453F"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_first_panel_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/vertical_central_guideline"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/total_cards_nb_title"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:gravity="center|top"
+        android:text="@string/menu_nb_of_cards_title_str"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/vertical_central_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_first_panel_guideline" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

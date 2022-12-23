@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -32,6 +33,10 @@ public class MenuActivity extends AppCompatActivity {
         findViewById(R.id.Translation).setOnClickListener(view -> changeActivity(TranslationActivity.class));
         flag.setOnClickListener((view -> changeActivity(MainActivity.class)));
 
+        TextView mTextViewCardsToReview = findViewById(R.id.cards_to_review);
+        TextView mTextViewTotalCards = findViewById(R.id.total_cards_nb);
+        mTextViewCardsToReview.setText(String.valueOf(Param.CARDS_TO_REVIEW_NB));
+        mTextViewTotalCards.setText(String.valueOf(Param.CARDS_NB));
 
         // Prepare Excel file
         utils.prepareDataFile();

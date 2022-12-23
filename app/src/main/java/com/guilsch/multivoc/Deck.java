@@ -210,4 +210,23 @@ public class Deck extends ArrayList<Card> {
 
     }
 
+    public int getCardsWithStateSNb(int S) {
+        int count = 0;
+        for (Card card : this) {
+            if (card.getState() == S) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int getCardsToReviewNb() {
+        int count = 0;
+        for (Card card : this) {
+            if (card.getNextPracticeDate().before(utils.giveCurrentDate())) {
+                count++;
+            }
+        }
+        return count;
+    }
 }

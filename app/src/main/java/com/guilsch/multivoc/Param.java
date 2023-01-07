@@ -23,12 +23,18 @@ public class Param {
 
     public static final String[] TARGET_LANGUAGES = {"English", "German", "French", "Italian", "Russian", "Spanish"};
     public static final String[] USER_LANGUAGES = {"English", "German", "French", "Italian", "Russian", "Spanish"};
+    public static final String[] USER_LANGUAGES_ISO = {"en", "de", "fr", "it", "ru", "es"};
+
     public static String TARGET_LANGUAGE;
     public static String TARGET_LANGUAGE_ISO;
+
+    public static String USER_LANGUAGE;
     public static String USER_LANGUAGE_ISO;
-    public static String USER_LANGUAGE_DEFAULT = "French";
+    public static String USER_LANGUAGE_DEFAULT = "English";
+    public static String USER_LANGUAGE_ISO_DEFAULT = "en";
 
     public static Drawable FLAG_ICON_TARGET;
+    public static Drawable FLAG_ICON_USER;
 
     public static final String ITEM1_FIELD_NAME = "Item 1";
     public static final String ITEM2_FIELD_NAME = "Item 2";
@@ -78,7 +84,6 @@ public class Param {
     // Shared preferences variables
 
     // Variables
-    public static String USER_LANGUAGE = "French";
     public static String EN_FILE_ID = "Undefined";
     public static String FR_FILE_ID = "Undefined";
     public static String GE_FILE_ID = "Undefined";
@@ -90,7 +95,7 @@ public class Param {
 
     // Keys
     public static final String FOLDER_PATH_KEY = "folder_path_key";
-    public static final String USER_LANGUAGE_KEY = "user_language_key";
+//    public static final String USER_LANGUAGE_KEY = "user_language_key";
     public static final String EN_FILE_ID_KEY = "en_file_id_key";
     public static final String FR_FILE_ID_KEY = "fr_file_id_key";
     public static final String GE_FILE_ID_KEY = "ge_file_id_key";

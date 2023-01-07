@@ -149,7 +149,7 @@
         app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline"
         app:srcCompat="@drawable/ic_de"
         tools:ignore="VectorDrawableCompat"
-        android:visibility="invisible"/>
+        android:visibility="visible"/>
 
     <ImageView
         android:id="@+id/targetLanguageFlag"

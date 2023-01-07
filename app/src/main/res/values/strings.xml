@@ -1,25 +1,29 @@
 <resources>
     <string name="app_name">Multivoc</string>
-    <string name="welcome_msg">Nice to see you</string>
-    <string name="see_answer">See answer</string>
+
+    <!-- Welcome screen -->
     <string name="choose_language">Please select the language you want to learn today</string>
+    <string name="welcome_msg">Nice to see you</string>
+
+    <!-- Question Answer Sides  -->
+    <string name="see_answer">See answer</string>
     <string name="wrong">wrong</string>
     <string name="hard">hard</string>
     <string name="good">good</string>
     <string name="perfect">perfect</string>
+
+    <!-- Finished screens -->
     <string name="end_train">End of training !</string>
     <string name="end_learn">End of learning !</string>
-    <string name="save_setting">Save</string>
-    <string name="folder_path_setting">Folder path :</string>
-    <string name="lang_direction_freq_setting">Language direction frequency :</string>
-    <string name="default_setting">Default</string>
     <string name="no_cards_to_learn_message">No cards to learn...</string>
-    <string name="settings_lang_direction_freq_error">The frequency must be a number between 0 and 1</string>
 
     <!-- Menu -->
     <string name="menu_nb_of_cards_to_review_title_str">Number of cards to review now</string>
     <string name="menu_nb_of_cards_title_str">Total number of cards</string>
     <string name="menu_msg">Congratulations ! You are on your way to speak a new language, keep going !</string>
+    <string name="menu_header_msg">Welcome</string>
+    <string name="menu_revision_title_str">Training</string>
+
 
     <!-- New Card !-->
     <string name="item1">First word</string>
@@ -35,5 +39,11 @@
 
     <!-- Translation !-->
     <string name="no_connection">No internet connection! Cannot be translated!</string>
+
+    <!-- Settings   -->
+    <string name="save_setting">Save</string>
+    <string name="lang_direction_freq_setting">Language direction frequency :</string>
+    <string name="folder_path_setting">Folder path :</string>
+    <string name="default_setting">Default</string>
 
 </resources>

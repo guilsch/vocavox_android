@@ -54,6 +54,7 @@ public class NewCardActivity extends AppCompatActivity {
                 newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), utils.giveCurrentDate(), 0, 0, 0, utils.getNewUUID());
                 newCard.addToDatabase();
                 newCard.info();
+
                 Intent saveCardActivity = new Intent(getApplicationContext(), MenuActivity.class);
                 startActivity(saveCardActivity);
                 finish();

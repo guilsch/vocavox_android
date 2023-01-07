@@ -59,6 +59,7 @@ public class TranslationActivity extends AppCompatActivity {
         userLanguageFlag = findViewById(R.id.userLanguageFlag);
 
         targetLanguageFlag.setImageDrawable(Param.FLAG_ICON_TARGET);
+        userLanguageFlag.setImageDrawable(Param.FLAG_ICON_USER);
 
         OKButton.setOnClickListener(view -> {
             try {

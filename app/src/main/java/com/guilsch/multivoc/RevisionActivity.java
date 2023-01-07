@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
@@ -50,6 +51,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
             this.rand = new Random();
             this.revisionQueue = new LinkedList<>();
 
+            Collections.shuffle(deck, new Random());
             // Adding deck's cards to the queue
             for (Card card : this.deck) {
                 this.revisionQueue.add(card);
@@ -121,6 +123,8 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         mBackToMenuRevisionButton = findViewById(R.id.end_of_revision_back_to_menu);
         mBackToMenuRevisionButton.setOnClickListener(this);
+
+        utils.updateDeckDataVariables(Param.GLOBAL_DECK);
     }
 
     private void showQuestionSide() {

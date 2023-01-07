@@ -19,23 +19,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 public class utils {
-
-//    public static List<Integer> getFieldsIndexFromHeader(Row header) {
-//        List<Integer> indexList = new ArrayList<Integer>(Param.FIELDS_NB);
-//
-//        for (ListIterator<String> fieldsListIterator = Param.FIELDS.listIterator(); fieldsListIterator.hasNext(); ) {
-//            indexList.add(utils.getHeaderIndex(header, fieldsListIterator.next()));
-//        }
-//
-//        return indexList;
-//    }
 
     public static void cleanDataFile() {
         try {
@@ -84,11 +77,26 @@ public class utils {
         }
     }
 
+    public static void setUserLanguageParam(){
+        Locale userLocale = Locale.getDefault();
+        String localeLanguageISO = userLocale.getLanguage();
+
+        if (Arrays.asList(Param.USER_LANGUAGES_ISO).contains(localeLanguageISO)) {
+            Param.USER_LANGUAGE_ISO = localeLanguageISO;
+            Param.USER_LANGUAGE = utils.getLanguageNameFromISO(Param.USER_LANGUAGE_ISO);
+        }
+        else {
+            Param.USER_LANGUAGE_ISO = Param.USER_LANGUAGE_ISO_DEFAULT;
+            Param.USER_LANGUAGE = Param.USER_LANGUAGE_DEFAULT;
+        }
+    }
 
     public static void initParam() {
 
-        // Set languages variables
-        Param.USER_LANGUAGE_ISO = utils.getLanguageISOName(Param.USER_LANGUAGE);
+        // Set user language from locale
+        setUserLanguageParam();
+
+        // Set target languages variables
         Param.TARGET_LANGUAGE_ISO = utils.getLanguageISOName(Param.TARGET_LANGUAGE);
 
         // Set Data path
@@ -120,7 +128,7 @@ public class utils {
 
     }
 
-    private static void updateDeckDataVariables(Deck deck) {
+    public static void updateDeckDataVariables(Deck deck) {
         Param.CARDS_TO_REVIEW_NB = deck.getCardsToReviewNb();
         Param.CARDS_NB = deck.size();
         Param.ACTIVE_CARDS_NB = deck.getCardsWithStateSNb(1);
@@ -269,6 +277,42 @@ public class utils {
 
             case "Spanish":
                 languageStringName = "es";
+                break;
+
+            default:
+                languageStringName = "unknown";
+                break;
+        }
+
+        return languageStringName;
+    }
+
+    public static String getLanguageNameFromISO(String languageISO) {
+        String languageStringName;
+
+        switch (languageISO) {
+            case "en":
+                languageStringName = "English";
+                break;
+
+            case "de":
+                languageStringName = "German";
+                break;
+
+            case "fr":
+                languageStringName = "French";
+                break;
+
+            case "it":
+                languageStringName = "Italian";
+                break;
+
+            case "ru":
+                languageStringName = "Russian";
+                break;
+
+            case "es":
+                languageStringName = "Spanish";
                 break;
 
             default:

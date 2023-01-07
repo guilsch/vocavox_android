@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -15,10 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,10 +52,9 @@ public class MainActivity extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Param.TARGET_LANGUAGE = spinner.getSelectedItem().toString();
-                setLanguageVisuals();
-
                 start.setTextColor(getResources().getColor(R.color.button_std_text_on_click));
+
+                Param.TARGET_LANGUAGE = spinner.getSelectedItem().toString();
 
                 progressBar.setVisibility(View.VISIBLE);
 
@@ -86,12 +80,53 @@ public class MainActivity extends AppCompatActivity {
 
         // Init other static variables
         utils.initParam();
+
+        // Set user and target language flag
+        setUserLanguageVisuals();
+        setTargetLanguageVisuals();
+
     }
 
-    public void setLanguageVisuals() {
+    public void setUserLanguageVisuals() {
+        switch (Param.USER_LANGUAGE) {
+            case "English" :
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_gb);
+                break;
+
+            case "French" :
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_fr);
+                break;
+
+            case "German" :
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_de);
+                break;
+
+            case "Italian" :
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_it);
+                break;
+
+            case "Russian" :
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_ru);
+                break;
+
+            case "Spanish" :
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_es);
+                break;
+
+            default:
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_lang_default);
+                break;
+        }
+    }
+
+    public void setTargetLanguageVisuals() {
         switch (Param.TARGET_LANGUAGE) {
             case "English" :
                 Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_gb);
+                break;
+
+            case "French" :
+                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_fr);
                 break;
 
             case "German" :

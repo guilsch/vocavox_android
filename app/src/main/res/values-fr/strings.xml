@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Multivoc</string>
+
+    <!-- Welcome screen -->
+    <string name="choose_language">Sélectionnez la langue que vous voulez apprendre maintenant</string>
+    <string name="welcome_msg">Bienvenue</string>
+
+    <!-- Question Answer Sides  -->
+    <string name="see_answer">Voir la réponse</string>
+    <string name="wrong">faux</string>
+    <string name="hard">difficile</string>
+    <string name="good">bien</string>
+    <string name="perfect">parfait</string>
+
+    <!-- Finished screens -->
+    <string name="end_train">Fin de l\'entraînement !</string>
+    <string name="end_learn">Fin de l\'apprentissage !</string>
+    <string name="no_cards_to_learn_message">No cards to learn...</string>
+
+    <!-- Menu -->
+    <string name="menu_nb_of_cards_to_review_title_str">Nombre de cartes à revoir aujourd\'hui</string>
+    <string name="menu_nb_of_cards_title_str">Nombre total de cartes</string>
+    <string name="menu_msg">Fécilitations ! Vous êtes bien parti pour apprendre une nouvelle langue, continuez !</string>
+    <string name="menu_header_msg">Bienvenue</string>
+
+    <string name="menu_revision_title_str">Entraînement</string>
+
+
+    <!-- New Card !-->
+    <string name="item1">Mot en français</string>
+    <string name="item2">Traduction</string>
+    <string name="pack">Pack</string>
+    <string name="next_date">Date de la prochaine révision</string>
+    <string name="save_card">Sauvegarder</string>
+    <string name="next_new_card">Nouvelle</string>
+    <string name="card_state">Etat actuel</string>
+
+    <!-- Start !-->
+    <string name="start_button">Commencer</string>
+
+    <!-- Translation !-->
+    <string name="no_connection">Pas de connexion Internet ! Traduction impossible !</string>
+
+    <!-- Settings   -->
+    <string name="save_setting">Sauvegarder</string>
+    <string name="lang_direction_freq_setting">Proportion de cartes revues dans le sens inverse :</string>
+    <string name="folder_path_setting">Chemin du dossier :</string>
+    <string name="default_setting">Défaut</string>
+    <string name="settings_lang_direction_freq_error">Doit être entre 0 et 1</string>
+
+</resources>

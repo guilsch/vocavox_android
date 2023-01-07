@@ -5,13 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.io.IOException;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -25,12 +20,12 @@ public class MenuActivity extends AppCompatActivity {
 
         flag = findViewById(R.id.flag);
 
-        findViewById(R.id.Revision).setOnClickListener(view -> changeActivity(RevisionActivity.class));
-        findViewById(R.id.Settings).setOnClickListener(view -> changeActivity(SettingsActivity.class));
-        findViewById(R.id.Learning).setOnClickListener(view -> changeActivity(LearnActivity.class));
-        findViewById(R.id.Explore).setOnClickListener(view -> changeActivity(ExploreActivity.class));
-        findViewById(R.id.New_Card).setOnClickListener(view -> changeActivity(NewCardActivity.class));
-        findViewById(R.id.Translation).setOnClickListener(view -> changeActivity(TranslationActivity.class));
+        findViewById(R.id.menu_revision).setOnClickListener(view -> changeActivity(RevisionActivity.class));
+        findViewById(R.id.menu_settings).setOnClickListener(view -> changeActivity(SettingsActivity.class));
+        findViewById(R.id.menu_learning).setOnClickListener(view -> changeActivity(LearnActivity.class));
+        findViewById(R.id.menu_explore).setOnClickListener(view -> changeActivity(ExploreActivity.class));
+        findViewById(R.id.menu_new_card).setOnClickListener(view -> changeActivity(NewCardActivity.class));
+        findViewById(R.id.menu_translation).setOnClickListener(view -> changeActivity(TranslationActivity.class));
         flag.setOnClickListener((view -> changeActivity(MainActivity.class)));
 
         TextView mTextViewCardsToReview = findViewById(R.id.cards_to_review);

@@ -17,7 +17,7 @@ public class Pref {
     public static void saveAllPreferences (Context context) {
         SharedPreferences.Editor editor = getPrefs(context).edit();
         editor.putString(Param.FOLDER_PATH_KEY, Param.FOLDER_PATH);
-        editor.putString(Param.USER_LANGUAGE_KEY, Param.USER_LANGUAGE);
+//        editor.putString(Param.USER_LANGUAGE_KEY, Param.USER_LANGUAGE);
         editor.putString(Param.EN_FILE_ID_KEY, Param.EN_FILE_ID);
         editor.putString(Param.FR_FILE_ID_KEY, Param.FR_FILE_ID);
         editor.putString(Param.GE_FILE_ID_KEY, Param.GE_FILE_ID);
@@ -30,7 +30,7 @@ public class Pref {
 
     public static void retrieveAllPreferences (Context context) {
         SharedPreferences.Editor editor = getPrefs(context).edit();
-        Param.USER_LANGUAGE = getPrefs(context).getString(Param.USER_LANGUAGE_KEY, Param.USER_LANGUAGE_DEFAULT);
+//        Param.USER_LANGUAGE = getPrefs(context).getString(Param.USER_LANGUAGE_KEY, Param.USER_LANGUAGE_DEFAULT);
         Param.FOLDER_PATH = getPrefs(context).getString(Param.FOLDER_PATH_KEY, Param.FOLDER_PATH_DEFAULT);
         Param.EN_FILE_ID = getPrefs(context).getString(Param.EN_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
         Param.FR_FILE_ID = getPrefs(context).getString(Param.FR_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);

@@ -50,7 +50,7 @@
         android:background="@color/blue7"
         android:fontFamily="@font/oxygen_bold"
         android:gravity="center"
-        android:text="Settings"
+        android:text="@string/settings_header"
         android:textColor="@color/white"
         android:textSize="@dimen/header"
         android:textStyle="bold"

@@ -223,7 +223,7 @@ public class Deck extends ArrayList<Card> {
     public int getCardsToReviewNb() {
         int count = 0;
         for (Card card : this) {
-            if (card.getNextPracticeDate().before(utils.giveCurrentDate())) {
+            if (card.getNextPracticeDate().before(utils.giveCurrentDate()) && card.getState() == 1) {
                 count++;
             }
         }

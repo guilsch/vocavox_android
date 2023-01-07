@@ -63,7 +63,7 @@
         android:background="@color/navy1"
         android:fontFamily="@font/oxygen_bold"
         android:gravity="center"
-        android:text="Edit new card"
+        android:text="@string/translate_header"
         android:textColor="@color/white"
         android:textSize="@dimen/header"
         android:textStyle="bold"

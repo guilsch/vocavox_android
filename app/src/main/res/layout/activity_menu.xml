@@ -113,7 +113,7 @@
         app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline">
 
         <LinearLayout
-            android:id="@+id/menu_revision"
+            android:id="@+id/menu_train"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_weight="1"
@@ -121,7 +121,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/menu_revision_image"
+                android:id="@+id/menu_train_image"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center"
@@ -129,11 +129,11 @@
                 tools:ignore="VectorDrawableCompat" />
 
             <TextView
-                android:id="@+id/menu_revision_title"
+                android:id="@+id/menu_train_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/menu_revision_title_str"
+                android:text="@string/menu_train_title_str"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -158,7 +158,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="New Card"
+                android:text="@string/menu_new_card_title_str"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -183,7 +183,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Explore"
+                android:text="@string/menu_explore_title_str"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -220,7 +220,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Learning"
+                android:text="@string/menu_learn_title_str"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -245,7 +245,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Translation"
+                android:text="@string/menu_translate_title_str"
                 android:textAlignment="center" />
         </LinearLayout>
 
@@ -271,7 +271,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Setting"
+                android:text="@string/menu_settings_title_str"
                 android:textAlignment="center" />
         </LinearLayout>
 

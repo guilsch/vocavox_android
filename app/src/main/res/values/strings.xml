@@ -22,10 +22,17 @@
     <string name="menu_nb_of_cards_title_str">Total number of cards</string>
     <string name="menu_msg">Congratulations ! You are on your way to speak a new language, keep going !</string>
     <string name="menu_header_msg">Welcome</string>
-    <string name="menu_revision_title_str">Training</string>
+
+    <string name="menu_train_title_str">Train</string>
+    <string name="menu_learn_title_str">Learn</string>
+    <string name="menu_new_card_title_str">New Card</string>
+    <string name="menu_translate_title_str">Translate</string>
+    <string name="menu_explore_title_str">Explore</string>
+    <string name="menu_settings_title_str">Settings</string>
 
 
     <!-- New Card !-->
+    <string name="new_card_header">Edit new card</string>
     <string name="item1">First word</string>
     <string name="item2">Second word</string>
     <string name="pack">Pack</string>
@@ -38,12 +45,26 @@
     <string name="start_button">Start</string>
 
     <!-- Translation !-->
+    <string name="translate_header">Translate</string>
     <string name="no_connection">No internet connection! Cannot be translated!</string>
 
+    <!--  Explore !-->
+    <string name="explore_header">Explore</string>
+
     <!-- Settings   -->
+    <string name="settings_header">Settings</string>
     <string name="save_setting">Save</string>
     <string name="lang_direction_freq_setting">Language direction frequency :</string>
     <string name="folder_path_setting">Folder path :</string>
     <string name="default_setting">Default</string>
+
+    <!-- Learn   -->
+    <string name="learn_header_str">Learn</string>
+    <string name="learn_select_cards_msg_str">Select the cards to learn :</string>
+
+    <!-- Buttons   -->
+    <string name="button_start">Start</string>
+    <string name="button_save">Save</string>
+    <string name="button_cancel">Cancel</string>
 
 </resources>

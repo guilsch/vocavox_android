@@ -23,10 +23,16 @@
     <string name="menu_msg">Fécilitations ! Vous êtes bien parti pour apprendre une nouvelle langue, continuez !</string>
     <string name="menu_header_msg">Bienvenue</string>
 
-    <string name="menu_revision_title_str">Entraînement</string>
+    <string name="menu_train_title_str">Réviser</string>
+    <string name="menu_learn_title_str">Apprendre</string>
+    <string name="menu_new_card_title_str">Nouvelle carte</string>
+    <string name="menu_translate_title_str">Traduire</string>
+    <string name="menu_explore_title_str">Explorer</string>
+    <string name="menu_settings_title_str">Paramètres</string>
 
 
     <!-- New Card !-->
+    <string name="new_card_header">Editer une nouvelle carte</string>
     <string name="item1">Mot en français</string>
     <string name="item2">Traduction</string>
     <string name="pack">Pack</string>
@@ -39,13 +45,27 @@
     <string name="start_button">Commencer</string>
 
     <!-- Translation !-->
+    <string name="translate_header">Traduire</string>
     <string name="no_connection">Pas de connexion Internet ! Traduction impossible !</string>
 
+    <!--  Explore !-->
+    <string name="explore_header">Explorer</string>
+
     <!-- Settings   -->
+    <string name="settings_header">Paramètres</string>
     <string name="save_setting">Sauvegarder</string>
     <string name="lang_direction_freq_setting">Proportion de cartes revues dans le sens inverse :</string>
     <string name="folder_path_setting">Chemin du dossier :</string>
     <string name="default_setting">Défaut</string>
-    <string name="settings_lang_direction_freq_error">Doit être entre 0 et 1</string>
+
+    <!-- Learn   -->
+    <string name="learn_header_str">Apprendre</string>
+    <string name="learn_select_cards_msg_str">Sélectionner les cartes à apprendre :</string>
+
+    <!-- Buttons   -->
+    <string name="button_start">Commencer</string>
+    <string name="button_save">Sauvegarder</string>
+    <string name="button_cancel">Annuler</string>
+
 
 </resources>

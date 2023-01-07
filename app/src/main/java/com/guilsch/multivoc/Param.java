@@ -64,8 +64,6 @@ public class Param {
     public static final int DEFAULT_EF = 0;
     public static final int DEFAULT_INTER = 0;
 
-//    public static String FOLDER_ID = "1JEIT59Bq_2zxyhDgZRuBtPtXyTufeG4-";
-//    public static String FILE_ID = "12JOEr-6m5tsoLvg3RF14vLMvJhPPdohQ";
     public static String FILE_ID;
 
     public static String DATA_MIME_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";

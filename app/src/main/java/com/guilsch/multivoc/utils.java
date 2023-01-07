@@ -248,7 +248,7 @@ public class utils {
     }
 
     public static String generateDataFileName () {
-        return Param.USER_LANGUAGE_ISO + "_" + Param.TARGET_LANGUAGE_ISO + ".xlsx";
+        return "words_database_" + Param.TARGET_LANGUAGE_ISO + ".xlsx";
     }
 
     public static String getLanguageISOName(String language) {

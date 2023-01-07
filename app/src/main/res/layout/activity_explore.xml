@@ -57,7 +57,7 @@
         android:background="@color/blue7"
         android:fontFamily="@font/oxygen_bold"
         android:gravity="center"
-        android:text="Explore"
+        android:text="@string/explore_header"
         android:textColor="@color/white"
         android:textSize="@dimen/header"
         android:textStyle="bold"

@@ -35,7 +35,7 @@
         app:layout_constraintGuide_percent="0.927" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_central_guideline"
+        android:id="@+id/horizontal_guideline_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -79,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline" />
+        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
 
     <Button
         android:id="@+id/end_of_learning_back_to_menu"

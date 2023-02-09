@@ -18,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Multivoc"
         android:usesCleartextTraffic="true">
+        <activity android:name=".FirstLaunchActivity"></activity>
         <activity android:name=".EditCardActivity" />
         <activity android:name=".NewCardActivity" />
         <activity android:name=".ExploreActivity" />

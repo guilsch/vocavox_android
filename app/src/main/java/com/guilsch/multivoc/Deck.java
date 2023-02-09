@@ -9,9 +9,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Queue;
 import java.util.function.Predicate;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -228,5 +232,75 @@ public class Deck extends ArrayList<Card> {
             }
         }
         return count;
+    }
+
+    public void updateDeckDataVariables() {
+        Param.CARDS_TO_REVIEW_NB = this.getCardsToReviewNb();
+        Param.CARDS_NB = this.size();
+        Param.ACTIVE_CARDS_NB = this.getCardsWithStateSNb(1);
+    }
+
+    /**
+     * Returns a queue containing all cards to be trained in random order
+     */
+    public Queue<Card> getTrainingQueue() {
+
+        Queue<Card> revision_queue = new LinkedList<>();
+        Predicate<Card> pred = x -> x.getNextPracticeDate().compareTo(utils.giveCurrentDate())
+                < 0 && x.getState() == Param.ACTIVE;
+
+        Iterator<Card> iterator = this.iterator();
+        while (iterator.hasNext()) {
+            Card card = iterator.next();
+
+            if (pred.test(card)) {
+                revision_queue.add(card);
+            }
+        }
+
+        // Shuffle the queue
+        List<Card> list_to_shuffle = new LinkedList<>(revision_queue);
+        Collections.shuffle(list_to_shuffle);
+        revision_queue = new LinkedList<>(list_to_shuffle);
+
+        return revision_queue;
+    }
+
+//    public void updateCardInDeck(String uuid) {
+//        Iterator<Card> iterator = this.iterator();
+//    }
+
+    /**
+     * Iterates over all deck cards and for the cards with a uuid that is one of the uuid of a card
+     * in the queue, modifies the card in the deck from the card in the queue and save it in the datafile
+     */
+    public void updateDeckAndDatabaseFromQueue(Queue<Card> cardsQueue) {
+
+        Card cardInDeck;
+        Card cardInQueue;
+        String uuidIteration;
+        int indexInQueue;
+        List<Card> processedCardsList = utils.getCardsListFromCardsQueue(cardsQueue);
+        List<String> uuidList = utils.getUUIDListFromCardsQueue(cardsQueue);
+
+        // Iterate over the cards in the deck
+        Iterator<Card> iterator = this.iterator();
+        while (iterator.hasNext()) {
+            cardInDeck = iterator.next();
+            uuidIteration = cardInDeck.getUuid();
+
+            // Look for cards which have the same uuid than those in the queue
+            if (uuidList.contains(uuidIteration)) {
+                // Take the corresponding card in the queue
+                indexInQueue = uuidList.indexOf(uuidIteration);
+                cardInQueue = processedCardsList.get(indexInQueue);
+
+                // Make the changes in the deck and in the Excel datafile
+                cardInDeck.updateParameters(cardInQueue.getNextPracticeDate(),
+                        cardInQueue.getRepetitions(), cardInQueue.getEasinessFactor(),
+                        cardInQueue.getInterval());
+                cardInDeck.updateInDatabase();
+            }
+        }
     }
 }

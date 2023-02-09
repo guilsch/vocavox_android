@@ -36,7 +36,7 @@
         app:layout_constraintGuide_percent="0.927" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_central_guideline"
+        android:id="@+id/horizontal_guideline_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -120,7 +120,7 @@
         android:layout_height="30dp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1"
         app:srcCompat="@drawable/ic_de"
         tools:ignore="VectorDrawableCompat" />
 
@@ -143,7 +143,7 @@
         app:layout_constraintBottom_toTopOf="@+id/horizontal_middle_central_guideline"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toEndOf="@+id/userLanguageFlag"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline" />
+        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
 
     <EditText
         android:id="@+id/targetLanguageText"

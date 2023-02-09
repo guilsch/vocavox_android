@@ -6,6 +6,7 @@
     <string name="welcome_msg">Bienvenue</string>
 
     <!-- Question Answer Sides  -->
+    <string name="revision_header">Révision</string>
     <string name="see_answer">Voir la réponse</string>
     <string name="wrong">faux</string>
     <string name="hard">difficile</string>
@@ -67,5 +68,7 @@
     <string name="button_save">Sauvegarder</string>
     <string name="button_cancel">Annuler</string>
 
+    <!-- First Time  -->
+    <string name="first_time_path_msg_str">Entrez l\'emplacement du dossier où les fichers Excel regroupant vos mots doivent être enregistrés</string>
 
 </resources>

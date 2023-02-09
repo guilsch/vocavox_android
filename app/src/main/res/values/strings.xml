@@ -6,6 +6,7 @@
     <string name="welcome_msg">Nice to see you</string>
 
     <!-- Question Answer Sides  -->
+    <string name="revision_header">Revision</string>
     <string name="see_answer">See answer</string>
     <string name="wrong">wrong</string>
     <string name="hard">hard</string>
@@ -66,5 +67,8 @@
     <string name="button_start">Start</string>
     <string name="button_save">Save</string>
     <string name="button_cancel">Cancel</string>
+
+    <!-- First Time  -->
+    <string name="first_time_path_msg_str">Enter the location of the directory where the Excel files containing your words must be saved</string>
 
 </resources>

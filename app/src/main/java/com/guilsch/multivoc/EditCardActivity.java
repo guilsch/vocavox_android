@@ -2,7 +2,6 @@ package com.guilsch.multivoc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,7 +52,7 @@ public class EditCardActivity extends AppCompatActivity {
         card.setPack(packText.getText().toString());
         card.setState(utils.getIntStateFromString((String) setStateButton.getText()));
 
-        card.updateDatabase();
+        card.updateInDatabase();
 
 //        ExploreActivity.deck.init();
         finish();

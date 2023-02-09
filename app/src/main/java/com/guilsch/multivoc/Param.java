@@ -1,12 +1,17 @@
 package com.guilsch.multivoc;
 
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * This class contains all the global parameters of the application. The -_DEFAULT parameters are
+ * default constant parameters.
+ *
+ *
+ * @author Guilhem Schena
+ */
 public class Param {
 
     public static final String FOLDER_PATH_DEFAULT = "storage/emulated/0/Multivoc/";
@@ -46,9 +51,9 @@ public class Param {
     public static final String INTERVAL_FIELD_NAME = "Interval";
     public static final String UUID_FIELD_NAME = "UUID";
 
-    public static final List<String> FIELDS = Arrays.asList(ITEM1_FIELD_NAME, ITEM2_FIELD_NAME, PACK_FIELD_NAME,
-            STATE_FIELD_NAME, NEXT_DATE_FIELD_NAME, REPETITIONS_FIELD_NAME, EF_FIELD_NAME,
-            INTERVAL_FIELD_NAME, UUID_FIELD_NAME);
+    public static final List<String> FIELDS = Arrays.asList(ITEM1_FIELD_NAME, ITEM2_FIELD_NAME,
+            PACK_FIELD_NAME, STATE_FIELD_NAME, NEXT_DATE_FIELD_NAME, REPETITIONS_FIELD_NAME,
+            EF_FIELD_NAME, INTERVAL_FIELD_NAME, UUID_FIELD_NAME);
     public static final int FIELDS_NB = 9;
 
 
@@ -65,8 +70,6 @@ public class Param {
     public static final int DEFAULT_INTER = 0;
 
     public static String FILE_ID;
-
-    public static String DATA_MIME_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
     public static final int LANG_DIRECTION_FREQ_DEFAULT = 0;
 
@@ -102,5 +105,11 @@ public class Param {
     public static final String SP_FILE_ID_KEY = "sp_file_id_key";
     public static final String FOLDER_ID_KEY = "folder_id_key";
     public static final String LANG_DIRECTION_FREQ_KEY = "lang_direction_freq_key";
+
+
+    // First launch check
+    public static Boolean FIRST_LAUNCH = Boolean.TRUE;
+    public static final String FIRST_LAUNCH_KEY = "first_launch_key";
+
 
 }

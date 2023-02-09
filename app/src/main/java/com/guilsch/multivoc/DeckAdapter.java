@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 
 public class DeckAdapter extends BaseAdapter {
@@ -92,7 +90,7 @@ public class DeckAdapter extends BaseAdapter {
 
     private void onStateButtonPressed(int i) {
         deck.get(i).setState(utils.nextStateForButton(deck.get(i).getState()));
-        deck.get(i).updateDatabase();
+        deck.get(i).updateInDatabase();
         setStateButton.setText(utils.getStringStateFromInt(deck.get(i).getState()));
     }
 

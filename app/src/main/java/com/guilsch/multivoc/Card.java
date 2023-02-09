@@ -56,7 +56,7 @@ public class Card implements Serializable {
         this.setInterval(interval);
     }
 
-    public void updateDatabase() {
+    public void updateInDatabase() {
         try {
 
             FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));

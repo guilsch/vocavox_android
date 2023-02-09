@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,16 +26,33 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ////// Retrieve preferences variables
+        Pref.retrieveAllPreferences(this);
+
+//        if (Param.FIRST_LAUNCH) {
+//            Intent intent = new Intent(this, FirstLaunchActivity.class);
+//            startActivity(intent);
+//        }
+
+        ////// Setup visuals
         setContentView(R.layout.activity_main);
 
-        this.start = (Button) findViewById(R.id.start);
-        this.spinner = (Spinner) findViewById(R.id.spinner);
-        this.progressBar = findViewById(R.id.progressBar);
+        start = (Button) findViewById(R.id.start);
+        spinner = (Spinner) findViewById(R.id.spinner);
+        progressBar = findViewById(R.id.progressBar);
 
+
+        ////// Manage events
+
+        // Spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Param.TARGET_LANGUAGES);
         spinner.setAdapter(adapter);
 
-        // Permissions
+        // Buttons
+        start.setOnClickListener(v -> onStartClick());
+
+        /////// Permissions
         String[] permissionsStorage = {Manifest.permission.READ_EXTERNAL_STORAGE};
         int requestExternalStorage = 1;
         int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
@@ -48,23 +66,24 @@ public class MainActivity extends AppCompatActivity {
         if (writePermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, permissionsWriteStorage, requestWriteExternalStorage);
         }
+    }
 
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                start.setTextColor(getResources().getColor(R.color.button_std_text_on_click));
+    /**
+     * Occurs when the start button has been pressed. Prepares the launch of menuActivity.
+     */
+    private void onStartClick() {
+        start.setTextColor(getResources().getColor(R.color.button_std_text_on_click));
 
-                Param.TARGET_LANGUAGE = spinner.getSelectedItem().toString();
+        // Defines target language
+        Param.TARGET_LANGUAGE = spinner.getSelectedItem().toString();
 
-                progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
 
-                initAppData();
+        initAppData();
 
-                Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
-                startActivity(menuActivity);
-                finish();
-            }
-        });
+        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        startActivity(menuActivity);
+        finish();
     }
 
     @Override
@@ -74,12 +93,16 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Setup after target language has been chosen by user.
+     * Init non-preferences parameters and flags for visual
+     */
     public void initAppData() {
-        // Retrieve preferences variables
-        Pref.retrieveAllPreferences(this);
-
         // Init other static variables
         utils.initParam();
+
+        // Clean excel data file
+        utils.prepareDataFile();
 
         // Set user and target language flag
         setUserLanguageVisuals();
@@ -87,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Depending on the user language setup in the parameters, defines the corresponding flag in
+     * the parameter FLAG_ICON_USER used in the visuals
+     */
     public void setUserLanguageVisuals() {
         switch (Param.USER_LANGUAGE) {
             case "English" :
@@ -119,6 +146,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Depending on the target language setup in the parameters, defines the corresponding flag in
+     * the parameter FLAG_ICON_TARGET used in the visuals
+     */
     public void setTargetLanguageVisuals() {
         switch (Param.TARGET_LANGUAGE) {
             case "English" :

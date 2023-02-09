@@ -2,9 +2,14 @@ package com.guilsch.multivoc;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import java.util.Set;
 
+/**
+ * This class contains all methods used to manage preferences. Preferences are saved to be retrieved
+ * after the application or the device is turned down
+ *
+ * @author Guilhem Schena
+ */
 public class Pref {
 
     SharedPreferences prefs;
@@ -17,7 +22,6 @@ public class Pref {
     public static void saveAllPreferences (Context context) {
         SharedPreferences.Editor editor = getPrefs(context).edit();
         editor.putString(Param.FOLDER_PATH_KEY, Param.FOLDER_PATH);
-//        editor.putString(Param.USER_LANGUAGE_KEY, Param.USER_LANGUAGE);
         editor.putString(Param.EN_FILE_ID_KEY, Param.EN_FILE_ID);
         editor.putString(Param.FR_FILE_ID_KEY, Param.FR_FILE_ID);
         editor.putString(Param.GE_FILE_ID_KEY, Param.GE_FILE_ID);
@@ -28,9 +32,13 @@ public class Pref {
         editor.commit();
     }
 
+    /**
+     * Retrieves all preferences saved in the parameters, uses default parameters if nothing has
+     * been previously saved
+     */
     public static void retrieveAllPreferences (Context context) {
         SharedPreferences.Editor editor = getPrefs(context).edit();
-//        Param.USER_LANGUAGE = getPrefs(context).getString(Param.USER_LANGUAGE_KEY, Param.USER_LANGUAGE_DEFAULT);
+        Param.FIRST_LAUNCH = getPrefs(context).getBoolean(Param.FIRST_LAUNCH_KEY, Boolean.TRUE);
         Param.FOLDER_PATH = getPrefs(context).getString(Param.FOLDER_PATH_KEY, Param.FOLDER_PATH_DEFAULT);
         Param.EN_FILE_ID = getPrefs(context).getString(Param.EN_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
         Param.FR_FILE_ID = getPrefs(context).getString(Param.FR_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
@@ -43,6 +51,10 @@ public class Pref {
         editor.commit();
     }
 
+    /**
+     * Saves a preference which can be a String, an Integer or a Boolean. The preference will be
+     * retrieve after the application or the device is turned on
+     */
     public static <T> void savePreference(Context context, String key, T value){
         SharedPreferences.Editor editor = getPrefs(context).edit();
 
@@ -52,8 +64,11 @@ public class Pref {
         else if (value instanceof Integer){
             editor.putInt(key, (Integer) value);
         }
+        else if (value instanceof Boolean) {
+            editor.putBoolean(key, (Boolean) value);
+        }
         else {
-            AssertionError error = new AssertionError("Preference to be saved is not a String or an Integer");
+            AssertionError error = new AssertionError("Preference to be saved is not a String, an Integer or a Boolean");
             throw error;
         }
 

@@ -11,9 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class LearnActivity extends AppCompatActivity implements View.OnClickListener {
@@ -98,7 +96,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private void setCardParam(int quality) {
         this.card.setState(Param.ACTIVE);
         MemoAlgo.SuperMemo2(this.card, quality);
-        this.card.updateDatabase();
+        this.card.updateInDatabase();
     }
 
     private void NextOrEnd() {

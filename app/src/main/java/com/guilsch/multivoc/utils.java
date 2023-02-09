@@ -1,6 +1,15 @@
 package com.guilsch.multivoc;
 
+import android.content.ContentUris;
 import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
+
+import androidx.annotation.RequiresApi;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -26,6 +35,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Queue;
 import java.util.UUID;
 
 public class utils {
@@ -124,14 +134,8 @@ public class utils {
         Param.GLOBAL_DECK.init();
 
         // Get deck data (nb of cards to review...)
-        updateDeckDataVariables(Param.GLOBAL_DECK);
+        Param.GLOBAL_DECK.updateDeckDataVariables();
 
-    }
-
-    public static void updateDeckDataVariables(Deck deck) {
-        Param.CARDS_TO_REVIEW_NB = deck.getCardsToReviewNb();
-        Param.CARDS_NB = deck.size();
-        Param.ACTIVE_CARDS_NB = deck.getCardsWithStateSNb(1);
     }
 
     public static void setFileID () {
@@ -590,18 +594,26 @@ public class utils {
         return url.substring(url.lastIndexOf("/") + 1);
     }
 
-//    public static boolean tryAndCheckParseFloat(String value) {
-//        try {
-//            double val = Float.parseFloat(value);
-//            if (val >= 0 && val <=1) {
-//                return true;
-//            }
-//            else {
-//                return false;
-//            }
-//
-//        } catch (NumberFormatException e) {
-//            return false;
-//        }
-//    }
+    /**
+     * Returns a list containing all uuid from the cards in the provided queue
+     */
+    public static List<String> getUUIDListFromCardsQueue(Queue<Card> queue) {
+        List<String> uuidList = new ArrayList<String>();
+
+        Iterator<Card> iterator = queue.iterator();
+        while (iterator.hasNext()) {
+            uuidList.add(iterator.next().getUuid());
+        }
+
+        return uuidList;
+    }
+
+    /**
+     * Get a list of cards containing all the cards in the queue
+     * @param cardsQueue
+     * @return
+     */
+    public static List<Card> getCardsListFromCardsQueue(Queue<Card> cardsQueue) {
+        return Arrays.asList(cardsQueue.toArray(new Card[0]));
+    }
 }

@@ -10,27 +10,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
+/**
+ * This class is the activity corresponding to the revision activity
+ *
+ * @author Guilhem Schena
+ */
 public class RevisionActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView mTextViewQuestion;
+    // Layout
     private Button mSeeAnswerButton;
-
     private Button mAnswerButton1;
     private Button mAnswerButton2;
     private Button mAnswerButton3;
     private Button mAnswerButton4;
-
     private Button mBackToMenuRevisionButton;
 
-    private Deck deck;
-    private Card card;
-    private static Queue<Card> revisionQueue;
+    private TextView mTextViewQuestion;
+    private TextView mAnswerHeader;
+    private TextView mQuestionHeader;
 
+    // Variables
+    private Card currentCard;
+    private Queue<Card> processedCardsQueue;
+    private static Queue<Card> trainingCardsQueue;
     private Random rand;
     private int langDirection;
 
@@ -39,50 +45,69 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.deck = new Deck();
-        this.deck.init();
-        this.deck.filterToTrain();
+        // Initialize variables
+        rand = new Random();
+        processedCardsQueue = new LinkedList<>();
 
-        if (this.deck.isEmpty()) {
+        // Get cards to train in revision_queue
+        trainingCardsQueue = Param.GLOBAL_DECK.getTrainingQueue();
+
+        // Start scroll or show end screen
+        if (trainingCardsQueue.isEmpty()) {
+            // No cards to train
             showEndOfRevision();
 
         } else {
-
-            this.rand = new Random();
-            this.revisionQueue = new LinkedList<>();
-
-            Collections.shuffle(deck, new Random());
-            // Adding deck's cards to the queue
-            for (Card card : this.deck) {
-                this.revisionQueue.add(card);
-            }
-
+            // Start cards scroll
             NextOrEnd();
         }
     }
 
+    /**
+     * Occurs after the user gave an answer. Manage the score given by the user for the current
+     * card. Mark the card active and calculate the new training date thanks to SuperMemo algorithm.
+     * Add the current card to the processed cards queue only if the card is not repeated (ie score
+     * not 1).
+     *
+     * @param quality 1 to 4, quality of the answer given by the user
+     */
     private void setCardParam(int quality) {
-        this.card.setState(Param.ACTIVE);
-        MemoAlgo.SuperMemo2(this.card, quality);
-        this.card.updateDatabase();
+        // Change card values
+        currentCard.setState(Param.ACTIVE);
+        MemoAlgo.SuperMemo2(currentCard, quality);
+
+        // If the quality is not 1, card is not repeated so it is considered processed
+        if (quality != 1){
+            processedCardsQueue.add(currentCard);
+        }
     }
 
+    /**
+     * Check if there is another card in the queue to be trained, show the question side if so.
+     * Otherwise, save training data in global deck and in datafile and show end of training screen.
+     */
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void NextOrEnd() {
-        card = revisionQueue.poll();
+        currentCard = trainingCardsQueue.poll();
 
-        if (card != null) {
-
+        if (currentCard != null) {
             // Attribute the translation direction
-            this.langDirection = (this.rand.nextDouble() > ((double) (Param.LANG_DIRECTION_FREQ)) / 10 ? 1 : -1);
-
+            langDirection = (rand.nextDouble() > ((double) (Param.LANG_DIRECTION_FREQ)) / 10 ? 1 : -1);
             showQuestionSide();
         }
         else {
+            // Training is over : save data
+            Param.GLOBAL_DECK.updateDeckAndDatabaseFromQueue(processedCardsQueue);
             showEndOfRevision();
         }
     }
 
+    /**
+     * Manage the clicks on the seeAnswerButton and the 4 answerButtons, as well as the
+     * backToMenuButton
+     *
+     * @param v view pressed by the user
+     */
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     public void onClick(View v) {
@@ -91,7 +116,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
             showAnswerSide();
 
         } else if (v == mAnswerButton1){
-            revisionQueue.add(card);
+            trainingCardsQueue.add(currentCard);
             setCardParam(1);
             NextOrEnd();
 
@@ -117,6 +142,9 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
+    /**
+     * Set the end of revision layout when the user is done with the training
+     */
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void showEndOfRevision() {
         setContentView(R.layout.end_of_revision);
@@ -124,51 +152,76 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         mBackToMenuRevisionButton = findViewById(R.id.end_of_revision_back_to_menu);
         mBackToMenuRevisionButton.setOnClickListener(this);
 
-        utils.updateDeckDataVariables(Param.GLOBAL_DECK);
+        Param.GLOBAL_DECK.updateDeckDataVariables();
     }
 
+    /**
+     * Set the layout for the question side for the current card
+     */
     private void showQuestionSide() {
         setContentView(R.layout.question_side);
 
         mTextViewQuestion = findViewById(R.id.question_side_item1);
         mSeeAnswerButton = findViewById(R.id.question_side_button);
-        mSeeAnswerButton.setOnClickListener(this);
+        mQuestionHeader = findViewById(R.id.header);
 
+        mQuestionHeader.setText(getRevisionHeaderText());
+        mSeeAnswerButton.setOnClickListener(this);
         findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
+        // Depends on the direction of revision for each card
         if (this.langDirection == 1) {
-            mTextViewQuestion.setText(this.card.getItem1());
+            mTextViewQuestion.setText(this.currentCard.getItem1());
         }
         else {
-            mTextViewQuestion.setText(this.card.getItem2());
+            mTextViewQuestion.setText(this.currentCard.getItem2());
         }
 
 
     }
 
+    /**
+     * Set the layout for the answer side for the current card
+     */
     private void showAnswerSide() {
         setContentView(R.layout.answer_side);
 
-        mTextViewQuestion = findViewById(R.id.answer_side_item2);
         mAnswerButton1 = findViewById(R.id.answer_side_button1);
         mAnswerButton2 = findViewById(R.id.answer_side_button2);
         mAnswerButton3 = findViewById(R.id.answer_side_button3);
         mAnswerButton4 = findViewById(R.id.answer_side_button4);
+        mTextViewQuestion = findViewById(R.id.answer_side_item2);
+        mAnswerHeader = findViewById(R.id.header);
 
         mAnswerButton1.setOnClickListener(this);
         mAnswerButton2.setOnClickListener(this);
         mAnswerButton3.setOnClickListener(this);
         mAnswerButton4.setOnClickListener(this);
+        mAnswerHeader.setText(getRevisionHeaderText());
 
+        // Depends on the direction of revision for each card
         if (this.langDirection == 1) {
-            mTextViewQuestion.setText(this.card.getItem2());
+            mTextViewQuestion.setText(this.currentCard.getItem2());
         }
         else {
-            mTextViewQuestion.setText(this.card.getItem1());
+            mTextViewQuestion.setText(this.currentCard.getItem1());
         }
 
     }
 
+    /**
+     * Give the header of the activity with the remaining cards to train
+     *
+     * @return String for the header
+     */
+    private String getRevisionHeaderText() {
+        // Returns the header text with the number of cards to train left
+        return getResources().getString(R.string.revision_header) + " - " + trainingCardsQueue.size();
+    }
+
+    /**
+     * Manage click on the back arrow
+     */
     @Override
     public void onBackPressed() {
         Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);

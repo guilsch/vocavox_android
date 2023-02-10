@@ -303,4 +303,47 @@ public class Deck extends ArrayList<Card> {
             }
         }
     }
+
+    /**
+     * Returns a list containing all the cards with state to learn (cards that will be selected or
+     * not by the user in the Learn activity) of the deck
+     *
+     * @return List<Card> with cards to learn
+     */
+    public List<Card> getCardsToLearnList() {
+        List<Card> toLearnList = new ArrayList<Card>();
+
+        Iterator<Card> iterator = this.iterator();
+        Predicate<Card> pred = x -> x.getState() == Param.TO_LEARN;
+
+        while (iterator.hasNext()) {
+            Card card = iterator.next();
+
+            if (pred.test(card)) {
+                toLearnList.add(card);
+            }
+        }
+
+        return toLearnList;
+    }
+
+    /**
+     * Returns the card in the deck with the given uuid
+     * @param uuid
+     * @return Card with the uuid
+     */
+    public Card getCardFromUuid(String uuid) {
+        Card card = null;
+        Iterator<Card> iterator = this.iterator();
+
+        while (iterator.hasNext()) {
+            card = iterator.next();
+
+            if (card.getUuid().compareTo(uuid) == 0) {
+                return card;
+            }
+        }
+
+        return card;
+    }
 }

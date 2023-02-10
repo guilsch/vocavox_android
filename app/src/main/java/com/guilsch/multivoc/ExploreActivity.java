@@ -15,7 +15,7 @@ public class ExploreActivity extends AppCompatActivity {
 
     ListView simpleList;
 
-    static Deck originalDeck;
+//    static Deck originalDeck;
     static Deck filteredDeck;
     static DeckAdapter adapter;
 
@@ -26,11 +26,13 @@ public class ExploreActivity extends AppCompatActivity {
 
         findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
-        originalDeck = new Deck();
-        originalDeck.init();
-        filteredDeck = (Deck) originalDeck.clone();
+//        originalDeck = new Deck();
+//        originalDeck.init();
+//        filteredDeck = (Deck) originalDeck.clone();
 
-        simpleList = (ListView) findViewById(R.id.deckListView);
+        filteredDeck = (Deck) Param.GLOBAL_DECK.clone();
+
+                simpleList = (ListView) findViewById(R.id.deckListView);
         adapter = new DeckAdapter(getApplicationContext(), filteredDeck, this);
         simpleList.setAdapter(adapter);
 
@@ -56,11 +58,11 @@ public class ExploreActivity extends AppCompatActivity {
         filteredDeck.clear();
 
         if (keyWord == null || keyWord.length() == 0) {
-            filteredDeck.addAll(originalDeck);
+            filteredDeck.addAll(Param.GLOBAL_DECK);
         } else {
             final String filterPattern = keyWord.toString().toLowerCase().trim();
 
-            for (Card card : originalDeck) {
+            for (Card card : Param.GLOBAL_DECK) {
                 if (card.getItem1().toLowerCase().contains(filterPattern) || card.getItem2().toLowerCase().contains(filterPattern)) {
                     filteredDeck.add(card);
                 }

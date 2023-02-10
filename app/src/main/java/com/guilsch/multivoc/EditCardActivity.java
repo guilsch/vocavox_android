@@ -23,7 +23,8 @@ public class EditCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_card);
 
-        card = (Card) getIntent().getSerializableExtra("CARD");
+        String uuid = (String) getIntent().getSerializableExtra("UUID");
+        card = Param.GLOBAL_DECK.getCardFromUuid(uuid);
 
         saveCardButton = findViewById(R.id.save_card_button);
         deleteCardButton = findViewById(R.id.delete_card_button);
@@ -59,7 +60,7 @@ public class EditCardActivity extends AppCompatActivity {
     }
 
     private void onDeleteCardPressed() {
-        ExploreActivity.originalDeck.deleteCard(card.getUuid());
+        Param.GLOBAL_DECK.deleteCard(card.getUuid());
 
         finish();
     }

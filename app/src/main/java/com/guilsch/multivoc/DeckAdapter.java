@@ -68,7 +68,7 @@ public class DeckAdapter extends BaseAdapter {
 
         setStateButton.setOnClickListener(v -> onStateButtonPressed(i));
         deleteCard.setOnClickListener(v -> onDeleteCardPressed(i));
-        item1.setOnClickListener(v -> setEditCardLayout(card));
+        item1.setOnClickListener(v -> setEditCardLayout(card.getUuid()));
 
         return view;
     }
@@ -78,9 +78,9 @@ public class DeckAdapter extends BaseAdapter {
         super.notifyDataSetChanged();
     }
 
-    public void setEditCardLayout(Card card) {
+    public void setEditCardLayout(String uuid) {
         Intent editCardActivity = new Intent(currentActivity.getApplicationContext(), EditCardActivity.class);
-        editCardActivity.putExtra("CARD", card);
+        editCardActivity.putExtra("UUID", uuid);
         currentActivity.startActivity(editCardActivity);
     }
 

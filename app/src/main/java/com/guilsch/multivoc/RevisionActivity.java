@@ -59,7 +59,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         } else {
             // Start cards scroll
-            NextOrEnd();
+            NextOrEndForTraining();
         }
     }
 
@@ -87,7 +87,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
      * Otherwise, save training data in global deck and in datafile and show end of training screen.
      */
     @RequiresApi(api = Build.VERSION_CODES.R)
-    private void NextOrEnd() {
+    private void NextOrEndForTraining() {
         currentCard = trainingCardsQueue.poll();
 
         if (currentCard != null) {
@@ -118,19 +118,19 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         } else if (v == mAnswerButton1){
             trainingCardsQueue.add(currentCard);
             setCardParam(1);
-            NextOrEnd();
+            NextOrEndForTraining();
 
         } else if (v == mAnswerButton2) {
             setCardParam(2);
-            NextOrEnd();
+            NextOrEndForTraining();
 
         } else if (v == mAnswerButton3) {
             setCardParam(3);
-            NextOrEnd();
+            NextOrEndForTraining();
 
         } else if (v == mAnswerButton4) {
             setCardParam(4);
-            NextOrEnd();
+            NextOrEndForTraining();
 
         } else if (v == mBackToMenuRevisionButton) {
             Intent MenuActivityIntent = new Intent(RevisionActivity.this, MenuActivity.class);
@@ -176,8 +176,6 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         else {
             mTextViewQuestion.setText(this.currentCard.getItem2());
         }
-
-
     }
 
     /**

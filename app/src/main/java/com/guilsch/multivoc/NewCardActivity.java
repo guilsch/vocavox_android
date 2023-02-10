@@ -25,12 +25,12 @@ public class NewCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_card);
 
-        nextNewCard = (Button) findViewById(R.id.next_new_card);
-        saveCard = (Button) findViewById(R.id.save_new_card);
+        nextNewCard = findViewById(R.id.next_new_card);
+        saveCard = findViewById(R.id.save_new_card);
 
-        item1Text = (EditText) findViewById(R.id.item1_text);
-        item2Text = (EditText) findViewById(R.id.item2_text);
-        packText = (EditText) findViewById(R.id.pack_text);
+        item1Text = findViewById(R.id.item1_text);
+        item2Text = findViewById(R.id.item2_text);
+        packText = findViewById(R.id.pack_text);
 
         findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
@@ -52,6 +52,7 @@ public class NewCardActivity extends AppCompatActivity {
                 }
 
                 newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), utils.giveCurrentDate(), 0, 0, 0, utils.getNewUUID());
+                Param.GLOBAL_DECK.add(newCard);
                 newCard.addToDatabase();
                 newCard.info();
 

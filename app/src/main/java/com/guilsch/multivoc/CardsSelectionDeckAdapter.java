@@ -5,24 +5,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CardsSelectionDeckAdapter extends BaseAdapter {
 
     LayoutInflater inflater;
 
-    Deck deck;
+    List<Card> cardsList;
 
-    public CardsSelectionDeckAdapter(Context applicationContext, Deck deck) {
-        this.deck = deck;
+    public CardsSelectionDeckAdapter(Context applicationContext, List<Card> cardsList) {
+        this.cardsList = cardsList;
         inflater = (LayoutInflater.from(applicationContext));
     }
 
     @Override
     public int getCount() {
-        return deck.size();
+        return cardsList.size();
     }
 
     @Override
@@ -42,24 +44,24 @@ public class CardsSelectionDeckAdapter extends BaseAdapter {
         TextView item2 = view.findViewById(R.id.item2_textView);
         TextView pack = view.findViewById(R.id.pack_textView);
         ToggleButton selectCardButton = view.findViewById(R.id.selectCardButton);
-        item1.setText(deck.get(i).getItem1());
-        item2.setText(deck.get(i).getItem2());
-        pack.setText(deck.get(i).getPack());
+        item1.setText(cardsList.get(i).getItem1());
+        item2.setText(cardsList.get(i).getItem2());
+        pack.setText(cardsList.get(i).getPack());
 
         selectCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if (selectCardButton.isChecked()) {
-                    System.out.println(deck.get(i).getItem1() + " is checked");
-                    if (!LearnActivity.learningDeckContains(deck.get(i))) {
-                        LearnActivity.addToLearningDeck(deck.get(i));
+                    System.out.println(cardsList.get(i).getItem1() + " is checked");
+                    if (!LearnActivity.learningQueueContains(cardsList.get(i))) {
+                        LearnActivity.addToLearningQueue(cardsList.get(i));
                     }
                 }
                 else if (!selectCardButton.isChecked()) {
-                    System.out.println(deck.get(i).getItem1() + " is unchecked");
-                    if (LearnActivity.learningDeckContains(deck.get(i))) {
-                        LearnActivity.removeFromLearningDeck(deck.get(i));
+                    System.out.println(cardsList.get(i).getItem1() + " is unchecked");
+                    if (LearnActivity.learningQueueContains(cardsList.get(i))) {
+                        LearnActivity.removeFromLearningQueue(cardsList.get(i));
                     }
                 }
             }

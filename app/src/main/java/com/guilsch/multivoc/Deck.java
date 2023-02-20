@@ -26,15 +26,25 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+/**
+ * This class is the deck object which is an array list containing cards. It is only supposed to be
+ * for the Global deck.
+ *
+ * @author Guilhem Schena
+ */
 public class Deck extends ArrayList<Card> {
 
     Deck() {
         super(1);
     }
 
-    public void deleteCard(String cardUuid) {
+    /**
+     * Delete the card with the given uuid in the datafile
+     *
+     * @param cardUuid
+     */
+    public void deleteCardFromDatafile(String cardUuid) {
         try {
-
             FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
             Workbook workbook = WorkbookFactory.create(inputFile);
             Sheet sheet = workbook.getSheetAt(0);
@@ -51,7 +61,10 @@ public class Deck extends ArrayList<Card> {
                 Cell uuidCell = row.getCell(uuidIndex);
 
                 if (uuidCell.getStringCellValue().compareTo(cardUuid) == 0){
+                    // Delete row without shifting any row
+                    int rowNb = row.getRowNum();
                     sheet.removeRow(row);
+                    sheet.shiftRows(rowNb + 1, sheet.getLastRowNum(), -1);
                     break;
                 }
             }
@@ -63,6 +76,22 @@ public class Deck extends ArrayList<Card> {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Remove the card with the uuid in arg from the deck
+     * @param uuid
+     */
+    public void deleteCardFromDeck(String uuid) {
+        Card cardToDelete;
+        Iterator<Card> iterator = this.iterator();
+        while (iterator.hasNext()) {
+            cardToDelete = iterator.next();
+
+            if (cardToDelete.getUuid().compareTo(uuid) == 0) {
+                iterator.remove();
+            }
         }
     }
 
@@ -113,8 +142,9 @@ public class Deck extends ArrayList<Card> {
                     float easinessFactor = (float) row.getCell(easinessFactorIndex).getNumericCellValue();
                     int interval = (int) row.getCell(intervalIndex).getNumericCellValue();
                     String uuid = row.getCell(uuidIndex).getStringCellValue();
+                    int rowNumber = row.getRowNum();
 
-                    this.add(new Card(item1, item2, state, pack, nextPracticeDate, repetitions, easinessFactor, interval, uuid));
+                    this.add(new Card(item1, item2, state, pack, nextPracticeDate, repetitions, easinessFactor, interval, uuid, rowNumber));
 
                 }
             }
@@ -235,6 +265,7 @@ public class Deck extends ArrayList<Card> {
     }
 
     public void updateDeckDataVariables() {
+        // TODO modify to create and change attributes of the deck
         Param.CARDS_TO_REVIEW_NB = this.getCardsToReviewNb();
         Param.CARDS_NB = this.size();
         Param.ACTIVE_CARDS_NB = this.getCardsWithStateSNb(1);

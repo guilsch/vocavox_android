@@ -518,7 +518,7 @@ public class utils {
                 currentCell = row.getCell(stateIndex);
                 if (checkCellEmptiness(currentCell, row)) {
                     currentCell = row.createCell(stateIndex);
-                    currentCell.setCellValue(Param.INACTIVE);
+                    currentCell.setCellValue(Param.DEFAULT_STATE);
                 }
 
                 currentCell = row.getCell(packIndex);

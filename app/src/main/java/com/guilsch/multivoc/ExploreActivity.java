@@ -32,7 +32,7 @@ public class ExploreActivity extends AppCompatActivity {
 
         filteredDeck = (Deck) Param.GLOBAL_DECK.clone();
 
-                simpleList = (ListView) findViewById(R.id.deckListView);
+        simpleList = (ListView) findViewById(R.id.deckListView);
         adapter = new DeckAdapter(getApplicationContext(), filteredDeck, this);
         simpleList.setAdapter(adapter);
 

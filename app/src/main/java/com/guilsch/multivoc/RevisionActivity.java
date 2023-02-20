@@ -214,7 +214,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
      */
     private String getRevisionHeaderText() {
         // Returns the header text with the number of cards to train left
-        return getResources().getString(R.string.revision_header) + " - " + trainingCardsQueue.size();
+        return getResources().getString(R.string.revision_header) + " - " + (trainingCardsQueue.size() + 1);
     }
 
     /**

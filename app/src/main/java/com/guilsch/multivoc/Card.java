@@ -11,7 +11,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Iterator;
 
 public class Card implements Serializable {
 
@@ -24,9 +23,10 @@ public class Card implements Serializable {
     private int state;
     private String pack;
     private String uuid;
+    private int rowIndexInExcel;
 
     Card (String item1, String item2, int state, String pack, Date nextPracticeDate, int repetitions,
-          float easinessFactor, int interval, String uuid){
+          float easinessFactor, int interval, String uuid, int rowIndexInExcel){
         this.item1 = item1;
         this.item2 = item2;
         this.repetitions = repetitions;
@@ -36,17 +36,7 @@ public class Card implements Serializable {
         this.state = state;
         this.pack = pack;
         this.uuid = uuid;
-    }
-
-    Card() {
-        this.item1 = "item 1";
-        this.item2 = "item 2";
-        this.repetitions = 0;
-        this.easinessFactor = (float) 2.3;
-        this.interval = 1;
-        this.nextPracticeDate = Param.DEFAULT_DATE;
-        this.state = 2;
-        this.pack = Param.DEFAULT_PACK;
+        this.rowIndexInExcel = rowIndexInExcel;
     }
 
     public void updateParameters(Date nextPracticeDate, int repetitions, float easinessFactor, int interval) {
@@ -63,9 +53,7 @@ public class Card implements Serializable {
             Workbook workbook = WorkbookFactory.create(inputFile);
             Sheet sheet = workbook.getSheetAt(0);
 
-            // Iterate through each rows one by one
-            Iterator<Row> rowIterator = sheet.iterator();
-            Row header = rowIterator.next();
+            Row header = sheet.getRow(sheet.getFirstRowNum());
 
             int item1Index = utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
             int item2Index = utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
@@ -77,22 +65,24 @@ public class Card implements Serializable {
             int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
             int uuidIndex = utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
 
-            while (rowIterator.hasNext()) {
+            Row cardRow = sheet.getRow(this.rowIndexInExcel);
+            Cell uuidCell = cardRow.getCell(uuidIndex);
 
-                Row row = rowIterator.next();
-                Cell uuidCell = row.getCell(uuidIndex);
+            if (uuidCell.getStringCellValue().compareTo(uuid) == 0) {
 
-                if (uuidCell.getStringCellValue().compareTo(uuid) == 0){
-                    
-                    row.getCell(item1Index).setCellValue(this.item1);
-                    row.getCell(item2Index).setCellValue(this.item2);
-                    row.getCell(stateIndex).setCellValue(this.state);
-                    row.getCell(packIndex).setCellValue(this.pack);
-                    row.getCell(nextPracticeDateIndex).setCellValue(this.nextPracticeDate.toString());
-                    row.getCell(repetitionsIndex).setCellValue(this.repetitions);
-                    row.getCell(easinessFactorIndex).setCellValue(this.easinessFactor);
-                    row.getCell(intervalIndex).setCellValue(this.interval);
-                }
+                cardRow.getCell(item1Index).setCellValue(this.item1);
+                cardRow.getCell(item2Index).setCellValue(this.item2);
+                cardRow.getCell(stateIndex).setCellValue(this.state);
+                cardRow.getCell(packIndex).setCellValue(this.pack);
+                cardRow.getCell(nextPracticeDateIndex).setCellValue(this.nextPracticeDate.toString());
+                cardRow.getCell(repetitionsIndex).setCellValue(this.repetitions);
+                cardRow.getCell(easinessFactorIndex).setCellValue(this.easinessFactor);
+                cardRow.getCell(intervalIndex).setCellValue(this.interval);
+
+                System.out.println("card found");
+            }
+            else {
+                System.out.println("card NOT found");
             }
 
             inputFile.close();
@@ -139,6 +129,11 @@ public class Card implements Serializable {
             newRow.getCell(intervalIndex).setCellValue(this.interval);
             newRow.getCell(uuidIndex).setCellValue(this.uuid);
 
+            // If the card is upload for the first time in the database (means that rowIndex is -1),
+            // the row index is attributed to the card
+            if (this.rowIndexInExcel == -1) {
+                this.setRowIndexInExcel(newRow.getRowNum());
+            }
 
             inputFile.close();
             FileOutputStream outputStream = new FileOutputStream(Param.DATA_PATH);
@@ -197,7 +192,13 @@ public class Card implements Serializable {
         return nextPracticeDate;
     }
 
-    public String getUuid() { return uuid; }
+    public String getUuid() {
+        return uuid;
+    }
+
+    public int getRowIndexInExcel(){
+        return rowIndexInExcel;
+    }
 
     // Setters
 
@@ -233,4 +234,7 @@ public class Card implements Serializable {
         this.nextPracticeDate = nextPracticeDate;
     }
 
+    public void setRowIndexInExcel(int rowIndex) {
+        this.rowIndexInExcel = rowIndex;
+    }
 }

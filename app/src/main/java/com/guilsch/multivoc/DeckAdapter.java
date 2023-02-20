@@ -66,8 +66,8 @@ public class DeckAdapter extends BaseAdapter {
         pack.setText(card.getPack());
         setStateButton.setText(utils.getStringStateFromInt(card.getState()));
 
-        setStateButton.setOnClickListener(v -> onStateButtonPressed(i));
-        deleteCard.setOnClickListener(v -> onDeleteCardPressed(i));
+        setStateButton.setOnClickListener(v -> onStateButtonPressed(card.getUuid()));
+        deleteCard.setOnClickListener(v -> onDeleteCardPressed(card.getUuid()));
         item1.setOnClickListener(v -> setEditCardLayout(card.getUuid()));
 
         return view;
@@ -84,14 +84,16 @@ public class DeckAdapter extends BaseAdapter {
         currentActivity.startActivity(editCardActivity);
     }
 
-    private void onDeleteCardPressed(int i) {
-        deck.deleteCard(deck.get(i).getUuid());
+    private void onDeleteCardPressed(String uuid) {
+        Param.GLOBAL_DECK.deleteCardFromDatafile(uuid);
+        Param.GLOBAL_DECK.deleteCardFromDeck(uuid);
     }
 
-    private void onStateButtonPressed(int i) {
-        deck.get(i).setState(utils.nextStateForButton(deck.get(i).getState()));
-        deck.get(i).updateInDatabase();
-        setStateButton.setText(utils.getStringStateFromInt(deck.get(i).getState()));
+    private void onStateButtonPressed(String uuid) {
+        Card cardToEdit = Param.GLOBAL_DECK.getCardFromUuid(uuid);
+        cardToEdit.setState(utils.nextStateForButton(cardToEdit.getState()));
+        cardToEdit.updateInDatabase();
+        setStateButton.setText(utils.getStringStateFromInt(cardToEdit.getState()));
     }
 
 }

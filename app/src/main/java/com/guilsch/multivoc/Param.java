@@ -63,6 +63,7 @@ public class Param {
     public static final int INVALID = 3;
     public static final int STOP_LEARNING = 4;
 
+    public static final int DEFAULT_STATE = 2;
     public static final String DEFAULT_PACK = "";
     public static final Date DEFAULT_DATE = utils.giveCurrentDate();
     public static final int DEFAULT_REP = 0;

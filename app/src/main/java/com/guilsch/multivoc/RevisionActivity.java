@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.LinkedList;
@@ -97,8 +98,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         }
         else {
             // Training is over : save data
-            Param.GLOBAL_DECK.updateDeckAndDatabaseFromQueue(processedCardsQueue);
-            showEndOfRevision();
+            showSavingLayout();
         }
     }
 
@@ -205,6 +205,20 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
             mTextViewQuestion.setText(this.currentCard.getItem1());
         }
 
+    }
+
+    /**
+     * Set the saving layout when the user is done with the training, before end of revision layout
+     */
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    private void showSavingLayout() {
+        setContentView(R.layout.saving_layout);
+
+        ProgressBar progressBar = findViewById(R.id.saving_progress_bar);
+        progressBar.setProgress(0);
+
+        Param.GLOBAL_DECK.updateDeckAndDatabaseFromQueue(processedCardsQueue, progressBar);
+        showEndOfRevision();
     }
 
     /**

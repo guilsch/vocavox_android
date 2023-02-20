@@ -1,6 +1,7 @@
 package com.guilsch.multivoc;
 
 import android.os.Build;
+import android.widget.ProgressBar;
 
 import androidx.annotation.RequiresApi;
 
@@ -11,10 +12,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Queue;
 import java.util.function.Predicate;
 
@@ -305,33 +308,29 @@ public class Deck extends ArrayList<Card> {
      * Iterates over all deck cards and for the cards with a uuid that is one of the uuid of a card
      * in the queue, modifies the card in the deck from the card in the queue and save it in the datafile
      */
-    public void updateDeckAndDatabaseFromQueue(Queue<Card> cardsQueue) {
+    public void updateDeckAndDatabaseFromQueue(Queue<Card> cardsQueue, ProgressBar progressBar) {
 
-        Card cardInDeck;
-        Card cardInQueue;
-        String uuidIteration;
-        int indexInQueue;
-        List<Card> processedCardsList = utils.getCardsListFromCardsQueue(cardsQueue);
-        List<String> uuidList = utils.getUUIDListFromCardsQueue(cardsQueue);
+        Map<String, Card> queueCardMap = new HashMap<>();
+        for (Card card : cardsQueue) {
+            queueCardMap.put(card.getUuid(), card);
+        }
 
-        // Iterate over the cards in the deck
-        Iterator<Card> iterator = this.iterator();
-        while (iterator.hasNext()) {
-            cardInDeck = iterator.next();
-            uuidIteration = cardInDeck.getUuid();
+        int progress = 0;
+        // Iterate through cards of the deck
+        for (Card cardInDeck : this) {
+            String uuid = cardInDeck.getUuid();
+            if (queueCardMap.containsKey(uuid)) {
+                // Find card with corresponding uuid
+                Card cardInQueue = queueCardMap.get(uuid);
 
-            // Look for cards which have the same uuid than those in the queue
-            if (uuidList.contains(uuidIteration)) {
-                // Take the corresponding card in the queue
-                indexInQueue = uuidList.indexOf(uuidIteration);
-                cardInQueue = processedCardsList.get(indexInQueue);
-
-                // Make the changes in the deck and in the Excel datafile
+                // Update parameters in the deck and in the database
                 cardInDeck.updateParameters(cardInQueue.getNextPracticeDate(),
                         cardInQueue.getRepetitions(), cardInQueue.getEasinessFactor(),
                         cardInQueue.getInterval());
                 cardInDeck.updateInDatabase();
             }
+            progress += 1;
+            progressBar.setProgress(progress);
         }
     }
 

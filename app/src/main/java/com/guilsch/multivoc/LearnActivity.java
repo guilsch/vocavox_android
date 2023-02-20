@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import java.util.LinkedList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private Queue<Card> processedCardsQueue;
     private List<Card> toLearnCardsList;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +67,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
      *
      * @param v view pressed by the user
      */
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     public void onClick(View v) {
 
@@ -122,6 +124,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
      * Check if there is another card in the queue to be learned, show the question side if so.
      * Otherwise, save training data in global deck and in datafile and show end of training screen.
      */
+    @RequiresApi(api = Build.VERSION_CODES.R)
     private void NextOrEndForLearning() {
         currentCard = learningCardsQueue.poll();
 
@@ -131,14 +134,28 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         }
         else {
             // Learning is over : save data
-            Param.GLOBAL_DECK.updateDeckAndDatabaseFromQueue(processedCardsQueue);
-            showEndOfLearning();
+            showSavingLayout();
         }
+    }
+
+    /**
+     * Set the saving layout when the user is done with the training, before end of revision layout
+     */
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    private void showSavingLayout() {
+        setContentView(R.layout.saving_layout);
+
+        ProgressBar progressBar = findViewById(R.id.saving_progress_bar);
+        progressBar.setProgress(0);
+
+        Param.GLOBAL_DECK.updateDeckAndDatabaseFromQueue(processedCardsQueue, progressBar);
+        showEndOfLearning();
     }
 
     /**
      * Set the layout to select the cards to learn
      */
+    @RequiresApi(api = Build.VERSION_CODES.R)
     private void showCardsSelection() {
         setContentView(R.layout.cards_selection);
 

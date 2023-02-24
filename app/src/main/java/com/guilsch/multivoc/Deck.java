@@ -304,35 +304,35 @@ public class Deck extends ArrayList<Card> {
 //        Iterator<Card> iterator = this.iterator();
 //    }
 
-    /**
-     * Iterates over all deck cards and for the cards with a uuid that is one of the uuid of a card
-     * in the queue, modifies the card in the deck from the card in the queue and save it in the datafile
-     */
-    public void updateDeckAndDatabaseFromQueue(Queue<Card> cardsQueue, ProgressBar progressBar) {
-
-        Map<String, Card> queueCardMap = new HashMap<>();
-        for (Card card : cardsQueue) {
-            queueCardMap.put(card.getUuid(), card);
-        }
-
-        int progress = 0;
-        // Iterate through cards of the deck
-        for (Card cardInDeck : this) {
-            String uuid = cardInDeck.getUuid();
-            if (queueCardMap.containsKey(uuid)) {
-                // Find card with corresponding uuid
-                Card cardInQueue = queueCardMap.get(uuid);
-
-                // Update parameters in the deck and in the database
-                cardInDeck.updateParameters(cardInQueue.getNextPracticeDate(),
-                        cardInQueue.getRepetitions(), cardInQueue.getEasinessFactor(),
-                        cardInQueue.getInterval());
-                cardInDeck.updateInDatabase();
-            }
-            progress += 1;
-            progressBar.setProgress(progress);
-        }
-    }
+//    /**
+//     * Iterates over all deck cards and for the cards with a uuid that is one of the uuid of a card
+//     * in the queue, modifies the card in the deck from the card in the queue and save it in the datafile
+//     */
+//    public void updateDeckAndDatabaseFromQueue(Queue<Card> cardsQueue, ProgressBar progressBar) {
+//
+//        Map<String, Card> queueCardMap = new HashMap<>();
+//        for (Card card : cardsQueue) {
+//            queueCardMap.put(card.getUuid(), card);
+//        }
+//
+//        int progress = 0;
+//        // Iterate through cards of the deck
+//        for (Card cardInDeck : this) {
+//            String uuid = cardInDeck.getUuid();
+//            if (queueCardMap.containsKey(uuid)) {
+//                // Find card with corresponding uuid
+//                Card cardInQueue = queueCardMap.get(uuid);
+//
+//                // Update parameters in the deck and in the database
+//                cardInDeck.updateParameters(cardInQueue.getNextPracticeDate(),
+//                        cardInQueue.getRepetitions(), cardInQueue.getEasinessFactor(),
+//                        cardInQueue.getInterval());
+//                cardInDeck.updateInDatabase();
+//            }
+//            progress += 1;
+//            progressBar.setProgress(progress);
+//        }
+//    }
 
     /**
      * Returns a list containing all the cards with state to learn (cards that will be selected or

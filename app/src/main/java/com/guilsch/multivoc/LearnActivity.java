@@ -113,6 +113,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         // Change card values
         currentCard.setState(Param.ACTIVE);
         MemoAlgo.SuperMemo2(currentCard, quality);
+        currentCard.updateInDatabaseOnSeparateThread();
 
         // If the quality is not 1, card is not repeated so it is considered processed
         if (quality != 1){
@@ -134,22 +135,8 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         }
         else {
             // Learning is over : save data
-            showSavingLayout();
+            showEndOfLearning();
         }
-    }
-
-    /**
-     * Set the saving layout when the user is done with the training, before end of revision layout
-     */
-    @RequiresApi(api = Build.VERSION_CODES.R)
-    private void showSavingLayout() {
-        setContentView(R.layout.saving_layout);
-
-        ProgressBar progressBar = findViewById(R.id.saving_progress_bar);
-        progressBar.setProgress(0);
-
-        Param.GLOBAL_DECK.updateDeckAndDatabaseFromQueue(processedCardsQueue, progressBar);
-        showEndOfLearning();
     }
 
     /**
@@ -192,6 +179,21 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         mBackToMenuRevisionButton = findViewById(R.id.end_of_learning_back_to_menu);
         mBackToMenuRevisionButton.setOnClickListener(this);
     }
+
+//    /**
+//     * Set the saving layout when the user is done with the training, before end of revision layout
+//     */
+////    @RequiresApi(api = Build.VERSION_CODES.R)
+//    private void showSavingLayout() {
+//        setContentView(R.layout.saving_layout);
+//
+//        ProgressBar progressBar = findViewById(R.id.saving_progress_bar);
+//        progressBar.setProgress(0);
+//
+////        Param.GLOBAL_DECK.updateDeckAndDatabaseFromQueue(processedCardsQueue, progressBar);
+//
+//        showEndOfLearning();
+//    }
 
     /**
      * Set the layout for the question side for the current card

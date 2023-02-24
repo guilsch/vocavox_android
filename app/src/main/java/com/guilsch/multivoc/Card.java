@@ -95,6 +95,18 @@ public class Card implements Serializable {
         }
     }
 
+    public void updateInDatabaseOnSeparateThread() {
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                updateInDatabase();
+            }
+        };
+
+        Thread thread = new Thread(myRunnable);
+        thread.start();
+    }
+
     public void addToDatabase() {
         try {
 

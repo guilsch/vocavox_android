@@ -48,6 +48,7 @@ public class Pref {
         Param.SP_FILE_ID = getPrefs(context).getString(Param.SP_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
         Param.FOLDER_ID = getPrefs(context).getString(Param.FOLDER_ID_KEY, Param.FOLDER_ID_DEFAULT);
         Param.LANG_DIRECTION_FREQ = getPrefs(context).getInt(Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ_DEFAULT);
+        Param.LAST_LANG = getPrefs(context).getInt(Param.LAST_LANG_KEY, Param.LAST_LANG_DEFAULT);
         editor.commit();
     }
 

@@ -20,6 +20,7 @@ public class Param {
     public static final String FILE_ID_UNDEFINED = "undefined";
     public static String DATA_FILE;
     public static String DATA_PATH;
+    public static final int LAST_LANG_DEFAULT = 0;
 
     public static void setDataPath() {
         DATA_PATH = FOLDER_PATH + DATA_FILE;
@@ -94,6 +95,8 @@ public class Param {
     public static String SP_FILE_ID = "Undefined";
     public static String FOLDER_ID = "Undefined";
     public static int LANG_DIRECTION_FREQ;
+    public static int LAST_LANG;
+
 
     // Keys
     public static final String FOLDER_PATH_KEY = "folder_path_key";
@@ -106,6 +109,8 @@ public class Param {
     public static final String SP_FILE_ID_KEY = "sp_file_id_key";
     public static final String FOLDER_ID_KEY = "folder_id_key";
     public static final String LANG_DIRECTION_FREQ_KEY = "lang_direction_freq_key";
+    public static final String LAST_LANG_KEY = "last_lang_key";
+
 
 
     // First launch check

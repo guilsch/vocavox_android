@@ -6,7 +6,6 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -38,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         ////// Setup visuals
         setContentView(R.layout.activity_main);
 
-        start = (Button) findViewById(R.id.start);
-        spinner = (Spinner) findViewById(R.id.spinner);
+        start = findViewById(R.id.start);
+        spinner = findViewById(R.id.spinner);
         progressBar = findViewById(R.id.progressBar);
 
 
@@ -48,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         // Spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Param.TARGET_LANGUAGES);
         spinner.setAdapter(adapter);
+        spinner.setSelection(Param.LAST_LANG);
 
         // Buttons
         start.setOnClickListener(v -> onStartClick());
@@ -74,13 +74,30 @@ public class MainActivity extends AppCompatActivity {
     private void onStartClick() {
         start.setTextColor(getResources().getColor(R.color.button_std_text_on_click));
 
+        // Progress bar
+        progressBar.setVisibility(View.VISIBLE);
+
         // Defines target language
         Param.TARGET_LANGUAGE = spinner.getSelectedItem().toString();
 
-        progressBar.setVisibility(View.VISIBLE);
+        // Save language selected to select it directly next time
+        Pref.savePreference(this, Param.LAST_LANG_KEY, spinner.getSelectedItemPosition());
 
-        initAppData();
+        // Init
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                initAppData();
+            }
+        });
+        thread.start();
+        try {
+            thread.join(); // Wait for initAppData()
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        // Change activity
         Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
         startActivity(menuActivity);
         finish();

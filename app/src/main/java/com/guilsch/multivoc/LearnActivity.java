@@ -31,15 +31,21 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private Button mAnswerButton3;
     private Button mAnswerButton4;
 
+    private Button mNextButtonStep1;
+
     private Button mBackToMenuRevisionButton;
 
     ListView simpleList;
 
-//    private Deck deck;
     private Card currentCard;
+    private static Queue<Card> learningCardsQueue1;
+    private static Queue<Card> learningCardsQueue2;
     private static Queue<Card> learningCardsQueue;
     private Queue<Card> processedCardsQueue;
     private List<Card> toLearnCardsList;
+
+    private ProgressBar progressBar;
+    private int currentStep;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -48,7 +54,11 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
         // Initialize variables
         processedCardsQueue = new LinkedList<>();
+        learningCardsQueue1 = new LinkedList<>();
+        learningCardsQueue2 = new LinkedList<>();
         learningCardsQueue = new LinkedList<>();
+
+        currentStep = 1;
 
         toLearnCardsList = Param.GLOBAL_DECK.getCardsToLearnList();
 
@@ -78,19 +88,19 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
             // Makes the card appear again
             learningCardsQueue.add(this.currentCard);
             setCardParam(1);
-            NextOrEndForLearning();
+            NextCardOrNextStepForLearning(learningCardsQueue);
 
         } else if (v == mAnswerButton2) {
             setCardParam(2);
-            NextOrEndForLearning();
+            NextCardOrNextStepForLearning(learningCardsQueue);
 
         } else if (v == mAnswerButton3) {
             setCardParam(3);
-            NextOrEndForLearning();
+            NextCardOrNextStepForLearning(learningCardsQueue);
 
         } else if (v == mAnswerButton4) {
             setCardParam(4);
-            NextOrEndForLearning();
+            NextCardOrNextStepForLearning(learningCardsQueue);
 
         } else if (v == mBackToMenuRevisionButton) {
             Intent MenuActivityIntent = new Intent(LearnActivity.this, MenuActivity.class);
@@ -123,11 +133,11 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
     /**
      * Check if there is another card in the queue to be learned, show the question side if so.
-     * Otherwise, save training data in global deck and in datafile and show end of training screen.
+     * Otherwise, go to next step
      */
     @RequiresApi(api = Build.VERSION_CODES.R)
-    private void NextOrEndForLearning() {
-        currentCard = learningCardsQueue.poll();
+    private void NextCardOrNextStepForLearning(Queue<Card> queue) {
+        currentCard = queue.poll();
 
         if (currentCard != null) {
             // Show new card
@@ -135,8 +145,28 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         }
         else {
             // Learning is over : save data
-            showEndOfLearning();
+//            showEndOfLearning();
+            nextStep();
         }
+    }
+
+    private void nextStep() {
+        switch(currentStep){
+            case 1:
+                currentStep++;
+                progressBar.setProgress(currentStep);
+                scrollCardsStep2();
+                break;
+            case 2:
+                currentStep++;
+                // go to step 3
+                break;
+            case 3:
+                showEndOfLearning();
+                break;
+        }
+
+        progressBar.setProgress(currentStep);
     }
 
     /**
@@ -156,7 +186,59 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
         // Start learning button
         mStartLearningButton = findViewById(R.id.cards_selection_start_button);
-        mStartLearningButton.setOnClickListener(v -> NextOrEndForLearning());
+//        mStartLearningButton.setOnClickListener(v -> NextOrEndForLearning());
+        mStartLearningButton.setOnClickListener(v -> step1());
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    private void step1() {
+        setContentView(R.layout.learn_step1);
+
+        progressBar = findViewById(R.id.stepProgressBar);
+        progressBar.setMax(3);
+        progressBar.setProgress(1);
+
+        scrollCardsStep1();
+
+    }
+
+
+    private void scrollCardsStep1() {
+        // Add current card to the next queue if it has already be shown
+        if (currentCard != null) {
+            learningCardsQueue2.add(currentCard);
+        }
+
+        currentCard = learningCardsQueue1.poll();
+
+        if (currentCard != null) {
+            // Show new card
+            showCardStep1();
+        }
+        else {
+            // Learning is over : save data
+//            showEndOfLearning();
+            nextStep();
+        }
+    }
+
+    private void scrollCardsStep2() {
+        // Add current card to the next queue if it has already be shown
+        if (currentCard != null) {
+            learningCardsQueue2.add(currentCard);
+        }
+
+        currentCard = learningCardsQueue2.poll();
+
+        if (currentCard != null) {
+            // Show new card
+            showCardStep2();
+        }
+        else {
+            // Learning is over : save data
+//            showEndOfLearning();
+            nextStep();
+        }
     }
 
     /**
@@ -180,21 +262,6 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         mBackToMenuRevisionButton.setOnClickListener(this);
     }
 
-//    /**
-//     * Set the saving layout when the user is done with the training, before end of revision layout
-//     */
-////    @RequiresApi(api = Build.VERSION_CODES.R)
-//    private void showSavingLayout() {
-//        setContentView(R.layout.saving_layout);
-//
-//        ProgressBar progressBar = findViewById(R.id.saving_progress_bar);
-//        progressBar.setProgress(0);
-//
-////        Param.GLOBAL_DECK.updateDeckAndDatabaseFromQueue(processedCardsQueue, progressBar);
-//
-//        showEndOfLearning();
-//    }
-
     /**
      * Set the layout for the question side for the current card
      */
@@ -208,6 +275,26 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         mSeeAnswerButton.setOnClickListener(this);
 
         mTextViewQuestion.setText(this.currentCard.getItem1());
+
+    }
+
+    private void showCardStep1() {
+
+        mTextViewQuestion = findViewById(R.id.question_side_item1);
+        mNextButtonStep1 = findViewById(R.id.next_button_step1);
+
+        mSeeAnswerButton.setOnClickListener(v -> scrollCardsStep1());
+        mTextViewQuestion.setText(this.currentCard.getItem1() + " = " + this.currentCard.getItem2());
+
+    }
+
+    private void showCardStep2() {
+
+        mTextViewQuestion = findViewById(R.id.question_side_item1);
+        mNextButtonStep1 = findViewById(R.id.next_button_step1);
+
+        mSeeAnswerButton.setOnClickListener(v -> scrollCardsStep2());
+        mTextViewQuestion.setText(this.currentCard.getItem1() + " = " + this.currentCard.getItem2());
 
     }
 
@@ -242,7 +329,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
      */
     public static void addToLearningQueue(Card card) {
         System.out.println(card.getItem1() + " is added");
-        learningCardsQueue.add(card);
+        learningCardsQueue1.add(card);
     }
 
     /**
@@ -253,7 +340,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
      */
     public static void removeFromLearningQueue(Card card) {
         System.out.println(card.getItem1() + " is removed");
-        learningCardsQueue.remove(card);
+        learningCardsQueue1.remove(card);
     }
 
     /**
@@ -263,7 +350,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
      * @param card Card selected to check if it is in the learning queue.
      */
     public static Boolean learningQueueContains(Card card) {
-        Boolean contains = learningCardsQueue.contains(card);
+        Boolean contains = learningCardsQueue1.contains(card);
         return contains;
     }
 

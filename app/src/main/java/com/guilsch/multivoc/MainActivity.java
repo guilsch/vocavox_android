@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -74,45 +75,54 @@ public class MainActivity extends AppCompatActivity {
     private void onStartClick() {
         start.setTextColor(getResources().getColor(R.color.button_std_text_on_click));
 
-        // Progress bar
-        progressBar.setVisibility(View.VISIBLE);
-
         // Defines target language
         Param.TARGET_LANGUAGE = spinner.getSelectedItem().toString();
 
         // Save language selected to select it directly next time
         Pref.savePreference(this, Param.LAST_LANG_KEY, spinner.getSelectedItemPosition());
 
-        // Init
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                initAppData();
-            }
-        });
-        thread.start();
-        try {
-            thread.join(); // Wait for initAppData()
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        // Change activity
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
-        startActivity(menuActivity);
-        finish();
+        // Start the InitAppDataTask to run initAppData() in the background
+        InitAppDataTask task = new InitAppDataTask();
+        task.execute();
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
-        startActivity(menuActivity);
-        finish();
+    /**
+     * We use a task since the initAppData() method blocks the ui thread which makes the progressBar
+     * not showing instantly
+     */
+    private class InitAppDataTask extends AsyncTask<Void, Integer, Void> {
+        @Override
+        protected void onPreExecute() {
+            // This method is called on the UI thread before the background task starts
+            progressBar.setVisibility(View.VISIBLE);
+            progressBar.setProgress(0);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            // This method is called on a background thread, so it won't block the UI thread
+            initAppData();
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            // This method is called on the UI thread when you call publishProgress()
+            // TODO : add real progress to the bar
+            progressBar.setProgress(values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            // This method is called on the UI thread after the background task completes
+//            progressBar.setVisibility(View.GONE);
+            changeActivity();
+        }
     }
 
     /**
      * Setup after target language has been chosen by user.
-     * Init non-preferences parameters and flags for visual
+     * Init non-preferences parameters, global deck and flags for visual
      */
     public void initAppData() {
         // Init other static variables
@@ -121,10 +131,12 @@ public class MainActivity extends AppCompatActivity {
         // Clean excel data file
         utils.prepareDataFile();
 
+        // Init global deck
+        utils.initGlobalDeck();
+
         // Set user and target language flag
         setUserLanguageVisuals();
         setTargetLanguageVisuals();
-
     }
 
     /**
@@ -198,4 +210,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method to switch to MenuActivity
+     */
+    private void changeActivity() {
+        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        startActivity(menuActivity);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        startActivity(menuActivity);
+        finish();
+    }
 }

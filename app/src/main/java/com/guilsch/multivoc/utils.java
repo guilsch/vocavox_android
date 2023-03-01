@@ -4,6 +4,7 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
@@ -128,14 +129,18 @@ public class utils {
         else {
             System.out.println(Param.DATA_PATH + " already exists");
         }
+    }
 
+    /**
+     * Initializes the global deck that will be used everywhere in the application
+     */
+    public static void initGlobalDeck() {
         // Set global deck
         Param.GLOBAL_DECK = new Deck();
         Param.GLOBAL_DECK.init();
 
         // Get deck data (nb of cards to review...)
         Param.GLOBAL_DECK.updateDeckDataVariables();
-
     }
 
     public static void setFileID () {

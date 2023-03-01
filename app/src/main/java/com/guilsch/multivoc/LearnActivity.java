@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,28 +22,41 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
     private Button mStartLearningButton;
 
-    private TextView mTextViewQuestion;
-    private Button mSeeAnswerButton;
+    private TextView mTextViewQuestionStep1;
+    private Button mNextCardButtonStep1;
 
-    private Button mAnswerButton1;
-    private Button mAnswerButton2;
-    private Button mAnswerButton3;
-    private Button mAnswerButton4;
+    private Button mSeeAnswerButtonStep2;
+    private TextView mTextViewQuestionStep2;
+    private TextView mTextViewAnswerStep2;
+    private Button mAnswerRightButtonStep2;
+    private Button mAnswerWrongButtonStep2;
 
-    private Button mNextButtonStep1;
+    private Button mStartStep1Button;
+    private Button mSkipStep1Button;
+    private Button mStartStep2Button;
+    private Button mSkipStep2Button;
+    private Button mStartStep3Button;
+
+    private Button mSeeAnswerButtonStep3;
+    private Button mAnswerButton1Step3;
+    private Button mAnswerButton2Step3;
+    private Button mAnswerButton3Step3;
+    private Button mAnswerButton4Step3;
+    private TextView mTextViewQuestionStep3;
+    private TextView mTextViewAnswerStep3;
 
     private Button mBackToMenuRevisionButton;
 
-    ListView simpleList;
+    ListView cardsSelectionList;
 
     private Card currentCard;
     private static Queue<Card> learningCardsQueue1;
     private static Queue<Card> learningCardsQueue2;
-    private static Queue<Card> learningCardsQueue;
+    private static Queue<Card> learningCardsQueue3;
     private Queue<Card> processedCardsQueue;
     private List<Card> toLearnCardsList;
 
-    private ProgressBar progressBar;
+//    private ProgressBar progressBar;
     private int currentStep;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
@@ -53,10 +65,10 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
 
         // Initialize variables
-        processedCardsQueue = new LinkedList<>();
         learningCardsQueue1 = new LinkedList<>();
         learningCardsQueue2 = new LinkedList<>();
-        learningCardsQueue = new LinkedList<>();
+        learningCardsQueue3 = new LinkedList<>();
+        processedCardsQueue = new LinkedList<>();
 
         currentStep = 1;
 
@@ -67,8 +79,39 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
             showNoCardsToLearn();
 
         } else {
-            showCardsSelection();
+            setLayoutCardsSelection();
         }
+    }
+
+    private void initStep1() {
+//        setContentView(R.layout.learn_step1);
+
+//        progressBar = findViewById(R.id.stepProgressBar);
+//        progressBar.setMax(3);
+//        progressBar.setProgress(1);
+
+        scrollCardsStep1();
+
+    }
+
+    private void initStep2() {
+//        setContentView(R.layout.learn_step2);
+
+//        progressBar = findViewById(R.id.stepProgressBar);
+//        progressBar.setMax(3);
+//        progressBar.setProgress(2);
+
+        scrollCardsStep2(Boolean.FALSE);
+    }
+
+    private void initStep3() {
+//        setContentView(R.layout.learn_step3);
+
+//        progressBar = findViewById(R.id.stepProgressBar);
+//        progressBar.setMax(3);
+//        progressBar.setProgress(3);
+
+        scrollCardsStep3(0);
     }
 
     /**
@@ -81,32 +124,37 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
 
-        if (v == mSeeAnswerButton) {
-            showAnswerSide();
+        if (v == mSeeAnswerButtonStep3) {
+            showAnswerSideStep3();
 
-        } else if (v == mAnswerButton1){
-            // Makes the card appear again
-            learningCardsQueue.add(this.currentCard);
+        } else if (v == mAnswerButton1Step3){
             setCardParam(1);
-            NextCardOrNextStepForLearning(learningCardsQueue);
+            scrollCardsStep3(1);
 
-        } else if (v == mAnswerButton2) {
+        } else if (v == mAnswerButton2Step3) {
             setCardParam(2);
-            NextCardOrNextStepForLearning(learningCardsQueue);
+            scrollCardsStep3(2);
 
-        } else if (v == mAnswerButton3) {
+        } else if (v == mAnswerButton3Step3) {
             setCardParam(3);
-            NextCardOrNextStepForLearning(learningCardsQueue);
+            scrollCardsStep3(3);
 
-        } else if (v == mAnswerButton4) {
+        } else if (v == mAnswerButton4Step3) {
             setCardParam(4);
-            NextCardOrNextStepForLearning(learningCardsQueue);
+            scrollCardsStep3(4);
 
         } else if (v == mBackToMenuRevisionButton) {
             Intent MenuActivityIntent = new Intent(LearnActivity.this, MenuActivity.class);
             startActivity(MenuActivityIntent);
 
-        } else {
+        } else if (v == mAnswerRightButtonStep2) {
+            scrollCardsStep2(Boolean.TRUE);
+
+        } else if (v == mAnswerWrongButtonStep2) {
+            scrollCardsStep2(Boolean.FALSE);
+        }
+
+        else {
             throw new IllegalStateException("Unknown clicked view : " + v);
         }
     }
@@ -131,78 +179,6 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    /**
-     * Check if there is another card in the queue to be learned, show the question side if so.
-     * Otherwise, go to next step
-     */
-    @RequiresApi(api = Build.VERSION_CODES.R)
-    private void NextCardOrNextStepForLearning(Queue<Card> queue) {
-        currentCard = queue.poll();
-
-        if (currentCard != null) {
-            // Show new card
-            showQuestionSide();
-        }
-        else {
-            // Learning is over : save data
-//            showEndOfLearning();
-            nextStep();
-        }
-    }
-
-    private void nextStep() {
-        switch(currentStep){
-            case 1:
-                currentStep++;
-                progressBar.setProgress(currentStep);
-                scrollCardsStep2();
-                break;
-            case 2:
-                currentStep++;
-                // go to step 3
-                break;
-            case 3:
-                showEndOfLearning();
-                break;
-        }
-
-        progressBar.setProgress(currentStep);
-    }
-
-    /**
-     * Set the layout to select the cards to learn
-     */
-    @RequiresApi(api = Build.VERSION_CODES.R)
-    private void showCardsSelection() {
-        setContentView(R.layout.cards_selection);
-
-        // Back arrow
-        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
-
-        // Cards selection
-        simpleList = findViewById(R.id.cardsSelectionListView);
-        CardsSelectionDeckAdapter adapter = new CardsSelectionDeckAdapter(getApplicationContext(), toLearnCardsList);
-        simpleList.setAdapter(adapter);
-
-        // Start learning button
-        mStartLearningButton = findViewById(R.id.cards_selection_start_button);
-//        mStartLearningButton.setOnClickListener(v -> NextOrEndForLearning());
-        mStartLearningButton.setOnClickListener(v -> step1());
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.R)
-    private void step1() {
-        setContentView(R.layout.learn_step1);
-
-        progressBar = findViewById(R.id.stepProgressBar);
-        progressBar.setMax(3);
-        progressBar.setProgress(1);
-
-        scrollCardsStep1();
-
-    }
-
-
     private void scrollCardsStep1() {
         // Add current card to the next queue if it has already be shown
         if (currentCard != null) {
@@ -213,32 +189,149 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
         if (currentCard != null) {
             // Show new card
-            showCardStep1();
+            setLayoutStep1QuestionSide();
         }
         else {
-            // Learning is over : save data
-//            showEndOfLearning();
-            nextStep();
+            currentStep++;
+//            progressBar.setProgress(currentStep);
+//            progressBar.setProgress(currentStep);
+            setLayoutTransition1to2();
         }
     }
 
-    private void scrollCardsStep2() {
-        // Add current card to the next queue if it has already be shown
-        if (currentCard != null) {
+    private void scrollCardsStep2(Boolean rightAnswer) {
+        // Add card to the next queue if answer is correct, add it to the end of the current queue
+        // if not
+        if (rightAnswer & currentCard != null) {
+            learningCardsQueue3.add(currentCard);
+        } else if (!rightAnswer & currentCard != null) {
             learningCardsQueue2.add(currentCard);
         }
 
+        // Next card
         currentCard = learningCardsQueue2.poll();
 
         if (currentCard != null) {
             // Show new card
-            showCardStep2();
+            setLayoutStep2QuestionSide();
         }
         else {
-            // Learning is over : save data
-//            showEndOfLearning();
-            nextStep();
+            currentStep++;
+//            progressBar.setProgress(currentStep);
+//            progressBar.setProgress(currentStep);
+            setLayoutTransition2to3();
         }
+    }
+
+    private void scrollCardsStep3(int quality) {
+        // Add card to the next queue if answer is correct, add it to the end of the current queue
+        // if not
+        if (quality != 1 & currentCard != null) {
+            processedCardsQueue.add(currentCard);
+        } else if (quality == 1 & currentCard != null) {
+            learningCardsQueue3.add(currentCard);
+        }
+
+        // Next card
+        currentCard = learningCardsQueue3.poll();
+
+        if (currentCard != null) {
+            // Show new card
+            showQuestionSideStep3();
+        }
+        else {
+//            progressBar.setProgress(currentStep);
+            showEndOfLearning();
+        }
+    }
+
+    /**
+     * Set the layout to select the cards to learn
+     */
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    private void setLayoutCardsSelection() {
+        setContentView(R.layout.cards_selection);
+
+        // Back arrow
+        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
+
+        // Cards selection
+        cardsSelectionList = findViewById(R.id.cardsSelectionListView);
+        CardsSelectionDeckAdapter adapter = new CardsSelectionDeckAdapter(getApplicationContext(), toLearnCardsList);
+        cardsSelectionList.setAdapter(adapter);
+
+        // Start learning button
+        mStartLearningButton = findViewById(R.id.cards_selection_start_button);
+        mStartLearningButton.setOnClickListener(v -> setLayoutTransition0to1());
+    }
+
+    private void setLayoutStep1QuestionSide() {
+        setContentView(R.layout.learn_step1);
+
+        mTextViewQuestionStep1 = findViewById(R.id.question_side_item1_step1);
+        mNextCardButtonStep1 = findViewById(R.id.next_card_button_step1);
+
+        mNextCardButtonStep1.setOnClickListener(v -> scrollCardsStep1());
+        mTextViewQuestionStep1.setText(this.currentCard.getItem1() + " = " + this.currentCard.getItem2());
+    }
+
+    private void setLayoutStep2QuestionSide() {
+        setContentView(R.layout.learn_step2_question_side);
+
+        // Initialization
+        mTextViewQuestionStep2 = findViewById(R.id.question_side_item1_step2);
+        mSeeAnswerButtonStep2 = findViewById(R.id.see_answer_button_step2);
+
+        // Use
+        mSeeAnswerButtonStep2.setOnClickListener(v -> setLayoutStep2AnswerSide());
+        mTextViewQuestionStep2.setText(this.currentCard.getItem2());
+    }
+
+    private void setLayoutStep2AnswerSide() {
+        setContentView(R.layout.learn_step2_answer_side);
+
+        // Initialization
+        mTextViewAnswerStep2 = findViewById(R.id.answer_side_item2_step2);
+        mAnswerRightButtonStep2 = findViewById(R.id.right_answer_button_step2);
+        mAnswerWrongButtonStep2 = findViewById(R.id.wrong_answer_button_step2);
+
+        // Use
+        mAnswerRightButtonStep2.setOnClickListener(this);
+        mAnswerWrongButtonStep2.setOnClickListener(this);
+        mTextViewAnswerStep2.setText(this.currentCard.getItem1());
+    }
+
+    private void setLayoutTransition0to1() {
+        setContentView(R.layout.learn_transition_0_to_1_layout);
+
+        mStartStep1Button = findViewById(R.id.start_step2_button);
+        mSkipStep1Button = findViewById(R.id.skip_step2_button);
+
+        mStartStep1Button.setOnClickListener(v -> initStep1());
+        mSkipStep1Button.setOnClickListener(v -> {
+            learningCardsQueue2.addAll(learningCardsQueue1);
+            setLayoutTransition1to2();
+        });
+    }
+
+    private void setLayoutTransition1to2() {
+        setContentView(R.layout.learn_transition_1_to_2_layout);
+
+        mStartStep2Button = findViewById(R.id.start_step2_button);
+        mSkipStep2Button = findViewById(R.id.skip_step2_button);
+
+        mStartStep2Button.setOnClickListener(v -> initStep2());
+        mSkipStep2Button.setOnClickListener(v -> {
+            learningCardsQueue3.addAll(learningCardsQueue2);
+            setLayoutTransition2to3();
+        });
+    }
+
+    private void setLayoutTransition2to3() {
+        setContentView(R.layout.learn_transition_2_to_3_layout);
+
+        mStartStep3Button = findViewById(R.id.go_to_step3_button);
+        mStartStep3Button.setOnClickListener(v -> initStep3());
     }
 
     /**
@@ -249,7 +342,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
         findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
-        mBackToMenuRevisionButton = findViewById(R.id.end_of_learning_back_to_menu);
+        mBackToMenuRevisionButton = findViewById(R.id.skip_step2_button);
         mBackToMenuRevisionButton.setOnClickListener(this);
     }
 
@@ -258,66 +351,46 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
         findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
-        mBackToMenuRevisionButton = findViewById(R.id.end_of_learning_back_to_menu);
+        mBackToMenuRevisionButton = findViewById(R.id.skip_step2_button);
         mBackToMenuRevisionButton.setOnClickListener(this);
     }
 
     /**
      * Set the layout for the question side for the current card
      */
-    private void showQuestionSide() {
+    private void showQuestionSideStep3() {
         setContentView(R.layout.question_side);
 
         findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
-        mTextViewQuestion = findViewById(R.id.question_side_item1);
-        mSeeAnswerButton = findViewById(R.id.question_side_button);
-        mSeeAnswerButton.setOnClickListener(this);
+        mTextViewQuestionStep3 = findViewById(R.id.question_side_item1);
+        mSeeAnswerButtonStep3 = findViewById(R.id.question_side_button);
 
-        mTextViewQuestion.setText(this.currentCard.getItem1());
-
-    }
-
-    private void showCardStep1() {
-
-        mTextViewQuestion = findViewById(R.id.question_side_item1);
-        mNextButtonStep1 = findViewById(R.id.next_button_step1);
-
-        mSeeAnswerButton.setOnClickListener(v -> scrollCardsStep1());
-        mTextViewQuestion.setText(this.currentCard.getItem1() + " = " + this.currentCard.getItem2());
-
-    }
-
-    private void showCardStep2() {
-
-        mTextViewQuestion = findViewById(R.id.question_side_item1);
-        mNextButtonStep1 = findViewById(R.id.next_button_step1);
-
-        mSeeAnswerButton.setOnClickListener(v -> scrollCardsStep2());
-        mTextViewQuestion.setText(this.currentCard.getItem1() + " = " + this.currentCard.getItem2());
+        mSeeAnswerButtonStep3.setOnClickListener(this);
+        mTextViewQuestionStep3.setText(this.currentCard.getItem1());
 
     }
 
     /**
      * Set the layout for the answer side for the current card
      */
-    private void showAnswerSide() {
+    private void showAnswerSideStep3() {
         setContentView(R.layout.answer_side);
 
         findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
-        mTextViewQuestion = findViewById(R.id.answer_side_item2);
-        mAnswerButton1 = findViewById(R.id.answer_side_button1);
-        mAnswerButton2 = findViewById(R.id.answer_side_button2);
-        mAnswerButton3 = findViewById(R.id.answer_side_button3);
-        mAnswerButton4 = findViewById(R.id.answer_side_button4);
+        mTextViewAnswerStep3 = findViewById(R.id.answer_side_item2_step2);
+        mAnswerButton1Step3 = findViewById(R.id.wrong_answer_button_step2);
+        mAnswerButton2Step3 = findViewById(R.id.answer_side_button2);
+        mAnswerButton3Step3 = findViewById(R.id.answer_side_button3);
+        mAnswerButton4Step3 = findViewById(R.id.right_answer_button_step2);
 
-        mAnswerButton1.setOnClickListener(this);
-        mAnswerButton2.setOnClickListener(this);
-        mAnswerButton3.setOnClickListener(this);
-        mAnswerButton4.setOnClickListener(this);
+        mAnswerButton1Step3.setOnClickListener(this);
+        mAnswerButton2Step3.setOnClickListener(this);
+        mAnswerButton3Step3.setOnClickListener(this);
+        mAnswerButton4Step3.setOnClickListener(this);
 
-        mTextViewQuestion.setText(this.currentCard.getItem2());
+        mTextViewAnswerStep3.setText(this.currentCard.getItem2());
 
     }
 

@@ -74,7 +74,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/end_learn"
+        android:text="Ready for step 2 ?"
         android:textSize="@dimen/titles"
         app:layout_constraintBottom_toTopOf="@+id/end_of_revision_back_to_menu"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,13 +87,27 @@
         android:layout_width="@dimen/button_std_width"
         android:layout_height="@dimen/button_std_height"
         android:background="@drawable/button_selector"
-        android:text="Home"
+        android:text="Skip"
+        android:textColor="@color/button_std_text"
+        android:textStyle="bold"
+        app:backgroundTint="#00FFFFFF"
+        app:backgroundTintMode="src_atop"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintTop_toTopOf="@+id/start_step2_button" />
+
+    <Button
+        android:id="@+id/start_step2_button"
+        android:layout_width="@dimen/button_std_width"
+        android:layout_height="@dimen/button_std_height"
+        android:layout_marginBottom="72dp"
+        android:background="@drawable/button_selector"
+        android:text="Start"
         android:textColor="@color/button_std_text"
         android:textStyle="bold"
         app:backgroundTint="#00FFFFFF"
         app:backgroundTintMode="src_atop"
         app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/skip_step2_button"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
         app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline2" />
 

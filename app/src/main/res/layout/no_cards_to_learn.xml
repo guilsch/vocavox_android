@@ -82,7 +82,7 @@
         app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
 
     <Button
-        android:id="@+id/end_of_learning_back_to_menu"
+        android:id="@+id/skip_step2_button"
         android:layout_width="@dimen/button_std_width"
         android:layout_height="@dimen/button_std_height"
         android:background="@drawable/button_selector"

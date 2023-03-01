@@ -74,7 +74,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/end_learn"
+        android:text="Ready for step 3 ?"
         android:textSize="@dimen/titles"
         app:layout_constraintBottom_toTopOf="@+id/end_of_revision_back_to_menu"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,11 +83,12 @@
         app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
 
     <Button
-        android:id="@+id/skip_step2_button"
+        android:id="@+id/go_to_step3_button"
         android:layout_width="@dimen/button_std_width"
         android:layout_height="@dimen/button_std_height"
+        android:layout_marginBottom="72dp"
         android:background="@drawable/button_selector"
-        android:text="Home"
+        android:text="Start"
         android:textColor="@color/button_std_text"
         android:textStyle="bold"
         app:backgroundTint="#00FFFFFF"

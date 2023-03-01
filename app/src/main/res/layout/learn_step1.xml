@@ -78,7 +78,7 @@
         tools:ignore="VectorDrawableCompat" />
 
     <Button
-        android:id="@+id/next_button_step1"
+        android:id="@+id/next_card_button_step1"
         android:layout_width="@dimen/button_std_width"
         android:layout_height="@dimen/button_std_height"
         android:background="@drawable/button_selector"
@@ -93,7 +93,7 @@
         app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline2" />
 
     <TextView
-        android:id="@+id/question_side_item1"
+        android:id="@+id/question_side_item1_step1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rectangle_question"

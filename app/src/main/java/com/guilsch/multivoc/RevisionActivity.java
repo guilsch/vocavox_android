@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.LinkedList;
@@ -185,11 +184,11 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     private void showAnswerSide() {
         setContentView(R.layout.answer_side);
 
-        mAnswerButton1 = findViewById(R.id.answer_side_button1);
+        mAnswerButton1 = findViewById(R.id.wrong_answer_button_step2);
         mAnswerButton2 = findViewById(R.id.answer_side_button2);
         mAnswerButton3 = findViewById(R.id.answer_side_button3);
-        mAnswerButton4 = findViewById(R.id.answer_side_button4);
-        mTextViewQuestion = findViewById(R.id.answer_side_item2);
+        mAnswerButton4 = findViewById(R.id.right_answer_button_step2);
+        mTextViewQuestion = findViewById(R.id.answer_side_item2_step2);
         mAnswerHeader = findViewById(R.id.header);
 
         mAnswerButton1.setOnClickListener(this);

@@ -63,6 +63,14 @@
     <string name="learn_header_str">Apprendre</string>
     <string name="learn_select_cards_msg_str">Sélectionner les cartes à apprendre :</string>
 
+    <string name="transition01_question">Prêt pour l\'étape 1 ?</string>
+    <string name="transition12_question">Prêt pour l\'étape 2 ?</string>
+    <string name="transition23_question">Prêt pour l\'étape 3 ?</string>
+
+    <string name="transition01_text">Essaie de mémoriser la traduction de chaque mot</string>
+    <string name="transition12_text">Essaie de retrouver la traduction de chaque mot</string>
+    <string name="transition23_text">Passons à l\'évaluation ! Essaie de traduire chaque mot et évalue ta mémoire</string>
+
     <!-- Buttons   -->
     <string name="button_start">Commencer</string>
     <string name="button_save">Sauvegarder</string>

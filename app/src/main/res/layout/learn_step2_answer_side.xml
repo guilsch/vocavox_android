@@ -104,7 +104,9 @@
         android:textStyle="bold"
         app:backgroundTint="#9C0000"
         app:backgroundTintMode="src_atop"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_answer_button_step2"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
         app:layout_constraintTop_toBottomOf="@+id/answer_side_item2_step2" />
 
@@ -118,8 +120,8 @@
         android:textSize="@dimen/button_std_text_size"
         android:textStyle="bold"
         app:backgroundTint="@color/perfect"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/wrong_answer_button_step2"
-        app:layout_constraintTop_toBottomOf="@+id/answer_side_item2_step2" />
+        app:layout_constraintTop_toTopOf="@+id/wrong_answer_button_step2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

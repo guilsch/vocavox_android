@@ -98,4 +98,7 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
     annotationProcessor 'com.google.cloud:google-cloud-translate:1.12.0'
+
+    // Progress bar
+    implementation 'com.kofigyan.stateprogressbar:stateprogressbar:1.0.0'
 }

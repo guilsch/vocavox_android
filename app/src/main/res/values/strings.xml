@@ -63,6 +63,14 @@
     <string name="learn_header_str">Learn</string>
     <string name="learn_select_cards_msg_str">Select the cards to learn :</string>
 
+    <string name="transition01_question">Ready for step 1 ?</string>
+    <string name="transition12_question">Ready for step 2 ?</string>
+    <string name="transition23_question">Ready for step 3 ?</string>
+
+    <string name="transition01_text">Try to remember the translation of the words</string>
+    <string name="transition12_text">Try to guess the translation of the words</string>
+    <string name="transition23_text">Time for evaluation ! Try to remember each word and assess your memory</string>
+
     <!-- Buttons   -->
     <string name="button_start">Start</string>
     <string name="button_save">Save</string>

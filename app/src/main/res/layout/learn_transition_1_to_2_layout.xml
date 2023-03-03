@@ -133,6 +133,7 @@
         android:layout_height="wrap_content"
         android:text="@string/transition12_text"
         android:gravity="center"
+        android:textSize="@dimen/paragraph_text"
         app:layout_constraintBottom_toTopOf="@+id/after_text_bar_guideline"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"

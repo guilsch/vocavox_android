@@ -53,9 +53,8 @@ public class EditCardActivity extends AppCompatActivity {
         card.setPack(packText.getText().toString());
         card.setState(utils.getIntStateFromString((String) setStateButton.getText()));
 
-        card.updateInDatabase();
+        card.updateInDatabaseOnSeparateThread();
 
-//        ExploreActivity.deck.init();
         finish();
     }
 

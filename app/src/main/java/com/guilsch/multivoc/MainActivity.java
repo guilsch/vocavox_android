@@ -3,6 +3,11 @@ package com.guilsch.multivoc;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.transition.Fade;
+import androidx.transition.Scene;
+import androidx.transition.Transition;
+import androidx.transition.TransitionInflater;
+import androidx.transition.TransitionManager;
 
 import android.Manifest;
 import android.content.Intent;
@@ -11,6 +16,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -27,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        // Ajouter la transition de zoom
+//        Transition zoom = TransitionInflater.from(this).inflateTransition(R.transition.zoom);
+//        getWindow().setEnterTransition(zoom);
+
         ////// Retrieve preferences variables
         Pref.retrieveAllPreferences(this);
 
@@ -40,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
         start = findViewById(R.id.start);
         spinner = findViewById(R.id.spinner);
-        progressBar = findViewById(R.id.progressBar);
-
 
         ////// Manage events
 
@@ -73,24 +81,38 @@ public class MainActivity extends AppCompatActivity {
      * Occurs when the start button has been pressed. Prepares the launch of menuActivity.
      */
     private void onStartClick() {
-        start.setTextColor(getResources().getColor(R.color.button_std_text_on_click));
 
-        // Defines target language
+        // Change layout to loading layout
+        transitionToLoadingScreen();
+
+        // Get progressBar of the current layout (loading layout)
+        progressBar = findViewById(R.id.progressBar);
+
+        // Manage newly selected language
         Param.TARGET_LANGUAGE = spinner.getSelectedItem().toString();
-
-        // Save language selected to select it directly next time
         Pref.savePreference(this, Param.LAST_LANG_KEY, spinner.getSelectedItemPosition());
 
-        // Start the InitAppDataTask to run initAppData() in the background
-        InitAppDataTask task = new InitAppDataTask();
-        task.execute();
+        // Start the task to prepare data and show loading
+        new LoadDataTask().execute();
+    }
+
+    private void transitionToLoadingScreen() {
+        ///// Make transition
+        ViewGroup rootView = findViewById(android.R.id.content);
+        Scene activityMainLoadingScene = Scene.getSceneForLayout(rootView, R.layout.activity_main_loading_layout, this);
+        Transition transition = new Fade();
+        transition.setDuration(500);
+
+        // Start transition
+        TransitionManager.go(activityMainLoadingScene, transition);
+        //////
     }
 
     /**
      * We use a task since the initAppData() method blocks the ui thread which makes the progressBar
      * not showing instantly
      */
-    private class InitAppDataTask extends AsyncTask<Void, Integer, Void> {
+    private class LoadDataTask extends AsyncTask<Void, Integer, Void> {
         @Override
         protected void onPreExecute() {
             // This method is called on the UI thread before the background task starts
@@ -115,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             // This method is called on the UI thread after the background task completes
-//            progressBar.setVisibility(View.GONE);
             changeActivity();
         }
     }

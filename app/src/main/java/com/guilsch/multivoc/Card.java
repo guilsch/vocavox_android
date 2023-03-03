@@ -157,6 +157,18 @@ public class Card implements Serializable {
         }
     }
 
+    public void addToDatabaseOnSeparateThread() {
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                addToDatabase();
+            }
+        };
+
+        Thread thread = new Thread(myRunnable);
+        thread.start();
+    }
+
     public void info() {
         System.out.println("Item 1 : " + this.item1);
         System.out.println("Item 2 : " + this.item2);

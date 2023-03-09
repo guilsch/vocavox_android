@@ -28,9 +28,18 @@ public class Param {
 
 
     public static final String[] TARGET_LANGUAGES = {"English", "German", "French", "Italian", "Russian", "Spanish"};
+    public static final Language[] TARGET_LANGUAGES_FULL = {
+            new Language("English", "en", R.drawable.ic_gb),
+            new Language("German", "de", R.drawable.ic_de),
+            new Language("French", "fr", R.drawable.ic_fr),
+            new Language("Italian", "it", R.drawable.ic_it),
+            new Language("Russian", "ru", R.drawable.ic_ru),
+            new Language("Spanish", "es", R.drawable.ic_es)
+    };
     public static final String[] USER_LANGUAGES = {"English", "German", "French", "Italian", "Russian", "Spanish"};
     public static final String[] USER_LANGUAGES_ISO = {"en", "de", "fr", "it", "ru", "es"};
 
+    public static String TARGET_LANGUAGE_FULL;
     public static String TARGET_LANGUAGE;
     public static String TARGET_LANGUAGE_ISO;
 

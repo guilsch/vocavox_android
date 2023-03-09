@@ -2,7 +2,7 @@
     <string name="app_name">Multivoc</string>
 
     <!-- Welcome screen -->
-    <string name="choose_language">Please select the language you want to learn today</string>
+    <string name="choose_language">Please select the language you want to learn today :</string>
     <string name="welcome_msg">Nice to see you</string>
 
     <!-- Question Answer Sides  -->

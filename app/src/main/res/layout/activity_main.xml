@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue5"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <Button
@@ -28,7 +28,7 @@
         android:gravity="center"
         android:padding="50dp"
         android:text="@string/choose_language"
-        android:textColor="@color/white"
+        android:textColor="@color/blue5"
         android:textSize="28sp"
         android:textStyle="bold"
         android:typeface="normal"
@@ -39,11 +39,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="358dp"
-        android:layout_height="75dp"
+        android:layout_width="291dp"
+        android:layout_height="115dp"
         android:background="@color/white"
         android:dropDownWidth="wrap_content"
         android:gravity="center|center_horizontal|center_vertical"

@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
         ////// Manage events
 
         // Spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Param.TARGET_LANGUAGES);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Param.TARGET_LANGUAGES);
+        LanguageSpinnerAdapter adapter = new LanguageSpinnerAdapter(this);
         spinner.setAdapter(adapter);
         spinner.setSelection(Param.LAST_LANG);
 
@@ -89,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         // Manage newly selected language
-        Param.TARGET_LANGUAGE = spinner.getSelectedItem().toString();
+        Language selectedLanguage = (Language) spinner.getSelectedItem();
+        Param.TARGET_LANGUAGE = selectedLanguage.getName();
         Pref.savePreference(this, Param.LAST_LANG_KEY, spinner.getSelectedItemPosition());
 
         // Start the task to prepare data and show loading

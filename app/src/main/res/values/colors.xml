@@ -55,6 +55,7 @@
 
     <color name="blue_standard">#81B4D8</color>
 
-
+<!--   Font colors  -->
+    <color name="grey_font">#FF393D40</color>
 
 </resources>

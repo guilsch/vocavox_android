@@ -14,6 +14,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
+import life.sabujak.roundedbutton.RoundedButton;
+
 /**
  * This class is the activity corresponding to the revision activity
  *
@@ -22,16 +24,16 @@ import java.util.Random;
 public class RevisionActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Layout
-    private Button mSeeAnswerButton;
-    private Button mAnswerButton1;
-    private Button mAnswerButton2;
-    private Button mAnswerButton3;
-    private Button mAnswerButton4;
+    private RoundedButton mSeeAnswerButton;
+    private RoundedButton mAnswerButton1;
+    private RoundedButton mAnswerButton2;
+    private RoundedButton mAnswerButton3;
+    private RoundedButton mAnswerButton4;
     private Button mBackToMenuRevisionButton;
 
     private TextView mTextViewQuestion;
-    private TextView mAnswerHeader;
-    private TextView mQuestionHeader;
+//    private TextView mAnswerHeader;
+//    private TextView mQuestionHeader;
 
     // Variables
     private Card currentCard;
@@ -163,11 +165,11 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         mTextViewQuestion = findViewById(R.id.question_side_item1);
         mSeeAnswerButton = findViewById(R.id.question_side_button);
-        mQuestionHeader = findViewById(R.id.header);
+//        mQuestionHeader = findViewById(R.id.header);
 
-        mQuestionHeader.setText(getRevisionHeaderText());
+//        mQuestionHeader.setText(getRevisionHeaderText());
         mSeeAnswerButton.setOnClickListener(this);
-        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
+//        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         // Depends on the direction of revision for each card
         if (this.langDirection == 1) {
@@ -184,19 +186,19 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     private void showAnswerSide() {
         setContentView(R.layout.answer_side);
 
-        mAnswerButton1 = findViewById(R.id.wrong_answer_button_step2);
+        mAnswerButton1 = findViewById(R.id.answer_side_button1);
         mAnswerButton2 = findViewById(R.id.answer_side_button2);
         mAnswerButton3 = findViewById(R.id.answer_side_button3);
-        mAnswerButton4 = findViewById(R.id.right_answer_button_step2);
+        mAnswerButton4 = findViewById(R.id.answer_side_button4);
         mTextViewQuestion = findViewById(R.id.answer_side_item2_step2);
-        mAnswerHeader = findViewById(R.id.header);
+//        mAnswerHeader = findViewById(R.id.header);
 
         mAnswerButton1.setOnClickListener(this);
         mAnswerButton2.setOnClickListener(this);
         mAnswerButton3.setOnClickListener(this);
         mAnswerButton4.setOnClickListener(this);
-        mAnswerHeader.setText(getRevisionHeaderText());
-        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
+//        mAnswerHeader.setText(getRevisionHeaderText());
+//        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         // Depends on the direction of revision for each card
         if (this.langDirection == 1) {

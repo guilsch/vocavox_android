@@ -101,4 +101,10 @@ dependencies {
 
     // Progress bar
     implementation 'com.kofigyan.stateprogressbar:stateprogressbar:1.0.0'
+
+    // Buttons
+    implementation 'com.github.sabujak-sabujak:RoundedButton:v0.1.1'
+
+    // Edit svg
+    implementation 'com.caverock:androidsvg:1.4'
 }

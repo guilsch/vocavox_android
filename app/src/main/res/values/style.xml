@@ -4,4 +4,17 @@
         <!-- ... -->
         <item name="android:windowContentTransitions">true</item>
     </style>
+
+
+    <style name="BigButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:background">@color/blue5</item>
+    </style>
+
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Spinner.DropDown">
+        <item name="android:background">@drawable/custom_spinner_background</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+    </style>
 </resources>

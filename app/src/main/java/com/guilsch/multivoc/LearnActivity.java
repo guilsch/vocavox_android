@@ -17,6 +17,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import life.sabujak.roundedbutton.RoundedButton;
+
 /**
  * This class is the activity corresponding to the learning activity
  *
@@ -42,10 +44,10 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private Button mStartStep3Button;
 
     private Button mSeeAnswerButtonStep3;
-    private Button mAnswerButton1Step3;
-    private Button mAnswerButton2Step3;
-    private Button mAnswerButton3Step3;
-    private Button mAnswerButton4Step3;
+    private RoundedButton mAnswerButton1Step3;
+    private RoundedButton mAnswerButton2Step3;
+    private RoundedButton mAnswerButton3Step3;
+    private RoundedButton mAnswerButton4Step3;
     private TextView mTextViewQuestionStep3;
     private TextView mTextViewAnswerStep3;
 
@@ -267,7 +269,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         // Initialization
         mTextViewAnswerStep2 = findViewById(R.id.answer_side_item2_step2);
         mAnswerRightButtonStep2 = findViewById(R.id.right_answer_button_step2);
-        mAnswerWrongButtonStep2 = findViewById(R.id.wrong_answer_button_step2);
+        mAnswerWrongButtonStep2 = findViewById(R.id.answer_side_button1);
 
         // Use
         mAnswerRightButtonStep2.setOnClickListener(this);
@@ -368,10 +370,10 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         mTextViewAnswerStep3 = findViewById(R.id.answer_side_item2_step2);
-        mAnswerButton1Step3 = findViewById(R.id.wrong_answer_button_step2);
+        mAnswerButton1Step3 = findViewById(R.id.answer_side_button1);
         mAnswerButton2Step3 = findViewById(R.id.answer_side_button2);
         mAnswerButton3Step3 = findViewById(R.id.answer_side_button3);
-        mAnswerButton4Step3 = findViewById(R.id.right_answer_button_step2);
+        mAnswerButton4Step3 = findViewById(R.id.answer_side_button4);
 
         mAnswerButton1Step3.setOnClickListener(this);
         mAnswerButton2Step3.setOnClickListener(this);

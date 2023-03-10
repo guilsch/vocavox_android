@@ -22,9 +22,11 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
+import life.sabujak.roundedbutton.RoundedButton;
+
 public class MainActivity extends AppCompatActivity {
 
-    private Button start;
+    private RoundedButton start;
     private Spinner spinner;
     private ProgressBar progressBar;
 

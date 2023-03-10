@@ -94,7 +94,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/wrong_answer_button_step2"
+        android:id="@+id/answer_side_button1"
         android:layout_width="@dimen/button_ans_width"
         android:layout_height="@dimen/button_ans_height"
         android:background="@drawable/button_selector_ans"
@@ -122,6 +122,6 @@
         app:backgroundTint="@color/perfect"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/wrong_answer_button_step2"
-        app:layout_constraintTop_toTopOf="@+id/wrong_answer_button_step2" />
+        app:layout_constraintStart_toEndOf="@+id/answer_side_button1"
+        app:layout_constraintTop_toTopOf="@+id/answer_side_button1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

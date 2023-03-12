@@ -14,7 +14,7 @@ import android.widget.TextView;
  */
 public class MenuActivity extends AppCompatActivity {
 
-    private ImageView flag;
+//    private ImageView flag;
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
@@ -24,7 +24,7 @@ public class MenuActivity extends AppCompatActivity {
         /*
          * Declaration
          */
-        flag = findViewById(R.id.flag);
+        ImageView flag = findViewById(R.id.flag);
         TextView mTextViewCardsToReview = findViewById(R.id.cards_to_review);
         TextView mTextViewTotalCards = findViewById(R.id.total_cards_nb);
 

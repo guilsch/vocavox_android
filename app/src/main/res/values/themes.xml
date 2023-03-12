@@ -42,4 +42,13 @@
     <!--    font-->
     <string name="header_text_size" translatable="false">18</string>
 
+    <style name="Theme.Multivoc.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Multivoc.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Multivoc.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

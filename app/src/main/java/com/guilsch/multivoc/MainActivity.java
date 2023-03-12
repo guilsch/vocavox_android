@@ -239,14 +239,14 @@ public class MainActivity extends AppCompatActivity {
      * Method to switch to MenuActivity
      */
     private void changeActivity() {
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity2.class);
         startActivity(menuActivity);
         finish();
     }
 
     @Override
     public void onBackPressed() {
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity2.class);
         startActivity(menuActivity);
         finish();
     }

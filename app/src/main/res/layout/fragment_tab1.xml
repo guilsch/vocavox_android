@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue1">
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/cards_to_review"
@@ -21,17 +21,31 @@
         app:layout_constraintTop_toBottomOf="@+id/total_cards_nb_title" />
 
     <TextView
+        android:id="@+id/welcome_msg"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:gravity="center|top"
+        android:text="@string/welcome_msg"
+        android:textColor="@color/grey_font"
+        android:textSize="@dimen/titles"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/h_guideline1" />
+
+    <TextView
         android:id="@+id/cards_to_review_title"
         android:layout_width="155dp"
         android:layout_height="50dp"
         android:gravity="center|top"
         android:text="@string/menu_nb_of_cards_to_review_title_str"
-        android:textColor="#C1C1C1"
+        android:textColor="@color/grey_font"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline1" />
+        app:layout_constraintTop_toTopOf="@+id/h_guideline2" />
 
     <TextView
         android:id="@+id/total_cards_nb"
@@ -54,23 +68,23 @@
         android:layout_height="50dp"
         android:gravity="center|top"
         android:text="@string/menu_nb_of_cards_title_str"
-        android:textColor="#C1C1C1"
+        android:textColor="@color/grey_font"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline1" />
+        app:layout_constraintTop_toTopOf="@+id/h_guideline2" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/lang_flag"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
         android:src="@drawable/ic_de"
         app:civ_border_color="#A8A8A8"
         app:civ_border_width="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline

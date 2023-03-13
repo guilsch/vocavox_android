@@ -123,7 +123,7 @@
             <ImageView
                 android:id="@+id/menu_train_image"
                 android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_height="78dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/ic_revision"
                 tools:ignore="VectorDrawableCompat" />

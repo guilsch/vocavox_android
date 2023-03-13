@@ -43,7 +43,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private Button mSkipStep2Button;
     private Button mStartStep3Button;
 
-    private Button mSeeAnswerButtonStep3;
+    private RoundedButton mSeeAnswerButtonStep3;
     private RoundedButton mAnswerButton1Step3;
     private RoundedButton mAnswerButton2Step3;
     private RoundedButton mAnswerButton3Step3;
@@ -56,7 +56,6 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private StateProgressBar mStepsProgressBar;
     private String[] descriptionData;
 
-
     ListView cardsSelectionList;
 
     private Card currentCard;
@@ -65,10 +64,6 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private static Queue<Card> learningCardsQueue3;
     private Queue<Card> processedCardsQueue;
     private List<Card> toLearnCardsList;
-
-//    private ProgressBar progressBar;
-//    private int currentStep;
-//    private int maxStep;
 
 
     @RequiresApi(api = Build.VERSION_CODES.R)
@@ -82,8 +77,6 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         learningCardsQueue3 = new LinkedList<>();
         processedCardsQueue = new LinkedList<>();
 
-//        currentStep = 1;
-//        maxStep = 3;
         descriptionData = new String[]{"Step 1", "Step 2", "Step 3"};
 
         toLearnCardsList = Param.GLOBAL_DECK.getCardsToLearnList();
@@ -351,8 +344,6 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private void showQuestionSideStep3() {
         setContentView(R.layout.question_side);
 
-        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
-
         mTextViewQuestionStep3 = findViewById(R.id.question_side_item1);
         mSeeAnswerButtonStep3 = findViewById(R.id.question_side_button);
 
@@ -366,8 +357,6 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
      */
     private void showAnswerSideStep3() {
         setContentView(R.layout.answer_side);
-
-        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         mTextViewAnswerStep3 = findViewById(R.id.answer_side_item2_step2);
         mAnswerButton1Step3 = findViewById(R.id.answer_side_button1);

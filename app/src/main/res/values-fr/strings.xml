@@ -31,6 +31,8 @@
     <string name="menu_explore_title_str">Explorer</string>
     <string name="menu_settings_title_str">Paramètres</string>
 
+    <string name="menu_add_cards_title">Ajouter des cartes</string>
+
 
     <!-- New Card !-->
     <string name="new_card_header">Editer une nouvelle carte</string>

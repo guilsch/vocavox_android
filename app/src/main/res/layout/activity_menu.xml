@@ -113,7 +113,7 @@
         app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1">
 
         <LinearLayout
-            android:id="@+id/menu_train"
+            android:id="@+id/train_layout"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_weight="1"

@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 //import com.guilsch.multivoc.ui.main.SectionsPagerAdapter;
 
@@ -46,12 +47,18 @@ public class MenuActivity2 extends AppCompatActivity {
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_tab1, container, false);
 
+            MenuActivity2 parentActivity = (MenuActivity2) getActivity();
+
             ImageView flag = view.findViewById(R.id.lang_flag);
+            ImageView settingsIm = view.findViewById(R.id.setting_im);
+            LinearLayout trainLayout = view.findViewById(R.id.train_layout);
+            LinearLayout learnLayout = view.findViewById(R.id.learn_layout);
+
             flag.setImageDrawable(Param.FLAG_ICON_TARGET);
-            flag.setOnClickListener((v -> {
-                MenuActivity2 parentActivity = (MenuActivity2) getActivity();
-                parentActivity.changeActivity(MainActivity.class);
-            }));
+            flag.setOnClickListener(v -> parentActivity.changeActivity(MainActivity.class));
+            settingsIm.setOnClickListener(v -> parentActivity.changeActivity(SettingsActivity.class));
+            trainLayout.setOnClickListener(v -> parentActivity.changeActivity(RevisionActivity.class));
+            learnLayout.setOnClickListener(v -> parentActivity.changeActivity(LearnActivity.class));
 
             return view;
         }
@@ -62,7 +69,17 @@ public class MenuActivity2 extends AppCompatActivity {
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_tab2, container, false);
-            // TODO: Ajoutez votre code pour créer le contenu de l'onglet 2 ici
+
+            MenuActivity2 parentActivity = (MenuActivity2) getActivity();
+
+            LinearLayout translationLayout = view.findViewById(R.id.translation_layout);
+            LinearLayout newCardLayout = view.findViewById(R.id.new_card_layout);
+            LinearLayout exploreLayout = view.findViewById(R.id.explore_layout);
+
+            translationLayout.setOnClickListener(v -> parentActivity.changeActivity(TranslationActivity.class));
+            newCardLayout.setOnClickListener(v -> parentActivity.changeActivity(NewCardActivity.class));
+            exploreLayout.setOnClickListener(v -> parentActivity.changeActivity(ExploreActivity.class));
+
             return view;
         }
     }

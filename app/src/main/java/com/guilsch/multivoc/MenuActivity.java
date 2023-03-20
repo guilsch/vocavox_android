@@ -39,7 +39,7 @@ public class MenuActivity extends AppCompatActivity {
         /*
          * Setup events
          */
-        findViewById(R.id.menu_train).setOnClickListener(view -> changeActivity(RevisionActivity.class));
+        findViewById(R.id.train_layout).setOnClickListener(view -> changeActivity(RevisionActivity.class));
         findViewById(R.id.menu_settings).setOnClickListener(view -> changeActivity(SettingsActivity.class));
         findViewById(R.id.menu_learning).setOnClickListener(view -> changeActivity(LearnActivity.class));
         findViewById(R.id.menu_explore).setOnClickListener(view -> changeActivity(ExploreActivity.class));

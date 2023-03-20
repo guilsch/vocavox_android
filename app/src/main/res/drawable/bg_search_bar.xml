@@ -7,7 +7,7 @@
         android:color="#BABABA" />
 
     <gradient
-        android:startColor="@color/navy4"
+        android:startColor="@color/bg"
         android:endColor="@color/back_ground2"
         android:type="linear"
         android:angle="0"/>

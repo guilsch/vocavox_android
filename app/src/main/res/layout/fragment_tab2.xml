@@ -6,195 +6,147 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        tools:layout_editor_absoluteX="201dp"
+        tools:layout_editor_absoluteY="185dp">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline8"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteY="371dp">
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginHorizontal="40dp"
+            android:background="@drawable/bg_search_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
+            android:id="@+id/explore_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/header_page2"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_weight="1"
+            android:layout_height="75dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/menu_case"
             android:orientation="horizontal"
-            android:background="#EDEDE1"
-            >
-
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic__back_arrow" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.312"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/h_guideline1">
 
             <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:rotation="180"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic__back_arrow" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline9"
+                android:id="@+id/menu_explore_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="30dp"
                 app:srcCompat="@drawable/ic_explore" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline9"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/menu_explore_title"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_weight="5"
+                android:layout_marginVertical="20sp"
+                android:layout_marginEnd="20sp"
+                android:gravity="center"
+                android:text="@string/menu_explore_title_str"
+                android:textAlignment="center"
+                android:textColor="@color/grey_font"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/explore_arrow"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:rotation="-90"
+                app:srcCompat="@android:drawable/arrow_down_float" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_add_cards_title"
+            android:textSize="@dimen/titles"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="40dp" />
+
+        <LinearLayout
+            android:id="@+id/add_cards_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_menu_container_square_layout"
+            >
+
+            <LinearLayout
+                android:id="@+id/translation_layout"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.3"/>
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_menu_square_layout"
+                >
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/ic_translate"
+                    android:layout_margin="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/menu_translate_title_str" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/new_card_layout"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_menu_square_layout"
+                >
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_new_card"
+                android:layout_margin="10dp" />
 
             <TextView
-                android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Let's learn !"
-                app:layout_constraintBottom_toTopOf="@+id/imageView6"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_margin="10dp"
+                android:text="@string/menu_new_card_title_str" />
 
-            <LinearLayout
-                android:id="@+id/menu_train"
-                android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="40dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/menu_case"
-                android:orientation="horizontal"
-                >
-
-                <ImageView
-                    android:id="@+id/menu_train_image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="30dp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_revision" />
-
-                <TextView
-                    android:id="@+id/menu_train_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="20sp"
-                    android:layout_marginVertical="20sp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/menu_train_title_str"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:textColor="@color/grey_font" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/menu_learn"
-                android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:layout_weight="1"
-                android:background="@drawable/menu_case"
-                android:orientation="horizontal"
-                android:layout_marginVertical="20dp"
-                android:layout_marginHorizontal="40dp"
-                >
-
-                <ImageView
-                    android:id="@+id/menu_learn_image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="30dp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_learn" />
-
-                <TextView
-                    android:id="@+id/menu_learn_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="20sp"
-                    android:layout_marginVertical="20sp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/menu_learn_title_str"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:textColor="@color/grey_font" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/menu_"
-                android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:layout_weight="1"
-                android:background="@drawable/menu_case"
-                android:orientation="horizontal"
-                android:layout_marginVertical="20dp"
-                android:layout_marginHorizontal="40dp"
-                >
-
-                <ImageView
-                    android:id="@+id/menu__image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="30dp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_global_network" />
-
-                <TextView
-                    android:id="@+id/menu__title"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="20sp"
-                    android:layout_marginVertical="20sp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="autre"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:textColor="@color/grey_font" />
-
-            </LinearLayout>
+        </LinearLayout>
 
 
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

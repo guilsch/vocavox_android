@@ -117,13 +117,13 @@
 
             <ImageView
                 android:id="@+id/train_arrow"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:rotation="-90"
-                app:srcCompat="@android:drawable/arrow_down_float" />
+                android:rotation="0"
+                app:srcCompat="@drawable/ic_chevron" />
 
         </LinearLayout>
 
@@ -164,13 +164,13 @@
 
             <ImageView
                 android:id="@+id/learn_arrow"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:rotation="-90"
-                app:srcCompat="@android:drawable/arrow_down_float" />
+                android:rotation="0"
+                app:srcCompat="@drawable/ic_chevron" />
 
         </LinearLayout>
 

@@ -1,15 +1,16 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <corners android:radius="3dp" />
+    <corners android:radius="10dp" />
 
-    <stroke
-        android:width="0.5dp"
-        android:color="#BABABA" />
+<!--    <stroke-->
+<!--        android:width="0dp"-->
+<!--        android:color="#BABABA" />-->
 
     <gradient
-        android:startColor="@color/back_ground3"
-        android:endColor="@color/navy4"
-        android:type="linear"
+        android:startColor="#F6F5FA"
+        android:endColor="#F6F5FA"
+        android:type="radial"
+        android:gradientRadius="10dp"
         android:angle="0"/>
 
 </shape>

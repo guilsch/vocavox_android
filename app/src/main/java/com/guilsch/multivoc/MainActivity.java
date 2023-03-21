@@ -6,7 +6,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.transition.Fade;
 import androidx.transition.Scene;
 import androidx.transition.Transition;
-import androidx.transition.TransitionInflater;
 import androidx.transition.TransitionManager;
 
 import android.Manifest;
@@ -17,8 +16,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
@@ -239,14 +236,14 @@ public class MainActivity extends AppCompatActivity {
      * Method to switch to MenuActivity
      */
     private void changeActivity() {
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity2.class);
+        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
         startActivity(menuActivity);
         finish();
     }
 
     @Override
     public void onBackPressed() {
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity2.class);
+        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
         startActivity(menuActivity);
         finish();
     }

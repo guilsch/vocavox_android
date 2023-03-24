@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 //import com.guilsch.multivoc.ui.main.SectionsPagerAdapter;
 
@@ -49,8 +50,11 @@ public class MenuActivity extends AppCompatActivity {
             ImageView settingsIm = view.findViewById(R.id.setting_im);
             LinearLayout trainLayout = view.findViewById(R.id.train_layout);
             LinearLayout learnLayout = view.findViewById(R.id.learn_layout);
+//            TextView cardsToTrainNB = view.findViewById(R.id.cards_to_train_nb);
 
             flag.setImageDrawable(Param.FLAG_ICON_TARGET);
+//            cardsToTrainNB.setText("12");
+//            cardsToTrainNB.setText(Param.GLOBAL_DECK.getCardsToReviewNb());
             flag.setOnClickListener(v -> parentActivity.changeActivity(MainActivity.class));
             settingsIm.setOnClickListener(v -> parentActivity.changeActivity(SettingsActivity.class));
             trainLayout.setOnClickListener(v -> parentActivity.changeActivity(RevisionActivity.class));

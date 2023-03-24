@@ -49,7 +49,14 @@
         app:layout_constraintBottom_toTopOf="@+id/horizontal_central_guideline2"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1">
+        app:layout_constraintTop_toBottomOf="@+id/remaining_cards_progress_bar">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/separation_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
 
         <ImageView
             android:id="@+id/param_wheel_ic"
@@ -63,19 +70,36 @@
             app:tint="@color/white" />
 
         <TextView
-            android:id="@+id/answer_side_item2_step2"
-            android:layout_width="176dp"
-            android:layout_height="65dp"
-            android:gravity="center"
-            android:text="TextView"
+            android:id="@+id/answer_side_item1_step2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="bottom|center_horizontal"
+            android:text="item1"
             android:textColor="@color/blue3"
             android:textSize="30sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/separation_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/param_wheel_ic"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/answer_side_item2_step2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center|top"
+            android:text="TextView"
+            android:textColor="@color/blue3"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answer_side_item1_step2"
             app:layout_constraintVertical_bias="0.441"
             tools:ignore="MissingConstraints" />
 
@@ -129,5 +153,15 @@
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toEndOf="@+id/answer_side_button3"
         app:layout_constraintTop_toTopOf="@+id/answer_side_button1" />
+
+    <ProgressBar
+        android:id="@+id/remaining_cards_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

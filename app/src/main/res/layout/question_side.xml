@@ -68,7 +68,7 @@
         app:layout_constraintBottom_toTopOf="@+id/horizontal_central_guideline2"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1">
+        app:layout_constraintTop_toBottomOf="@+id/remaining_cards_progress_bar">
 
         <ImageView
             android:id="@+id/param_wheel_ic"
@@ -83,8 +83,8 @@
 
         <TextView
             android:id="@+id/question_side_item1"
-            android:layout_width="176dp"
-            android:layout_height="65dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:gravity="center"
             android:text="TextView"
             android:textColor="@color/white"
@@ -99,4 +99,15 @@
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/remaining_cards_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

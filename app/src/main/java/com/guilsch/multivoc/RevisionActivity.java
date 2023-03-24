@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.LinkedList;
@@ -32,8 +33,10 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     private Button mBackToMenuRevisionButton;
 
     private TextView mTextViewQuestion;
-//    private TextView mAnswerHeader;
-//    private TextView mQuestionHeader;
+    private TextView mTextViewItem2;
+
+    // Progress Bar
+    private ProgressBar CardsRemainingPB;
 
     // Variables
     private Card currentCard;
@@ -41,6 +44,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     private static Queue<Card> trainingCardsQueue;
     private Random rand;
     private int langDirection;
+    private int cardsNBInit;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -53,6 +57,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         // Get cards to train in revision_queue
         trainingCardsQueue = Param.GLOBAL_DECK.getTrainingQueue();
+        cardsNBInit = trainingCardsQueue.size();
 
         // Start scroll or show end screen
         if (trainingCardsQueue.isEmpty()) {
@@ -68,19 +73,16 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     /**
      * Occurs after the user gave an answer. Manage the score given by the user for the current
      * card. Mark the card active and calculate the new training date thanks to SuperMemo algorithm.
-     * Add the current card to the processed cards queue only if the card is not repeated (ie score
-     * not 1).
      *
-     * @param quality 1 to 4, quality of the answer given by the user
+     * @param quality 2 to 4, quality of the answer given by the user (not used if quality is 1)
      */
     private void setCardParam(int quality) {
-        // Change card values
-        currentCard.setState(Param.ACTIVE);
-        MemoAlgo.SuperMemo2(currentCard, quality);
-        currentCard.updateInDatabaseOnSeparateThread();
-
         // If the quality is not 1, card is not repeated so it is considered processed
         if (quality != 1){
+            // Change card values
+            currentCard.setState(Param.ACTIVE);
+            MemoAlgo.SuperMemo2(currentCard, quality);
+            currentCard.updateInDatabaseOnSeparateThread();
             processedCardsQueue.add(currentCard);
         }
     }
@@ -119,7 +121,6 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         } else if (v == mAnswerButton1){
             trainingCardsQueue.add(currentCard);
-            setCardParam(1);
             NextOrEndForTraining();
 
         } else if (v == mAnswerButton2) {
@@ -165,11 +166,10 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         mTextViewQuestion = findViewById(R.id.question_side_item1);
         mSeeAnswerButton = findViewById(R.id.question_side_button);
-//        mQuestionHeader = findViewById(R.id.header);
 
-//        mQuestionHeader.setText(getRevisionHeaderText());
+        updateCardsRemainingProgressBar();
+
         mSeeAnswerButton.setOnClickListener(this);
-//        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         // Depends on the direction of revision for each card
         if (this.langDirection == 1) {
@@ -178,6 +178,15 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         else {
             mTextViewQuestion.setText(this.currentCard.getItem2());
         }
+    }
+
+    /**
+     * Update cards remaining progress bar
+     */
+    private void updateCardsRemainingProgressBar() {
+        CardsRemainingPB = findViewById(R.id.remaining_cards_progress_bar);
+        CardsRemainingPB.setMax(cardsNBInit);
+        CardsRemainingPB.setProgress(processedCardsQueue.size());
     }
 
     /**
@@ -191,21 +200,23 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         mAnswerButton3 = findViewById(R.id.answer_side_button3);
         mAnswerButton4 = findViewById(R.id.answer_side_button4);
         mTextViewQuestion = findViewById(R.id.answer_side_item2_step2);
-//        mAnswerHeader = findViewById(R.id.header);
+        mTextViewItem2 = findViewById(R.id.answer_side_item1_step2);
+
+        updateCardsRemainingProgressBar();
 
         mAnswerButton1.setOnClickListener(this);
         mAnswerButton2.setOnClickListener(this);
         mAnswerButton3.setOnClickListener(this);
         mAnswerButton4.setOnClickListener(this);
-//        mAnswerHeader.setText(getRevisionHeaderText());
-//        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         // Depends on the direction of revision for each card
         if (this.langDirection == 1) {
             mTextViewQuestion.setText(this.currentCard.getItem2());
+            mTextViewItem2.setText(this.currentCard.getItem1());
         }
         else {
             mTextViewQuestion.setText(this.currentCard.getItem1());
+            mTextViewItem2.setText(this.currentCard.getItem2());
         }
 
     }

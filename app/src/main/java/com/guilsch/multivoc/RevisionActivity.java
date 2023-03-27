@@ -34,6 +34,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
     private TextView mTextViewQuestion;
     private TextView mTextViewItem2;
+    private TextView cardsLeftText;
 
     // Progress Bar
     private ProgressBar CardsRemainingPB;
@@ -93,6 +94,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
      */
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void NextOrEndForTraining() {
+        utils.printNBCards();
         currentCard = trainingCardsQueue.poll();
 
         if (currentCard != null) {
@@ -166,8 +168,10 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
 
         mTextViewQuestion = findViewById(R.id.question_side_item1);
         mSeeAnswerButton = findViewById(R.id.question_side_button);
+        cardsLeftText = findViewById(R.id.cards_left);
 
         updateCardsRemainingProgressBar();
+        cardsLeftText.setText(String.valueOf(Param.GLOBAL_DECK.getCardsToReviewNb()));
 
         mSeeAnswerButton.setOnClickListener(this);
 
@@ -201,7 +205,9 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         mAnswerButton4 = findViewById(R.id.answer_side_button4);
         mTextViewQuestion = findViewById(R.id.answer_side_item2_step2);
         mTextViewItem2 = findViewById(R.id.answer_side_item1_step2);
+        cardsLeftText = findViewById(R.id.cards_left);
 
+        cardsLeftText.setText(String.valueOf(Param.GLOBAL_DECK.getCardsToReviewNb()));
         updateCardsRemainingProgressBar();
 
         mAnswerButton1.setOnClickListener(this);

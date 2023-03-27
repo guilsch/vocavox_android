@@ -106,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_weight="5"
+                android:layout_weight="10"
                 android:layout_marginVertical="20sp"
                 android:gravity="center"
                 android:text="@string/menu_train_title_str"
@@ -114,23 +114,23 @@
                 android:textColor="@color/grey_font"
                 android:textStyle="bold" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/cards_to_train_nb"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_marginHorizontal="5sp"-->
-<!--                android:textAlignment="center"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="TextView" />-->
+            <TextView
+                android:id="@+id/cards_to_train_nb"
+                android:layout_width="76dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="5sp"
+                android:layout_weight="0"
+                android:text="NB"
+                android:textAlignment="center" />
 
             <ImageView
                 android:id="@+id/train_arrow"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="15dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:layout_weight="1"
+                android:layout_weight="0"
                 app:srcCompat="@drawable/ic_chevron" />
 
         </LinearLayout>
@@ -172,11 +172,11 @@
 
             <ImageView
                 android:id="@+id/learn_arrow"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="15dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:layout_weight="1"
+                android:layout_weight="0"
                 android:rotation="0"
                 app:srcCompat="@drawable/ic_chevron" />
 

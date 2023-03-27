@@ -49,7 +49,7 @@
         app:layout_constraintBottom_toTopOf="@+id/horizontal_central_guideline2"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/remaining_cards_progress_bar">
+        app:layout_constraintTop_toBottomOf="@+id/cards_left">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/separation_guideline"
@@ -159,9 +159,21 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/cards_left"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        />
+
+    <TextView
+        android:id="@+id/cards_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="7dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

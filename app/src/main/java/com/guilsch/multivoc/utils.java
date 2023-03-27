@@ -41,6 +41,10 @@ import java.util.UUID;
 
 public class utils {
 
+    public static void printNBCards() {
+        System.out.println("Cards to train :" + Param.GLOBAL_DECK.getCardsToReviewNb());
+    }
+
     public static void cleanDataFile() {
         try {
             FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));

@@ -36,12 +36,12 @@ public class MemoAlgo {
             interval = Math.round(interval * easiness);
         }
     
-        // next practice 
-        int millisecondsInDay = 60 * 60 * 24 * 1000;
+        // next practice
+        long millisecondsInDay = 60L * 60 * 24 * 1000;
         long now = System.currentTimeMillis();
         long nextPracticeTime = now + millisecondsInDay*interval;
         Date nextPracticeDate = utils.toDate(nextPracticeTime);
-    
+
         // Store the nextPracticeDate in the database
         card.updateParameters(nextPracticeDate, repetitions, easiness, interval);
     }

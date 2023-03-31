@@ -13,15 +13,19 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.LayoutInflater;
+import android.view.SearchEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 //import com.guilsch.multivoc.ui.main.SectionsPagerAdapter;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+
+    Deck filteredDeck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,34 @@ public class MenuActivity extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
 
         utils.printNBCards();
+
+        // Search bar
+        filteredDeck = (Deck) Param.GLOBAL_DECK.clone();
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String keyWord) {
+
+        filteredDeck.clear();
+
+        if (keyWord == null || keyWord.length() == 0) {
+            filteredDeck.addAll(Param.GLOBAL_DECK);
+        } else {
+            final String filterPattern = keyWord.toString().toLowerCase().trim();
+
+            for (Card card : Param.GLOBAL_DECK) {
+                if (card.getItem1().toLowerCase().contains(filterPattern) || card.getItem2().toLowerCase().contains(filterPattern)) {
+                    filteredDeck.add(card);
+                }
+            }
+        }
+
+        return false;
     }
 
     public static class Tab1Fragment extends Fragment {
@@ -72,6 +104,7 @@ public class MenuActivity extends AppCompatActivity {
 
             MenuActivity parentActivity = (MenuActivity) getActivity();
 
+            SearchView menuSearchBar = view.findViewById(R.id.menu_search_bar);
             LinearLayout translationLayout = view.findViewById(R.id.translation_layout);
             LinearLayout newCardLayout = view.findViewById(R.id.new_card_layout);
             LinearLayout exploreLayout = view.findViewById(R.id.explore_layout);
@@ -79,6 +112,10 @@ public class MenuActivity extends AppCompatActivity {
             translationLayout.setOnClickListener(v -> parentActivity.changeActivity(TranslationActivity.class));
             newCardLayout.setOnClickListener(v -> parentActivity.changeActivity(NewCardActivity.class));
             exploreLayout.setOnClickListener(v -> parentActivity.changeActivity(ExploreActivity.class));
+
+            // Search bar
+            SearchDeckAdapter adapter = new SearchDeckAdapter(getContext(), Param.GLOBAL_DECK, parentActivity);
+            menuSearchBar.setOnQueryTextListener(parentActivity);
 
             return view;
         }

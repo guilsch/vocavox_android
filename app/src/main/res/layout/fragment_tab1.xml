@@ -45,10 +45,10 @@
 
         <ImageView
             android:id="@+id/setting_im"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="29dp"
-            android:layout_marginEnd="29dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="31dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_settings_outlined_wheel" />

@@ -18,14 +18,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-//import com.guilsch.multivoc.ui.main.SectionsPagerAdapter;
+public class MenuActivity extends AppCompatActivity  {
 
-public class MenuActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-
-    Deck filteredDeck;
+    static Deck filteredDeck;
+    static ListView searchList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,33 +43,9 @@ public class MenuActivity extends AppCompatActivity implements SearchView.OnQuer
         utils.printNBCards();
 
         // Search bar
-        filteredDeck = (Deck) Param.GLOBAL_DECK.clone();
+        filteredDeck = new Deck();
     }
 
-    @Override
-    public boolean onQueryTextSubmit(String s) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String keyWord) {
-
-        filteredDeck.clear();
-
-        if (keyWord == null || keyWord.length() == 0) {
-            filteredDeck.addAll(Param.GLOBAL_DECK);
-        } else {
-            final String filterPattern = keyWord.toString().toLowerCase().trim();
-
-            for (Card card : Param.GLOBAL_DECK) {
-                if (card.getItem1().toLowerCase().contains(filterPattern) || card.getItem2().toLowerCase().contains(filterPattern)) {
-                    filteredDeck.add(card);
-                }
-            }
-        }
-
-        return false;
-    }
 
     public static class Tab1Fragment extends Fragment {
         @Nullable
@@ -105,6 +81,7 @@ public class MenuActivity extends AppCompatActivity implements SearchView.OnQuer
             MenuActivity parentActivity = (MenuActivity) getActivity();
 
             SearchView menuSearchBar = view.findViewById(R.id.menu_search_bar);
+            searchList = view.findViewById(R.id.menu_search_list);
             LinearLayout translationLayout = view.findViewById(R.id.translation_layout);
             LinearLayout newCardLayout = view.findViewById(R.id.new_card_layout);
             LinearLayout exploreLayout = view.findViewById(R.id.explore_layout);
@@ -114,11 +91,42 @@ public class MenuActivity extends AppCompatActivity implements SearchView.OnQuer
             exploreLayout.setOnClickListener(v -> parentActivity.changeActivity(ExploreActivity.class));
 
             // Search bar
-            SearchDeckAdapter adapter = new SearchDeckAdapter(getContext(), Param.GLOBAL_DECK, parentActivity);
-            menuSearchBar.setOnQueryTextListener(parentActivity);
+            SearchDeckAdapter adapter = new SearchDeckAdapter(getContext(), filteredDeck, parentActivity);
+            searchList.setAdapter(adapter);
+
+            menuSearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String keyWord) {
+                    filterFilteredDeck(keyWord);
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String keyWord) {
+                    filterFilteredDeck(keyWord);
+                    return false;
+                }
+            });
 
             return view;
+
         }
+    }
+
+    public static void filterFilteredDeck(String keyWord) {
+        filteredDeck.clear();
+
+        if (keyWord != null || keyWord.length() != 0) {
+            final String filterPattern = keyWord.toString().toLowerCase().trim();
+
+            for (Card card : Param.GLOBAL_DECK) {
+                if (card.getItem1().toLowerCase().contains(filterPattern) || card.getItem2().toLowerCase().contains(filterPattern)) {
+                    filteredDeck.add(card);
+                }
+            }
+        }
+
+        searchList.notify();
     }
 
     public static class Tab3Fragment extends Fragment {

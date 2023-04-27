@@ -25,12 +25,13 @@
             app:layout_constraintTop_toTopOf="parent"
             />
 
-<!--        <ListView-->
-<!--            android:id="@+id/menu_search_list"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="150dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            />-->
+        <ListView
+            android:id="@+id/menu_search_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_gravity="center"
+            />
 
         <LinearLayout
             android:id="@+id/explore_layout"

@@ -89,6 +89,7 @@ public class Param {
     // Cards data
     public static Deck GLOBAL_DECK;
     public static int CARDS_TO_REVIEW_NB;
+    public static int CARDS_TO_LEARN_NB;
     public static int CARDS_NB;
     public static int ACTIVE_CARDS_NB;
 

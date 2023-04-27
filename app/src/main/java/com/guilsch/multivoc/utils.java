@@ -9,6 +9,10 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
@@ -624,5 +628,20 @@ public class utils {
      */
     public static List<Card> getCardsListFromCardsQueue(Queue<Card> cardsQueue) {
         return Arrays.asList(cardsQueue.toArray(new Card[0]));
+    }
+
+    static void showToast(Context context, String message) {
+
+        Toast toast = new Toast(context);
+
+        View view = LayoutInflater.from(context)
+                .inflate(R.layout.toast_layout, null);
+
+        TextView tvMessage = view.findViewById(R.id.tvMessage);
+        tvMessage.setText(message);
+
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(view);
+        toast.show();
     }
 }

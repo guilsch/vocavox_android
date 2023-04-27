@@ -13,18 +13,6 @@
         tools:layout_editor_absoluteX="201dp"
         tools:layout_editor_absoluteY="185dp">
 
-        <SearchView
-            android:id="@+id/menu_search_bar"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/bg_search_bar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-
         <ListView
             android:id="@+id/menu_search_list"
             android:layout_width="match_parent"
@@ -33,52 +21,7 @@
             android:layout_gravity="center"
             />
 
-        <LinearLayout
-            android:id="@+id/explore_layout"
-            android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="50dp"
-            android:background="@drawable/menu_case"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.312"
-            app:layout_constraintStart_toStartOf="parent">
 
-            <ImageView
-                android:id="@+id/menu_explore_image"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_margin="30dp"
-                app:srcCompat="@drawable/ic_explore" />
-
-            <TextView
-                android:id="@+id/menu_explore_title"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginVertical="20sp"
-                android:layout_marginEnd="20sp"
-                android:layout_weight="5"
-                android:gravity="center"
-                android:text="@string/menu_explore_title_str"
-                android:textAlignment="center"
-                android:textColor="@color/grey_font"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/explore_arrow"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:rotation="0"
-                app:srcCompat="@drawable/ic_chevron" />
-
-        </LinearLayout>
 
         <TextView
             android:id="@+id/textView6"
@@ -161,6 +104,63 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/menu_others_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/titles"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/explore_layout"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/menu_case"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.312"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/menu_explore_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="30dp"
+                app:srcCompat="@drawable/ic_explore" />
+
+            <TextView
+                android:id="@+id/menu_explore_title"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="20sp"
+                android:layout_marginEnd="20sp"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:text="@string/menu_explore_title_str"
+                android:textAlignment="center"
+                android:textColor="@color/grey_font"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/explore_arrow"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:rotation="0"
+                app:srcCompat="@drawable/ic_chevron" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

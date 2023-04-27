@@ -267,11 +267,42 @@ public class Deck extends ArrayList<Card> {
         return count;
     }
 
+    public int getCardsToLearnNb() {
+        int count = 0;
+        for (Card card : this) {
+            if (card.getState() == 2) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public void updateDeckDataVariables() {
         // TODO modify to create and change attributes of the deck
-        Param.CARDS_TO_REVIEW_NB = this.getCardsToReviewNb();
+        this.updateCardsStatesVariables();
         Param.CARDS_NB = this.size();
         Param.ACTIVE_CARDS_NB = this.getCardsWithStateSNb(1);
+    }
+
+    /**
+     * Update Param.CARDS_TO_REVIEW_NB and Param.CARDS_TO_LEARN_NB variables
+     */
+    public void updateCardsStatesVariables() {
+        int countToTrain = 0;
+        int countToLearn = 0;
+        for (Card card : this) {
+            if (card.getNextPracticeDate().before(utils.giveCurrentDate()) && card.getState() == 1) {
+                countToTrain++;
+            }
+            if (card.getState()==2){
+                countToLearn++;
+            }
+        }
+
+        Param.CARDS_TO_REVIEW_NB = countToTrain;
+        Param.CARDS_TO_LEARN_NB = countToLearn;
+
+        return;
     }
 
     /**

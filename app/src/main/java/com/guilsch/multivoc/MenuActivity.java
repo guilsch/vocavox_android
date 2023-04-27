@@ -25,7 +25,6 @@ import android.widget.TextView;
 public class MenuActivity extends AppCompatActivity  {
 
     static Deck filteredDeck;
-    static ListView searchList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +40,6 @@ public class MenuActivity extends AppCompatActivity  {
         tabs.setupWithViewPager(viewPager);
 
         utils.printNBCards();
-
-        // Search bar
-        filteredDeck = new Deck();
     }
 
 
@@ -65,8 +61,8 @@ public class MenuActivity extends AppCompatActivity  {
             cardsToTrainNB.setText(String.valueOf(Param.GLOBAL_DECK.getCardsToReviewNb()));
             flag.setOnClickListener(v -> parentActivity.changeActivity(MainActivity.class));
             settingsIm.setOnClickListener(v -> parentActivity.changeActivity(SettingsActivity.class));
-            trainLayout.setOnClickListener(v -> parentActivity.changeActivity(RevisionActivity.class));
-            learnLayout.setOnClickListener(v -> parentActivity.changeActivity(LearnActivity.class));
+            trainLayout.setOnClickListener(v -> parentActivity.preChangeToTrainActivity());
+            learnLayout.setOnClickListener(v -> parentActivity.preChangeToLearnActivity());
 
             return view;
         }
@@ -80,8 +76,6 @@ public class MenuActivity extends AppCompatActivity  {
 
             MenuActivity parentActivity = (MenuActivity) getActivity();
 
-            SearchView menuSearchBar = view.findViewById(R.id.menu_search_bar);
-            searchList = view.findViewById(R.id.menu_search_list);
             LinearLayout translationLayout = view.findViewById(R.id.translation_layout);
             LinearLayout newCardLayout = view.findViewById(R.id.new_card_layout);
             LinearLayout exploreLayout = view.findViewById(R.id.explore_layout);
@@ -90,52 +84,25 @@ public class MenuActivity extends AppCompatActivity  {
             newCardLayout.setOnClickListener(v -> parentActivity.changeActivity(NewCardActivity.class));
             exploreLayout.setOnClickListener(v -> parentActivity.changeActivity(ExploreActivity.class));
 
-            // Search bar
-            SearchDeckAdapter adapter = new SearchDeckAdapter(getContext(), filteredDeck, parentActivity);
-            searchList.setAdapter(adapter);
-
-            menuSearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String keyWord) {
-                    filterFilteredDeck(keyWord);
-                    return false;
-                }
-
-                @Override
-                public boolean onQueryTextChange(String keyWord) {
-                    filterFilteredDeck(keyWord);
-                    return false;
-                }
-            });
-
             return view;
-
         }
     }
 
-    public static void filterFilteredDeck(String keyWord) {
-        filteredDeck.clear();
-
-        if (keyWord != null || keyWord.length() != 0) {
-            final String filterPattern = keyWord.toString().toLowerCase().trim();
-
-            for (Card card : Param.GLOBAL_DECK) {
-                if (card.getItem1().toLowerCase().contains(filterPattern) || card.getItem2().toLowerCase().contains(filterPattern)) {
-                    filteredDeck.add(card);
-                }
-            }
+    public void preChangeToLearnActivity(){
+        if (Param.CARDS_TO_LEARN_NB == 0) {
+            utils.showToast(MenuActivity.this, getString(R.string.toast_msg_no_cards_to_learn));
         }
-
-        searchList.notify();
+        else {
+            changeActivity(LearnActivity.class);
+        }
     }
 
-    public static class Tab3Fragment extends Fragment {
-        @Nullable
-        @Override
-        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.fragment_tab3, container, false);
-            // TODO: Ajoutez votre code pour créer le contenu de l'onglet 3 ici
-            return view;
+    public void preChangeToTrainActivity(){
+        if (Param.CARDS_TO_REVIEW_NB == 0) {
+            utils.showToast(MenuActivity.this, getString(R.string.toast_msg_no_cards_to_train));
+        }
+        else {
+            changeActivity(RevisionActivity.class);
         }
     }
 
@@ -148,8 +115,6 @@ public class MenuActivity extends AppCompatActivity  {
                         return new Tab1Fragment();
                     case 1:
                         return new Tab2Fragment();
-                    case 2:
-                        return new Tab3Fragment();
                     default:
                         return null;
                 }
@@ -157,22 +122,9 @@ public class MenuActivity extends AppCompatActivity  {
 
             @Override
             public int getCount() {
-                return 3;
+                return 2;
             }
 
-//            @Override
-//            public CharSequence getPageTitle(int position) {
-//                switch (position) {
-//                    case 0:
-//                        return "Page 1";
-//                    case 1:
-//                        return "Page 2";
-//                    case 2:
-//                        return "Page 3";
-//                    default:
-//                        return null;
-//                }
-//            }
         };
 
         return adapter;

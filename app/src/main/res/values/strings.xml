@@ -32,6 +32,7 @@
     <string name="menu_settings_title_str">Settings</string>
 
     <string name="menu_add_cards_title">Add cards</string>
+    <string name="menu_others_title">Others</string>
 
 
     <!-- New Card !-->
@@ -81,4 +82,7 @@
     <!-- First Time  -->
     <string name="first_time_path_msg_str">Enter the location of the directory where the Excel files containing your words must be saved</string>
 
+    <!-- Toasts   -->
+    <string name="toast_msg_no_cards_to_learn">No cards to learn...</string>
+    <string name="toast_msg_no_cards_to_train">No cards to train...</string>
 </resources>

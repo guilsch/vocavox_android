@@ -32,7 +32,7 @@
     <string name="menu_settings_title_str">Paramètres</string>
 
     <string name="menu_add_cards_title">Ajouter des cartes</string>
-
+    <string name="menu_others_title">Autres</string>
 
     <!-- New Card !-->
     <string name="new_card_header">Editer une nouvelle carte</string>
@@ -81,4 +81,7 @@
     <!-- First Time  -->
     <string name="first_time_path_msg_str">Entrez l\'emplacement du dossier où les fichers Excel regroupant vos mots doivent être enregistrés</string>
 
+    <!-- Toasts   -->
+    <string name="toast_msg_no_cards_to_learn">Aucune carte à apprendre...</string>
+    <string name="toast_msg_no_cards_to_train">Aucune carte à réviser...</string>
 </resources>

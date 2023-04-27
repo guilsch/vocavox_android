@@ -81,13 +81,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
         toLearnCardsList = Param.GLOBAL_DECK.getCardsToLearnList();
 
-        // Start scroll or show end screen
-        if (toLearnCardsList.isEmpty()) {
-            showNoCardsToLearn();
-
-        } else {
-            setLayoutCardsSelection();
-        }
+        setLayoutCardsSelection();
     }
 
     /**
@@ -322,15 +316,6 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
      */
     private void showEndOfLearning() {
         setContentView(R.layout.end_of_learning);
-
-        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
-
-        mBackToMenuRevisionButton = findViewById(R.id.skip_step3_button);
-        mBackToMenuRevisionButton.setOnClickListener(this);
-    }
-
-    private void showNoCardsToLearn() {
-        setContentView(R.layout.no_cards_to_learn);
 
         findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 

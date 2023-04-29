@@ -45,12 +45,17 @@
     <string name="next_new_card">New</string>
     <string name="card_state">Current state</string>
 
+    <!--Edit Card !-->
+    <string name="edit_card_msg">Edit the card</string>
+
+
     <!-- Start !-->
     <string name="start_button">Start</string>
 
     <!-- Translation !-->
     <string name="translate_header">Translate</string>
     <string name="no_connection">No internet connection! Cannot be translated!</string>
+    <string name="trans_check_header">Edit your card</string>
 
     <!--  Explore !-->
     <string name="explore_header">Explore</string>

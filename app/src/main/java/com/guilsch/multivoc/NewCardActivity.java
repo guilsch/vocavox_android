@@ -9,10 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import life.sabujak.roundedbutton.RoundedButton;
+
 public class NewCardActivity extends AppCompatActivity {
 
-    private Button nextNewCard;
-    private Button saveCard;
+    private RoundedButton saveCard;
 
     private EditText item1Text;
     private EditText item2Text;
@@ -25,14 +26,11 @@ public class NewCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_card);
 
-        nextNewCard = findViewById(R.id.next_new_card);
         saveCard = findViewById(R.id.save_new_card);
 
         item1Text = findViewById(R.id.item1_text);
         item2Text = findViewById(R.id.item2_text);
         packText = findViewById(R.id.pack_text);
-
-        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         saveCard.setOnClickListener(new View.OnClickListener() {
             @Override

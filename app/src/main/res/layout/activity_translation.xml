@@ -22,13 +22,6 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.085" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bottom_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,66 +33,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_middle_central_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_bottom_central_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.8" />
 
-    <TextView
-        android:id="@+id/header"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/navy1"
-        android:fontFamily="@font/oxygen_bold"
-        android:gravity="center"
-        android:text="@string/translate_header"
-        android:textColor="@color/white"
-        android:textSize="@dimen/header"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/back_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:adjustViewBounds="true"
-        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
-        app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic__back_arrow_white"
-        tools:ignore="VectorDrawableCompat" />
-
-    <Button
+    <life.sabujak.roundedbutton.RoundedButton
         android:id="@+id/ok_button"
-        android:layout_width="@dimen/button_std_width"
-        android:layout_height="@dimen/button_std_height"
-        android:layout_marginBottom="44dp"
-        android:background="@drawable/button_selector"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="64dp"
+        android:gravity="center"
+        android:padding="10dp"
         android:text="OK"
-        android:textColor="@color/button_std_text"
+        android:textColor="#ffffff"
         android:textSize="@dimen/button_std_text_size"
+        android:textAllCaps="true"
         android:textStyle="bold"
-        app:backgroundTint="#00FFFFFF"
-        app:backgroundTintMode="src_atop"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:buttonCornerRadius="30dp"
+        app:buttonGradientEndColor="@color/button_std_bg"
+        app:buttonGradientStartColor="@color/blue7"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/item2_text" />
 
 
     <EditText
@@ -109,12 +78,13 @@
         android:ems="10"
         android:gravity="top|left"
         android:inputType="text"
-        android:textColor="@null"
         android:paddingStart="10dp"
         android:paddingTop="17dp"
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
+        android:textColor="@color/navy1"
         android:textSize="@dimen/titles"
+        android:textCursorDrawable="@color/navy1"
         app:layout_constraintBottom_toTopOf="@+id/horizontal_middle_central_guideline"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintHorizontal_bias="0.0"
@@ -128,12 +98,13 @@
         android:layout_height="0dp"
         android:ems="10"
         android:gravity="top|left"
-        android:textColor="@null"
         android:paddingStart="10dp"
         android:paddingTop="17dp"
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
+        android:textColor="@color/navy1"
         android:textSize="@dimen/titles"
+        android:textCursorDrawable="@color/navy1"
         app:layout_constraintBottom_toTopOf="@+id/horizontal_bottom_central_guideline"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
@@ -144,17 +115,19 @@
         android:id="@+id/userLanguageFlag"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_middle_central_guideline"
         app:layout_constraintEnd_toStartOf="@+id/left_guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1"
         app:srcCompat="@drawable/ic_de"
-        tools:ignore="VectorDrawableCompat"
-        android:visibility="visible"/>
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/targetLanguageFlag"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_bottom_central_guideline"
         app:layout_constraintEnd_toStartOf="@+id/left_guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/horizontal_middle_central_guideline"

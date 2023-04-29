@@ -23,13 +23,6 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.085" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bottom_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,36 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <TextView
-        android:id="@+id/header"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/blue7"
-        android:fontFamily="@font/oxygen_bold"
-        android:gravity="center"
-        android:text="@string/settings_header"
-        android:textColor="@color/white"
-        android:textSize="@dimen/header"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/back_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:adjustViewBounds="true"
-        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
-        app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic__back_arrow_white"
-        tools:ignore="VectorDrawableCompat" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <EditText
         android:id="@+id/folder_path_edit_text"
@@ -92,7 +56,7 @@
         android:paddingRight="5dp"
         android:text="@string/save_setting"
         android:textSize="8sp"
-        app:backgroundTint="#707070"
+        app:backgroundTint="@color/blue10"
         app:layout_constraintEnd_toStartOf="@+id/folder_path_default_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/folder_path_edit_text"
@@ -106,7 +70,7 @@
         android:paddingRight="5dp"
         android:text="@string/save_setting"
         android:textSize="8sp"
-        app:backgroundTint="#707070"
+        app:backgroundTint="@color/blue10"
         app:layout_constraintEnd_toStartOf="@+id/lang_direction_default_button"
         app:layout_constraintStart_toEndOf="@+id/lang_direction_freq_seekBar"
         app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
@@ -119,7 +83,7 @@
         android:paddingRight="5dp"
         android:text="@string/default_setting"
         android:textSize="8sp"
-        app:backgroundTint="#9C5B23"
+        app:backgroundTint="#BF360C"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toEndOf="@+id/folder_path_save_button"
         app:layout_constraintTop_toTopOf="@+id/folder_path_edit_text" />
@@ -132,7 +96,7 @@
         android:paddingRight="5dp"
         android:text="@string/default_setting"
         android:textSize="8sp"
-        app:backgroundTint="#9C5B23"
+        app:backgroundTint="#BF360C"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toEndOf="@+id/lang_direction_save_button"
         app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
@@ -168,6 +132,9 @@
         android:layout_height="39dp"
         android:max="10"
         android:progress="3"
+        android:progressTint="@color/navy2"
+        android:secondaryProgressTint="@color/navy1"
+        android:thumbTintMode="@color/navy1"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
         app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>

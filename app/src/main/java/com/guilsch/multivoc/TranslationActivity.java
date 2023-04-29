@@ -1,6 +1,5 @@
 package com.guilsch.multivoc;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,18 +8,19 @@ import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
+
+import life.sabujak.roundedbutton.RoundedButton;
 
 public class TranslationActivity extends AppCompatActivity {
 
-    private Button nextNewCardButton;
-    private Button OKButton;
-    private Button cancelButton;
-    private Button saveCardButton;
+    private RoundedButton OKButton;
+    private RoundedButton cancelButton;
+    private RoundedButton saveCardButton;
 
     private ImageView targetLanguageFlag;
     private ImageView userLanguageFlag;
@@ -30,6 +30,7 @@ public class TranslationActivity extends AppCompatActivity {
     private EditText item1TextCheckCardLayout;
     private EditText item2TextCheckCardLayout;
     private EditText packText;
+    private TextView tradCheckMsg;
 
     private TranslationAPI translator;
     private String translationResult;
@@ -49,7 +50,6 @@ public class TranslationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_translation);
         currentLayoutNum = 1;
 
-        nextNewCardButton = findViewById(R.id.next_new_card);
         OKButton = findViewById(R.id.ok_button);
 
         item1Text = findViewById(R.id.item1_text);
@@ -70,8 +70,6 @@ public class TranslationActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
-
-        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         item1Text.setOnTouchListener((view, motionEvent) -> onTouchItem1Side());
         item2Text.setOnTouchListener((view, motionEvent) -> onTouchItem2Side());
@@ -94,7 +92,6 @@ public class TranslationActivity extends AppCompatActivity {
                     item2Text.setText(translate(item1Text.getText().toString()));
                 }
             }
-
         });
 
         item2Text.addTextChangedListener(new TextWatcher() {
@@ -129,13 +126,18 @@ public class TranslationActivity extends AppCompatActivity {
         packText = findViewById(R.id.pack_text);
         targetLanguageFlag = findViewById(R.id.targetLanguageFlag);
         userLanguageFlag = findViewById(R.id.userLanguageFlag);
+        tradCheckMsg = findViewById(R.id.trad_check_msg);
+
         targetLanguageFlag.setImageDrawable(Param.FLAG_ICON_TARGET);
+        userLanguageFlag.setImageDrawable(Param.FLAG_ICON_USER);
 
         saveCardButton = findViewById(R.id.save_new_card);
         saveCardButton.setOnClickListener(view -> saveCardButtonClick());
 
         cancelButton = findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(view -> initMainTranslationLayout());
+
+        tradCheckMsg.setText(R.string.trans_check_header);
 
         String item1 = item1Text.getText().toString();
         String item2 = item2Text.getText().toString();
@@ -163,8 +165,8 @@ public class TranslationActivity extends AppCompatActivity {
     private Boolean initSides() {
         userToTarget = Boolean.TRUE;
 
-        item1Text.setBackgroundColor(getResources().getColor(R.color.navy1));
-        item1Text.setTextColor(getResources().getColor(R.color.white));
+        item1Text.setBackgroundColor(getResources().getColor(R.color.back_ground2));
+        item1Text.setTextColor(getResources().getColor(R.color.navy1));
 
         item2Text.setBackgroundColor(getResources().getColor(R.color.white));
         item2Text.setTextColor(getResources().getColor(R.color.navy1));
@@ -177,8 +179,8 @@ public class TranslationActivity extends AppCompatActivity {
     private Boolean onTouchItem1Side() {
         userToTarget = Boolean.TRUE;
 
-        item1Text.setBackgroundColor(getResources().getColor(R.color.navy1));
-        item1Text.setTextColor(getResources().getColor(R.color.white));
+        item1Text.setBackgroundColor(getResources().getColor(R.color.back_ground2));
+        item1Text.setTextColor(getResources().getColor(R.color.navy1));
 
         item2Text.setBackgroundColor(getResources().getColor(R.color.white));
         item2Text.setTextColor(getResources().getColor(R.color.navy1));
@@ -192,8 +194,8 @@ public class TranslationActivity extends AppCompatActivity {
         item1Text.setBackgroundColor(getResources().getColor(R.color.white));
         item1Text.setTextColor(getResources().getColor(R.color.navy1));
 
-        item2Text.setBackgroundColor(getResources().getColor(R.color.navy1));
-        item2Text.setTextColor(getResources().getColor(R.color.white));
+        item2Text.setBackgroundColor(getResources().getColor(R.color.back_ground2));
+        item2Text.setTextColor(getResources().getColor(R.color.navy1));
 
         return userToTarget;
     }

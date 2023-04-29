@@ -24,12 +24,6 @@ public class ExploreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore);
 
-        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
-
-//        originalDeck = new Deck();
-//        originalDeck.init();
-//        filteredDeck = (Deck) originalDeck.clone();
-
         filteredDeck = (Deck) Param.GLOBAL_DECK.clone();
 
         simpleList = (ListView) findViewById(R.id.deckListView);
@@ -75,7 +69,6 @@ public class ExploreActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//        System.out.println("Bonj");
         adapter.notifyDataSetChanged();
 
     }

@@ -20,16 +20,12 @@ public class SettingsActivity extends AppCompatActivity {
 
     private Button langDirectionFreqSaveButton;
     private Button langDirectionFreqDefaultButton;
-//    private EditText langDirectionFreqText;
     private SeekBar langDirectionFreqSeekBar;
-//    private NumberFormat nbrFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
 //        Folder Path
 

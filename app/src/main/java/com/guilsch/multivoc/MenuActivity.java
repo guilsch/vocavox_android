@@ -24,8 +24,6 @@ import android.widget.TextView;
 
 public class MenuActivity extends AppCompatActivity  {
 
-    static Deck filteredDeck;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

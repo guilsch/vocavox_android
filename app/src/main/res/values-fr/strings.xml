@@ -44,6 +44,9 @@
     <string name="next_new_card">Nouvelle</string>
     <string name="card_state">Etat actuel</string>
 
+    <!--Edit Card !-->
+    <string name="edit_card_msg">Edition de la card</string>
+
     <!-- Start !-->
     <string name="start_button">Commencer</string>
 
@@ -84,4 +87,5 @@
     <!-- Toasts   -->
     <string name="toast_msg_no_cards_to_learn">Aucune carte à apprendre...</string>
     <string name="toast_msg_no_cards_to_train">Aucune carte à réviser...</string>
+    <string name="trans_check_header">Editer la carte</string>
 </resources>

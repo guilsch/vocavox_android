@@ -26,7 +26,7 @@ import life.sabujak.roundedbutton.RoundedButton;
  */
 public class LearnActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mStartLearningButton;
+    private RoundedButton mStartLearningButton;
 
     private TextView mTextViewQuestionStep1;
     private Button mNextCardButtonStep1;
@@ -214,9 +214,6 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void setLayoutCardsSelection() {
         setContentView(R.layout.cards_selection);
-
-        // Back arrow
-        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
 
         // Cards selection
         cardsSelectionList = findViewById(R.id.cardsSelectionListView);

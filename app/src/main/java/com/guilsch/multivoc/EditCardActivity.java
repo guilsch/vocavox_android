@@ -7,15 +7,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import life.sabujak.roundedbutton.RoundedButton;
+
 public class EditCardActivity extends AppCompatActivity {
 
-    private Button saveCardButton;
-    private Button deleteCardButton;
+    private RoundedButton saveCardButton;
+    private RoundedButton deleteCardButton;
     private Button setStateButton;
     private EditText item1Text;
     private EditText item2Text;
     private EditText packText;
     private TextView nextDateText;
+    private TextView editCardMsg;
     private Card card;
 
     @Override
@@ -33,12 +36,14 @@ public class EditCardActivity extends AppCompatActivity {
         packText = findViewById(R.id.pack_text);
         nextDateText = findViewById(R.id.next_date_text);
         setStateButton = findViewById(R.id.set_state_button);
+        editCardMsg = findViewById(R.id.edit_card_msg);
 
         item1Text.setText(card.getItem1());
         item2Text.setText(card.getItem2());
         packText.setText(card.getPack());
         nextDateText.setText(card.getNextPracticeDate().toString());
         setStateButton.setText(utils.getStringStateFromInt(card.getState()));
+        editCardMsg.setText(R.string.edit_card_msg);
 
         setStateButton.setOnClickListener(v -> onStateButtonPressed());
         deleteCardButton.setOnClickListener(v -> onDeleteCardPressed());

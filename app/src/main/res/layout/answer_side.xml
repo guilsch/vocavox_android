@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/back_ground">
 
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/left_guideline"
         android:layout_width="wrap_content"
@@ -58,16 +60,16 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.5" />
 
-        <ImageView
-            android:id="@+id/param_wheel_ic"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_settings_outlined_wheel"
-            app:tint="@color/white" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/param_wheel_ic"-->
+        <!--            android:layout_width="25dp"-->
+        <!--            android:layout_height="25dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_marginEnd="16dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:srcCompat="@drawable/ic_settings_outlined_wheel"-->
+        <!--            app:tint="@color/white" />-->
 
         <TextView
             android:id="@+id/answer_side_item1_step2"
@@ -156,15 +158,15 @@
 
     <ProgressBar
         android:id="@+id/remaining_cards_progress_bar"
-        style="?android:attr/progressBarStyleHorizontal"
+        style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="5dp"
+        android:progressDrawable="@drawable/custom_progress_bar"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toStartOf="@+id/cards_left"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-        />
+        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
 
     <TextView
         android:id="@+id/cards_left"
@@ -175,5 +177,45 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
+
+    <ImageView
+        android:id="@+id/smiley_iiii"
+        android:layout_width="39dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/answer_side_button4"
+        app:layout_constraintEnd_toEndOf="@+id/answer_side_button4"
+        app:layout_constraintStart_toStartOf="@+id/answer_side_button4"
+        app:layout_constraintTop_toTopOf="@+id/answer_side_button4"
+        app:srcCompat="@drawable/ic_smiling_line_icon" />
+
+    <ImageView
+        android:id="@+id/smiley_iii"
+        android:layout_width="39dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/answer_side_button3"
+        app:layout_constraintEnd_toEndOf="@+id/answer_side_button3"
+        app:layout_constraintStart_toStartOf="@+id/answer_side_button3"
+        app:layout_constraintTop_toTopOf="@+id/answer_side_button3"
+        app:srcCompat="@drawable/ic_confused_line_icon" />
+
+    <ImageView
+        android:id="@+id/smiley_ii"
+        android:layout_width="39dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/answer_side_button2"
+        app:layout_constraintEnd_toEndOf="@+id/answer_side_button2"
+        app:layout_constraintStart_toStartOf="@+id/answer_side_button2"
+        app:layout_constraintTop_toTopOf="@+id/answer_side_button2"
+        app:srcCompat="@drawable/ic_strange_emoji_icon" />
+
+    <ImageView
+        android:id="@+id/smiley_i"
+        android:layout_width="39dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/answer_side_button1"
+        app:layout_constraintEnd_toEndOf="@+id/answer_side_button1"
+        app:layout_constraintStart_toStartOf="@+id/answer_side_button1"
+        app:layout_constraintTop_toTopOf="@+id/answer_side_button1"
+        app:srcCompat="@drawable/ic_crying_line_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

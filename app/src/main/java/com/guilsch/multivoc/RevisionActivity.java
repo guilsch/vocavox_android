@@ -154,9 +154,6 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
     private void showEndOfRevision() {
         setContentView(R.layout.end_of_revision);
 
-        mBackToMenuRevisionButton = findViewById(R.id.end_of_revision_back_to_menu);
-        mBackToMenuRevisionButton.setOnClickListener(this);
-
         Param.GLOBAL_DECK.updateDeckDataVariables();
     }
 

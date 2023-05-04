@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.kofigyan.stateprogressbar.StateProgressBar;
@@ -29,13 +30,13 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private RoundedButton mStartLearningButton;
 
     private TextView mTextViewQuestionStep1;
-    private Button mNextCardButtonStep1;
+    private RoundedButton mNextCardButtonStep1;
 
-    private Button mSeeAnswerButtonStep2;
+    private RoundedButton mSeeAnswerButtonStep2;
     private TextView mTextViewQuestionStep2;
     private TextView mTextViewAnswerStep2;
-    private Button mAnswerRightButtonStep2;
-    private Button mAnswerWrongButtonStep2;
+    private RoundedButton mAnswerRightButtonStep2;
+    private RoundedButton mAnswerWrongButtonStep2;
 
     private Button mStartStep1Button;
     private Button mSkipStep1Button;
@@ -51,7 +52,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private TextView mTextViewQuestionStep3;
     private TextView mTextViewAnswerStep3;
 
-    private Button mBackToMenuRevisionButton;
+    private RoundedButton mBackToMenuRevisionButton;
 
     private StateProgressBar mStepsProgressBar;
     private String[] descriptionData;
@@ -65,6 +66,9 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private Queue<Card> processedCardsQueue;
     private List<Card> toLearnCardsList;
 
+    // Progress Bar
+    private ProgressBar CardsRemainingPB;
+    private TextView cardsLeftText;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -314,8 +318,6 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private void showEndOfLearning() {
         setContentView(R.layout.end_of_learning);
 
-        findViewById(R.id.back_arrow).setOnClickListener(view -> onBackPressed());
-
         mBackToMenuRevisionButton = findViewById(R.id.skip_step3_button);
         mBackToMenuRevisionButton.setOnClickListener(this);
     }
@@ -325,6 +327,12 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
      */
     private void showQuestionSideStep3() {
         setContentView(R.layout.question_side);
+
+        cardsLeftText = findViewById(R.id.cards_left);
+        cardsLeftText.setVisibility(View.INVISIBLE);
+
+        mStepsProgressBar.findViewById(R.id.remaining_cards_progress_bar);
+        mStepsProgressBar.setVisibility(View.INVISIBLE);
 
         mTextViewQuestionStep3 = findViewById(R.id.question_side_item1);
         mSeeAnswerButtonStep3 = findViewById(R.id.question_side_button);
@@ -339,6 +347,12 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
      */
     private void showAnswerSideStep3() {
         setContentView(R.layout.answer_side);
+
+        cardsLeftText = findViewById(R.id.cards_left);
+        cardsLeftText.setVisibility(View.INVISIBLE);
+
+        mStepsProgressBar.findViewById(R.id.remaining_cards_progress_bar);
+        mStepsProgressBar.setVisibility(View.INVISIBLE);
 
         mTextViewAnswerStep3 = findViewById(R.id.answer_side_item2_step2);
         mAnswerButton1Step3 = findViewById(R.id.answer_side_button1);

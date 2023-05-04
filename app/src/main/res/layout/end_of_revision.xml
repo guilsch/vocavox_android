@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back_ground">
+    android:background="@color/bg">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/left_guideline"
@@ -21,13 +21,6 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.085" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bottom_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,58 +32,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <TextView
-        android:id="@+id/header"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/blue7"
-        android:fontFamily="@font/oxygen_bold"
-        android:gravity="center"
-        android:text="Revision"
-        android:textColor="@color/white"
-        android:textSize="@dimen/header"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/back_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:adjustViewBounds="true"
-        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
-        app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic__back_arrow_white"
-        tools:ignore="VectorDrawableCompat" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="End of learning !"
+        android:text="@string/end_train"
         android:textSize="@dimen/titles"
+        app:layout_constraintBottom_toTopOf="@+id/end_of_revision_back_to_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
 
-    <Button
-        android:id="@+id/end_of_revision_back_to_menu"
-        android:layout_width="@dimen/button_std_width"
-        android:layout_height="@dimen/button_std_height"
-        android:background="@drawable/button_selector"
-        android:text="Home"
-        android:textColor="@color/button_std_text"
+    <life.sabujak.roundedbutton.RoundedButton
+        android:id="@+id/skip_step3_button"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/button_back_home"
+        android:textAllCaps="true"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/button_std_text_size"
         android:textStyle="bold"
-        app:backgroundTint="#00FFFFFF"
-        app:backgroundTintMode="src_atop"
+        app:buttonCornerRadius="30dp"
+        app:buttonGradientEndColor="@color/button_std_bg"
+        app:buttonGradientStartColor="@color/blue7"
         app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"

@@ -2,11 +2,13 @@ package com.guilsch.multivoc;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -227,6 +229,22 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         // Start learning button
         mStartLearningButton = findViewById(R.id.cards_selection_start_button);
         mStartLearningButton.setOnClickListener(v -> setLayoutTransition0to1());
+
+        cardsSelectionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Card selectedCard = (Card) parent.getItemAtPosition(position);
+
+                if (!learningQueueContains(selectedCard)) {
+                    LearnActivity.addToLearningQueue(selectedCard);
+                    view.setBackgroundResource(R.color.card_selected);
+                }
+                else {
+                    LearnActivity.removeFromLearningQueue(selectedCard);
+                    view.setBackgroundResource(R.color.white);
+                }
+            }
+        });
     }
 
     private void setLayoutStep1QuestionSide() {

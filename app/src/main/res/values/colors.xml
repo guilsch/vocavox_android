@@ -37,6 +37,16 @@
 <!--question-->
     <color name="rectangle_bg">@color/navy1</color>
 
+
+    <!-- Overscroll edge-->
+    <color name="overscroll_edge_color">@color/navy1</color>
+
+
+<!-- Menu layout -->
+    <color name="menu_layouts_bg">#F6F5FA</color>
+    <color name="menu_layouts_bg_on_touch">#F3F2ED</color>
+
+
 <!--    Font-->
     <color name="font_hint">#81EFEFEF</color>
     <color name="font_standard">@color/blue1</color>
@@ -57,5 +67,9 @@
 
 <!--   Font colors  -->
     <color name="grey_font">#FF393D40</color>
+
+    <!-- Learn Activity -->
+    <color name="card_selected">#0097A7</color>
+
 
 </resources>

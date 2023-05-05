@@ -62,12 +62,18 @@ public class TranslationActivity extends AppCompatActivity {
         userLanguageFlag.setImageDrawable(Param.FLAG_ICON_USER);
 
         OKButton.setOnClickListener(view -> {
-            try {
-                setCheckCardLayout();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+
+            if (item1Text.getText().toString().isEmpty() && item2Text.getText().toString().isEmpty()) {
+                utils.showToast(TranslationActivity.this, getString(R.string.toast_msg_empty_translation));
+            }
+            else {
+                try {
+                    setCheckCardLayout();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

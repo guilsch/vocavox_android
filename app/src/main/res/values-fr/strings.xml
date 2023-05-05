@@ -43,6 +43,8 @@
     <string name="save_card">Sauvegarder</string>
     <string name="next_new_card">Nouvelle</string>
     <string name="card_state">Etat actuel</string>
+    <string name="toast_msg_invalid_new_card">Veuillez remplir les deux mots</string>
+
 
     <!--Edit Card !-->
     <string name="edit_card_msg">Edition de la card</string>
@@ -53,6 +55,7 @@
     <!-- Translation !-->
     <string name="translate_header">Traduire</string>
     <string name="no_connection">Pas de connexion Internet ! Traduction impossible !</string>
+    <string name="toast_msg_empty_translation">Pas de traduction</string>
 
     <!--  Explore !-->
     <string name="explore_header">Explorer</string>

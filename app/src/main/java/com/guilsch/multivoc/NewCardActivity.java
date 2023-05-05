@@ -40,23 +40,18 @@ public class NewCardActivity extends AppCompatActivity {
                 String item2 = item2Text.getText().toString();
 
                 if (item1.isEmpty() || item2.isEmpty()) {
-                    new AlertDialog.Builder(NewCardActivity.this)
-                            .setTitle("Unvalid card")
-                            .setMessage("At least words in both languages have to be set")
-                            .setNegativeButton(android.R.string.ok, null)
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                    return;
+                    utils.showToast(NewCardActivity.this, getString(R.string.toast_msg_invalid_new_card));
                 }
+                else {
+                    newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), utils.giveCurrentDate(), 0, 0, 0, utils.getNewUUID(), -1);
+                    Param.GLOBAL_DECK.add(newCard);
+                    newCard.addToDatabaseOnSeparateThread();
+                    newCard.info();
 
-                newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), utils.giveCurrentDate(), 0, 0, 0, utils.getNewUUID(), -1);
-                Param.GLOBAL_DECK.add(newCard);
-                newCard.addToDatabaseOnSeparateThread();
-                newCard.info();
-
-                Intent saveCardActivity = new Intent(getApplicationContext(), MenuActivity.class);
-                startActivity(saveCardActivity);
-                finish();
+                    Intent saveCardActivity = new Intent(getApplicationContext(), MenuActivity.class);
+                    startActivity(saveCardActivity);
+                    finish();
+                }
             }
         });
     }

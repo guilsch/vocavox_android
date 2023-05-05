@@ -33,14 +33,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_middle_central_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.44" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_bottom_central_guideline"
@@ -53,7 +53,6 @@
         android:id="@+id/ok_button"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="64dp"
         android:gravity="center"
         android:padding="10dp"
         android:text="OK"
@@ -65,10 +64,10 @@
         app:buttonGradientEndColor="@color/button_std_bg"
         app:buttonGradientStartColor="@color/blue7"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item2_text" />
+        app:layout_constraintTop_toTopOf="@+id/horizontal_bottom_central_guideline" />
 
 
     <EditText
@@ -83,8 +82,8 @@
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/navy1"
-        android:textSize="@dimen/titles"
         android:textCursorDrawable="@color/navy1"
+        android:textSize="@dimen/titles"
         app:layout_constraintBottom_toTopOf="@+id/horizontal_middle_central_guideline"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintHorizontal_bias="0.0"
@@ -103,8 +102,8 @@
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/navy1"
-        android:textSize="@dimen/titles"
         android:textCursorDrawable="@color/navy1"
+        android:textSize="@dimen/titles"
         app:layout_constraintBottom_toTopOf="@+id/horizontal_bottom_central_guideline"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"

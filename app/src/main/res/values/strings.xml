@@ -44,6 +44,7 @@
     <string name="save_card">Save</string>
     <string name="next_new_card">New</string>
     <string name="card_state">Current state</string>
+    <string name="toast_msg_invalid_new_card">Words in both languages have to be set</string>
 
     <!--Edit Card !-->
     <string name="edit_card_msg">Edit the card</string>
@@ -56,6 +57,7 @@
     <string name="translate_header">Translate</string>
     <string name="no_connection">No internet connection! Cannot be translated!</string>
     <string name="trans_check_header">Edit your card</string>
+    <string name="toast_msg_empty_translation">Translation is empty</string>
 
     <!--  Explore !-->
     <string name="explore_header">Explore</string>

@@ -55,8 +55,11 @@ public class MenuActivity extends AppCompatActivity  {
             LinearLayout learnLayout = view.findViewById(R.id.learn_layout);
             TextView cardsToTrainNB = view.findViewById(R.id.cards_to_train_nb);
 
+            // Set variables
             flag.setImageDrawable(Param.FLAG_ICON_TARGET);
             cardsToTrainNB.setText(String.valueOf(Param.GLOBAL_DECK.getCardsToReviewNb()));
+
+            // On clicks
             flag.setOnClickListener(v -> parentActivity.changeActivity(MainActivity.class));
             settingsIm.setOnClickListener(v -> parentActivity.changeActivity(SettingsActivity.class));
             trainLayout.setOnClickListener(v -> parentActivity.preChangeToTrainActivity());

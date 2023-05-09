@@ -75,8 +75,9 @@ public class ExploreActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
-        startActivity(menuActivity);
+        Intent menuActivityIntent = new Intent(getApplicationContext(), MenuActivity.class);
+        menuActivityIntent.putExtra("FRAG_INDEX", 2);
+        startActivity(menuActivityIntent);
         finish();
     }
 }

@@ -34,6 +34,8 @@
     <string name="menu_add_cards_title">Add cards</string>
     <string name="menu_others_title">Others</string>
 
+    <string name="toast_msg_no_connexion">You must have an Internet connection to translate</string>
+
 
     <!-- New Card !-->
     <string name="new_card_header">Edit new card</string>

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/item1_textView"
         android:layout_width="141dp"
-        android:layout_height="28dp"
+        android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="TextView"
         android:textSize="14sp"
@@ -20,7 +20,7 @@
     <TextView
         android:id="@+id/item2_textView"
         android:layout_width="140dp"
-        android:layout_height="26dp"
+        android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="TextView"
         android:textSize="14sp"
@@ -36,33 +36,33 @@
         android:padding="3dp"
         android:text="TextView"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/setStateButton"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/item2_textView"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintStart_toEndOf="@+id/item1_textView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/setStateButton"
         android:layout_width="50dp"
         android:layout_height="39dp"
+        android:layout_marginEnd="5dp"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
         android:text="Button"
         android:textSize="6sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/deleteCardButton"
-        app:layout_constraintStart_toEndOf="@+id/pack_textView"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageView
         android:id="@+id/deleteCardButton"
-        android:layout_width="30dp"
-        android:layout_height="39dp"
-        android:text="-"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/selector_trash_can"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -83,14 +83,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="0dp" />
+        app:layout_constraintGuide_percent="0.0" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="57dp" />
 
     <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
     <!--        android:id="@+id/chooseButton"-->

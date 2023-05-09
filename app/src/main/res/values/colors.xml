@@ -72,4 +72,7 @@
     <color name="card_selected">#0097A7</color>
 
 
+    <!-- On click -->
+    <color name="on_view_click">#D2E9EC</color>
+
 </resources>

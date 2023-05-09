@@ -294,8 +294,9 @@ public class TranslationActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         if (currentLayoutNum == 1) {
-            Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
-            startActivity(menuActivity);
+            Intent menuActivityIntent = new Intent(getApplicationContext(), MenuActivity.class);
+            menuActivityIntent.putExtra("FRAG_INDEX", 2);
+            startActivity(menuActivityIntent);
             finish();
         }
 

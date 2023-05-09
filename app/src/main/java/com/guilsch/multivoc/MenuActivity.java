@@ -42,6 +42,12 @@ public class MenuActivity extends AppCompatActivity  {
         tabs.setupWithViewPager(viewPager);
 
         utils.printNBCards();
+
+        // Fragments management
+        if (getIntent().hasExtra("FRAG_INDEX")) {
+            int fragmentIndex = getIntent().getIntExtra("FRAG_INDEX", 1);
+            viewPager.setCurrentItem(fragmentIndex);
+        }
     }
 
 
@@ -76,10 +82,10 @@ public class MenuActivity extends AppCompatActivity  {
                 public boolean onTouch(View v, MotionEvent event) {
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
-                            flag.setBorderColor(getResources().getColor(R.color.white));
+                            flag.setBorderColor(getContext().getColor(R.color.white));
                             break;
                         case MotionEvent.ACTION_UP:
-                            flag.setBorderColor(getResources().getColor(R.color.grey_font));
+                            flag.setBorderColor(getContext().getColor(R.color.grey_font));
                             break;
                     }
                     return false;
@@ -102,7 +108,7 @@ public class MenuActivity extends AppCompatActivity  {
             LinearLayout newCardLayout = view.findViewById(R.id.new_card_layout);
             LinearLayout exploreLayout = view.findViewById(R.id.explore_layout);
 
-            translationLayout.setOnClickListener(v -> parentActivity.changeActivity(TranslationActivity.class));
+            translationLayout.setOnClickListener(v -> parentActivity.preChangeToTranslationActivity());
             newCardLayout.setOnClickListener(v -> parentActivity.changeActivity(NewCardActivity.class));
             exploreLayout.setOnClickListener(v -> parentActivity.changeActivity(ExploreActivity.class));
 
@@ -125,6 +131,15 @@ public class MenuActivity extends AppCompatActivity  {
         }
         else {
             changeActivity(RevisionActivity.class);
+        }
+    }
+
+    public void preChangeToTranslationActivity(){
+        if (utils.checkConnexion(getApplicationContext())) {
+            changeActivity(TranslationActivity.class);
+        }
+        else {
+            utils.showToast(MenuActivity.this, getString(R.string.toast_msg_no_connexion));
         }
     }
 

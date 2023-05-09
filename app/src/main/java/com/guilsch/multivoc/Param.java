@@ -123,11 +123,7 @@ public class Param {
     public static final String LANG_DIRECTION_FREQ_KEY = "lang_direction_freq_key";
     public static final String LAST_LANG_KEY = "last_lang_key";
 
-
-
     // First launch check
     public static Boolean FIRST_LAUNCH = Boolean.TRUE;
     public static final String FIRST_LAUNCH_KEY = "first_launch_key";
-
-
 }

@@ -1,13 +1,16 @@
 package com.guilsch.multivoc;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DeckAdapter extends BaseAdapter {
@@ -20,7 +23,7 @@ public class DeckAdapter extends BaseAdapter {
     TextView item2;
     TextView pack;
     Button setStateButton;
-    Button deleteCard;
+    ImageView deleteCard;
     Activity currentActivity;
 
     public DeckAdapter(Context applicationContext, Deck deck, Activity activity) {
@@ -65,10 +68,27 @@ public class DeckAdapter extends BaseAdapter {
         item2.setText(card.getItem2());
         pack.setText(card.getPack());
         setStateButton.setText(utils.getStringStateFromInt(card.getState()));
+        view.setBackgroundColor(context.getColor(R.color.white));
 
         setStateButton.setOnClickListener(v -> onStateButtonPressed(card.getUuid()));
         deleteCard.setOnClickListener(v -> onDeleteCardPressed(card.getUuid()));
-        item1.setOnClickListener(v -> setEditCardLayout(card.getUuid()));
+        view.setOnClickListener(v -> setEditCardLayout(card.getUuid()));
+
+        // On touch
+        View finalView = view;
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        finalView.setBackgroundColor(context.getColor(R.color.on_view_click));
+                        break;
+                    default:
+                        finalView.setBackgroundColor(context.getColor(R.color.white));
+                }
+                return false;
+            }
+        });
 
         return view;
     }

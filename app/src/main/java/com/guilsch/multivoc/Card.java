@@ -20,12 +20,13 @@ public class Card implements Serializable {
     private float easinessFactor;
     private int interval;
     private Date nextPracticeDate;
+    private Date creationDate;
     private int state;
     private String pack;
     private String uuid;
     private int rowIndexInExcel;
 
-    Card (String item1, String item2, int state, String pack, Date nextPracticeDate, int repetitions,
+    Card (String item1, String item2, int state, String pack, Date nextPracticeDate, Date creationDate, int repetitions,
           float easinessFactor, int interval, String uuid, int rowIndexInExcel){
         this.item1 = item1;
         this.item2 = item2;
@@ -33,6 +34,7 @@ public class Card implements Serializable {
         this.easinessFactor = easinessFactor;
         this.interval = interval;
         this.nextPracticeDate = nextPracticeDate;
+        this.creationDate = creationDate;
         this.state = state;
         this.pack = pack;
         this.uuid = uuid;
@@ -60,6 +62,7 @@ public class Card implements Serializable {
             int stateIndex = utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
             int packIndex = utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
             int nextPracticeDateIndex = utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int creationDateIndex = utils.getFieldIndex(header, Param.CREATION_DATE_FIELD_NAME);
             int repetitionsIndex = utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
             int easinessFactorIndex = utils.getFieldIndex(header, Param.EF_FIELD_NAME);
             int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
@@ -75,6 +78,7 @@ public class Card implements Serializable {
                 cardRow.getCell(stateIndex).setCellValue(this.state);
                 cardRow.getCell(packIndex).setCellValue(this.pack);
                 cardRow.getCell(nextPracticeDateIndex).setCellValue(this.nextPracticeDate.toString());
+                cardRow.getCell(creationDateIndex).setCellValue(this.creationDate.toString());
                 cardRow.getCell(repetitionsIndex).setCellValue(this.repetitions);
                 cardRow.getCell(easinessFactorIndex).setCellValue(this.easinessFactor);
                 cardRow.getCell(intervalIndex).setCellValue(this.interval);
@@ -122,6 +126,7 @@ public class Card implements Serializable {
             int stateIndex = utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
             int packIndex = utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
             int nextPracticeDateIndex = utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int creationDateIndex = utils.getFieldIndex(header, Param.CREATION_DATE_FIELD_NAME);
             int repetitionsIndex = utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
             int easinessFactorIndex = utils.getFieldIndex(header, Param.EF_FIELD_NAME);
             int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
@@ -136,6 +141,7 @@ public class Card implements Serializable {
             newRow.getCell(stateIndex).setCellValue(this.state);
             newRow.getCell(packIndex).setCellValue(this.pack);
             newRow.getCell(nextPracticeDateIndex).setCellValue(this.nextPracticeDate.toString());
+            newRow.getCell(creationDateIndex).setCellValue(this.creationDate.toString());
             newRow.getCell(repetitionsIndex).setCellValue(this.repetitions);
             newRow.getCell(easinessFactorIndex).setCellValue(this.easinessFactor);
             newRow.getCell(intervalIndex).setCellValue(this.interval);
@@ -175,6 +181,7 @@ public class Card implements Serializable {
         System.out.println(String.format("State : %b", this.state));
         System.out.println("Pack : " + this.pack);
         System.out.println(String.format("Next practice : %s", nextPracticeDate.toString()));
+        System.out.println(String.format("Creation Date : %s", creationDate.toString()));
         System.out.println(String.format("Repetitions : %d", this.repetitions));
         System.out.println(String.format("Easiness Factor : %.2f", this.easinessFactor));
         System.out.println(String.format("Interval : %d", this.interval));
@@ -214,6 +221,10 @@ public class Card implements Serializable {
 
     public Date getNextPracticeDate() {
         return nextPracticeDate;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
     }
 
     public String getUuid() {
@@ -256,6 +267,10 @@ public class Card implements Serializable {
 
     public void setNextPracticeDate(Date nextPracticeDate) {
         this.nextPracticeDate = nextPracticeDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
     public void setRowIndexInExcel(int rowIndex) {

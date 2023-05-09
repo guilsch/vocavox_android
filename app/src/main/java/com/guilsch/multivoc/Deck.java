@@ -1,7 +1,6 @@
 package com.guilsch.multivoc;
 
 import android.os.Build;
-import android.widget.ProgressBar;
 
 import androidx.annotation.RequiresApi;
 
@@ -12,12 +11,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Queue;
 import java.util.function.Predicate;
 
@@ -124,6 +121,7 @@ public class Deck extends ArrayList<Card> {
             int stateIndex = utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
             int packIndex = utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
             int nextPracticeDateIndex = utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int creationDateIndex = utils.getFieldIndex(header, Param.CREATION_DATE_FIELD_NAME);
             int repetitionsIndex = utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
             int easinessFactorIndex = utils.getFieldIndex(header, Param.EF_FIELD_NAME);
             int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
@@ -141,13 +139,14 @@ public class Deck extends ArrayList<Card> {
                     int state = (int) row.getCell(stateIndex).getNumericCellValue();
                     String pack = row.getCell(packIndex).getStringCellValue();
                     Date nextPracticeDate = formatter.parse(row.getCell(nextPracticeDateIndex).getStringCellValue());
+                    Date creationDate = formatter.parse(row.getCell(creationDateIndex).getStringCellValue());
                     int repetitions = (int) row.getCell(repetitionsIndex).getNumericCellValue();
                     float easinessFactor = (float) row.getCell(easinessFactorIndex).getNumericCellValue();
                     int interval = (int) row.getCell(intervalIndex).getNumericCellValue();
                     String uuid = row.getCell(uuidIndex).getStringCellValue();
                     int rowNumber = row.getRowNum();
 
-                    this.add(new Card(item1, item2, state, pack, nextPracticeDate, repetitions, easinessFactor, interval, uuid, rowNumber));
+                    this.add(new Card(item1, item2, state, pack, nextPracticeDate, creationDate, repetitions, easinessFactor, interval, uuid, rowNumber));
 
                 }
             }
@@ -171,7 +170,8 @@ public class Deck extends ArrayList<Card> {
             "  |   State : " + card.getState() +
             "  |   Pack : " + card.getPack() + 
             "  |   Next practice date : " + card.getNextPracticeDate() + 
-            "  |   Repetitions : " + card.getRepetitions() + 
+            "  |   Creation date : " + card.getCreationDate() +
+            "  |   Repetitions : " + card.getRepetitions() +
             "  |   Easiness factor : " + card.getEasinessFactor() + 
             "  |   Interval : " + card.getInterval() +
             "  |   UUID : " + card.getUuid());
@@ -330,40 +330,6 @@ public class Deck extends ArrayList<Card> {
 
         return revision_queue;
     }
-
-//    public void updateCardInDeck(String uuid) {
-//        Iterator<Card> iterator = this.iterator();
-//    }
-
-//    /**
-//     * Iterates over all deck cards and for the cards with a uuid that is one of the uuid of a card
-//     * in the queue, modifies the card in the deck from the card in the queue and save it in the datafile
-//     */
-//    public void updateDeckAndDatabaseFromQueue(Queue<Card> cardsQueue, ProgressBar progressBar) {
-//
-//        Map<String, Card> queueCardMap = new HashMap<>();
-//        for (Card card : cardsQueue) {
-//            queueCardMap.put(card.getUuid(), card);
-//        }
-//
-//        int progress = 0;
-//        // Iterate through cards of the deck
-//        for (Card cardInDeck : this) {
-//            String uuid = cardInDeck.getUuid();
-//            if (queueCardMap.containsKey(uuid)) {
-//                // Find card with corresponding uuid
-//                Card cardInQueue = queueCardMap.get(uuid);
-//
-//                // Update parameters in the deck and in the database
-//                cardInDeck.updateParameters(cardInQueue.getNextPracticeDate(),
-//                        cardInQueue.getRepetitions(), cardInQueue.getEasinessFactor(),
-//                        cardInQueue.getInterval());
-//                cardInDeck.updateInDatabase();
-//            }
-//            progress += 1;
-//            progressBar.setProgress(progress);
-//        }
-//    }
 
     /**
      * Returns a list containing all the cards with state to learn (cards that will be selected or

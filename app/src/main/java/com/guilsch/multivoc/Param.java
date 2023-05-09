@@ -56,15 +56,16 @@ public class Param {
     public static final String PACK_FIELD_NAME = "Pack";
     public static final String STATE_FIELD_NAME = "State";
     public static final String NEXT_DATE_FIELD_NAME = "Next Date";
+    public static final String CREATION_DATE_FIELD_NAME = "Creation Date";
     public static final String REPETITIONS_FIELD_NAME = "Repetitions";
     public static final String EF_FIELD_NAME = "Easiness Factor";
     public static final String INTERVAL_FIELD_NAME = "Interval";
     public static final String UUID_FIELD_NAME = "UUID";
 
     public static final List<String> FIELDS = Arrays.asList(ITEM1_FIELD_NAME, ITEM2_FIELD_NAME,
-            PACK_FIELD_NAME, STATE_FIELD_NAME, NEXT_DATE_FIELD_NAME, REPETITIONS_FIELD_NAME,
+            PACK_FIELD_NAME, STATE_FIELD_NAME, NEXT_DATE_FIELD_NAME, CREATION_DATE_FIELD_NAME, REPETITIONS_FIELD_NAME,
             EF_FIELD_NAME, INTERVAL_FIELD_NAME, UUID_FIELD_NAME);
-    public static final int FIELDS_NB = 9;
+    public static final int FIELDS_NB = 10;
 
 
     public static final int INACTIVE = 0;
@@ -75,7 +76,8 @@ public class Param {
 
     public static final int DEFAULT_STATE = 2;
     public static final String DEFAULT_PACK = "";
-    public static final Date DEFAULT_DATE = utils.giveCurrentDate();
+    public static final Date DEFAULT_NEXT_DATE = utils.giveCurrentDate();
+    public static final Date DEFAULT_CREATION_DATE = utils.giveCurrentDate();
     public static final int DEFAULT_REP = 0;
     public static final int DEFAULT_EF = 0;
     public static final int DEFAULT_INTER = 0;

@@ -1,20 +1,10 @@
 package com.guilsch.multivoc;
 
-import android.content.ContentUris;
 import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Build;
-import android.os.Environment;
-import android.provider.DocumentsContract;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.RequiresApi;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -33,7 +23,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -514,6 +503,7 @@ public class utils {
             int stateIndex = utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
             int packIndex = utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
             int nextPracticeDateIndex = utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int creationDateIndex = utils.getFieldIndex(header, Param.CREATION_DATE_FIELD_NAME);
             int repetitionsIndex = utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
             int easinessFactorIndex = utils.getFieldIndex(header, Param.EF_FIELD_NAME);
             int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
@@ -543,7 +533,13 @@ public class utils {
                 currentCell = row.getCell(nextPracticeDateIndex);
                 if (checkCellEmptiness(currentCell, row)) {
                     currentCell = row.createCell(nextPracticeDateIndex);
-                    currentCell.setCellValue(Param.DEFAULT_DATE.toString());
+                    currentCell.setCellValue(Param.DEFAULT_NEXT_DATE.toString());
+                }
+
+                currentCell = row.getCell(creationDateIndex);
+                if (checkCellEmptiness(currentCell, row)) {
+                    currentCell = row.createCell(creationDateIndex);
+                    currentCell.setCellValue(Param.DEFAULT_CREATION_DATE.toString());
                 }
 
                 currentCell = row.getCell(repetitionsIndex);

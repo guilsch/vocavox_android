@@ -1,5 +1,6 @@
 package com.guilsch.multivoc;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.SearchEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MenuActivity extends AppCompatActivity  {
 
@@ -42,6 +46,7 @@ public class MenuActivity extends AppCompatActivity  {
 
 
     public static class Tab1Fragment extends Fragment {
+        @SuppressLint("ClickableViewAccessibility")
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,7 +54,7 @@ public class MenuActivity extends AppCompatActivity  {
 
             MenuActivity parentActivity = (MenuActivity) getActivity();
 
-            ImageView flag = view.findViewById(R.id.lang_flag);
+            CircleImageView flag = view.findViewById(R.id.lang_flag);
             ImageView settingsIm = view.findViewById(R.id.setting_im);
             LinearLayout trainLayout = view.findViewById(R.id.train_layout);
             LinearLayout learnLayout = view.findViewById(R.id.learn_layout);
@@ -60,10 +65,26 @@ public class MenuActivity extends AppCompatActivity  {
             cardsToTrainNB.setText(String.valueOf(Param.GLOBAL_DECK.getCardsToReviewNb()));
 
             // On clicks
-            flag.setOnClickListener(v -> parentActivity.changeActivity(MainActivity.class));
             settingsIm.setOnClickListener(v -> parentActivity.changeActivity(SettingsActivity.class));
             trainLayout.setOnClickListener(v -> parentActivity.preChangeToTrainActivity());
             learnLayout.setOnClickListener(v -> parentActivity.preChangeToLearnActivity());
+            flag.setOnClickListener(v -> parentActivity.changeActivity(MainActivity.class));
+
+            // On touch
+            flag.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            flag.setBorderColor(getResources().getColor(R.color.white));
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            flag.setBorderColor(getResources().getColor(R.color.grey_font));
+                            break;
+                    }
+                    return false;
+                }
+            });
 
             return view;
         }

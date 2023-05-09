@@ -43,7 +43,7 @@ public class NewCardActivity extends AppCompatActivity {
                     utils.showToast(NewCardActivity.this, getString(R.string.toast_msg_invalid_new_card));
                 }
                 else {
-                    newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), utils.giveCurrentDate(), 0, 0, 0, utils.getNewUUID(), -1);
+                    newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), utils.giveCurrentDate(), utils.giveCurrentDate(), 0, 0, 0, utils.getNewUUID(), -1);
                     Param.GLOBAL_DECK.add(newCard);
                     newCard.addToDatabaseOnSeparateThread();
                     newCard.info();

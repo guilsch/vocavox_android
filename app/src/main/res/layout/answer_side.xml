@@ -75,7 +75,7 @@
             android:id="@+id/answer_side_item1_step2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="16dp"
+            android:padding="15dp"
             android:gravity="bottom|center_horizontal"
             android:text="item1"
             android:textColor="@color/blue3"
@@ -85,14 +85,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/param_wheel_ic"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/answer_side_item2_step2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:padding="15dp"
             android:gravity="center|top"
             android:text="TextView"
             android:textColor="@color/blue3"

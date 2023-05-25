@@ -37,11 +37,11 @@
 
     <life.sabujak.roundedbutton.RoundedButton
         android:id="@+id/save_new_card"
-        android:layout_width="170dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="@string/button_save"
+        android:text="OK"
         android:textAllCaps="true"
         android:textColor="#ffffff"
         android:textSize="@dimen/button_std_text_size"

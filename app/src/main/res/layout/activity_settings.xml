@@ -23,6 +23,13 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mid_right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/bottom_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,73 +43,47 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.08" />
 
-    <EditText
-        android:id="@+id/folder_path_edit_text"
-        android:layout_width="179dp"
+    <TextView
+        android:id="@+id/folder_path_text"
+        android:layout_width="0dp"
         android:layout_height="43dp"
         android:ems="10"
         android:inputType="text"
         android:text="folder Path"
-        android:textSize="12sp"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/paragraph_text"
+        app:layout_constraintEnd_toStartOf="@+id/mid_right_guideline"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/folder_path_text"
+        app:layout_constraintTop_toBottomOf="@+id/folder_path_title"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/folder_path_save_button"
-        android:layout_width="52dp"
-        android:layout_height="44dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:text="@string/save_setting"
-        android:textSize="8sp"
-        app:backgroundTint="@color/blue10"
-        app:layout_constraintEnd_toStartOf="@+id/folder_path_default_button"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/folder_path_edit_text"
-        app:layout_constraintTop_toTopOf="@+id/folder_path_edit_text" />
+    <ImageView
+        android:id="@+id/folder_path_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="7dp"
+        android:src="@drawable/selector_data_folder_settings"
+        app:layout_constraintBottom_toBottomOf="@+id/folder_path_text"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/mid_right_guideline"
+        app:layout_constraintTop_toTopOf="@+id/folder_path_text" />
 
     <Button
         android:id="@+id/lang_direction_save_button"
         android:layout_width="52dp"
-        android:layout_height="44dp"
+        android:layout_height="0dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:text="@string/save_setting"
         android:textSize="8sp"
         app:backgroundTint="@color/blue10"
-        app:layout_constraintEnd_toStartOf="@+id/lang_direction_default_button"
-        app:layout_constraintStart_toEndOf="@+id/lang_direction_freq_seekBar"
-        app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
-
-    <Button
-        android:id="@+id/folder_path_default_button"
-        android:layout_width="52dp"
-        android:layout_height="44dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:text="@string/default_setting"
-        android:textSize="8sp"
-        app:backgroundTint="#BF360C"
+        app:layout_constraintBottom_toBottomOf="@+id/lang_direction_freq_seekBar"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toEndOf="@+id/folder_path_save_button"
-        app:layout_constraintTop_toTopOf="@+id/folder_path_edit_text" />
-
-    <Button
-        android:id="@+id/lang_direction_default_button"
-        android:layout_width="52dp"
-        android:layout_height="44dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:text="@string/default_setting"
-        android:textSize="8sp"
-        app:backgroundTint="#BF360C"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toEndOf="@+id/lang_direction_save_button"
+        app:layout_constraintStart_toStartOf="@+id/mid_right_guideline"
         app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
 
     <TextView
-        android:id="@+id/folder_path_text"
+        android:id="@+id/folder_path_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/folder_path_setting"
@@ -122,19 +103,20 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/folder_path_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/folder_path_text" />
 
 
     <SeekBar
         android:id="@+id/lang_direction_freq_seekBar"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="173dp"
+        android:layout_width="0dp"
         android:layout_height="39dp"
         android:max="10"
         android:progress="3"
         android:progressTint="@color/navy2"
         android:secondaryProgressTint="@color/navy1"
         android:thumbTintMode="@color/navy1"
+        app:layout_constraintEnd_toStartOf="@+id/mid_right_guideline"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
         app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>

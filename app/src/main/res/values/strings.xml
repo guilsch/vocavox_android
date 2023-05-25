@@ -3,7 +3,7 @@
 
     <!-- Welcome screen -->
     <string name="choose_language">Please select the language you want to learn today :</string>
-    <string name="welcome_msg">Nice to see you</string>
+    <string name="welcome_msg">Welcome</string>
 
     <!-- Question Answer Sides  -->
     <string name="revision_header">Revision</string>

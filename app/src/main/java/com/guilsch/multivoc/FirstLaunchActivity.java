@@ -4,21 +4,12 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.DocumentsContract;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.io.File;
-import java.net.URISyntaxException;
-import java.nio.file.Path;
 
 public class FirstLaunchActivity extends AppCompatActivity {
 
@@ -35,8 +26,8 @@ public class FirstLaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_launch);
 
-        folderPathEditText = findViewById(R.id.folder_path_edit_text);
-        saveButton = findViewById(R.id.folder_path_save_button);
+        folderPathEditText = findViewById(R.id.folder_path_text);
+        saveButton = findViewById(R.id.folder_path_button);
         folderPathInterfaceButton = findViewById(R.id.folder_path_interface_button);
 
         folderPathEditText.setText(Param.FOLDER_PATH);

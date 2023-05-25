@@ -32,9 +32,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        // Ajouter la transition de zoom
+        /////// Permissions
+        String[] permissionsStorage = {Manifest.permission.READ_EXTERNAL_STORAGE};
+        int requestExternalStorage = 1;
+        int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, permissionsStorage, requestExternalStorage);
+        }
+
+        String[] permissionsWriteStorage = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        int requestWriteExternalStorage = 1;
+        int writePermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (writePermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, permissionsWriteStorage, requestWriteExternalStorage);
+        }
+
+//        TODO: Ajouter la transition de zoom
 //        Transition zoom = TransitionInflater.from(this).inflateTransition(R.transition.zoom);
 //        getWindow().setEnterTransition(zoom);
+
+        ////// Set default path folder
+        utils.setDefaultPath(MainActivity.this);
 
         ////// Retrieve preferences variables
         Pref.retrieveAllPreferences(this);
@@ -60,21 +78,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Buttons
         start.setOnClickListener(v -> onStartClick());
-
-        /////// Permissions
-        String[] permissionsStorage = {Manifest.permission.READ_EXTERNAL_STORAGE};
-        int requestExternalStorage = 1;
-        int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, permissionsStorage, requestExternalStorage);
-        }
-
-        String[] permissionsWriteStorage = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        int requestWriteExternalStorage = 1;
-        int writePermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (writePermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, permissionsWriteStorage, requestWriteExternalStorage);
-        }
     }
 
     /**
@@ -171,23 +174,23 @@ public class MainActivity extends AppCompatActivity {
                 Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_gb);
                 break;
 
-            case "French" :
+            case "Français" :
                 Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_fr);
                 break;
 
-            case "German" :
+            case "Deutsch" :
                 Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_de);
                 break;
 
-            case "Italian" :
+            case "Italiano" :
                 Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_it);
                 break;
 
-            case "Russian" :
+            case "Русский" :
                 Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_ru);
                 break;
 
-            case "Spanish" :
+            case "Español" :
                 Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_es);
                 break;
 
@@ -207,23 +210,23 @@ public class MainActivity extends AppCompatActivity {
                 Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_gb);
                 break;
 
-            case "French" :
+            case "Français" :
                 Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_fr);
                 break;
 
-            case "German" :
+            case "Deutsch" :
                 Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_de);
                 break;
 
-            case "Italian" :
+            case "Italiano" :
                 Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_it);
                 break;
 
-            case "Russian" :
+            case "Русский" :
                 Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_ru);
                 break;
 
-            case "Spanish" :
+            case "Español" :
                 Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_es);
                 break;
 

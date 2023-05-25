@@ -165,7 +165,7 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Cancel"
+        android:text="@string/button_cancel"
         android:textAllCaps="true"
         android:textColor="#ffffff"
         android:textSize="@dimen/button_std_text_size"

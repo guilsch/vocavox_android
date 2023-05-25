@@ -14,7 +14,8 @@ import java.util.List;
  */
 public class Param {
 
-    public static final String FOLDER_PATH_DEFAULT = "storage/emulated/0/Multivoc/";
+    public static final String FILE_NAME_PREFIX = "words_database_";
+    public static String FOLDER_PATH_DEFAULT = "storage/emulated/0/Multivoc/";
     public static String FOLDER_PATH = "storage/emulated/0/Multivoc/";
     public static final String FOLDER_ID_DEFAULT = "";
     public static final String FILE_ID_UNDEFINED = "undefined";
@@ -30,11 +31,11 @@ public class Param {
     public static final String[] TARGET_LANGUAGES = {"English", "German", "French", "Italian", "Russian", "Spanish"};
     public static final Language[] TARGET_LANGUAGES_FULL = {
             new Language("English", "en", R.drawable.ic_gb),
-            new Language("German", "de", R.drawable.ic_de),
-            new Language("French", "fr", R.drawable.ic_fr),
-            new Language("Italian", "it", R.drawable.ic_it),
-            new Language("Russian", "ru", R.drawable.ic_ru),
-            new Language("Spanish", "es", R.drawable.ic_es)
+            new Language("Deutsch", "de", R.drawable.ic_de),
+            new Language("Français", "fr", R.drawable.ic_fr),
+            new Language("Italiano", "it", R.drawable.ic_it),
+            new Language("Русский", "ru", R.drawable.ic_ru),
+            new Language("Español", "es", R.drawable.ic_es)
     };
     public static final String[] USER_LANGUAGES = {"English", "German", "French", "Italian", "Russian", "Spanish"};
     public static final String[] USER_LANGUAGES_ISO = {"en", "de", "fr", "it", "ru", "es"};

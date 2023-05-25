@@ -25,8 +25,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -148,23 +155,23 @@ public class utils {
                 Param.FILE_ID = Param.EN_FILE_ID;
                 break;
 
-            case "German":
+            case "Deutsch":
                 Param.FILE_ID = Param.GE_FILE_ID;
                 break;
 
-            case "French":
+            case "Français":
                 Param.FILE_ID = Param.FR_FILE_ID;
                 break;
 
-            case "Italian":
+            case "Italiano":
                 Param.FILE_ID = Param.IT_FILE_ID;
                 break;
 
-            case "Russian":
+            case "Русский":
                 Param.FILE_ID = Param.RU_FILE_ID;
                 break;
 
-            case "Spanish":
+            case "Español":
                 Param.FILE_ID = Param.SP_FILE_ID;
                 break;
 
@@ -181,27 +188,27 @@ public class utils {
                 Pref.savePreference(context, Param.EN_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
                 break;
 
-            case "German":
+            case "Deutsch":
                 Param.GE_FILE_ID = Param.FILE_ID_UNDEFINED;
                 Pref.savePreference(context, Param.GE_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
                 break;
 
-            case "French":
+            case "Français":
                 Param.FR_FILE_ID = Param.FILE_ID_UNDEFINED;
                 Pref.savePreference(context, Param.FR_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
                 break;
 
-            case "Italian":
+            case "Italiano":
                 Param.IT_FILE_ID = Param.FILE_ID_UNDEFINED;
                 Pref.savePreference(context, Param.IT_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
                 break;
 
-            case "Russian":
+            case "Русский":
                 Param.RU_FILE_ID = Param.FILE_ID_UNDEFINED;
                 Pref.savePreference(context, Param.RU_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
                 break;
 
-            case "Spanish":
+            case "Español":
                 Param.SP_FILE_ID = Param.FILE_ID_UNDEFINED;
                 Pref.savePreference(context, Param.SP_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
                 break;
@@ -222,27 +229,27 @@ public class utils {
                 Pref.savePreference(context, Param.EN_FILE_ID_KEY, fileID);
                 break;
 
-            case "German":
+            case "Deutsch":
                 Param.GE_FILE_ID = fileID;
                 Pref.savePreference(context, Param.GE_FILE_ID_KEY, fileID);
                 break;
 
-            case "French":
+            case "Français":
                 Param.FR_FILE_ID = fileID;
                 Pref.savePreference(context, Param.FR_FILE_ID_KEY, fileID);
                 break;
 
-            case "Italian":
+            case "Italiano":
                 Param.IT_FILE_ID = fileID;
                 Pref.savePreference(context, Param.IT_FILE_ID_KEY, fileID);
                 break;
 
-            case "Russian":
+            case "Русский":
                 Param.RU_FILE_ID = fileID;
                 Pref.savePreference(context, Param.RU_FILE_ID_KEY, fileID);
                 break;
 
-            case "Spanish":
+            case "Español":
                 Param.SP_FILE_ID = fileID;
                 Pref.savePreference(context, Param.SP_FILE_ID_KEY, fileID);
                 break;
@@ -256,7 +263,7 @@ public class utils {
     }
 
     public static String generateDataFileName () {
-        return "words_database_" + Param.TARGET_LANGUAGE_ISO + ".xlsx";
+        return Param.FILE_NAME_PREFIX + Param.TARGET_LANGUAGE_ISO + ".xlsx";
     }
 
     public static String getLanguageISOName(String language) {
@@ -267,23 +274,23 @@ public class utils {
                 languageStringName = "en";
                 break;
 
-            case "German":
+            case "Deutsch":
                 languageStringName = "de";
                 break;
 
-            case "French":
+            case "Français":
                 languageStringName = "fr";
                 break;
 
-            case "Italian":
+            case "Italiano":
                 languageStringName = "it";
                 break;
 
-            case "Russian":
+            case "Русский":
                 languageStringName = "ru";
                 break;
 
-            case "Spanish":
+            case "Español":
                 languageStringName = "es";
                 break;
 
@@ -304,23 +311,23 @@ public class utils {
                 break;
 
             case "de":
-                languageStringName = "German";
+                languageStringName = "Deutsch";
                 break;
 
             case "fr":
-                languageStringName = "French";
+                languageStringName = "Français";
                 break;
 
             case "it":
-                languageStringName = "Italian";
+                languageStringName = "Italiano";
                 break;
 
             case "ru":
-                languageStringName = "Russian";
+                languageStringName = "Русский";
                 break;
 
             case "es":
-                languageStringName = "Spanish";
+                languageStringName = "Español";
                 break;
 
             default:
@@ -348,10 +355,20 @@ public class utils {
             cell.setCellValue((String)obj);
         }
 
-        FileOutputStream out = new FileOutputStream(new File(Param.DATA_PATH));
+
+        // Create file with its parents folders
+        File file = new File(Param.DATA_PATH);
+
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
+        }
+
+        FileOutputStream out = new FileOutputStream(file);
 
         workbook.write(out);
         out.close();
+
+        System.out.println(Param.DATA_PATH + " has been created");
     }
 
     public static int nextStateForButton (int currentState) {
@@ -650,5 +667,94 @@ public class utils {
         boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 
         return isConnected;
+    }
+
+    /**
+     * Copy the content from a directory to another. Used when changing files directory in settings
+     * @param originalPathStr
+     * @param newPathStr
+     * @throws IOException
+     */
+    public static void moveDirectory(String originalPathStr, String newPathStr) throws IOException {
+        Path originalPath = Paths.get(originalPathStr);
+        Path newPath = Paths.get(newPathStr);
+
+        if (!isDirectoryEmpty(originalPathStr)) {
+            System.out.println("Directory is not empty");
+
+            Files.walk(originalPath).forEach(source -> {
+                Path destination = newPath.resolve(originalPath.relativize(source));
+                try {
+                    Files.copy(source, destination);
+                    System.out.println("Files moved");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+        } else {
+            System.out.println("Directory is empty");
+        }
+
+        System.out.println("Moving files task done");
+    }
+
+    public static String formatPath(String path) {
+        if (path.startsWith("/")) {
+            path = path.substring(1);
+        }
+        if (!path.endsWith("/")) {
+            path = path + "/";
+        }
+        return path;
+    }
+
+    public static void deleteDirectoryFiles(String path) throws IOException {
+
+        System.out.println("Deleting original directory...");
+
+//        Path directory = Paths.get(path);
+//        if (Files.exists(directory)) {
+//            Files.walk(directory)
+//                    .sorted(Comparator.reverseOrder())
+//                    .map(Path::toFile)
+//                    .forEach(File::delete);
+//        }
+
+        File folder = new File(path);
+
+        if (folder.exists() && folder.isDirectory()) {
+            File[] files = folder.listFiles();
+
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isFile() && file.getName().startsWith(Param.FILE_NAME_PREFIX)) {
+                        file.delete();
+                    }
+                }
+            }
+        }
+
+        System.out.println("Original directory deleted");
+    }
+
+
+    public static boolean isDirectoryEmpty(String directoryPath) {
+        File directory = new File(directoryPath);
+        if (!directory.isDirectory()) {
+            throw new IllegalArgumentException("Path specified is not a directory");
+        }
+        String[] files = directory.list();
+        return files == null || files.length == 0;
+    }
+
+    /***
+     * Set default folder path to match device files system
+     * @param context
+     */
+    public static void setDefaultPath(Context context) {
+        File file = new File(context.getFilesDir(), "Multivoc");
+        Param.FOLDER_PATH_DEFAULT = formatPath(file.getAbsolutePath());
+        System.out.println("New default path folder : " + Param.FOLDER_PATH_DEFAULT);
     }
 }

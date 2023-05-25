@@ -63,7 +63,7 @@
         android:layout_marginBottom="0dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Cancel"
+        android:text="@string/button_cancel"
         android:textColor="#ffffff"
         android:textSize="@dimen/button_std_text_size"
         android:textAllCaps="true"

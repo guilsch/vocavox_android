@@ -63,6 +63,7 @@
 
     <!--  Explore !-->
     <string name="explore_header">Explore</string>
+    <string name="no_cards_in_list">No card</string>
 
     <!-- Settings   -->
     <string name="settings_header">Settings</string>
@@ -97,5 +98,4 @@
 
     <!-- Other -->
     <string name="button_back_home">Home</string>
-
 </resources>

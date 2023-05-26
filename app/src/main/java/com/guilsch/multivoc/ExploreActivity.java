@@ -2,20 +2,18 @@ package com.guilsch.multivoc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Filter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 public class ExploreActivity extends AppCompatActivity {
 
-    ListView simpleList;
+    ListView dataList;
+    TextView noCardText;
 
-//    static Deck originalDeck;
     static Deck filteredDeck;
     static DeckAdapter adapter;
 
@@ -26,11 +24,13 @@ public class ExploreActivity extends AppCompatActivity {
 
         filteredDeck = (Deck) Param.GLOBAL_DECK.clone();
 
-        simpleList = (ListView) findViewById(R.id.deckListView);
+        dataList = (ListView) findViewById(R.id.deckListView);
         adapter = new DeckAdapter(getApplicationContext(), filteredDeck, this);
-        simpleList.setAdapter(adapter);
+        dataList.setAdapter(adapter);
 
         SearchView searchView = findViewById(R.id.explore_search_view);
+        noCardText = findViewById(R.id.no_card_text);
+        ifNoResult(filteredDeck);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -63,7 +63,21 @@ public class ExploreActivity extends AppCompatActivity {
             }
         }
 
+        ifNoResult(filteredDeck);
         return filteredDeck;
+    }
+
+    /***
+     * Show text message if list is empty
+     * @param filteredDeck
+     */
+    protected void ifNoResult(Deck filteredDeck) {
+        if (filteredDeck.isEmpty()) {
+            noCardText.setVisibility(View.VISIBLE);
+        }
+        else {
+            noCardText.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

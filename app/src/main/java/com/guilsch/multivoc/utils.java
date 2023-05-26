@@ -683,12 +683,14 @@ public class utils {
             System.out.println("Directory is not empty");
 
             Files.walk(originalPath).forEach(source -> {
-                Path destination = newPath.resolve(originalPath.relativize(source));
-                try {
-                    Files.copy(source, destination);
-                    System.out.println("Files moved");
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (source.getFileName().toString().startsWith(Param.FILE_NAME_PREFIX)) {
+                    Path destination = newPath.resolve(originalPath.relativize(source));
+                    try {
+                        Files.copy(source, destination);
+                        System.out.println("Files moved");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
 
@@ -734,7 +736,6 @@ public class utils {
                 }
             }
         }
-
         System.out.println("Original directory deleted");
     }
 

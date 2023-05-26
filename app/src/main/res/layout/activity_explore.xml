@@ -52,7 +52,6 @@
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
         app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline2">
-
     </ListView>
 
     <SearchView
@@ -64,4 +63,14 @@
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
         app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
 
+    <TextView
+        android:id="@+id/no_card_text"
+        android:layout_width="0dp"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:text="@string/no_cards_in_list"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

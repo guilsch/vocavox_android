@@ -61,6 +61,7 @@
 
     <!--  Explore !-->
     <string name="explore_header">Explorer</string>
+    <string name="no_cards_in_list">Pas de carte</string>
 
     <!-- Settings   -->
     <string name="settings_header">Paramètres</string>

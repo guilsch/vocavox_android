@@ -53,7 +53,7 @@ public class Deck extends ArrayList<Card> {
             Iterator<Row> rowIterator = sheet.iterator();
             Row header = rowIterator.next();
 
-            int uuidIndex = utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
+            int uuidIndex = Utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
 
             while (rowIterator.hasNext()) {
 
@@ -97,7 +97,7 @@ public class Deck extends ArrayList<Card> {
 
     public void init() {
 
-        utils.cleanDataFile();
+        Utils.cleanDataFile();
         // Adapted from
         // https://howtodoinjava.com/java/library/readingwriting-excel-files-in-java-poi-tutorial/
         try {
@@ -116,16 +116,16 @@ public class Deck extends ArrayList<Card> {
             Iterator<Row> rowIterator = sheet.iterator();
             Row header = rowIterator.next();
 
-            int item1Index = utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
-            int item2Index = utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
-            int stateIndex = utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
-            int packIndex = utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
-            int nextPracticeDateIndex = utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
-            int creationDateIndex = utils.getFieldIndex(header, Param.CREATION_DATE_FIELD_NAME);
-            int repetitionsIndex = utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
-            int easinessFactorIndex = utils.getFieldIndex(header, Param.EF_FIELD_NAME);
-            int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
-            int uuidIndex = utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
+            int item1Index = Utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = Utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
+            int stateIndex = Utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
+            int packIndex = Utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
+            int nextPracticeDateIndex = Utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int creationDateIndex = Utils.getFieldIndex(header, Param.CREATION_DATE_FIELD_NAME);
+            int repetitionsIndex = Utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
+            int easinessFactorIndex = Utils.getFieldIndex(header, Param.EF_FIELD_NAME);
+            int intervalIndex = Utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
+            int uuidIndex = Utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
 
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
@@ -203,7 +203,7 @@ public class Deck extends ArrayList<Card> {
     public void filterToTrain() {
 
         Iterator<Card> iterator = this.iterator();
-        Predicate<Card> pred = x -> x.getNextPracticeDate().compareTo(utils.giveCurrentDate()) < 0 && x.getState() == Param.ACTIVE ;
+        Predicate<Card> pred = x -> x.getNextPracticeDate().compareTo(Utils.giveCurrentDate()) < 0 && x.getState() == Param.ACTIVE ;
 
         while (iterator.hasNext()) {
             Card card = iterator.next();
@@ -260,7 +260,7 @@ public class Deck extends ArrayList<Card> {
     public int getCardsToReviewNb() {
         int count = 0;
         for (Card card : this) {
-            if (card.getNextPracticeDate().before(utils.giveCurrentDate()) && card.getState() == 1) {
+            if (card.getNextPracticeDate().before(Utils.giveCurrentDate()) && card.getState() == 1) {
                 count++;
             }
         }
@@ -291,7 +291,7 @@ public class Deck extends ArrayList<Card> {
         int countToTrain = 0;
         int countToLearn = 0;
         for (Card card : this) {
-            if (card.getNextPracticeDate().before(utils.giveCurrentDate()) && card.getState() == 1) {
+            if (card.getNextPracticeDate().before(Utils.giveCurrentDate()) && card.getState() == 1) {
                 countToTrain++;
             }
             if (card.getState()==2){
@@ -311,7 +311,7 @@ public class Deck extends ArrayList<Card> {
     public Queue<Card> getTrainingQueue() {
 
         Queue<Card> revision_queue = new LinkedList<>();
-        Predicate<Card> pred = x -> x.getNextPracticeDate().compareTo(utils.giveCurrentDate())
+        Predicate<Card> pred = x -> x.getNextPracticeDate().compareTo(Utils.giveCurrentDate())
                 < 0 && x.getState() == Param.ACTIVE;
 
         Iterator<Card> iterator = this.iterator();

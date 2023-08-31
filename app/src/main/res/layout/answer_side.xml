@@ -72,7 +72,7 @@
         <!--            app:tint="@color/white" />-->
 
         <TextView
-            android:id="@+id/answer_side_item1_step2"
+            android:id="@+id/answer_side_item1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:padding="15dp"
@@ -89,7 +89,7 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/answer_side_item2_step2"
+            android:id="@+id/answer_side_item2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:padding="15dp"
@@ -101,7 +101,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/answer_side_item1_step2"
+            app:layout_constraintTop_toBottomOf="@+id/answer_side_item1"
             app:layout_constraintVertical_bias="0.441"
             tools:ignore="MissingConstraints" />
 

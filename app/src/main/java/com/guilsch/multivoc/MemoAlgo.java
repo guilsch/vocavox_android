@@ -40,7 +40,7 @@ public class MemoAlgo {
         long millisecondsInDay = 60L * 60 * 24 * 1000;
         long now = System.currentTimeMillis();
         long nextPracticeTime = now + millisecondsInDay*interval;
-        Date nextPracticeDate = utils.toDate(nextPracticeTime);
+        Date nextPracticeDate = Utils.toDate(nextPracticeTime);
 
         // Store the nextPracticeDate in the database
         card.updateParameters(nextPracticeDate, repetitions, easiness, interval);

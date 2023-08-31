@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class FirstLaunchActivity extends AppCompatActivity {
+public class ActivityFirstLaunch extends AppCompatActivity {
 
     private static final int REQUEST_CODE_SELECT_FOLDER = 1;
     private static final String TAG = "oui";
@@ -43,7 +43,7 @@ public class FirstLaunchActivity extends AppCompatActivity {
 
     public void onSaveClick() {
         Param.FOLDER_PATH = folderPathEditText.getText().toString();
-        Pref.savePreference(FirstLaunchActivity.this, Param.FOLDER_PATH_KEY, Param.FOLDER_PATH);
+        Pref.savePreference(ActivityFirstLaunch.this, Param.FOLDER_PATH_KEY, Param.FOLDER_PATH);
         finish();
     }
 

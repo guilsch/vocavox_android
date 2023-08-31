@@ -2,7 +2,6 @@ package com.guilsch.multivoc;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Build;
@@ -27,7 +26,7 @@ import life.sabujak.roundedbutton.RoundedButton;
  *
  * @author Guilhem Schena
  */
-public class LearnActivity extends AppCompatActivity implements View.OnClickListener {
+public class ActivityLearn extends AppCompatActivity implements View.OnClickListener {
 
     private RoundedButton mStartLearningButton;
 
@@ -52,7 +51,8 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private RoundedButton mAnswerButton3Step3;
     private RoundedButton mAnswerButton4Step3;
     private TextView mTextViewQuestionStep3;
-    private TextView mTextViewAnswerStep3;
+    private TextView mTextViewAnswerStep3Item1;
+    private TextView mTextViewAnswerStep3Item2;
 
     private RoundedButton mBackToMenuRevisionButton;
 
@@ -71,6 +71,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     // Progress Bar
     private ProgressBar CardsRemainingPB;
     private TextView cardsLeftText;
+    private int cardsNBInit;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -104,23 +105,19 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
             showAnswerSideStep3();
 
         } else if (v == mAnswerButton1Step3){
-            setCardParam(1);
             scrollCardsStep3(1);
 
         } else if (v == mAnswerButton2Step3) {
-            setCardParam(2);
             scrollCardsStep3(2);
 
         } else if (v == mAnswerButton3Step3) {
-            setCardParam(3);
             scrollCardsStep3(3);
 
         } else if (v == mAnswerButton4Step3) {
-            setCardParam(4);
             scrollCardsStep3(4);
 
         } else if (v == mBackToMenuRevisionButton) {
-            Intent MenuActivityIntent = new Intent(LearnActivity.this, MenuActivity.class);
+            Intent MenuActivityIntent = new Intent(ActivityLearn.this, ActivityMenu.class);
             startActivity(MenuActivityIntent);
 
         } else if (v == mAnswerRightButtonStep2) {
@@ -135,25 +132,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    /**
-     * Occurs after the user gave an answer. Manage the score given by the user for the current
-     * card. Mark the card active and calculate the new training date thanks to SuperMemo algorithm.
-     * Add the current card to the processed cards queue only if the card is not repeated (ie score
-     * not 1).
-     *
-     * @param quality 1 to 4, quality of the answer given by the user
-     */
-    private void setCardParam(int quality) {
-        // Change card values
-        currentCard.setState(Param.ACTIVE);
-        MemoAlgo.SuperMemo2(currentCard, quality);
-        currentCard.updateInDatabaseOnSeparateThread();
 
-        // If the quality is not 1, card is not repeated so it is considered processed
-        if (quality != 1){
-            processedCardsQueue.add(currentCard);
-        }
-    }
 
     private void scrollCardsStep1() {
         // Add current card to the next queue if it has already be shown
@@ -193,13 +172,32 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    /**
+     * Occurs after the user gave an answer. Manage the score given by the user for the current
+     * card. Mark the card active and calculate the new training date thanks to SuperMemo algorithm.
+     * Add the current card to the processed cards queue only if the card is not repeated (ie score
+     * not 1). Else remains in the learningCardsQueue3 queue.
+     *
+     * @param quality 1 to 4, quality of the answer given by the user
+     */
     private void scrollCardsStep3(int quality) {
-        // Add card to the next queue if answer is correct, add it to the end of the current queue
-        // if not
-        if (quality != 1 & currentCard != null) {
-            processedCardsQueue.add(currentCard);
-        } else if (quality == 1 & currentCard != null) {
-            learningCardsQueue3.add(currentCard);
+
+        if (currentCard != null) {
+            // Calculates next date
+            MemoAlgo.SuperMemo2(currentCard, quality);
+
+            // Manage quality
+            if (quality != 1) {
+                // Change card values
+                currentCard.setState(Param.ACTIVE);
+                currentCard.updateInDatabaseOnSeparateThread();
+
+                // Add to processed queue
+                processedCardsQueue.add(currentCard);
+
+            } else {
+                learningCardsQueue3.add(currentCard);
+            }
         }
 
         // Next card
@@ -223,7 +221,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
         // Cards selection
         cardsSelectionList = findViewById(R.id.cardsSelectionListView);
-        CardsSelectionDeckAdapter adapter = new CardsSelectionDeckAdapter(getApplicationContext(), toLearnCardsList);
+        AdapterDeckCardsSelection adapter = new AdapterDeckCardsSelection(getApplicationContext(), toLearnCardsList);
         cardsSelectionList.setAdapter(adapter);
 
         // Start learning button
@@ -236,11 +234,11 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
                 Card selectedCard = (Card) parent.getItemAtPosition(position);
 
                 if (!learningQueueContains(selectedCard)) {
-                    LearnActivity.addToLearningQueue(selectedCard);
+                    ActivityLearn.addToLearningQueue(selectedCard);
                     view.setBackgroundResource(R.color.card_selected);
                 }
                 else {
-                    LearnActivity.removeFromLearningQueue(selectedCard);
+                    ActivityLearn.removeFromLearningQueue(selectedCard);
                     view.setBackgroundResource(R.color.white);
                 }
             }
@@ -273,20 +271,20 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.learn_step2_answer_side);
 
         // Initialization
-        mTextViewAnswerStep2 = findViewById(R.id.answer_side_item2_step2);
+        mTextViewAnswerStep2 = findViewById(R.id.answer_side_item2);
+        mTextViewQuestionStep2 = findViewById(R.id.answer_side_item1);
         mAnswerRightButtonStep2 = findViewById(R.id.right_answer_button_step2);
         mAnswerWrongButtonStep2 = findViewById(R.id.answer_side_button1);
 
         // Use
         mAnswerRightButtonStep2.setOnClickListener(this);
         mAnswerWrongButtonStep2.setOnClickListener(this);
-        mTextViewAnswerStep2.setText(this.currentCard.getItem1());
+        mTextViewQuestionStep2.setText(this.currentCard.getItem1());
+        mTextViewAnswerStep2.setText(this.currentCard.getItem2());
     }
 
     private void setLayoutTransition0to1() {
         setContentView(R.layout.learn_transition_0_to_1_layout);
-
-        manageStepsProgressBar();
 
         mStartStep1Button = findViewById(R.id.start_step3_button);
         mSkipStep1Button = findViewById(R.id.skip_step3_button);
@@ -320,9 +318,9 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
     private void setLayoutTransition2to3() {
         setContentView(R.layout.learn_transition_2_to_3_layout);
-//        currentStep++;
 
-        manageStepsProgressBar();
+        cardsNBInit = learningCardsQueue3.size();
+//        manageStepsProgressBar();
 
         mStartStep3Button = findViewById(R.id.start_step3_button);
         mStartStep3Button.setOnClickListener(v -> {
@@ -336,6 +334,9 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
     private void showEndOfLearning() {
         setContentView(R.layout.end_of_learning);
 
+        // Save changes in deck
+        Param.GLOBAL_DECK.updateDeckDataVariables();
+
         mBackToMenuRevisionButton = findViewById(R.id.skip_step3_button);
         mBackToMenuRevisionButton.setOnClickListener(this);
     }
@@ -347,10 +348,10 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.question_side);
 
         cardsLeftText = findViewById(R.id.cards_left);
-        cardsLeftText.setVisibility(View.INVISIBLE);
+//        cardsLeftText.setVisibility(View.INVISIBLE);
 
         mStepsProgressBar.findViewById(R.id.remaining_cards_progress_bar);
-        mStepsProgressBar.setVisibility(View.INVISIBLE);
+//        mStepsProgressBar.setVisibility(View.INVISIBLE);
 
         mTextViewQuestionStep3 = findViewById(R.id.question_side_item1);
         mSeeAnswerButtonStep3 = findViewById(R.id.question_side_button);
@@ -358,6 +359,8 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         mSeeAnswerButtonStep3.setOnClickListener(this);
         mTextViewQuestionStep3.setText(this.currentCard.getItem1());
 
+        updateCardsRemainingProgressBar();
+        cardsLeftText.setText(String.valueOf(cardsNBInit - processedCardsQueue.size()));
     }
 
     /**
@@ -367,12 +370,14 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.answer_side);
 
         cardsLeftText = findViewById(R.id.cards_left);
-        cardsLeftText.setVisibility(View.INVISIBLE);
-
         mStepsProgressBar.findViewById(R.id.remaining_cards_progress_bar);
-        mStepsProgressBar.setVisibility(View.INVISIBLE);
 
-        mTextViewAnswerStep3 = findViewById(R.id.answer_side_item2_step2);
+//        cardsLeftText.setVisibility(View.VISIBLE);
+//        mStepsProgressBar.setVisibility(View.VISIBLE);
+
+        mTextViewAnswerStep3Item1 = findViewById(R.id.answer_side_item1);
+        mTextViewAnswerStep3Item2 = findViewById(R.id.answer_side_item2);
+
         mAnswerButton1Step3 = findViewById(R.id.answer_side_button1);
         mAnswerButton2Step3 = findViewById(R.id.answer_side_button2);
         mAnswerButton3Step3 = findViewById(R.id.answer_side_button3);
@@ -383,8 +388,20 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
         mAnswerButton3Step3.setOnClickListener(this);
         mAnswerButton4Step3.setOnClickListener(this);
 
-        mTextViewAnswerStep3.setText(this.currentCard.getItem2());
+        mTextViewAnswerStep3Item1.setText(this.currentCard.getItem1());
+        mTextViewAnswerStep3Item2.setText(this.currentCard.getItem2());
 
+        updateCardsRemainingProgressBar();
+        cardsLeftText.setText(String.valueOf(cardsNBInit - processedCardsQueue.size()));
+    }
+
+    /**
+     * Update cards remaining progress bar
+     */
+    private void updateCardsRemainingProgressBar() {
+        CardsRemainingPB = findViewById(R.id.remaining_cards_progress_bar);
+        CardsRemainingPB.setMax(cardsNBInit);
+        CardsRemainingPB.setProgress(processedCardsQueue.size());
     }
 
     /**
@@ -444,7 +461,7 @@ public class LearnActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onBackPressed() {
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        Intent menuActivity = new Intent(getApplicationContext(), ActivityMenu.class);
         startActivity(menuActivity);
         finish();
     }

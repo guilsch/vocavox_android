@@ -1,6 +1,5 @@
 package com.guilsch.multivoc;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DeckAdapter extends BaseAdapter {
+public class AdapterDeck extends BaseAdapter {
 
     LayoutInflater inflater;
 
@@ -26,7 +25,7 @@ public class DeckAdapter extends BaseAdapter {
     ImageView deleteCard;
     Activity currentActivity;
 
-    public DeckAdapter(Context applicationContext, Deck deck, Activity activity) {
+    public AdapterDeck(Context applicationContext, Deck deck, Activity activity) {
         this.deck = deck;
         this.context = applicationContext;
         this.currentActivity = activity;
@@ -67,7 +66,7 @@ public class DeckAdapter extends BaseAdapter {
         item1.setText(card.getItem1());
         item2.setText(card.getItem2());
         pack.setText(card.getPack());
-        setStateButton.setText(utils.getStringStateFromInt(card.getState()));
+        setStateButton.setText(Utils.getStringStateFromInt(card.getState()));
         view.setBackgroundColor(context.getColor(R.color.white));
 
         setStateButton.setOnClickListener(v -> onStateButtonPressed(card.getUuid()));
@@ -99,7 +98,7 @@ public class DeckAdapter extends BaseAdapter {
     }
 
     public void setEditCardLayout(String uuid) {
-        Intent editCardActivity = new Intent(currentActivity.getApplicationContext(), EditCardActivity.class);
+        Intent editCardActivity = new Intent(currentActivity.getApplicationContext(), ActivityEditCard.class);
         editCardActivity.putExtra("UUID", uuid);
         currentActivity.startActivity(editCardActivity);
     }
@@ -111,9 +110,9 @@ public class DeckAdapter extends BaseAdapter {
 
     private void onStateButtonPressed(String uuid) {
         Card cardToEdit = Param.GLOBAL_DECK.getCardFromUuid(uuid);
-        cardToEdit.setState(utils.nextStateForButton(cardToEdit.getState()));
+        cardToEdit.setState(Utils.nextStateForButton(cardToEdit.getState()));
         cardToEdit.updateInDatabase();
-        setStateButton.setText(utils.getStringStateFromInt(cardToEdit.getState()));
+        setStateButton.setText(Utils.getStringStateFromInt(cardToEdit.getState()));
     }
 
 }

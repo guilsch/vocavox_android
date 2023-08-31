@@ -25,15 +25,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -41,7 +37,7 @@ import java.util.Locale;
 import java.util.Queue;
 import java.util.UUID;
 
-public class utils {
+public class Utils {
 
     public static void printNBCards() {
         System.out.println("Cards to train :" + Param.GLOBAL_DECK.getCardsToReviewNb());
@@ -60,8 +56,8 @@ public class utils {
             Row header = rowIterator.next();
             Row row;
 
-            int item1Index = utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
-            int item2Index = utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
+            int item1Index = Utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = Utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
             int rowIndex;
 
             while (rowIterator.hasNext()) {
@@ -100,7 +96,7 @@ public class utils {
 
         if (Arrays.asList(Param.USER_LANGUAGES_ISO).contains(localeLanguageISO)) {
             Param.USER_LANGUAGE_ISO = localeLanguageISO;
-            Param.USER_LANGUAGE = utils.getLanguageNameFromISO(Param.USER_LANGUAGE_ISO);
+            Param.USER_LANGUAGE = Utils.getLanguageNameFromISO(Param.USER_LANGUAGE_ISO);
         }
         else {
             Param.USER_LANGUAGE_ISO = Param.USER_LANGUAGE_ISO_DEFAULT;
@@ -114,20 +110,20 @@ public class utils {
         setUserLanguageParam();
 
         // Set target languages variables
-        Param.TARGET_LANGUAGE_ISO = utils.getLanguageISOName(Param.TARGET_LANGUAGE);
+        Param.TARGET_LANGUAGE_ISO = Utils.getLanguageISOName(Param.TARGET_LANGUAGE);
 
         // Set Data path
-        Param.DATA_FILE = utils.generateDataFileName();
+        Param.DATA_FILE = Utils.generateDataFileName();
         Param.setDataPath();
 
         // Set File ID
-        utils.setFileID();
+        Utils.setFileID();
 
         // Check data file
         if (!(new File(Param.DATA_PATH)).exists()) {
             System.out.println(Param.DATA_PATH + " doesn't exist yet");
             try {
-                utils.createDataFile();
+                Utils.createDataFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -517,16 +513,16 @@ public class utils {
             Cell currentCell;
             Cell stateCell;
 
-            int item1Index = utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
-            int item2Index = utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
-            int stateIndex = utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
-            int packIndex = utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
-            int nextPracticeDateIndex = utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
-            int creationDateIndex = utils.getFieldIndex(header, Param.CREATION_DATE_FIELD_NAME);
-            int repetitionsIndex = utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
-            int easinessFactorIndex = utils.getFieldIndex(header, Param.EF_FIELD_NAME);
-            int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
-            int uuidIndex = utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
+            int item1Index = Utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = Utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
+            int stateIndex = Utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
+            int packIndex = Utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
+            int nextPracticeDateIndex = Utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int creationDateIndex = Utils.getFieldIndex(header, Param.CREATION_DATE_FIELD_NAME);
+            int repetitionsIndex = Utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
+            int easinessFactorIndex = Utils.getFieldIndex(header, Param.EF_FIELD_NAME);
+            int intervalIndex = Utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
+            int uuidIndex = Utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
 
             while (rowIterator.hasNext()) {
 
@@ -582,7 +578,7 @@ public class utils {
                 currentCell = row.getCell(uuidIndex);
                 if (checkCellEmptiness(currentCell, row)) {
                     currentCell = row.createCell(uuidIndex);
-                    currentCell.setCellValue(utils.getNewUUID());
+                    currentCell.setCellValue(Utils.getNewUUID());
                 }
             }
 
@@ -757,5 +753,23 @@ public class utils {
         File file = new File(context.getFilesDir(), "Multivoc");
         Param.FOLDER_PATH_DEFAULT = formatPath(file.getAbsolutePath());
         System.out.println("New default path folder : " + Param.FOLDER_PATH_DEFAULT);
+    }
+
+    /***
+     * When a new card is created in translation or newCard activities, this method add it to the
+     * deck and makes the necessary updates
+     * @param newCard
+     */
+    public static void manageCardCreation(Card newCard) {
+        Param.GLOBAL_DECK.add(newCard);
+        newCard.addToDatabaseOnSeparateThread();
+        newCard.info();
+
+
+        // Update deck data
+        Param.CARDS_NB = Param.CARDS_NB + 1;
+        if(newCard.getState() == Param.TO_LEARN) {
+            Param.CARDS_TO_LEARN_NB = Param.CARDS_TO_LEARN_NB + 1;
+        }
     }
 }

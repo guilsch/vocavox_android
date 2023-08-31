@@ -9,13 +9,13 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-public class ExploreActivity extends AppCompatActivity {
+public class ActivityExplore extends AppCompatActivity {
 
     ListView dataList;
     TextView noCardText;
 
     static Deck filteredDeck;
-    static DeckAdapter adapter;
+    static AdapterDeck adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class ExploreActivity extends AppCompatActivity {
         filteredDeck = (Deck) Param.GLOBAL_DECK.clone();
 
         dataList = (ListView) findViewById(R.id.deckListView);
-        adapter = new DeckAdapter(getApplicationContext(), filteredDeck, this);
+        adapter = new AdapterDeck(getApplicationContext(), filteredDeck, this);
         dataList.setAdapter(adapter);
 
         SearchView searchView = findViewById(R.id.explore_search_view);
@@ -89,7 +89,7 @@ public class ExploreActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent menuActivityIntent = new Intent(getApplicationContext(), MenuActivity.class);
+        Intent menuActivityIntent = new Intent(getApplicationContext(), ActivityMenu.class);
         menuActivityIntent.putExtra("FRAG_INDEX", 2);
         startActivity(menuActivityIntent);
         finish();

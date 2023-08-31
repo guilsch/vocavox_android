@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/back_ground"
-    tools:context=".ExploreActivity">
+    tools:context=".ActivityExplore">
 
 
     <androidx.constraintlayout.widget.Guideline

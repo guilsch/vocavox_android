@@ -22,7 +22,7 @@ import life.sabujak.roundedbutton.RoundedButton;
  *
  * @author Guilhem Schena
  */
-public class RevisionActivity extends AppCompatActivity implements View.OnClickListener {
+public class ActivityTrain extends AppCompatActivity implements View.OnClickListener {
 
     // Layout
     private RoundedButton mSeeAnswerButton;
@@ -94,7 +94,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
      */
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void NextOrEndForTraining() {
-        utils.printNBCards();
+        Utils.printNBCards();
         currentCard = trainingCardsQueue.poll();
 
         if (currentCard != null) {
@@ -138,7 +138,7 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
             NextOrEndForTraining();
 
         } else if (v == mBackToMenuRevisionButton) {
-            Intent MenuActivityIntent = new Intent(RevisionActivity.this, MenuActivity.class);
+            Intent MenuActivityIntent = new Intent(ActivityTrain.this, ActivityMenu.class);
             startActivity(MenuActivityIntent);
 
         } else {
@@ -200,8 +200,8 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
         mAnswerButton2 = findViewById(R.id.answer_side_button2);
         mAnswerButton3 = findViewById(R.id.answer_side_button3);
         mAnswerButton4 = findViewById(R.id.answer_side_button4);
-        mTextViewQuestion = findViewById(R.id.answer_side_item2_step2);
-        mTextViewItem2 = findViewById(R.id.answer_side_item1_step2);
+        mTextViewQuestion = findViewById(R.id.answer_side_item2);
+        mTextViewItem2 = findViewById(R.id.answer_side_item1);
         cardsLeftText = findViewById(R.id.cards_left);
 
         cardsLeftText.setText(String.valueOf(Param.GLOBAL_DECK.getCardsToReviewNb()));
@@ -253,7 +253,10 @@ public class RevisionActivity extends AppCompatActivity implements View.OnClickL
      */
     @Override
     public void onBackPressed() {
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        // Save changes in deck
+        Param.GLOBAL_DECK.updateDeckDataVariables();
+
+        Intent menuActivity = new Intent(getApplicationContext(), ActivityMenu.class);
         startActivity(menuActivity);
         finish();
     }

@@ -16,12 +16,12 @@ import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardsSelectionDeckAdapter extends BaseAdapter implements ListAdapter {
+public class AdapterDeckCardsSelection extends BaseAdapter implements ListAdapter {
 
     LayoutInflater inflater;
     List<Card> cardsList;
 
-    public CardsSelectionDeckAdapter(Context applicationContext, List<Card> cardsList) {
+    public AdapterDeckCardsSelection(Context applicationContext, List<Card> cardsList) {
         this.cardsList = cardsList;
         inflater = (LayoutInflater.from(applicationContext));
     }

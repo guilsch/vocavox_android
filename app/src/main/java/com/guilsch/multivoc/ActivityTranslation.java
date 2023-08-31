@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,7 +15,7 @@ import java.util.concurrent.ExecutionException;
 
 import life.sabujak.roundedbutton.RoundedButton;
 
-public class TranslationActivity extends AppCompatActivity {
+public class ActivityTranslation extends AppCompatActivity {
 
     private RoundedButton OKButton;
     private RoundedButton cancelButton;
@@ -64,7 +63,7 @@ public class TranslationActivity extends AppCompatActivity {
         OKButton.setOnClickListener(view -> {
 
             if (item1Text.getText().toString().isEmpty() && item2Text.getText().toString().isEmpty()) {
-                utils.showToast(TranslationActivity.this, getString(R.string.toast_msg_empty_translation));
+                Utils.showToast(ActivityTranslation.this, getString(R.string.toast_msg_empty_translation));
             }
             else {
                 try {
@@ -269,7 +268,7 @@ public class TranslationActivity extends AppCompatActivity {
         String item2 = item2TextCheckCardLayout.getText().toString();
 
         if (item1.isEmpty() || item2.isEmpty()) {
-            new AlertDialog.Builder(TranslationActivity.this)
+            new AlertDialog.Builder(ActivityTranslation.this)
                     .setTitle("Unvalid card")
                     .setMessage("At least words in both languages have to be set")
                     .setNegativeButton(android.R.string.ok, null)
@@ -278,12 +277,10 @@ public class TranslationActivity extends AppCompatActivity {
             return;
         }
 
-        newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), utils.giveCurrentDate(), utils.giveCurrentDate(), 0, 0, 0, utils.getNewUUID(), -1);
-        Param.GLOBAL_DECK.add(newCard);
-        newCard.addToDatabaseOnSeparateThread();
-        newCard.info();
+        newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), Utils.giveCurrentDate(), Utils.giveCurrentDate(), 0, 0, 0, Utils.getNewUUID(), -1);
+        Utils.manageCardCreation(newCard);
 
-        Intent saveCardActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        Intent saveCardActivity = new Intent(getApplicationContext(), ActivityMenu.class);
         startActivity(saveCardActivity);
         finish();
 
@@ -294,7 +291,7 @@ public class TranslationActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         if (currentLayoutNum == 1) {
-            Intent menuActivityIntent = new Intent(getApplicationContext(), MenuActivity.class);
+            Intent menuActivityIntent = new Intent(getApplicationContext(), ActivityMenu.class);
             menuActivityIntent.putExtra("FRAG_INDEX", 2);
             startActivity(menuActivityIntent);
             finish();

@@ -7,10 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
-public class SearchDeckAdapter extends BaseAdapter {
+public class AdapterDeckSearch extends BaseAdapter {
 
     LayoutInflater inflater;
 
@@ -20,7 +19,7 @@ public class SearchDeckAdapter extends BaseAdapter {
     TextView item2;
     Activity currentActivity;
 
-    public SearchDeckAdapter(Context applicationContext, Deck deck, Activity activity) {
+    public AdapterDeckSearch(Context applicationContext, Deck deck, Activity activity) {
         this.deck = deck;
         this.context = applicationContext;
         this.currentActivity = activity;
@@ -69,7 +68,7 @@ public class SearchDeckAdapter extends BaseAdapter {
     }
 
     public void setEditCardLayout(String uuid) {
-        Intent editCardActivity = new Intent(currentActivity.getApplicationContext(), EditCardActivity.class);
+        Intent editCardActivity = new Intent(currentActivity.getApplicationContext(), ActivityEditCard.class);
         editCardActivity.putExtra("UUID", uuid);
         currentActivity.startActivity(editCardActivity);
     }

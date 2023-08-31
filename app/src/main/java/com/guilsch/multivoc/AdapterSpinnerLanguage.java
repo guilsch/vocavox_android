@@ -12,13 +12,13 @@ import androidx.core.content.ContextCompat;
 
 import java.util.List;
 
-public class LanguageSpinnerAdapter extends BaseAdapter {
+public class AdapterSpinnerLanguage extends BaseAdapter {
 
     LayoutInflater inflater;
     Context context;
     Language[] languageList;
 
-    public LanguageSpinnerAdapter(Context applicationContext) {
+    public AdapterSpinnerLanguage(Context applicationContext) {
         this.inflater = (LayoutInflater.from(applicationContext));
         this.context = applicationContext;
         this.languageList = Param.TARGET_LANGUAGES_FULL;

@@ -2,16 +2,14 @@ package com.guilsch.multivoc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import life.sabujak.roundedbutton.RoundedButton;
 
-public class NewCardActivity extends AppCompatActivity {
+public class ActivityNewCard extends AppCompatActivity {
 
     private RoundedButton saveCard;
 
@@ -40,15 +38,13 @@ public class NewCardActivity extends AppCompatActivity {
                 String item2 = item2Text.getText().toString();
 
                 if (item1.isEmpty() || item2.isEmpty()) {
-                    utils.showToast(NewCardActivity.this, getString(R.string.toast_msg_invalid_new_card));
+                    Utils.showToast(ActivityNewCard.this, getString(R.string.toast_msg_invalid_new_card));
                 }
                 else {
-                    newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), utils.giveCurrentDate(), utils.giveCurrentDate(), 0, 0, 0, utils.getNewUUID(), -1);
-                    Param.GLOBAL_DECK.add(newCard);
-                    newCard.addToDatabaseOnSeparateThread();
-                    newCard.info();
+                    newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), Utils.giveCurrentDate(), Utils.giveCurrentDate(), 0, 0, 0, Utils.getNewUUID(), -1);
+                    Utils.manageCardCreation(newCard);
 
-                    Intent saveCardActivity = new Intent(getApplicationContext(), MenuActivity.class);
+                    Intent saveCardActivity = new Intent(getApplicationContext(), ActivityMenu.class);
                     startActivity(saveCardActivity);
                     finish();
                 }
@@ -58,7 +54,7 @@ public class NewCardActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent menuActivityIntent = new Intent(getApplicationContext(), MenuActivity.class);
+        Intent menuActivityIntent = new Intent(getApplicationContext(), ActivityMenu.class);
         menuActivityIntent.putExtra("FRAG_INDEX", 2);
         startActivity(menuActivityIntent);
         finish();

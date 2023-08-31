@@ -17,7 +17,7 @@ import java.io.IOException;
 
 import ir.androidexception.filepicker.dialog.DirectoryPickerDialog;
 
-public class SettingsActivity extends AppCompatActivity {
+public class ActivitySettings extends AppCompatActivity {
 
     private ImageView folderPathButton;
     private TextView folderPathText;
@@ -49,7 +49,7 @@ public class SettingsActivity extends AppCompatActivity {
     public void managePathChange() {
         if(permissionGranted()) {
             DirectoryPickerDialog directoryPickerDialog = new DirectoryPickerDialog(this,
-                    () -> Toast.makeText(SettingsActivity.this, "", Toast.LENGTH_SHORT),
+                    () -> Toast.makeText(ActivitySettings.this, "", Toast.LENGTH_SHORT),
                     files -> checkAndCorrectDirectoryPath(Param.FOLDER_PATH, files[0].getPath() + "/")
             );
             directoryPickerDialog.show();
@@ -85,12 +85,12 @@ public class SettingsActivity extends AppCompatActivity {
 
         if (!file.isAbsolute()) {
             // Try again with formatted path
-            newPath = utils.formatPath(newPath);
+            newPath = Utils.formatPath(newPath);
             file = new File(newPath);
 
             System.out.println("2nd Path = " + newPath);
             if (!file.isAbsolute()) {
-                utils.showToast(SettingsActivity.this, "Path is not valid");
+                Utils.showToast(ActivitySettings.this, "Path is not valid");
                 folderPathText.setText(Param.FOLDER_PATH);
                 return;
             }
@@ -106,31 +106,31 @@ public class SettingsActivity extends AppCompatActivity {
     public void updateDirectoryPath(String originalPath, String newPath) {
         try {
             // Move files
-            utils.moveDirectory(originalPath, newPath);
-            utils.deleteDirectoryFiles(originalPath);
+            Utils.moveDirectory(originalPath, newPath);
+            Utils.deleteDirectoryFiles(originalPath);
 
             // Save new path
             Param.FOLDER_PATH = newPath;
-            Pref.savePreference(SettingsActivity.this, Param.FOLDER_PATH_KEY, Param.FOLDER_PATH);
+            Pref.savePreference(ActivitySettings.this, Param.FOLDER_PATH_KEY, Param.FOLDER_PATH);
             folderPathText.setText(Param.FOLDER_PATH);
 
             // Show to user
-//            utils.showToast(SettingsActivity.this, "Path has been changed");
+//            Utils.showToast(ActivitySettings.this, "Path has been changed");
         }
         catch (IOException e) {
             e.printStackTrace();
-            utils.showToast(SettingsActivity.this, "Error, try again");
+            Utils.showToast(ActivitySettings.this, "Error, try again");
         }
     }
 
     public void langDirectionFreqSaveClick() {
         Param.LANG_DIRECTION_FREQ = langDirectionFreqSeekBar.getProgress();
-        Pref.savePreference(SettingsActivity.this, Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ);
+        Pref.savePreference(ActivitySettings.this, Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ);
     }
 
     @Override
     public void onBackPressed() {
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        Intent menuActivity = new Intent(getApplicationContext(), ActivityMenu.class);
         startActivity(menuActivity);
         finish();
     }

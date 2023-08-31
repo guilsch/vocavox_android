@@ -18,16 +18,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Multivoc"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MenuActivity"/>
-        <activity android:name=".FirstLaunchActivity" />
-        <activity android:name=".EditCardActivity" />
-        <activity android:name=".NewCardActivity" />
-        <activity android:name=".ExploreActivity" />
-        <activity android:name=".LearnActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".RevisionActivity" />
-        <activity android:name=".TranslationActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ActivityMenu"/>
+        <activity android:name=".ActivityFirstLaunch" />
+        <activity android:name=".ActivityEditCard" />
+        <activity android:name=".ActivityNewCard" />
+        <activity android:name=".ActivityExplore" />
+        <activity android:name=".ActivityLearn" />
+        <activity android:name=".ActivitySettings" />
+        <activity android:name=".ActivityTrain" />
+        <activity android:name=".ActivityTranslation" />
+        <activity android:name=".ActivityMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

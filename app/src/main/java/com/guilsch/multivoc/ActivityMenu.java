@@ -15,18 +15,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.SearchEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.TextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MenuActivity extends AppCompatActivity  {
+public class ActivityMenu extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +38,7 @@ public class MenuActivity extends AppCompatActivity  {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
-        utils.printNBCards();
+        Utils.printNBCards();
 
         // Fragments management
         if (getIntent().hasExtra("FRAG_INDEX")) {
@@ -58,7 +55,7 @@ public class MenuActivity extends AppCompatActivity  {
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_tab1, container, false);
 
-            MenuActivity parentActivity = (MenuActivity) getActivity();
+            ActivityMenu parentActivity = (ActivityMenu) getActivity();
 
             CircleImageView flag = view.findViewById(R.id.lang_flag);
             ImageView settingsIm = view.findViewById(R.id.setting_im);
@@ -71,10 +68,10 @@ public class MenuActivity extends AppCompatActivity  {
             cardsToTrainNB.setText(String.valueOf(Param.GLOBAL_DECK.getCardsToReviewNb()));
 
             // On clicks
-            settingsIm.setOnClickListener(v -> parentActivity.changeActivity(SettingsActivity.class));
+            settingsIm.setOnClickListener(v -> parentActivity.changeActivity(ActivitySettings.class));
             trainLayout.setOnClickListener(v -> parentActivity.preChangeToTrainActivity());
             learnLayout.setOnClickListener(v -> parentActivity.preChangeToLearnActivity());
-            flag.setOnClickListener(v -> parentActivity.changeActivity(MainActivity.class));
+            flag.setOnClickListener(v -> parentActivity.changeActivity(ActivityMain.class));
 
             // On touch
             flag.setOnTouchListener(new View.OnTouchListener() {
@@ -102,15 +99,15 @@ public class MenuActivity extends AppCompatActivity  {
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_tab2, container, false);
 
-            MenuActivity parentActivity = (MenuActivity) getActivity();
+            ActivityMenu parentActivity = (ActivityMenu) getActivity();
 
             LinearLayout translationLayout = view.findViewById(R.id.translation_layout);
             LinearLayout newCardLayout = view.findViewById(R.id.new_card_layout);
             LinearLayout exploreLayout = view.findViewById(R.id.explore_layout);
 
             translationLayout.setOnClickListener(v -> parentActivity.preChangeToTranslationActivity());
-            newCardLayout.setOnClickListener(v -> parentActivity.changeActivity(NewCardActivity.class));
-            exploreLayout.setOnClickListener(v -> parentActivity.changeActivity(ExploreActivity.class));
+            newCardLayout.setOnClickListener(v -> parentActivity.changeActivity(ActivityNewCard.class));
+            exploreLayout.setOnClickListener(v -> parentActivity.changeActivity(ActivityExplore.class));
 
             return view;
         }
@@ -118,28 +115,28 @@ public class MenuActivity extends AppCompatActivity  {
 
     public void preChangeToLearnActivity(){
         if (Param.CARDS_TO_LEARN_NB == 0) {
-            utils.showToast(MenuActivity.this, getString(R.string.toast_msg_no_cards_to_learn));
+            Utils.showToast(ActivityMenu.this, getString(R.string.toast_msg_no_cards_to_learn));
         }
         else {
-            changeActivity(LearnActivity.class);
+            changeActivity(ActivityLearn.class);
         }
     }
 
     public void preChangeToTrainActivity(){
         if (Param.CARDS_TO_REVIEW_NB == 0) {
-            utils.showToast(MenuActivity.this, getString(R.string.toast_msg_no_cards_to_train));
+            Utils.showToast(ActivityMenu.this, getString(R.string.toast_msg_no_cards_to_train));
         }
         else {
-            changeActivity(RevisionActivity.class);
+            changeActivity(ActivityTrain.class);
         }
     }
 
     public void preChangeToTranslationActivity(){
-        if (utils.checkConnexion(getApplicationContext())) {
-            changeActivity(TranslationActivity.class);
+        if (Utils.checkConnexion(getApplicationContext())) {
+            changeActivity(ActivityTranslation.class);
         }
         else {
-            utils.showToast(MenuActivity.this, getString(R.string.toast_msg_no_connexion));
+            Utils.showToast(ActivityMenu.this, getString(R.string.toast_msg_no_connexion));
         }
     }
 

@@ -77,8 +77,8 @@ public class Param {
 
     public static final int DEFAULT_STATE = 2;
     public static final String DEFAULT_PACK = "";
-    public static final Date DEFAULT_NEXT_DATE = utils.giveCurrentDate();
-    public static final Date DEFAULT_CREATION_DATE = utils.giveCurrentDate();
+    public static final Date DEFAULT_NEXT_DATE = Utils.giveCurrentDate();
+    public static final Date DEFAULT_CREATION_DATE = Utils.giveCurrentDate();
     public static final int DEFAULT_REP = 0;
     public static final int DEFAULT_EF = 0;
     public static final int DEFAULT_INTER = 0;
@@ -89,7 +89,7 @@ public class Param {
 
     public static String APP_PREF = "app_pref";
 
-    // Cards data
+    // Deck data
     public static Deck GLOBAL_DECK;
     public static int CARDS_TO_REVIEW_NB;
     public static int CARDS_TO_LEARN_NB;

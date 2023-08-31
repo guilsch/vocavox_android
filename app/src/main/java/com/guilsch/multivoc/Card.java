@@ -57,16 +57,16 @@ public class Card implements Serializable {
 
             Row header = sheet.getRow(sheet.getFirstRowNum());
 
-            int item1Index = utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
-            int item2Index = utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
-            int stateIndex = utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
-            int packIndex = utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
-            int nextPracticeDateIndex = utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
-            int creationDateIndex = utils.getFieldIndex(header, Param.CREATION_DATE_FIELD_NAME);
-            int repetitionsIndex = utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
-            int easinessFactorIndex = utils.getFieldIndex(header, Param.EF_FIELD_NAME);
-            int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
-            int uuidIndex = utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
+            int item1Index = Utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = Utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
+            int stateIndex = Utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
+            int packIndex = Utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
+            int nextPracticeDateIndex = Utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int creationDateIndex = Utils.getFieldIndex(header, Param.CREATION_DATE_FIELD_NAME);
+            int repetitionsIndex = Utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
+            int easinessFactorIndex = Utils.getFieldIndex(header, Param.EF_FIELD_NAME);
+            int intervalIndex = Utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
+            int uuidIndex = Utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
 
             Row cardRow = sheet.getRow(this.rowIndexInExcel);
             Cell uuidCell = cardRow.getCell(uuidIndex);
@@ -121,16 +121,16 @@ public class Card implements Serializable {
             Row header = sheet.getRow(sheet.getFirstRowNum());
             Row newRow = sheet.createRow(sheet.getLastRowNum() + 1);
 
-            int item1Index = utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
-            int item2Index = utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
-            int stateIndex = utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
-            int packIndex = utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
-            int nextPracticeDateIndex = utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
-            int creationDateIndex = utils.getFieldIndex(header, Param.CREATION_DATE_FIELD_NAME);
-            int repetitionsIndex = utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
-            int easinessFactorIndex = utils.getFieldIndex(header, Param.EF_FIELD_NAME);
-            int intervalIndex = utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
-            int uuidIndex = utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
+            int item1Index = Utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = Utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
+            int stateIndex = Utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
+            int packIndex = Utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
+            int nextPracticeDateIndex = Utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
+            int creationDateIndex = Utils.getFieldIndex(header, Param.CREATION_DATE_FIELD_NAME);
+            int repetitionsIndex = Utils.getFieldIndex(header, Param.REPETITIONS_FIELD_NAME);
+            int easinessFactorIndex = Utils.getFieldIndex(header, Param.EF_FIELD_NAME);
+            int intervalIndex = Utils.getFieldIndex(header, Param.INTERVAL_FIELD_NAME);
+            int uuidIndex = Utils.getFieldIndex(header, Param.UUID_FIELD_NAME);
 
             for (int i = 0; i < Param.FIELDS_NB; i++) {
                 newRow.createCell(i);

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import life.sabujak.roundedbutton.RoundedButton;
 
-public class EditCardActivity extends AppCompatActivity {
+public class ActivityEditCard extends AppCompatActivity {
 
     private RoundedButton saveCardButton;
     private RoundedButton deleteCardButton;
@@ -42,7 +42,7 @@ public class EditCardActivity extends AppCompatActivity {
         item2Text.setText(card.getItem2());
         packText.setText(card.getPack());
         nextDateText.setText(card.getNextPracticeDate().toString());
-        setStateButton.setText(utils.getStringStateFromInt(card.getState()));
+        setStateButton.setText(Utils.getStringStateFromInt(card.getState()));
         editCardMsg.setText(R.string.edit_card_msg);
 
         setStateButton.setOnClickListener(v -> onStateButtonPressed());
@@ -56,7 +56,7 @@ public class EditCardActivity extends AppCompatActivity {
         card.setItem1(item1Text.getText().toString());
         card.setItem2(item2Text.getText().toString());
         card.setPack(packText.getText().toString());
-        card.setState(utils.getIntStateFromString((String) setStateButton.getText()));
+        card.setState(Utils.getIntStateFromString((String) setStateButton.getText()));
 
         card.updateInDatabaseOnSeparateThread();
 
@@ -70,12 +70,12 @@ public class EditCardActivity extends AppCompatActivity {
     }
 
     private void onStateButtonPressed() {
-        setStateButton.setText(utils.getStringStateFromInt(utils.nextStateForButton(card.getState())));
+        setStateButton.setText(Utils.getStringStateFromInt(Utils.nextStateForButton(card.getState())));
     }
 
     @Override
     public void onBackPressed() {
-//        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+//        Intent menuActivity = new Intent(getApplicationContext(), ActivityMenu.class);
 //        startActivity(menuActivity);
         finish();
     }

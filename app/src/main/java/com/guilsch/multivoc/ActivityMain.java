@@ -21,7 +21,7 @@ import android.widget.Spinner;
 
 import life.sabujak.roundedbutton.RoundedButton;
 
-public class MainActivity extends AppCompatActivity {
+public class ActivityMain extends AppCompatActivity {
 
     private RoundedButton start;
     private Spinner spinner;
@@ -52,13 +52,13 @@ public class MainActivity extends AppCompatActivity {
 //        getWindow().setEnterTransition(zoom);
 
         ////// Set default path folder
-        utils.setDefaultPath(MainActivity.this);
+        Utils.setDefaultPath(ActivityMain.this);
 
         ////// Retrieve preferences variables
         Pref.retrieveAllPreferences(this);
 
 //        if (Param.FIRST_LAUNCH) {
-//            Intent intent = new Intent(this, FirstLaunchActivity.class);
+//            Intent intent = new Intent(this, ActivityFirstLaunch.class);
 //            startActivity(intent);
 //        }
 
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Spinner
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Param.TARGET_LANGUAGES);
-        LanguageSpinnerAdapter adapter = new LanguageSpinnerAdapter(this);
+        AdapterSpinnerLanguage adapter = new AdapterSpinnerLanguage(this);
         spinner.setAdapter(adapter);
         spinner.setSelection(Param.LAST_LANG);
 
@@ -151,13 +151,13 @@ public class MainActivity extends AppCompatActivity {
      */
     public void initAppData() {
         // Init other static variables
-        utils.initParam();
+        Utils.initParam();
 
         // Clean excel data file
-        utils.prepareDataFile();
+        Utils.prepareDataFile();
 
         // Init global deck
-        utils.initGlobalDeck();
+        Utils.initGlobalDeck();
 
         // Set user and target language flag
         setUserLanguageVisuals();
@@ -236,17 +236,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Method to switch to MenuActivity
+     * Method to switch to ActivityMenu
      */
     private void changeActivity() {
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        Intent menuActivity = new Intent(getApplicationContext(), ActivityMenu.class);
         startActivity(menuActivity);
         finish();
     }
 
     @Override
     public void onBackPressed() {
-        Intent menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        Intent menuActivity = new Intent(getApplicationContext(), ActivityMenu.class);
         startActivity(menuActivity);
         finish();
     }

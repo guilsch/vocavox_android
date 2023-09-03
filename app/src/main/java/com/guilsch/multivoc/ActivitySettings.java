@@ -1,6 +1,7 @@
 package com.guilsch.multivoc;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
@@ -23,11 +24,15 @@ public class ActivitySettings extends AppCompatActivity {
     private TextView folderPathText;
     private Button langDirectionFreqSaveButton;
     private SeekBar langDirectionFreqSeekBar;
+    private ConstraintLayout backLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackPressed());
 
 //        Folder Path
         folderPathButton = findViewById(R.id.folder_path_button);

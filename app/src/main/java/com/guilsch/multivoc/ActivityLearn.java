@@ -2,6 +2,7 @@ package com.guilsch.multivoc;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Build;
@@ -72,6 +73,9 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     private ProgressBar CardsRemainingPB;
     private TextView cardsLeftText;
     private int cardsNBInit;
+
+    // Back Arrow
+    private ConstraintLayout backLayout;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -218,6 +222,9 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void setLayoutCardsSelection() {
         setContentView(R.layout.cards_selection);
+
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackPressed());
 
         // Cards selection
         cardsSelectionList = findViewById(R.id.cardsSelectionListView);

@@ -1,6 +1,7 @@
 package com.guilsch.multivoc;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,16 +20,19 @@ public class ActivityNewCard extends AppCompatActivity {
 
     private Card newCard;
 
+    private ConstraintLayout backLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_card);
 
         saveCard = findViewById(R.id.save_new_card);
-
         item1Text = findViewById(R.id.item1_text);
         item2Text = findViewById(R.id.item2_text);
         packText = findViewById(R.id.pack_text);
+
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackPressed());
 
         saveCard.setOnClickListener(new View.OnClickListener() {
             @Override

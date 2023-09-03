@@ -98,4 +98,5 @@
 
     <!-- Other -->
     <string name="button_back_home">Home</string>
+    <string name="button_back_str">Back</string>
 </resources>

@@ -97,4 +97,5 @@
 
     <!-- Other -->
     <string name="button_back_home">Menu</string>
+    <string name="button_back_str">Retour</string>
 </resources>

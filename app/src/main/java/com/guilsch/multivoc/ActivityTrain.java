@@ -2,6 +2,7 @@ package com.guilsch.multivoc;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Build;
@@ -46,6 +47,9 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
     private Random rand;
     private int langDirection;
     private int cardsNBInit;
+
+    // Back Arrow
+    private ConstraintLayout backLayout;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -163,6 +167,9 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
     private void showQuestionSide() {
         setContentView(R.layout.question_side);
 
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackPressed());
+
         mTextViewQuestion = findViewById(R.id.question_side_item1);
         mSeeAnswerButton = findViewById(R.id.question_side_button);
         cardsLeftText = findViewById(R.id.cards_left);
@@ -195,6 +202,9 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
      */
     private void showAnswerSide() {
         setContentView(R.layout.answer_side);
+
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackPressed());
 
         mAnswerButton1 = findViewById(R.id.answer_side_button1);
         mAnswerButton2 = findViewById(R.id.answer_side_button2);

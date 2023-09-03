@@ -1,6 +1,7 @@
 package com.guilsch.multivoc;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -20,11 +21,15 @@ public class ActivityEditCard extends AppCompatActivity {
     private TextView nextDateText;
     private TextView editCardMsg;
     private Card card;
+    private ConstraintLayout backLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_card);
+
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackPressed());
 
         String uuid = (String) getIntent().getSerializableExtra("UUID");
         card = Param.GLOBAL_DECK.getCardFromUuid(uuid);

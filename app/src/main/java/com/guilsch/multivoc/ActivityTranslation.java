@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.concurrent.ExecutionException;
 
@@ -39,6 +40,8 @@ public class ActivityTranslation extends AppCompatActivity {
 
     private Integer currentLayoutNum;
 
+    private ConstraintLayout backLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,10 @@ public class ActivityTranslation extends AppCompatActivity {
 
     private void initMainTranslationLayout() {
         setContentView(R.layout.activity_translation);
+
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackPressed());
+
         currentLayoutNum = 1;
 
         OKButton = findViewById(R.id.ok_button);

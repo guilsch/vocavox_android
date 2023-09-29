@@ -76,7 +76,7 @@
         app:layout_constraintTop_toTopOf="@+id/after_progress_bar_guideline" />
 
     <Button
-        android:id="@+id/skip_step3_button"
+        android:id="@+id/back_home_btn"
         android:layout_width="@dimen/button_std_width"
         android:layout_height="@dimen/button_std_height"
         android:background="@drawable/button_selector"
@@ -102,7 +102,7 @@
         app:backgroundTint="#00FFFFFF"
         app:backgroundTintMode="src_atop"
         app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/skip_step3_button"
+        app:layout_constraintEnd_toStartOf="@+id/back_home_btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
         app:layout_constraintTop_toTopOf="@+id/after_text_bar_guideline" />

@@ -19,22 +19,16 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void test() {
-        String dateString = "Mon Mar 20 21:55:57 EST 2023";
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
-        dateFormat.setTimeZone(TimeZone.getTimeZone("EST"));
+//        String dateString = "Mon Mar 20 21:55:57 EST 2023";
+//
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+//        dateFormat.setTimeZone(TimeZone.getTimeZone("EST"));
 
 
         try {
-            Date date = dateFormat.parse(dateString);
+//            Date date = dateFormat.parse(dateString);
+            ActivityTrain()
 
-            Card card = new Card("affalé", "slouchy", 1, "",
-                    date, 7, (float) 1.3, 22,
-                    "868b54a6-0754-4e7b-bc66-efb7d0324890", 2);
-
-            card.info();
-            MemoAlgo.SuperMemo2(card, 4);
-            card.info();
         } catch (ParseException e) {
             System.err.println("Erreur de parsing de la date : " + e.getMessage());
         }

@@ -47,7 +47,7 @@
         app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
 
     <life.sabujak.roundedbutton.RoundedButton
-        android:id="@+id/skip_step3_button"
+        android:id="@+id/back_home_btn"
         android:layout_width="170dp"
         android:layout_height="50dp"
         android:gravity="center"

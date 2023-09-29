@@ -189,6 +189,18 @@ public class Card implements Serializable {
 
     }
 
+    public String getInfoText() {
+
+        return "Item 1 : " + this.item1 + " ; " +
+                "Item 2 : " + this.item2 + " ; " +
+                "State : " + this.state + " ; " +
+                String.format("Next practice : %s", nextPracticeDate.toString()) + " ; " +
+                String.format("Creation Date : %s", creationDate.toString()) + " ; " +
+                String.format("Repetitions : %d", this.repetitions) + " ; " +
+                String.format("Easiness Factor : %.2f", this.easinessFactor) + " ; " +
+                String.format("Interval : %d", this.interval) + " ; ";
+    }
+
     // Getters
 
     public String getItem1() {

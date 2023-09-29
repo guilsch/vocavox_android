@@ -19,7 +19,7 @@ import java.util.Random;
 import life.sabujak.roundedbutton.RoundedButton;
 
 /**
- * This class is the activity corresponding to the revision activity
+ * This class is the activity corresponding to the training activity
  *
  * @author Guilhem Schena
  */
@@ -31,7 +31,7 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
     private RoundedButton mAnswerButton2;
     private RoundedButton mAnswerButton3;
     private RoundedButton mAnswerButton4;
-    private Button mBackToMenuRevisionButton;
+    private RoundedButton mBackToMenuRevisionButton;
 
     private TextView mTextViewQuestion;
     private TextView mTextViewItem2;
@@ -51,6 +51,9 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
     // Back Arrow
     private ConstraintLayout backLayout;
 
+    // Debug
+    Card memoryCard;
+
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,13 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
         trainingCardsQueue = Param.GLOBAL_DECK.getTrainingQueue();
         cardsNBInit = trainingCardsQueue.size();
 
+        // Debug
+        if (Param.DEBUG) {
+            Utils.writeDebugLine(String.format("Session date : %s", Utils.giveCurrentDate().toString()));
+            Utils.writeDebugLine("trainingCardsQueue size : " + String.valueOf(trainingCardsQueue.size()) +
+                    " ; processedCardsQueue size : " + String.valueOf(processedCardsQueue.size()));
+        }
+
         // Start scroll or show end screen
         if (trainingCardsQueue.isEmpty()) {
             // No cards to train
@@ -73,6 +83,15 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
             // Start cards scroll
             NextOrEndForTraining();
         }
+    }
+
+    String getDebugLine(Card card, String cardVersion) {
+        return Utils.giveCurrentDate().toString() +
+                " | " + cardVersion +
+                " ; trainingCardsQueue size : " + String.valueOf(trainingCardsQueue.size()) +
+                " ; processedCardsQueue size : " + String.valueOf(processedCardsQueue.size()) +
+                " ; " +
+                card.getInfoText();
     }
 
     /**
@@ -85,10 +104,26 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
         // If the quality is not 1, card is not repeated so it is considered processed
         if (quality != 1){
             // Change card values
-            currentCard.setState(Param.ACTIVE);
+//            currentCard.setState(Param.ACTIVE);
+            memoryCard = currentCard;
             MemoAlgo.SuperMemo2(currentCard, quality);
+
+            if (currentCard.getNextPracticeDate().before(Utils.giveCurrentDate())) {
+                currentCard.info();
+                memoryCard.info();
+                Utils.writeDebugLine("!!!Check below!!!");
+            }
+
+            if (Param.DEBUG) {
+                Utils.writeDebugLine(getDebugLine(memoryCard, "Previous"));
+            }
+
             currentCard.updateInDatabaseOnSeparateThread();
             processedCardsQueue.add(currentCard);
+
+            if (Param.DEBUG) {
+                Utils.writeDebugLine(getDebugLine(currentCard, "Updated"));
+            }
         }
     }
 
@@ -157,6 +192,9 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void showEndOfRevision() {
         setContentView(R.layout.end_of_revision);
+
+        mBackToMenuRevisionButton = findViewById(R.id.back_home_btn);
+        mBackToMenuRevisionButton.setOnClickListener(v -> onBackPressed());
 
         Param.GLOBAL_DECK.updateDeckDataVariables();
     }

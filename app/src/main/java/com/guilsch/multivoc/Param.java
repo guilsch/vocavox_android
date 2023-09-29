@@ -127,4 +127,9 @@ public class Param {
     // First launch check
     public static Boolean FIRST_LAUNCH = Boolean.TRUE;
     public static final String FIRST_LAUNCH_KEY = "first_launch_key";
+
+    // Debug
+    public static final boolean DEBUG = Boolean.TRUE;
+    public static final String DEBUG_FILE_NAME = "debug_file.txt";
+
 }

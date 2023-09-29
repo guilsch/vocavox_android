@@ -20,10 +20,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 //import org.apache.poi.xssf.usermodel.XSSFSheet;
 //import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -770,6 +772,26 @@ public class Utils {
         Param.CARDS_NB = Param.CARDS_NB + 1;
         if(newCard.getState() == Param.TO_LEARN) {
             Param.CARDS_TO_LEARN_NB = Param.CARDS_TO_LEARN_NB + 1;
+        }
+    }
+
+    // Debug
+
+    public static void writeDebugLine(String line) {
+        try {
+            FileWriter writer = new FileWriter(Param.FOLDER_PATH + Param.DEBUG_FILE_NAME, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+
+            bufferedWriter.newLine();
+            bufferedWriter.write(line);
+
+            bufferedWriter.close();
+            writer.close();
+
+            System.out.println("Successfully written in debug file");
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

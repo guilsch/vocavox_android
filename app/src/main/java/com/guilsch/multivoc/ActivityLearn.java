@@ -294,7 +294,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.learn_transition_0_to_1_layout);
 
         mStartStep1Button = findViewById(R.id.start_step3_button);
-        mSkipStep1Button = findViewById(R.id.skip_step3_button);
+        mSkipStep1Button = findViewById(R.id.back_home_btn);
 
         mStartStep1Button.setOnClickListener(v -> {
             scrollCardsStep1();
@@ -312,7 +312,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
         manageStepsProgressBar();
 
         mStartStep2Button = findViewById(R.id.start_step3_button);
-        mSkipStep2Button = findViewById(R.id.skip_step3_button);
+        mSkipStep2Button = findViewById(R.id.back_home_btn);
 
         mStartStep2Button.setOnClickListener(v -> {
             scrollCardsStep2(Boolean.FALSE);
@@ -344,7 +344,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
         // Save changes in deck
         Param.GLOBAL_DECK.updateDeckDataVariables();
 
-        mBackToMenuRevisionButton = findViewById(R.id.skip_step3_button);
+        mBackToMenuRevisionButton = findViewById(R.id.back_home_btn);
         mBackToMenuRevisionButton.setOnClickListener(this);
     }
 

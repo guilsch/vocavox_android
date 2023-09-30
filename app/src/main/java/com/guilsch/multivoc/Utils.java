@@ -27,6 +27,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -813,6 +814,36 @@ public class Utils {
     public static void threadShutdown(ExecutorService singleThreadExecutor) {
         singleThreadExecutor.shutdown();
     }
+
+    // File save
+
+    /**
+     * Create a copy of the data file in case of file corruption
+     */
+    public static void saveTempDataFile() {
+
+        String tempSavedFilePath = Param.DATA_PATH
+                .replace(".xlsx", "_temp.xlsx")
+                .replace(Param.FILE_NAME_PREFIX, "." + Param.FILE_NAME_PREFIX);
+
+        File originalFile = new File(Param.DATA_PATH);
+        File tempSavedFile = new File(tempSavedFilePath);
+
+        try {
+            if (originalFile.exists()) {
+                FileChannel sourceChannel = new FileInputStream(originalFile).getChannel();
+                FileChannel destinationChannel = new FileOutputStream(tempSavedFile).getChannel();
+                destinationChannel.transferFrom(sourceChannel, 0, sourceChannel.size());
+
+                sourceChannel.close();
+                destinationChannel.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     // Debug
 

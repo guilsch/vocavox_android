@@ -150,6 +150,7 @@ public class ActivityMain extends AppCompatActivity {
      * Init non-preferences parameters, global deck and flags for visual
      */
     public void initAppData() {
+
         // Init other static variables
         Utils.initParam();
 
@@ -162,6 +163,9 @@ public class ActivityMain extends AppCompatActivity {
         // Set user and target language flag
         setUserLanguageVisuals();
         setTargetLanguageVisuals();
+
+        // Make a saved file
+        Utils.saveTempDataFile();
     }
 
     /**

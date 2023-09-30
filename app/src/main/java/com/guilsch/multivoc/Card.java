@@ -11,6 +11,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Card implements Serializable {
 
@@ -97,18 +99,6 @@ public class Card implements Serializable {
             } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void updateInDatabaseOnSeparateThread() {
-        Runnable myRunnable = new Runnable() {
-            @Override
-            public void run() {
-                updateInDatabase();
-            }
-        };
-
-        Thread thread = new Thread(myRunnable);
-        thread.start();
     }
 
     public void addToDatabase() {

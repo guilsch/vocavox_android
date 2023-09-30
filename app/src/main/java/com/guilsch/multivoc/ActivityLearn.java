@@ -19,6 +19,8 @@ import com.kofigyan.stateprogressbar.StateProgressBar;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import life.sabujak.roundedbutton.RoundedButton;
 
@@ -77,6 +79,9 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     // Back Arrow
     private ConstraintLayout backLayout;
 
+    // Thread
+    private ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
+
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,8 +126,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
             scrollCardsStep3(4);
 
         } else if (v == mBackToMenuRevisionButton) {
-            Intent MenuActivityIntent = new Intent(ActivityLearn.this, ActivityMenu.class);
-            startActivity(MenuActivityIntent);
+            onBackPressed();
 
         } else if (v == mAnswerRightButtonStep2) {
             scrollCardsStep2(Boolean.TRUE);
@@ -194,7 +198,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
             if (quality != 1) {
                 // Change card values
                 currentCard.setState(Param.ACTIVE);
-                currentCard.updateInDatabaseOnSeparateThread();
+                Utils.updateInDatabaseOnSeparateThreadMultiShot(singleThreadExecutor, currentCard);
 
                 // Add to processed queue
                 processedCardsQueue.add(currentCard);
@@ -212,6 +216,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
             showQuestionSideStep3();
         }
         else {
+            Utils.threadShutdown(singleThreadExecutor);
             showEndOfLearning();
         }
     }
@@ -468,6 +473,8 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onBackPressed() {
+        Utils.threadShutdown(singleThreadExecutor);
+
         Intent menuActivity = new Intent(getApplicationContext(), ActivityMenu.class);
         startActivity(menuActivity);
         finish();

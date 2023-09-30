@@ -8,13 +8,14 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import life.sabujak.roundedbutton.RoundedButton;
 
@@ -53,6 +54,9 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
 
     // Debug
     Card memoryCard;
+
+    // Thread
+    private ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -118,7 +122,8 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
                 Utils.writeDebugLine(getDebugLine(memoryCard, "Previous"));
             }
 
-            currentCard.updateInDatabaseOnSeparateThread();
+//            currentCard.updateInDatabaseOnSeparateThread();
+            Utils.updateInDatabaseOnSeparateThreadMultiShot(singleThreadExecutor, currentCard);
             processedCardsQueue.add(currentCard);
 
             if (Param.DEBUG) {
@@ -143,6 +148,7 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
         }
         else {
             // Training is over
+            Utils.threadShutdown(singleThreadExecutor);
             showEndOfRevision();
         }
     }
@@ -177,8 +183,7 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
             NextOrEndForTraining();
 
         } else if (v == mBackToMenuRevisionButton) {
-            Intent MenuActivityIntent = new Intent(ActivityTrain.this, ActivityMenu.class);
-            startActivity(MenuActivityIntent);
+            onBackPressed();
 
         } else {
             throw new IllegalStateException("Unknown clicked view : " + v);
@@ -301,6 +306,9 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
      */
     @Override
     public void onBackPressed() {
+        // Shutdown thread
+        Utils.threadShutdown(singleThreadExecutor);
+
         // Save changes in deck
         Param.GLOBAL_DECK.updateDeckDataVariables();
 

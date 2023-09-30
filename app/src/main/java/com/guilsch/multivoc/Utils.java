@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Queue;
 import java.util.UUID;
+import java.util.concurrent.ExecutorService;
 
 public class Utils {
 
@@ -773,6 +774,44 @@ public class Utils {
         if(newCard.getState() == Param.TO_LEARN) {
             Param.CARDS_TO_LEARN_NB = Param.CARDS_TO_LEARN_NB + 1;
         }
+    }
+
+    // Thread management
+
+    /**
+     * Update the card in the database on a seperate thread. Don't use it repeatedly (not in train
+     * or learn session)
+     * @param card
+     */
+    public static void updateInDatabaseOnSeparateThreadOneShot(Card card) {
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                card.updateInDatabase();
+            }
+        };
+
+        Thread thread = new Thread(myRunnable);
+        thread.start();
+    }
+
+    /**
+     * Same as previous but use one thread for different updates. Use this method in train or learn
+     * activities. Don't forget to close the singleThreadExecutor (use thread shutdown) after that.
+     * @param singleThreadExecutor
+     * @param card
+     */
+    public static void updateInDatabaseOnSeparateThreadMultiShot(ExecutorService singleThreadExecutor, Card card) {
+        singleThreadExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                card.updateInDatabase();
+            }
+        });
+    }
+
+    public static void threadShutdown(ExecutorService singleThreadExecutor) {
+        singleThreadExecutor.shutdown();
     }
 
     // Debug

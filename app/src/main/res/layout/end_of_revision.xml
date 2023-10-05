@@ -28,7 +28,7 @@
         app:layout_constraintGuide_percent="0.927" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_guideline_1"
+        android:id="@+id/top_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline_1" />
+        app:layout_constraintTop_toTopOf="@+id/top_guideline" />
 
     <life.sabujak.roundedbutton.RoundedButton
         android:id="@+id/back_home_btn"
@@ -57,7 +57,7 @@
         android:textColor="#ffffff"
         android:textSize="@dimen/button_std_text_size"
         android:textStyle="bold"
-        app:buttonCornerRadius="30dp"
+        app:buttonCornerRadius="10dp"
         app:buttonGradientEndColor="@color/button_std_bg"
         app:buttonGradientStartColor="@color/blue7"
         app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"

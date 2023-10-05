@@ -11,9 +11,15 @@
     <item>
         <shape xmlns:android="http://schemas.android.com/apk/res/android"
             android:shape="rectangle">
-            <corners android:radius="10dp" />
+<!--            <corners android:radius="10dp" />-->
 
-            <solid android:color="@color/back_ground"></solid>
+<!--            <solid android:color="@color/back_ground"></solid>-->
+
+<!--            <stroke-->
+<!--                android:width="0.5dp"-->
+<!--                android:color="@color/back_button_stroke"-->
+<!--                />-->
+
         </shape>
     </item>
 </selector>

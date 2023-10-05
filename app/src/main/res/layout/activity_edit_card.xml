@@ -34,11 +34,72 @@
         app:layout_constraintGuide_percent="0.927" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_guideline_1"
+        android:id="@+id/top_guideline_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_header"
+        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/header_left_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/back_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back_layout_selector"
+            android:paddingVertical="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/header_left_guideline"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/back_arrow"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:rotation="180"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_chevron" />
+
+            <TextView
+                android:id="@+id/back_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:gravity="center"
+                android:text="@string/button_back_str"
+                android:textColor="#000000"
+                android:textSize="@dimen/back_text"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/back_arrow"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/grey"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/item1_title"
@@ -49,7 +110,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/horizontal_guideline_1" />
+        app:layout_constraintTop_toBottomOf="@+id/top_guideline_2" />
 
     <EditText
         android:id="@+id/item1_text"
@@ -147,6 +208,17 @@
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
         app:layout_constraintTop_toBottomOf="@+id/pack_text" />
 
+    <TextView
+        android:id="@+id/edit_card_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="@dimen/paragraph_text"
+        app:layout_constraintBottom_toTopOf="@+id/top_guideline_2"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline" />
+
     <Button
         android:id="@+id/set_state_button"
         android:layout_width="109dp"
@@ -170,7 +242,7 @@
         android:textColor="#ffffff"
         android:textSize="@dimen/button_std_text_size"
         android:textStyle="bold"
-        app:buttonCornerRadius="30dp"
+        app:buttonCornerRadius="10dp"
         app:buttonGradientEndColor="#DF1212"
         app:buttonGradientStartColor="#B71C1C"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -190,7 +262,7 @@
         android:textColor="#ffffff"
         android:textSize="@dimen/button_std_text_size"
         android:textStyle="bold"
-        app:buttonCornerRadius="30dp"
+        app:buttonCornerRadius="10dp"
         app:buttonGradientEndColor="@color/button_std_bg"
         app:buttonGradientStartColor="@color/blue7"
         app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
@@ -198,51 +270,5 @@
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/delete_card_button" />
-
-    <TextView
-        android:id="@+id/edit_card_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="@dimen/paragraph_text"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_guideline_1"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/top_guideline" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/back_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/back_layout_selector"
-        android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/back_arrow"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:rotation="180"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_chevron" />
-
-        <TextView
-            android:id="@+id/back_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="@string/button_back_str"
-            android:textColor="#000000"
-            android:textSize="@dimen/back_text"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/back_arrow"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

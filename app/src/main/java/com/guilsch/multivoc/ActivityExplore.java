@@ -5,17 +5,16 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
+
 public class ActivityExplore extends AppCompatActivity {
 
-    ListView dataList;
+    SwipeMenuListView dataList;
     TextView noCardText;
 
     ConstraintLayout backLayout;
@@ -28,19 +27,26 @@ public class ActivityExplore extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore);
 
+        dataList = findViewById(R.id.deckListView);
         backLayout = findViewById(R.id.back_layout);
+        SearchView searchView = findViewById(R.id.explore_search_view);
+        noCardText = findViewById(R.id.no_card_text);
+
         backLayout.setOnClickListener(v -> onBackPressed());
 
         filteredDeck = (Deck) Param.GLOBAL_DECK.clone();
-
-        dataList = (ListView) findViewById(R.id.deckListView);
-        adapter = new AdapterDeck(getApplicationContext(), filteredDeck, this);
-        dataList.setAdapter(adapter);
-
-        SearchView searchView = findViewById(R.id.explore_search_view);
-        noCardText = findViewById(R.id.no_card_text);
         ifNoResult(filteredDeck);
 
+        // List View
+        adapter = new AdapterDeck(getApplicationContext(), filteredDeck, this);
+//        SwipeMenuCustomCreator creator = new SwipeMenuCustomCreator(getApplicationContext()); // Swipe
+
+        dataList.setAdapter(adapter);
+//        dataList.setMenuCreator(creator);
+//        dataList.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
+//        dataList.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
+
+        // Interaction Management
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -55,6 +61,20 @@ public class ActivityExplore extends AppCompatActivity {
             }
         });
 
+//        dataList.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+//                switch (index) {
+//                    case 0:
+//                        System.out.println("Opeeeen");
+//                        break;
+//                    case 1:
+//                        System.out.println("Deleeete");
+//                        break;
+//                }
+//                return false;
+//            }
+//        });
     }
 
     protected Deck searchInDeck(String keyWord) {

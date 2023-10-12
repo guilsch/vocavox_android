@@ -18,16 +18,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Multivoc"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ActivityMenu"/>
-        <activity android:name=".ActivityFirstLaunch" />
-        <activity android:name=".ActivityEditCard" />
-        <activity android:name=".ActivityNewCard" />
-        <activity android:name=".ActivityExplore" />
-        <activity android:name=".ActivityLearn" />
-        <activity android:name=".ActivitySettings" />
-        <activity android:name=".ActivityTrain" />
-        <activity android:name=".ActivityTranslation" />
-        <activity android:name=".ActivityMain">
+
+        <activity
+            android:name=".ActivityMenu"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ActivityFirstLaunch"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ActivityEditCard"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ActivityNewCard"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ActivityExplore"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ActivityLearn"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ActivitySettings"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ActivityTrain"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ActivityTranslation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ActivityMain"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

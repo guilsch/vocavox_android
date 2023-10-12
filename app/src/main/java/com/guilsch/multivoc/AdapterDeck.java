@@ -52,7 +52,7 @@ public class AdapterDeck extends BaseAdapter {
 
         // Check if it is possible to reuse a view
         if (view == null) {
-            view = inflater.inflate(R.layout.activity_list_view, null);
+            view = inflater.inflate(R.layout.adapter_card_list_view, null);
         }
 
         item1 = view.findViewById(R.id.item1_textView);

@@ -29,12 +29,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ActivityMenu extends AppCompatActivity  {
 
-    private static boolean isZoomed = false;
+    private static boolean isZoomed;
+    private boolean firstTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu2);
+
+        isZoomed = false;
 
         ViewPager viewPager = findViewById(R.id.view_pager);
         TabLayout tabLayout = findViewById(R.id.tabs);
@@ -49,7 +52,11 @@ public class ActivityMenu extends AppCompatActivity  {
         InkPageIndicator inkPageIndicator = (InkPageIndicator) findViewById(R.id.indicator);
         inkPageIndicator.setViewPager(viewPager);
 
-        Utils.printNBCards();
+        // Manage init fragment
+        int fragmentIndex = getIntent().getIntExtra("FRAG_INDEX", -1);
+        if (fragmentIndex == 2) {
+            viewPager.setCurrentItem(2,true);
+        }
     }
 
     public static class Tab1Fragment extends Fragment {

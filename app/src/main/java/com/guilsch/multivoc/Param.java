@@ -131,5 +131,4 @@ public class Param {
     // Debug
     public static final boolean DEBUG = Boolean.TRUE;
     public static final String DEBUG_FILE_NAME = "debug_file.txt";
-
 }

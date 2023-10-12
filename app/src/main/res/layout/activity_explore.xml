@@ -103,7 +103,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ListView
+    <com.baoyz.swipemenulistview.SwipeMenuListView
         android:id="@+id/deckListView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -112,7 +112,7 @@
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
         app:layout_constraintStart_toStartOf="@+id/left_guideline"
         app:layout_constraintTop_toTopOf="@+id/horizontal_central_guideline2">
-    </ListView>
+    </com.baoyz.swipemenulistview.SwipeMenuListView>
 
     <SearchView
         android:id="@+id/explore_search_view"

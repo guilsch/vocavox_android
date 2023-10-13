@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/item1_textView"
+        android:id="@+id/adapter_card_list_view_item1_textView"
         android:layout_width="141dp"
         android:layout_height="28dp"
         android:padding="5dp"
@@ -27,7 +27,7 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toEndOf="@+id/item1_textView"
+        app:layout_constraintStart_toEndOf="@+id/adapter_card_list_view_item1_textView"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
         tools:ignore="MissingConstraints" />
 

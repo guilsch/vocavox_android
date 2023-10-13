@@ -7,7 +7,7 @@
     >
 
     <TextView
-        android:id="@+id/item1_textView"
+        android:id="@+id/adapter_card_list_view_item1_textView"
         android:layout_width="102dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
@@ -30,8 +30,8 @@
         android:text="TextView"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/item1_textView"
-        app:layout_constraintTop_toTopOf="@+id/item1_textView"
+        app:layout_constraintStart_toEndOf="@+id/adapter_card_list_view_item1_textView"
+        app:layout_constraintTop_toTopOf="@+id/adapter_card_list_view_item1_textView"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

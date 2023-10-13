@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- État par défaut -->
+<item android:state_pressed="false" android:state_focused="false">
+    <shape android:shape="rectangle">
+        <corners android:radius="3dp" />
+
+        <stroke
+            android:width="0.5dp"
+            android:color="#E4E4E4" />
+
+        <solid
+            android:color="@color/adapter_card_list_view_bg"/>
+    </shape>
+</item>
+
+<item android:state_pressed="true">
+    <shape android:shape="rectangle">
+        <corners android:radius="3dp" />
+
+        <stroke
+            android:width="0.5dp"
+            android:color="#BABABA" />
+
+        <solid
+            android:color="@color/adapter_card_list_view_bg_on_touch"/>
+    </shape>
+</item>
+</selector>

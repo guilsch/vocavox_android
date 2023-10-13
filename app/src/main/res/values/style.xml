@@ -31,4 +31,9 @@
 <!--        <item name="android:backgroundDimEnabled">true</item>-->
 <!--    </style>-->
 
+    <style name="SearchViewStyle" parent="@style/Widget.AppCompat.SearchView">
+        <item name="queryBackground">?attr/colorSurface</item>
+        <item name="submitBackground">@null</item>
+    </style>
+
 </resources>

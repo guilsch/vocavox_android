@@ -99,4 +99,16 @@
     <!-- Other -->
     <string name="button_back_home">Home</string>
     <string name="button_back_str">Back</string>
+
+    <!-- Dialog delete card -->
+    <string name="dialog_delete_card_title_str">Do you really want to delete this card ?</string>
+    <string name="text_button_delete_str">Delete</string>
+    <string name="text_button_cancel_str">Cancel</string>
+
+    <!-- Dialog sort -->
+    <string name="dialog_sort_title_str">Sort</string>
+    <string name="dialog_sort_alphabetical_str">Alphabetical</string>
+    <string name="dialog_sort_creation_date_str">Creation date</string>
+    <string name="dialog_sort_training_date_str">Next training date</string>
+
 </resources>

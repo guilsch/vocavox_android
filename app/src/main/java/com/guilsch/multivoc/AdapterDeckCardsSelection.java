@@ -1,19 +1,13 @@
 package com.guilsch.multivoc;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
-import androidx.core.content.ContextCompat;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterDeckCardsSelection extends BaseAdapter implements ListAdapter {
@@ -46,7 +40,7 @@ public class AdapterDeckCardsSelection extends BaseAdapter implements ListAdapte
 
         view = inflater.inflate(R.layout.cards_selection_list_view, null);
 
-        TextView item1 = view.findViewById(R.id.item1_textView);
+        TextView item1 = view.findViewById(R.id.adapter_card_list_view_item1_textView);
         TextView item2 = view.findViewById(R.id.item2_textView);
 
         item1.setText(cardsList.get(i).getItem1());

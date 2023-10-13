@@ -98,4 +98,16 @@
     <!-- Other -->
     <string name="button_back_home">Menu</string>
     <string name="button_back_str">Retour</string>
+
+    <!-- Delete card dialog -->
+    <string name="dialog_delete_card_title_str">Voulez-vous vraiment supprimer cette carte ?</string>
+    <string name="text_button_delete_str">Supprimer</string>
+    <string name="text_button_cancel_str">Annuler</string>
+
+    <!-- Dialog sort -->
+    <string name="dialog_sort_title_str">Trier</string>
+    <string name="dialog_sort_alphabetical_str">Alphabétique</string>
+    <string name="dialog_sort_creation_date_str">Date de création</string>
+    <string name="dialog_sort_training_date_str">Date de révision</string>
+
 </resources>

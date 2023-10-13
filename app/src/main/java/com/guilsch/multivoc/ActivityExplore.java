@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 
+import java.util.UUID;
+
 public class ActivityExplore extends AppCompatActivity {
 
     SwipeMenuListView dataList;
@@ -117,6 +119,16 @@ public class ActivityExplore extends AppCompatActivity {
 //                return false;
 //            }
 //        });
+    }
+
+    static void deleteCard(String uuid) {
+        // Delete from the global deck
+        Param.GLOBAL_DECK.deleteCardFromDatafile(uuid);
+        Param.GLOBAL_DECK.deleteCardFromDeck(uuid);
+
+        // Delete from the filtered deck (in order to make the card disappear from the list)
+        filteredDeck.deleteCardFromDeck(uuid);
+        adapter.notifyDataSetChanged();
     }
 
     private void defaultCheckRadioButton() {

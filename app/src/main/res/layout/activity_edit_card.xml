@@ -41,7 +41,7 @@
         app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/header_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/bg_header"

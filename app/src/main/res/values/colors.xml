@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bg">#E4F0F8</color>
     <color name="head_color">#3100BCD4</color>
-
+    <color name="red">#E53935</color>
 
     <color name="main">#C24F25</color>
 
@@ -76,6 +76,7 @@
 
     <!-- On click -->
     <color name="on_view_click">#D2E9EC</color>
+    <color name="ic_on_click">#888888</color>
 
     <!-- Back button -->
     <color name="back_button_stroke">#8A8A8A</color>
@@ -83,5 +84,13 @@
     <!-- Header -->
     <color name="header_bg">#FBFBFB</color>
 
+    <!-- Explore activity -->
+    <color name="adapter_card_list_view_bg">#FFFFFF</color>
+    <color name="adapter_card_list_view_bg_on_touch">#DFDFDF</color>
 
+    <!-- Text buttons-->
+    <color name="delete_text_button">@color/red</color>
+    <color name="delete_text_button_on_click">#000000</color>
+    <color name="std_text_button">#4A4E51</color>
+    <color name="std_text_button_on_click">#000000</color>
 </resources>

@@ -11,7 +11,7 @@ public class DialogFilterCards {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        View customView = inflater.inflate(R.layout.filter_cards_dialog_layout, null);
+        View customView = inflater.inflate(R.layout.dialog_layout_sort_cards, null);
         builder.setView(customView);
 
         AlertDialog dialog = builder.create();

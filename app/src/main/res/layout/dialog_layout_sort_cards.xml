@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/filter_title"
+        app:layout_constraintTop_toBottomOf="@+id/delete_card_title"
         tools:layout_editor_absoluteX="40dp">
 
         <RadioButton
@@ -43,10 +43,10 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/filter_title"
+        android:id="@+id/delete_card_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Filter"
+        android:text="@string/dialog_sort_title_str"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

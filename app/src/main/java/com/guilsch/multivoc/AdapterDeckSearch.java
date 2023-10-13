@@ -49,7 +49,7 @@ public class AdapterDeckSearch extends BaseAdapter {
             view = inflater.inflate(R.layout.search_deck_adapter_view, null);
         }
 
-        item1 = view.findViewById(R.id.item1_textView);
+        item1 = view.findViewById(R.id.adapter_card_list_view_item1_textView);
         item2 = view.findViewById(R.id.item2_textView);
 
         Card card = deck.get(i);

@@ -133,6 +133,8 @@ public class Param {
     public static final String DEBUG_FILE_NAME = "debug_file.txt";
 
     // Card comparator
+    public static final int SORT_ORDER_AZ = 0;
+    public static final int SORT_ORDER_ZA = 1;
     public static final int SORT_BY_CREATION_DATE = 1;
     public static final int SORT_BY_TRAINING_DATE = 2;
     public static final int SORT_ALPHABETICALLY_USER = 3;

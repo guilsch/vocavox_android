@@ -28,7 +28,12 @@
     <color name="blue9">#003A61</color>
     <color name="blue10">#00406C</color>
 
-    <color name="grey">#FF393D40</color>
+    <color name="grey">#323232</color>
+    <color name="grey1">#323232</color>
+    <color name="grey2">#606060</color>
+    <color name="grey3">#7E7E7E</color>
+    <color name="grey4">#BABABA</color>
+    <color name="grey5">#F8F8F8</color>
 
 <!--buttons-->
     <color name="button_std_text">@color/white</color>

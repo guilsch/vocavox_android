@@ -34,6 +34,7 @@ public class ActivityExplore extends AppCompatActivity {
     RadioButton radioButton1;
     RadioButton radioButton2;
     RadioButton radioButton3;
+    View arrowGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,12 +91,14 @@ public class ActivityExplore extends AppCompatActivity {
                 radioButton1 = dialog.findViewById(R.id.alphabetical_user_radio_button);
                 radioButton2 = dialog.findViewById(R.id.creation_date_radio_button);
                 radioButton3 = dialog.findViewById(R.id.training_date_radio_button);
+                arrowGroup = dialog.findViewById(R.id.order_arrow_group);
 
                 setCheckedRadioButton();
 
                 radioButton1.setOnClickListener(v -> manageClick(Param.SORT_ALPHABETICALLY_USER));
                 radioButton2.setOnClickListener(v -> manageClick(Param.SORT_BY_CREATION_DATE));
                 radioButton3.setOnClickListener(v -> manageClick(Param.SORT_BY_TRAINING_DATE));
+                arrowGroup.setOnClickListener(v -> changeOrder());
             }});
 
         //        SwipeMenuCustomCreator creator = new SwipeMenuCustomCreator(getApplicationContext()); // Swipe
@@ -121,10 +124,10 @@ public class ActivityExplore extends AppCompatActivity {
 
     private float getRotationFromCurrentOrder() {
         if (sortOrder) {
-            return 0.0f;
+            return 180.0f;
         }
 
-        return 180.0f;
+        return 0.0f;
     }
 
     ///// Sorting cards management /////
@@ -141,6 +144,13 @@ public class ActivityExplore extends AppCompatActivity {
             sortOrder = Boolean.TRUE;
         }
 
+        launchArrowRotation();
+        setCheckedRadioButton();
+        sortFilteredDeck();
+    }
+
+    private void changeOrder() {
+        sortOrder = !sortOrder;
         launchArrowRotation();
         setCheckedRadioButton();
         sortFilteredDeck();

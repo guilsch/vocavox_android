@@ -133,8 +133,8 @@ public class ActivityTranslation extends AppCompatActivity {
         setContentView(R.layout.activity_translation_check);
         currentLayoutNum = 2;
 
-        item1TextCheckCardLayout = findViewById(R.id.userLanguageText);
-        item2TextCheckCardLayout = findViewById(R.id.targetLanguageText);
+        item1TextCheckCardLayout = findViewById(R.id.item1_text);
+        item2TextCheckCardLayout = findViewById(R.id.item2_text);
         packText = findViewById(R.id.pack_text);
         targetLanguageFlag = findViewById(R.id.targetLanguageFlag);
         userLanguageFlag = findViewById(R.id.userLanguageFlag);
@@ -143,7 +143,7 @@ public class ActivityTranslation extends AppCompatActivity {
         targetLanguageFlag.setImageDrawable(Param.FLAG_ICON_TARGET);
         userLanguageFlag.setImageDrawable(Param.FLAG_ICON_USER);
 
-        saveCardButton = findViewById(R.id.save_new_card);
+        saveCardButton = findViewById(R.id.save_card_button);
         saveCardButton.setOnClickListener(view -> saveCardButtonClick());
 
         cancelButton = findViewById(R.id.cancel_button);
@@ -177,10 +177,10 @@ public class ActivityTranslation extends AppCompatActivity {
     private Boolean initSides() {
         userToTarget = Boolean.TRUE;
 
-        item1Text.setBackgroundColor(getResources().getColor(R.color.back_ground2));
+        item1Text.setBackground(getResources().getDrawable(R.drawable.bg_translation_edit_text_on_touch_top));
         item1Text.setTextColor(getResources().getColor(R.color.navy1));
 
-        item2Text.setBackgroundColor(getResources().getColor(R.color.white));
+        item2Text.setBackground(getResources().getDrawable(R.drawable.bg_translation_edit_text_bottom));
         item2Text.setTextColor(getResources().getColor(R.color.navy1));
 
         System.out.println(item1Text.getCurrentTextColor());
@@ -191,10 +191,10 @@ public class ActivityTranslation extends AppCompatActivity {
     private Boolean onTouchItem1Side() {
         userToTarget = Boolean.TRUE;
 
-        item1Text.setBackgroundColor(getResources().getColor(R.color.back_ground2));
+        item1Text.setBackground(getResources().getDrawable(R.drawable.bg_translation_edit_text_on_touch_top));
         item1Text.setTextColor(getResources().getColor(R.color.navy1));
 
-        item2Text.setBackgroundColor(getResources().getColor(R.color.white));
+        item2Text.setBackground(getResources().getDrawable(R.drawable.bg_translation_edit_text_bottom));
         item2Text.setTextColor(getResources().getColor(R.color.navy1));
 
         return Boolean.FALSE;
@@ -203,10 +203,10 @@ public class ActivityTranslation extends AppCompatActivity {
     private Boolean onTouchItem2Side() {
         userToTarget = Boolean.FALSE;
 
-        item1Text.setBackgroundColor(getResources().getColor(R.color.white));
+        item1Text.setBackground(getResources().getDrawable(R.drawable.bg_translation_edit_text_top));
         item1Text.setTextColor(getResources().getColor(R.color.navy1));
 
-        item2Text.setBackgroundColor(getResources().getColor(R.color.back_ground2));
+        item2Text.setBackground(getResources().getDrawable(R.drawable.bg_translation_edit_text_on_touch_bottom));
         item2Text.setTextColor(getResources().getColor(R.color.navy1));
 
         return userToTarget;

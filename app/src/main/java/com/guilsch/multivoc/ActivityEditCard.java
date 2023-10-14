@@ -19,7 +19,6 @@ public class ActivityEditCard extends AppCompatActivity {
     private EditText item2Text;
     private EditText packText;
     private TextView nextDateText;
-    private TextView editCardMsg;
     private Card card;
     private ConstraintLayout backLayout;
 
@@ -41,14 +40,12 @@ public class ActivityEditCard extends AppCompatActivity {
         packText = findViewById(R.id.pack_text);
         nextDateText = findViewById(R.id.next_date_text);
         setStateButton = findViewById(R.id.set_state_button);
-        editCardMsg = findViewById(R.id.edit_card_msg);
 
         item1Text.setText(card.getItem1());
         item2Text.setText(card.getItem2());
         packText.setText(card.getPack());
         nextDateText.setText(card.getNextPracticeDate().toString());
         setStateButton.setText(Utils.getStringStateFromInt(card.getState()));
-        editCardMsg.setText(R.string.edit_card_msg);
 
         setStateButton.setOnClickListener(v -> onStateButtonPressed());
         deleteCardButton.setOnClickListener(v -> onDeleteCardPressed());

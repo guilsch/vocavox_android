@@ -19,4 +19,6 @@
 
     <!-- Icon size -->
     <dimen name="ic_size">20dp</dimen>
+    <dimen name="ic_bg_size">25dp</dimen>
+    <dimen name="ic_cross_size">15dp</dimen>
 </resources>

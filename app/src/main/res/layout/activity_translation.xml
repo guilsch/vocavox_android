@@ -7,73 +7,25 @@
     android:background="@color/back_ground"
     tools:context=".ActivityNewCard">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/left_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.18" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/right_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/bottom_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.927" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.075" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_middle_central_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.44" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_bottom_central_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_layout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+        android:layout_height="@dimen/header_height"
+        android:layout_marginHorizontal="0dp"
+        android:background="@drawable/bg_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/bg_header"
-        >
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/header_left_guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/back_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             android:background="@drawable/back_layout_selector"
             android:paddingVertical="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/header_left_guideline"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
@@ -91,107 +43,201 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:gravity="center"
                 android:text="@string/button_back_str"
                 android:textColor="#000000"
                 android:textSize="@dimen/back_text"
                 android:textStyle="bold"
-                android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/back_arrow"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="@color/grey"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <life.sabujak.roundedbutton.RoundedButton
-        android:id="@+id/ok_button"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="OK"
-        android:textAllCaps="true"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/button_std_text_size"
-        android:textStyle="bold"
-        app:buttonCornerRadius="10dp"
-        app:buttonGradientEndColor="@color/button_std_bg"
-        app:buttonGradientStartColor="@color/blue7"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/body_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/body_horizontal_margin"
+        android:layout_marginBottom="@dimen/body_bottom_margin"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_bottom_central_guideline" />
+        app:layout_constraintTop_toBottomOf="@+id/header_layout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
+<!--            <ImageView-->
+<!--                android:id="@+id/cross_item1"-->
+<!--                android:layout_width="@dimen/ic_cross_size"-->
+<!--                android:layout_height="@dimen/ic_cross_size"-->
+<!--                android:layout_marginEnd="7.5dp"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:srcCompat="@drawable/selector_cross" />-->
+
+            <EditText
+                android:id="@+id/item1_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="top|left"
+                android:inputType="textMultiLine|textImeMultiLine"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="40dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/navy1"
+                android:textCursorDrawable="@color/navy1"
+                android:textSize="@dimen/titles"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/left_guideline"
+                app:layout_constraintTop_toTopOf="@+id/top_guideline"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/userLanguageFlag"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/top_guideline"
+                app:srcCompat="@drawable/ic_de"
+                tools:ignore="VectorDrawableCompat"
+                app:shapeAppearanceOverlay="@style/Circular" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <EditText
+                android:id="@+id/item2_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine|textImeMultiLine"
+                android:ems="10"
+                android:gravity="top|left"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="40dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/navy1"
+                android:textCursorDrawable="@color/navy1"
+                android:textSize="@dimen/titles"
+                app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+                app:layout_constraintStart_toStartOf="@+id/left_guideline"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/targetLanguageFlag"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_it"
+                tools:ignore="VectorDrawableCompat"
+                app:shapeAppearanceOverlay="@style/Circular" />
+
+<!--            <ImageView-->
+<!--                android:id="@+id/cross_item2"-->
+<!--                android:layout_width="@dimen/ic_cross_size"-->
+<!--                android:layout_height="@dimen/ic_cross_size"-->
+<!--                android:layout_marginEnd="7.5dp"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:srcCompat="@drawable/selector_cross" />-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="20dp"
+            android:layout_weight="0">
+
+            <life.sabujak.roundedbutton.RoundedButton
+                android:id="@+id/ok_button"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="OK"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/button_std_text_size"
+                android:textStyle="bold"
+                app:buttonCornerRadius="10dp"
+                app:buttonGradientEndColor="@color/button_std_bg"
+                app:buttonGradientStartColor="@color/blue7"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-    <EditText
-        android:id="@+id/item1_text"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:gravity="top|left"
-        android:inputType="text"
-        android:paddingStart="10dp"
-        android:paddingTop="17dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/navy1"
-        android:textCursorDrawable="@color/navy1"
-        android:textSize="@dimen/titles"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_middle_central_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/top_guideline"
-        tools:ignore="MissingConstraints" />
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/left_guideline"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintGuide_percent="0.18" />-->
 
-    <EditText
-        android:id="@+id/item2_text"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:gravity="top|left"
-        android:paddingStart="10dp"
-        android:paddingTop="17dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/navy1"
-        android:textCursorDrawable="@color/navy1"
-        android:textSize="@dimen/titles"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_bottom_central_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_middle_central_guideline"
-        tools:ignore="MissingConstraints" />
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/right_guideline"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintGuide_percent="0.9" />-->
 
-    <ImageView
-        android:id="@+id/userLanguageFlag"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_middle_central_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/left_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/top_guideline"
-        app:srcCompat="@drawable/ic_de"
-        tools:ignore="VectorDrawableCompat" />
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/bottom_guideline"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintGuide_percent="0.927" />-->
 
-    <ImageView
-        android:id="@+id/targetLanguageFlag"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_bottom_central_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/left_guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/horizontal_middle_central_guideline"
-        app:srcCompat="@drawable/ic_it"
-        tools:ignore="VectorDrawableCompat" />
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/top_guideline"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintGuide_percent="0.075" />-->
+
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/horizontal_middle_central_guideline"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintGuide_percent="0.44" />-->
+
+<!--    <androidx.constraintlayout.widget.Guideline-->
+<!--        android:id="@+id/horizontal_bottom_central_guideline"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintGuide_percent="0.8" />-->
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,8 +7,7 @@
         android:color="@color/white" />
 
     <gradient
-        android:startColor="@color/bg"
-        android:endColor="@color/adapter_card_list_view_bg_on_touch"
+        android:startColor="@color/white"
+        android:endColor="#EFEFEF"
         android:angle="180"/>
-
 </shape>

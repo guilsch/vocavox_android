@@ -7,6 +7,11 @@
         android:drawable="@drawable/bg_radio_touched" />
 
     <item
+        android:state_checked="false"
+        android:state_pressed="true"
+        android:drawable="@drawable/bg_radio_touched" />
+
+    <item
         android:state_checked="true"
         android:drawable="@drawable/bg_radio_checked" />
 

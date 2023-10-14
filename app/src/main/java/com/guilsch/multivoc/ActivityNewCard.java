@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import life.sabujak.roundedbutton.RoundedButton;
 
@@ -18,6 +19,9 @@ public class ActivityNewCard extends AppCompatActivity {
     private EditText item2Text;
     private EditText packText;
 
+    private ImageView targetLanguageFlag;
+    private ImageView userLanguageFlag;
+
     private Card newCard;
 
     private ConstraintLayout backLayout;
@@ -26,10 +30,15 @@ public class ActivityNewCard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_card);
 
-        saveCard = findViewById(R.id.save_new_card);
+        saveCard = findViewById(R.id.save_card_button);
         item1Text = findViewById(R.id.item1_text);
         item2Text = findViewById(R.id.item2_text);
         packText = findViewById(R.id.pack_text);
+        targetLanguageFlag = findViewById(R.id.targetLanguageFlag);
+        userLanguageFlag = findViewById(R.id.userLanguageFlag);
+
+        targetLanguageFlag.setImageDrawable(Param.FLAG_ICON_TARGET);
+        userLanguageFlag.setImageDrawable(Param.FLAG_ICON_USER);
 
         backLayout = findViewById(R.id.back_layout);
         backLayout.setOnClickListener(v -> onBackPressed());

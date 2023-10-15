@@ -1,0 +1,15 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners
+        android:topRightRadius="20dp"
+        android:bottomRightRadius="20dp"
+        />
+
+    <stroke
+        android:width="@dimen/radio_button_state_stroke_size"
+        android:color="@color/radio_button_state_touched_stroke_color" />
+
+    <solid
+        android:color="@color/radio_button_state_touched_bg_color"
+        />
+</shape>

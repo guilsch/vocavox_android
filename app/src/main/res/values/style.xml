@@ -69,4 +69,10 @@
         <item name="cornerFamilyBottomLeft">rounded</item>
     </style>
 
+
+<!--    Scroll view-->
+    <style name="NoScrollViewEdgeEffect">
+        <item name="android:overScrollMode">never</item>
+        <item name="android:fadingEdgeLength">0dp</item>
+    </style>
 </resources>

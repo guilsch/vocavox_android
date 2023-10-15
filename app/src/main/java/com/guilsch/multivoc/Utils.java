@@ -4,9 +4,12 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -31,6 +34,7 @@ import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -482,6 +486,22 @@ public class Utils {
         // A voir avec LocalDate.now() (java.time.LocalDate)
     }
 
+    public static String universalToLocalDate(String dateString, String languageISO) {
+
+        String formattedDate = dateString;
+
+        try {
+            SimpleDateFormat originalFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+            SimpleDateFormat localFormat = new SimpleDateFormat("d MMMM yyyy", new Locale(languageISO));
+            formattedDate = localFormat.format(originalFormat.parse(dateString));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return formattedDate;
+    }
+
     public static int getFieldIndex(Row header, String field) {
 
         Iterator<Cell> cellIterator = header.cellIterator();
@@ -863,5 +883,22 @@ public class Utils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // Manage text color on click
+    public static void setTextViewTextColorChangeOnTouch(final TextView button, final int pressedColor, final int normalColor) {
+        button.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    button.setTextColor(ContextCompat.getColor(button.getContext(), pressedColor));
+                }
+
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    button.setTextColor(ContextCompat.getColor(button.getContext(), normalColor));
+                }
+                return false;
+            }
+        });
     }
 }

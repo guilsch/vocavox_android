@@ -35,6 +35,9 @@
     <color name="grey4">#BABABA</color>
     <color name="grey5">#F8F8F8</color>
 
+
+    <color name="orange1">#FA6D00</color>
+
 <!--buttons-->
     <color name="button_std_text">@color/white</color>
     <color name="button_std_bg">@color/blue9</color>
@@ -98,4 +101,14 @@
     <color name="delete_text_button_on_click">#000000</color>
     <color name="std_text_button">#4A4E51</color>
     <color name="std_text_button_on_click">#000000</color>
+
+<!--    Edit activity-->
+    <color name="radio_button_state_checked_bg_color">@color/orange1</color>
+    <color name="radio_button_state_unchecked_bg_color">#E3E3E3</color>
+    <color name="radio_button_state_touched_bg_color">#FFFFFF</color>
+
+    <color name="radio_button_state_checked_stroke_color">#000000</color>
+    <color name="radio_button_state_unchecked_stroke_color">#000000</color>
+    <color name="radio_button_state_touched_stroke_color">#000000</color>
+
 </resources>

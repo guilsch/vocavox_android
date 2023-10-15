@@ -41,7 +41,7 @@
     <string name="item1">Mot en français</string>
     <string name="item2">Traduction</string>
     <string name="pack">Pack</string>
-    <string name="next_date">Date de la prochaine révision</string>
+    <string name="creation_date">Carte créée le </string>
     <string name="save_card">Sauvegarder</string>
     <string name="next_new_card">Nouvelle</string>
     <string name="card_state">Etat actuel</string>
@@ -50,6 +50,10 @@
 
     <!--Edit Card !-->
     <string name="edit_card_msg">Edition de la card</string>
+    <string name="edit_card_date_sentence_now">Cette carte doit être revue \u00A0</string>
+    <string name="edit_card_date_word_now">maintenant</string>
+    <string name="edit_card_date_sentence_on_the">Prochaine révision le \u00A0</string>
+    <string name="edit_card_date_creation_sentence">Carte créée le \u00A0</string>
 
     <!-- Start !-->
     <string name="start_button">Commencer</string>

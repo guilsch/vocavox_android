@@ -100,26 +100,6 @@ public class ActivityExplore extends AppCompatActivity {
                 radioButton3.setOnClickListener(v -> manageClick(Param.SORT_BY_TRAINING_DATE));
                 arrowGroup.setOnClickListener(v -> changeOrder());
             }});
-
-        //        SwipeMenuCustomCreator creator = new SwipeMenuCustomCreator(getApplicationContext()); // Swipe
-//        dataList.setMenuCreator(creator);
-//        dataList.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
-//        dataList.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
-
-//        dataList.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
-//                switch (index) {
-//                    case 0:
-//                        System.out.println("Opeeeen");
-//                        break;
-//                    case 1:
-//                        System.out.println("Deleeete");
-//                        break;
-//                }
-//                return false;
-//            }
-//        });
     }
 
     private float getRotationFromCurrentOrder() {

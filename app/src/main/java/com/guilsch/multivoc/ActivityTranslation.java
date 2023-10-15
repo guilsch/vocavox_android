@@ -19,7 +19,6 @@ import life.sabujak.roundedbutton.RoundedButton;
 public class ActivityTranslation extends AppCompatActivity {
 
     private RoundedButton OKButton;
-    private RoundedButton cancelButton;
     private RoundedButton saveCardButton;
 
     private ImageView targetLanguageFlag;
@@ -41,6 +40,7 @@ public class ActivityTranslation extends AppCompatActivity {
     private Integer currentLayoutNum;
 
     private ConstraintLayout backLayout;
+    private ConstraintLayout backLayoutCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,14 +140,14 @@ public class ActivityTranslation extends AppCompatActivity {
         userLanguageFlag = findViewById(R.id.userLanguageFlag);
         tradCheckMsg = findViewById(R.id.trad_check_msg);
 
+        backLayoutCheck = findViewById(R.id.back_layout);
+        backLayoutCheck.setOnClickListener(v -> initMainTranslationLayout());
+
         targetLanguageFlag.setImageDrawable(Param.FLAG_ICON_TARGET);
         userLanguageFlag.setImageDrawable(Param.FLAG_ICON_USER);
 
         saveCardButton = findViewById(R.id.save_card_button);
         saveCardButton.setOnClickListener(view -> saveCardButtonClick());
-
-        cancelButton = findViewById(R.id.cancel_button);
-        cancelButton.setOnClickListener(view -> initMainTranslationLayout());
 
         tradCheckMsg.setText(R.string.trans_check_header);
 

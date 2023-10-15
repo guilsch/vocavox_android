@@ -7,74 +7,25 @@
     android:background="@color/back_ground"
     tools:context=".ActivitySettings">
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/left_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/right_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/mid_right_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.7" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/bottom_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.927" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.075" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/top_guideline_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_layout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/top_guideline"
+        android:layout_height="@dimen/header_height"
+        android:layout_marginHorizontal="0dp"
+        android:background="@drawable/bg_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/bg_header"
-        >
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/header_left_guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/back_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             android:background="@drawable/back_layout_selector"
             android:paddingVertical="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/header_left_guideline"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
@@ -92,101 +43,136 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:gravity="center"
                 android:text="@string/button_back_str"
                 android:textColor="#000000"
                 android:textSize="@dimen/back_text"
                 android:textStyle="bold"
-                android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/back_arrow"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.1dp"
-            android:background="@color/grey"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    // Body
 
-    <TextView
-        android:id="@+id/folder_path_text"
-        android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="folder Path"
-        android:gravity="center_vertical"
-        android:textSize="@dimen/paragraph_text"
-        app:layout_constraintEnd_toStartOf="@+id/mid_right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/folder_path_title"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/folder_path_button"
-        android:layout_width="0dp"
+    <androidx.core.widget.NestedScrollView
+        style="@style/NoScrollViewEdgeEffect"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="7dp"
-        android:src="@drawable/selector_data_folder_settings"
-        app:layout_constraintBottom_toBottomOf="@+id/folder_path_text"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/mid_right_guideline"
-        app:layout_constraintTop_toTopOf="@+id/folder_path_text" />
+        android:layout_marginHorizontal="@dimen/body_horizontal_margin"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout"
+        tools:layout_editor_absoluteX="30dp">
 
-    <Button
-        android:id="@+id/lang_direction_save_button"
-        android:layout_width="52dp"
-        android:layout_height="0dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:text="@string/save_setting"
-        android:textSize="8sp"
-        app:backgroundTint="@color/blue10"
-        app:layout_constraintBottom_toBottomOf="@+id/lang_direction_freq_seekBar"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/mid_right_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/body_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_layout">
 
-    <TextView
-        android:id="@+id/folder_path_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/folder_path_setting"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/top_guideline_2" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingVertical="10dp">
 
-    <TextView
-        android:id="@+id/lang_direction_freq_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="@string/lang_direction_freq_setting"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/folder_path_text" />
+                <TextView
+                    android:id="@+id/folder_path_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/folder_path_setting"
+                    android:layout_marginBottom="3dp"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/XS"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/folder_path_text"
+                    android:layout_width="0dp"
+                    android:layout_height="43dp"
+                    android:ems="10"
+                    android:gravity="center_vertical"
+                    android:inputType="text"
+                    android:text="folder Path"
+                    android:textSize="@dimen/N"
+                    app:layout_constraintEnd_toStartOf="@+id/folder_path_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/folder_path_title"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:id="@+id/folder_path_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="7dp"
+                    android:src="@drawable/selector_data_folder_settings"
+                    app:layout_constraintBottom_toBottomOf="@+id/folder_path_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/folder_path_text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingVertical="10dp">
+
+                <Button
+                    android:id="@+id/lang_direction_save_button"
+                    android:layout_width="52dp"
+                    android:layout_height="0dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/save_setting"
+                    android:textSize="8sp"
+                    app:backgroundTint="@color/blue10"
+                    app:layout_constraintBottom_toBottomOf="@+id/lang_direction_freq_seekBar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
+
+                <TextView
+                    android:id="@+id/lang_direction_freq_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lang_direction_freq_setting"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/XS"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-    <SeekBar
-        android:id="@+id/lang_direction_freq_seekBar"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="0dp"
-        android:layout_height="39dp"
-        android:max="10"
-        android:progress="3"
-        android:progressTint="@color/navy2"
-        android:secondaryProgressTint="@color/navy1"
-        android:thumbTintMode="@color/navy1"
-        app:layout_constraintEnd_toStartOf="@+id/mid_right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
+                <SeekBar
+                    android:id="@+id/lang_direction_freq_seekBar"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="0dp"
+                    android:layout_height="39dp"
+                    android:max="10"
+                    android:progress="3"
+                    android:progressTint="@color/navy2"
+                    android:secondaryProgressTint="@color/navy1"
+                    android:thumbTintMode="@color/navy1"
+                    app:layout_constraintEnd_toStartOf="@+id/lang_direction_save_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    // Header
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_layout"
         android:layout_width="0dp"
@@ -51,226 +52,307 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/save_card_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/body_horizontal_margin"
+            android:text="@string/save_card"
+            android:textColor="@color/std_text_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/delete_card_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:text="@string/text_button_delete_str"-->
+<!--            android:textColor="@color/delete_text_button"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/save_card_button"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/body_layout"
+    // Body
+
+    <androidx.core.widget.NestedScrollView
+        style="@style/NoScrollViewEdgeEffect"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/body_horizontal_margin"
-        android:layout_marginBottom="@dimen/body_bottom_margin"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_layout">
+        app:layout_constraintTop_toBottomOf="@+id/header_layout"
+        tools:layout_editor_absoluteX="30dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingVertical="10dp"
-            android:layout_weight="1">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/userLanguageFlag"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/Circular"
-                app:srcCompat="@drawable/ic_gb"
-                tools:ignore="VectorDrawableCompat" />
-
-            <EditText
-                android:id="@+id/item1_text"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:padding="10dp"
-                android:gravity="top|left"
-                android:inputType="textMultiLine|textImeMultiLine"
-                android:background="@drawable/bg_edit_card_edit_item"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/userLanguageFlag"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingVertical="10dp"
-            android:layout_weight="1">
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/targetLanguageFlag"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/Circular"
-                app:srcCompat="@drawable/ic_it"
-                tools:ignore="VectorDrawableCompat" />
-
-            <EditText
-                android:id="@+id/item2_text"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:padding="10dp"
-                android:gravity="top|left"
-                android:inputType="textMultiLine|textImeMultiLine"
-                android:background="@drawable/bg_edit_card_edit_item"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/targetLanguageFlag" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/body_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:paddingBottom="10dp"
-            >
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_layout">
 
-            <EditText
-                android:id="@+id/pack_text"
+            // Item 1
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingVertical="10dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/userLanguageFlag"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/Circular"
+                    app:srcCompat="@drawable/ic_gb"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <EditText
+                    android:id="@+id/item1_text"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_edit_card_edit_item"
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine|textImeMultiLine"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/userLanguageFlag"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            // Item 2
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:padding="10dp"
-                android:inputType="text"
-                android:background="@drawable/bg_edit_card_edit_item"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/pack_title"
-                tools:ignore="MissingConstraints" />
+                android:layout_weight="1"
+                android:paddingVertical="10dp">
 
-            <TextView
-                android:id="@+id/pack_title"
-                android:layout_width="wrap_content"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/targetLanguageFlag"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/Circular"
+                    app:srcCompat="@drawable/ic_it"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <EditText
+                    android:id="@+id/item2_text"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_edit_card_edit_item"
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine|textImeMultiLine"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/targetLanguageFlag"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            // Pack
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:text="@string/pack"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/pack_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_weight="0"
+                android:paddingVertical="10dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <EditText
+                    android:id="@+id/pack_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edit_card_edit_item"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textSize="@dimen/N"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="20dp"
-            android:layout_weight="0">
+                <TextView
+                    android:id="@+id/pack_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/XS"
+                    android:textStyle="bold"
+                    android:text="@string/pack"
+                    app:layout_constraintBottom_toTopOf="@+id/pack_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/state_title"
-                android:layout_width="wrap_content"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            // Current state
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/card_state"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_weight="0"
+                android:paddingVertical="10dp">
 
-            <Button
-                android:id="@+id/set_state_button"
-                android:layout_width="109dp"
-                android:layout_height="36dp"
-                android:paddingLeft="2dp"
-                android:paddingRight="2dp"
-                android:text="Button"
-                android:textSize="6sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/state_title"
-                app:layout_constraintTop_toTopOf="@+id/state_title" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/state_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="@string/card_state"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/XS"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/state_radio_group"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="10dp"
-            >
+                <RadioGroup
+                    android:id="@+id/state_radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
-                android:id="@+id/next_date_title"
-                android:layout_width="wrap_content"
+                    <RadioButton
+                        android:id="@+id/radio_button_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_radio_button_edit_state_bg_left"
+                        android:button="@color/selected_color_transparent"
+                        android:gravity="center"
+                        android:text="inactif"
+                        android:textColor="@drawable/selector_radio_state_button_text" />
+
+                    <RadioButton
+                        android:id="@+id/radio_button_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_radio_button_edit_state_bg_middle"
+                        android:button="@color/selected_color_transparent"
+                        android:gravity="center"
+                        android:text="actif"
+                        android:textColor="@drawable/selector_radio_state_button_text" />
+
+                    <RadioButton
+                        android:id="@+id/radio_button_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_radio_button_edit_state_bg_right"
+                        android:button="@color/selected_color_transparent"
+                        android:gravity="center"
+                        android:text="pause"
+                        android:textColor="@drawable/selector_radio_state_button_text" />
+                </RadioGroup>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            // Training date
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/next_date"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/left_guideline"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginTop="20dp"
+                android:paddingVertical="10dp">
 
-            <TextView
-                android:id="@+id/next_date_text"
-                android:layout_width="0dp"
-                android:layout_height="43dp"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-                app:layout_constraintStart_toStartOf="@+id/left_guideline"
-                app:layout_constraintTop_toBottomOf="@+id/next_date_title"
-                tools:ignore="MissingConstraints" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/next_date_sentence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:text="next date"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/N"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/left_guideline"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="10dp">
+                <TextView
+                    android:id="@+id/next_date_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:text="6 december 2022"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/N"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/next_date_sentence"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <life.sabujak.roundedbutton.RoundedButton
-                android:id="@+id/save_card_button"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="OK"
-                android:textAllCaps="true"
-                android:textColor="#ffffff"
-                android:textSize="@dimen/button_std_text_size"
-                android:textStyle="bold"
-                app:buttonCornerRadius="10dp"
-                app:buttonGradientEndColor="@color/button_std_bg"
-                app:buttonGradientStartColor="@color/blue7"
-                app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/delete_card_button" />
+            // Creation date
 
-            <life.sabujak.roundedbutton.RoundedButton
-                android:id="@+id/delete_card_button"
-                android:layout_width="100dp"
-                android:layout_height="30dp"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="@string/text_button_delete_str"
-                android:textAllCaps="true"
-                android:textColor="#ffffff"
-                android:textSize="@dimen/button_std_text_size"
-                android:textStyle="bold"
-                app:buttonCornerRadius="10dp"
-                app:buttonGradientEndColor="@color/red"
-                app:buttonGradientStartColor="@color/red"
-                app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
-                app:layout_constraintEnd_toStartOf="@+id/save_card_button"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/cancel_button"
-                app:layout_constraintStart_toStartOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.appcompat.widget.LinearLayoutCompat>
+                <TextView
+                    android:id="@+id/creation_date_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:text="@string/edit_card_date_creation_sentence"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/N"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/creation_date_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:text="3 octobre 2022"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/N"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/creation_date_title"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.core.widget.NestedScrollView>
+
+    // Bottom buttons
+
 </androidx.constraintlayout.widget.ConstraintLayout>

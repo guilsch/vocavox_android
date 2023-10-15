@@ -81,6 +81,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/Circular"
@@ -112,6 +113,7 @@
                 android:id="@+id/targetLanguageFlag"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/Circular"
@@ -190,7 +192,6 @@
                 app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/cancel_button"
                 app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

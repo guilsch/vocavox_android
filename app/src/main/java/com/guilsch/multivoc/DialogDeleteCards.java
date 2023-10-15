@@ -1,7 +1,9 @@
 package com.guilsch.multivoc;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,7 +15,7 @@ import org.w3c.dom.Text;
 
 public class DialogDeleteCards {
 
-    public static View showCustomDialog(Context context, String uuid) {
+    public static <DialogClosedListener> View showCustomDialog(Context context, String uuid) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -31,37 +33,12 @@ public class DialogDeleteCards {
         // Manage cancel click
         cancelButton.setOnClickListener(v -> dialog.dismiss());
 
-        // Manage release delete button
-        deleteButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    deleteButton.setTextColor(ContextCompat.getColor(context, R.color.black));
-                }
-
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    deleteButton.setTextColor(ContextCompat.getColor(context, R.color.red));
-                }
-                return false;
-            }
-        });
-
-        // Manage release cancel button
-        cancelButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    cancelButton.setTextColor(ContextCompat.getColor(context, R.color.black));
-                }
-
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    cancelButton.setTextColor(ContextCompat.getColor(context, R.color.grey));
-                }
-                return false;
-            }
-        });
+        // Manage release buttons colors
+        Utils.setTextViewTextColorChangeOnTouch(deleteButton, R.color.black, R.color.red);
+        Utils.setTextViewTextColorChangeOnTouch(cancelButton, R.color.black, R.color.grey);
 
         dialog.getWindow().getDecorView().setBackgroundResource(R.drawable.dialog_background);
+
         dialog.show();
 
         return customView;

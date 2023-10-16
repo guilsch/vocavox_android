@@ -38,7 +38,7 @@ public class AdapterDeckCardsSelection extends BaseAdapter implements ListAdapte
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        view = inflater.inflate(R.layout.cards_selection_list_view, null);
+        view = inflater.inflate(R.layout.activity_learn_cards_selection_list_view, null);
 
         TextView item1 = view.findViewById(R.id.adapter_card_list_view_item1_textView);
         TextView item2 = view.findViewById(R.id.item2_textView);

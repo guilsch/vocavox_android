@@ -19,7 +19,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -35,7 +34,7 @@ public class ActivityMenu extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu2);
+        setContentView(R.layout.activity_menu_container);
 
         isZoomed = false;
 
@@ -64,7 +63,7 @@ public class ActivityMenu extends AppCompatActivity  {
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.fragment_tab1, container, false);
+            View view = inflater.inflate(R.layout.activity_menu_fragment_tab1, container, false);
 
             ActivityMenu parentActivity = (ActivityMenu) getActivity();
 
@@ -227,7 +226,7 @@ public class ActivityMenu extends AppCompatActivity  {
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.fragment_tab2, container, false);
+            View view = inflater.inflate(R.layout.activity_menu_fragment_tab2, container, false);
 
             ActivityMenu parentActivity = (ActivityMenu) getActivity();
 

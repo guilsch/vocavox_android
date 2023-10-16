@@ -196,7 +196,7 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
      */
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void showEndOfRevision() {
-        setContentView(R.layout.end_of_revision);
+        setContentView(R.layout.activity_training_end_of_training);
 
         mBackToMenuRevisionButton = findViewById(R.id.back_home_btn);
         mBackToMenuRevisionButton.setOnClickListener(v -> onBackPressed());
@@ -208,7 +208,7 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
      * Set the layout for the question side for the current card
      */
     private void showQuestionSide() {
-        setContentView(R.layout.question_side);
+        setContentView(R.layout.card_question_side);
 
         backLayout = findViewById(R.id.back_layout);
         backLayout.setOnClickListener(v -> onBackPressed());
@@ -244,7 +244,7 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
      * Set the layout for the answer side for the current card
      */
     private void showAnswerSide() {
-        setContentView(R.layout.answer_side);
+        setContentView(R.layout.card_answer_side);
 
         backLayout = findViewById(R.id.back_layout);
         backLayout.setOnClickListener(v -> onBackPressed());

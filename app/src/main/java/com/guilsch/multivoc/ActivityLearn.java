@@ -226,7 +226,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
      */
     @RequiresApi(api = Build.VERSION_CODES.R)
     private void setLayoutCardsSelection() {
-        setContentView(R.layout.cards_selection);
+        setContentView(R.layout.activity_learn_cards_selection);
 
         backLayout = findViewById(R.id.back_layout);
         backLayout.setOnClickListener(v -> onBackPressed());
@@ -258,7 +258,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     }
 
     private void setLayoutStep1QuestionSide() {
-        setContentView(R.layout.learn_step1);
+        setContentView(R.layout.activity_learn_step1);
 
         mTextViewQuestionStep1 = findViewById(R.id.question_side_item1_step1);
         mNextCardButtonStep1 = findViewById(R.id.next_card_button_step1);
@@ -268,7 +268,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     }
 
     private void setLayoutStep2QuestionSide() {
-        setContentView(R.layout.learn_step2_question_side);
+        setContentView(R.layout.activity_learn_step2_question_side);
 
         // Initialization
         mTextViewQuestionStep2 = findViewById(R.id.question_side_item1_step2);
@@ -280,7 +280,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     }
 
     private void setLayoutStep2AnswerSide() {
-        setContentView(R.layout.learn_step2_answer_side);
+        setContentView(R.layout.activity_learn_step2_answer_side);
 
         // Initialization
         mTextViewAnswerStep2 = findViewById(R.id.answer_side_item2);
@@ -296,7 +296,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     }
 
     private void setLayoutTransition0to1() {
-        setContentView(R.layout.learn_transition_0_to_1_layout);
+        setContentView(R.layout.activity_learn_transition_0_to_1_layout);
 
         mStartStep1Button = findViewById(R.id.start_step3_button);
         mSkipStep1Button = findViewById(R.id.back_home_btn);
@@ -311,7 +311,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     }
 
     private void setLayoutTransition1to2() {
-        setContentView(R.layout.learn_transition_1_to_2_layout);
+        setContentView(R.layout.activity_learn_transition_1_to_2_layout);
 //        currentStep++;
 
         manageStepsProgressBar();
@@ -329,7 +329,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     }
 
     private void setLayoutTransition2to3() {
-        setContentView(R.layout.learn_transition_2_to_3_layout);
+        setContentView(R.layout.activity_learn_transition_2_to_3_layout);
 
         cardsNBInit = learningCardsQueue3.size();
 //        manageStepsProgressBar();
@@ -344,7 +344,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
      * Set the end of learning layout when the user is done with the training
      */
     private void showEndOfLearning() {
-        setContentView(R.layout.end_of_learning);
+        setContentView(R.layout.activity_learn_end_of_learning);
 
         // Save changes in deck
         Param.GLOBAL_DECK.updateDeckDataVariables();
@@ -357,7 +357,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
      * Set the layout for the question side for the current card
      */
     private void showQuestionSideStep3() {
-        setContentView(R.layout.question_side);
+        setContentView(R.layout.card_question_side);
 
         cardsLeftText = findViewById(R.id.cards_left);
 //        cardsLeftText.setVisibility(View.INVISIBLE);
@@ -379,7 +379,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
      * Set the layout for the answer side for the current card
      */
     private void showAnswerSideStep3() {
-        setContentView(R.layout.answer_side);
+        setContentView(R.layout.card_answer_side);
 
         cardsLeftText = findViewById(R.id.cards_left);
         mStepsProgressBar.findViewById(R.id.remaining_cards_progress_bar);

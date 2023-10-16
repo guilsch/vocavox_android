@@ -10,6 +10,7 @@
     <!-- Margins -->
     <dimen name="body_horizontal_margin">30dp</dimen>
     <dimen name="body_bottom_margin">30dp</dimen>
+    <dimen name="body_top_margin">10dp</dimen>
 
     <!-- Header size -->
     <dimen name="header_height">50dp</dimen>

@@ -130,4 +130,7 @@ dependencies {
     // Rounded images
     implementation 'com.google.android.material:material:1.6.0'
 
+    // Seekbar
+    implementation 'org.adw.library:discrete-seekbar:1.0.1'
+
 }

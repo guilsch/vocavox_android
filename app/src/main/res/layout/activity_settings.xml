@@ -88,36 +88,39 @@
                     android:id="@+id/folder_path_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/folder_path_setting"
                     android:layout_marginBottom="3dp"
+                    android:text="@string/folder_path_setting"
                     android:textAllCaps="false"
-                    android:textSize="@dimen/XS"
+                    android:textSize="@dimen/N"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/folder_path_text"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/folder_path_text"
                     android:layout_width="0dp"
                     android:layout_height="43dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_edit_card_std"
                     android:ems="10"
                     android:gravity="center_vertical"
-                    android:inputType="text"
+                    android:inputType="none"
+                    android:padding="10dp"
                     android:text="folder Path"
                     android:textSize="@dimen/N"
-                    app:layout_constraintEnd_toStartOf="@+id/folder_path_button"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/folder_path_title"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/folder_path_button"
                     tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/folder_path_button"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:padding="7dp"
-                    android:src="@drawable/selector_data_folder_settings"
+                    android:layout_width="@dimen/ic_size"
+                    android:layout_height="@dimen/ic_size"
+                    android:src="@drawable/selector_path_folder"
                     app:layout_constraintBottom_toBottomOf="@+id/folder_path_text"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/folder_path_text" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -126,53 +129,57 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_marginTop="10dp"
                 android:paddingVertical="10dp">
-
-                <Button
-                    android:id="@+id/lang_direction_save_button"
-                    android:layout_width="52dp"
-                    android:layout_height="0dp"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:text="@string/save_setting"
-                    android:textSize="8sp"
-                    app:backgroundTint="@color/blue10"
-                    app:layout_constraintBottom_toBottomOf="@+id/lang_direction_freq_seekBar"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
 
                 <TextView
                     android:id="@+id/lang_direction_freq_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
                     android:text="@string/lang_direction_freq_setting"
                     android:textAllCaps="false"
-                    android:textSize="@dimen/XS"
+                    android:textSize="@dimen/N"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/lang_direction_freq_seekBar"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
-                <SeekBar
+                <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
                     android:id="@+id/lang_direction_freq_seekBar"
-                    style="@style/Widget.AppCompat.SeekBar.Discrete"
                     android:layout_width="0dp"
                     android:layout_height="39dp"
-                    android:max="10"
-                    android:progress="3"
-                    android:progressTint="@color/navy2"
-                    android:secondaryProgressTint="@color/navy1"
-                    android:thumbTintMode="@color/navy1"
+                    app:dsb_indicatorColor="@color/blue10"
+                    app:dsb_max="10"
+                    app:dsb_min="0"
+                    app:dsb_progressColor="@color/blue10"
+                    app:dsb_rippleColor="@color/blue10"
+                    app:dsb_trackColor="@color/blue10"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/lang_direction_save_button"
+                    app:layout_constraintStart_toEndOf="@+id/lang_direction_freq_indicator" />
+
+                <TextView
+                    android:id="@+id/lang_direction_save_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:textColor="@drawable/selector_text_button_save"
+                    android:text="@string/button_save"
+                    app:layout_constraintBottom_toBottomOf="@+id/lang_direction_freq_seekBar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/lang_direction_freq_seekBar" />
+
+                <TextView
+                    android:id="@+id/lang_direction_freq_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0/10"
+                    app:layout_constraintBottom_toBottomOf="@+id/lang_direction_freq_seekBar"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lang_direction_freq_text" />
+                    app:layout_constraintTop_toTopOf="@+id/lang_direction_freq_seekBar" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

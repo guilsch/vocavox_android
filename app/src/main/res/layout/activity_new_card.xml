@@ -96,7 +96,7 @@
                 android:padding="10dp"
                 android:gravity="top|left"
                 android:inputType="textMultiLine|textImeMultiLine"
-                android:background="@drawable/bg_edit_card_edit_item"
+                android:background="@drawable/bg_edit_card_std"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/userLanguageFlag"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -128,7 +128,7 @@
                 android:padding="10dp"
                 android:gravity="top|left"
                 android:inputType="textMultiLine|textImeMultiLine"
-                android:background="@drawable/bg_edit_card_edit_item"
+                android:background="@drawable/bg_edit_card_std"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/targetLanguageFlag" />
@@ -149,7 +149,7 @@
                 android:layout_marginBottom="20dp"
                 android:padding="10dp"
                 android:inputType="text"
-                android:background="@drawable/bg_edit_card_edit_item"
+                android:background="@drawable/bg_edit_card_std"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/pack_title"

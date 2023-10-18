@@ -6,147 +6,169 @@
     android:layout_height="match_parent"
     android:background="@color/bg">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/left_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/right_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.06" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/bottom_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.927" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/after_progress_bar_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/after_title_bar_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.22" />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/after_image_bar_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/after_text_bar_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
-
-    <TextView
-        android:id="@+id/transition12_question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/transition12_question"
-        android:textSize="@dimen/titles"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/after_title_bar_guideline"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_layout"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/header_height"
+        android:layout_marginHorizontal="0dp"
+        android:background="@drawable/bg_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/after_progress_bar_guideline" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/back_home_btn"
-        android:layout_width="@dimen/button_std_width"
-        android:layout_height="@dimen/button_std_height"
-        android:background="@drawable/button_selector"
-        android:text="Skip"
-        android:textColor="@color/button_std_text"
-        android:textStyle="bold"
-        app:backgroundTint="#00FFFFFF"
-        app:backgroundTintMode="src_atop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/start_step3_button"
-        app:layout_constraintTop_toTopOf="@+id/start_step3_button" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/back_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/back_layout_selector"
+            android:paddingVertical="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/start_step3_button"
-        android:layout_width="@dimen/button_std_width"
-        android:layout_height="@dimen/button_std_height"
-        android:background="@drawable/button_selector"
-        android:text="Start"
-        android:textColor="@color/button_std_text"
-        android:textStyle="bold"
-        app:backgroundTint="#00FFFFFF"
-        app:backgroundTintMode="src_atop"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/back_home_btn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/after_text_bar_guideline" />
+            <ImageView
+                android:id="@+id/back_arrow"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:rotation="180"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_chevron" />
 
-    <com.kofigyan.stateprogressbar.StateProgressBar
-        android:id="@+id/stepsProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/after_progress_bar_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/top_guideline"
-        app:spb_animateToCurrentProgressState="true"
-        app:spb_checkStateCompleted="true"
-        app:spb_currentStateDescriptionColor="@color/blue7"
-        app:spb_currentStateNumber="two"
-        app:spb_maxStateNumber="three"
-        app:spb_stateBackgroundColor="#BDBDBD"
-        app:spb_stateDescriptionColor="#808080"
-        app:spb_stateForegroundColor="@color/blue7"
-        app:spb_stateNumberBackgroundColor="#808080"
-        app:spb_stateNumberForegroundColor="#eeeeee" />
+            <TextView
+                android:id="@+id/back_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:gravity="center"
+                android:text="@string/button_back_str"
+                android:textColor="#000000"
+                android:textSize="@dimen/back_text"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/back_arrow"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/transition12_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/transition12_text"
-        android:gravity="center"
-        android:textSize="@dimen/paragraph_text"
-        app:layout_constraintBottom_toTopOf="@+id/after_text_bar_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/after_image_bar_guideline" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/transition12_image"
-        android:layout_width="0dp"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/body_layout"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/after_image_bar_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/left_guideline"
-        app:layout_constraintTop_toTopOf="@+id/after_title_bar_guideline"
-        app:srcCompat="@drawable/ic_lang_default" />
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/body_horizontal_margin"
+        android:layout_marginBottom="@dimen/body_bottom_margin"
+        android:layout_marginTop="@dimen/body_top_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout">
 
+        <com.kofigyan.stateprogressbar.StateProgressBar
+            android:id="@+id/stepsProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/after_progress_bar_guideline"
+            app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/left_guideline"
+            app:layout_constraintTop_toTopOf="@+id/top_guideline"
+            app:spb_animateToCurrentProgressState="true"
+            app:spb_checkStateCompleted="true"
+            app:spb_currentStateDescriptionColor="@color/blue7"
+            app:spb_currentStateNumber="one"
+            app:spb_maxStateNumber="three"
+            app:spb_stateBackgroundColor="#BDBDBD"
+            app:spb_stateDescriptionColor="#808080"
+            app:spb_stateForegroundColor="@color/blue7"
+            app:spb_stateNumberBackgroundColor="#808080"
+            app:spb_stateNumberForegroundColor="#eeeeee" />
+
+        <TextView
+            android:id="@+id/transition12_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="20dp"
+            android:text="@string/transition12_question"
+            android:textSize="@dimen/titles"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/after_title_bar_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/after_progress_bar_guideline" />
+
+        <ImageView
+            android:id="@+id/transition12_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="20dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/after_image_bar_guideline"
+            app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+            app:layout_constraintStart_toStartOf="@+id/left_guideline"
+            app:layout_constraintTop_toTopOf="@+id/after_title_bar_guideline"
+            app:srcCompat="@drawable/ic_lang_default" />
+
+        <TextView
+            android:id="@+id/transition12_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="20dp"
+            android:text="@string/transition12_text"
+            android:gravity="center"
+            android:textSize="@dimen/paragraph_text"
+            app:layout_constraintBottom_toTopOf="@+id/after_text_bar_guideline"
+            app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+            app:layout_constraintStart_toStartOf="@+id/left_guideline"
+            app:layout_constraintTop_toTopOf="@+id/after_image_bar_guideline" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="40dp" >
+
+            <Button
+                android:id="@+id/skip_btn"
+                android:layout_width="@dimen/button_std_width"
+                android:layout_height="@dimen/button_std_height"
+                android:background="@drawable/button_selector"
+                android:text="Skip"
+                android:textColor="@color/button_std_text"
+                android:textStyle="bold"
+                app:backgroundTint="#00FFFFFF"
+                app:backgroundTintMode="src_atop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/start_button"
+                app:layout_constraintTop_toTopOf="@+id/start_button" />
+
+            <Button
+                android:id="@+id/start_button"
+                android:layout_width="@dimen/button_std_width"
+                android:layout_height="@dimen/button_std_height"
+                android:background="@drawable/button_selector"
+                android:text="Start"
+                android:textColor="@color/button_std_text"
+                android:textStyle="bold"
+                app:backgroundTint="#00FFFFFF"
+                app:backgroundTintMode="src_atop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/skip_btn"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

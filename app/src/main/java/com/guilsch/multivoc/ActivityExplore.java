@@ -9,15 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import com.baoyz.swipemenulistview.SwipeMenuListView;
-
 public class ActivityExplore extends AppCompatActivity {
 
-    SwipeMenuListView dataList;
+    ListView dataList;
     TextView noCardText;
     ImageView sortButton;
     SearchView searchView;

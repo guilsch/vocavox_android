@@ -198,7 +198,7 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
     private void showEndOfRevision() {
         setContentView(R.layout.activity_training_end_of_training);
 
-        mBackToMenuRevisionButton = findViewById(R.id.back_home_btn);
+        mBackToMenuRevisionButton = findViewById(R.id.skip_btn);
         mBackToMenuRevisionButton.setOnClickListener(v -> onBackPressed());
 
         Param.GLOBAL_DECK.updateDeckDataVariables();

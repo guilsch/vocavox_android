@@ -262,6 +262,8 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
 
         mTextViewQuestionStep1 = findViewById(R.id.question_side_item1_step1);
         mNextCardButtonStep1 = findViewById(R.id.next_card_button_step1);
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackToSelectionPressed());
 
         mNextCardButtonStep1.setOnClickListener(v -> scrollCardsStep1());
         mTextViewQuestionStep1.setText(this.currentCard.getItem1() + " = " + this.currentCard.getItem2());
@@ -273,14 +275,18 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
         // Initialization
         mTextViewQuestionStep2 = findViewById(R.id.question_side_item1_step2);
         mSeeAnswerButtonStep2 = findViewById(R.id.see_answer_button_step2);
+        backLayout = findViewById(R.id.back_layout);
 
         // Use
         mSeeAnswerButtonStep2.setOnClickListener(v -> setLayoutStep2AnswerSide());
         mTextViewQuestionStep2.setText(this.currentCard.getItem2());
+        backLayout.setOnClickListener(v -> onBackToSelectionPressed());
     }
 
     private void setLayoutStep2AnswerSide() {
         setContentView(R.layout.activity_learn_step2_answer_side);
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackToSelectionPressed());
 
         // Initialization
         mTextViewAnswerStep2 = findViewById(R.id.answer_side_item2);
@@ -298,8 +304,13 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     private void setLayoutTransition0to1() {
         setContentView(R.layout.activity_learn_transition_0_to_1_layout);
 
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackToSelectionPressed());
+
         mStartStep1Button = findViewById(R.id.start_step3_button);
-        mSkipStep1Button = findViewById(R.id.back_home_btn);
+        mSkipStep1Button = findViewById(R.id.skip_btn);
+
+        manageStepsProgressBar();
 
         mStartStep1Button.setOnClickListener(v -> {
             scrollCardsStep1();
@@ -312,12 +323,14 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
 
     private void setLayoutTransition1to2() {
         setContentView(R.layout.activity_learn_transition_1_to_2_layout);
-//        currentStep++;
+
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackToSelectionPressed());
 
         manageStepsProgressBar();
 
-        mStartStep2Button = findViewById(R.id.start_step3_button);
-        mSkipStep2Button = findViewById(R.id.back_home_btn);
+        mStartStep2Button = findViewById(R.id.start_button);
+        mSkipStep2Button = findViewById(R.id.skip_btn);
 
         mStartStep2Button.setOnClickListener(v -> {
             scrollCardsStep2(Boolean.FALSE);
@@ -331,10 +344,13 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     private void setLayoutTransition2to3() {
         setContentView(R.layout.activity_learn_transition_2_to_3_layout);
 
-        cardsNBInit = learningCardsQueue3.size();
-//        manageStepsProgressBar();
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackToSelectionPressed());
 
-        mStartStep3Button = findViewById(R.id.start_step3_button);
+        cardsNBInit = learningCardsQueue3.size();
+        manageStepsProgressBar();
+
+        mStartStep3Button = findViewById(R.id.start_button);
         mStartStep3Button.setOnClickListener(v -> {
             scrollCardsStep3(0);
         });
@@ -349,7 +365,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
         // Save changes in deck
         Param.GLOBAL_DECK.updateDeckDataVariables();
 
-        mBackToMenuRevisionButton = findViewById(R.id.back_home_btn);
+        mBackToMenuRevisionButton = findViewById(R.id.skip_btn);
         mBackToMenuRevisionButton.setOnClickListener(this);
     }
 
@@ -359,11 +375,12 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     private void showQuestionSideStep3() {
         setContentView(R.layout.card_question_side);
 
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackToSelectionPressed());
+
         cardsLeftText = findViewById(R.id.cards_left);
-//        cardsLeftText.setVisibility(View.INVISIBLE);
 
         mStepsProgressBar.findViewById(R.id.remaining_cards_progress_bar);
-//        mStepsProgressBar.setVisibility(View.INVISIBLE);
 
         mTextViewQuestionStep3 = findViewById(R.id.question_side_item1);
         mSeeAnswerButtonStep3 = findViewById(R.id.question_side_button);
@@ -381,11 +398,11 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     private void showAnswerSideStep3() {
         setContentView(R.layout.card_answer_side);
 
+        backLayout = findViewById(R.id.back_layout);
+        backLayout.setOnClickListener(v -> onBackToSelectionPressed());
+
         cardsLeftText = findViewById(R.id.cards_left);
         mStepsProgressBar.findViewById(R.id.remaining_cards_progress_bar);
-
-//        cardsLeftText.setVisibility(View.VISIBLE);
-//        mStepsProgressBar.setVisibility(View.VISIBLE);
 
         mTextViewAnswerStep3Item1 = findViewById(R.id.answer_side_item1);
         mTextViewAnswerStep3Item2 = findViewById(R.id.answer_side_item2);
@@ -453,22 +470,12 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
      * Init and manage parameters of the progress bar in the transitions layout for each step
      */
     private void manageStepsProgressBar() {
-        mStepsProgressBar = (StateProgressBar) findViewById(R.id.stepsProgressBar);
-//        mStepsProgressBar.setStateDescriptionData(descriptionData);
+        mStepsProgressBar = findViewById(R.id.stepsProgressBar);
         mStepsProgressBar.setAnimationDuration(2000);
+    }
 
-//        // init progress bar
-//        mStepsProgressBar = findViewById(R.id.stepsProgressBar);
-//        mStepsProgressBar.setMax((maxStep - 1)*100);
-//
-//        // Init animation
-//        ObjectAnimator progressAnimator = ObjectAnimator.ofInt(mStepsProgressBar,
-//                "progress", (currentStep - 2)*100, (currentStep - 1)*100);
-//        progressAnimator.setDuration(1000); // Durée de l'animation en millisecondes
-//        progressAnimator.setInterpolator(new DecelerateInterpolator()); // Vitesse de l'animation
-//
-//        // Animation start
-//        progressAnimator.start();
+    private void onBackToSelectionPressed() {
+        DialogQuitLearning.showCustomDialog(ActivityLearn.this);
     }
 
     @Override

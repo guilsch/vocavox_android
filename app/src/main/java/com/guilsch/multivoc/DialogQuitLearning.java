@@ -1,5 +1,6 @@
 package com.guilsch.multivoc;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,13 +9,13 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
-public class DialogDeleteCards {
+public class DialogQuitLearning {
 
-    public static <DialogClosedListener> View showCustomDialog(Context context, String uuid) {
+    public static View showCustomDialog(Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        View customView = inflater.inflate(R.layout.dialog_layout_delete_card, null);
+        View customView = inflater.inflate(R.layout.dialog_layout_quit_learning, null);
         builder.setView(customView);
 
         TextView deleteButton = customView.findViewById(R.id.dialog_quit_button);
@@ -22,8 +23,8 @@ public class DialogDeleteCards {
 
         AlertDialog dialog = builder.create();
 
-        // Manage delete click
-        deleteButton.setOnClickListener(v -> onDeleteCardConfirmationClick(context, dialog, uuid, deleteButton));
+        // Manage quit click
+//        deleteButton.setOnClickListener(v -> ((Activity) context).finish());
 
         // Manage cancel click
         cancelButton.setOnClickListener(v -> dialog.dismiss());
@@ -37,12 +38,6 @@ public class DialogDeleteCards {
         dialog.show();
 
         return customView;
-    }
-
-    private static void onDeleteCardConfirmationClick(Context context, AlertDialog dialog, String uuid, TextView deleteButton) {
-        deleteButton.setTextColor(ContextCompat.getColor(context, R.color.red));
-        ActivityExplore.deleteCard(uuid);
-        dialog.dismiss();
     }
 }
 

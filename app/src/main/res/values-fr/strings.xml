@@ -115,6 +115,6 @@
     <string name="dialog_sort_training_date_str">Date de révision</string>
 
     <!--    Dialog quit learning-->
-    <string name="dialog_quit_learning_title_str">Do you really want to quit the training ?</string>
+    <string name="dialog_quit_learning_title_str">Voulez-vous vraiment quitter l\'apprentissage ?</string>
     <string name="text_button_quit_learning">Quitter</string>
 </resources>

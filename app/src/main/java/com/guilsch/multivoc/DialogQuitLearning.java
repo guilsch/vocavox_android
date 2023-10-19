@@ -3,6 +3,7 @@ package com.guilsch.multivoc;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ public class DialogQuitLearning {
         AlertDialog dialog = builder.create();
 
         // Manage quit click
-//        deleteButton.setOnClickListener(v -> ((Activity) context).finish());
+        deleteButton.setOnClickListener(v -> onQuitActivityClick(context));
 
         // Manage cancel click
         cancelButton.setOnClickListener(v -> dialog.dismiss());
@@ -38,6 +39,12 @@ public class DialogQuitLearning {
         dialog.show();
 
         return customView;
+    }
+
+    public static void onQuitActivityClick(Context context) {
+        Intent menuActivity = new Intent(context, ActivityMenu.class);
+        context.startActivity(menuActivity);
+        ((Activity) context).finish();
     }
 }
 

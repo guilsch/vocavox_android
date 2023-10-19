@@ -4,10 +4,13 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -60,7 +63,6 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     private RoundedButton mBackToMenuRevisionButton;
 
     private StateProgressBar mStepsProgressBar;
-    private String[] descriptionData;
 
     ListView cardsSelectionList;
 
@@ -93,7 +95,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
         learningCardsQueue3 = new LinkedList<>();
         processedCardsQueue = new LinkedList<>();
 
-        descriptionData = new String[]{"Step 1", "Step 2", "Step 3"};
+//        descriptionData = new String[]{"Step 1", "Step 2", "Step 3"};
 
         toLearnCardsList = Param.GLOBAL_DECK.getCardsToLearnList();
 
@@ -380,7 +382,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
 
         cardsLeftText = findViewById(R.id.cards_left);
 
-        mStepsProgressBar.findViewById(R.id.remaining_cards_progress_bar);
+//        mStepsProgressBar.findViewById(R.id.remaining_cards_progress_bar);
 
         mTextViewQuestionStep3 = findViewById(R.id.question_side_item1);
         mSeeAnswerButtonStep3 = findViewById(R.id.question_side_button);
@@ -402,7 +404,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
         backLayout.setOnClickListener(v -> onBackToSelectionPressed());
 
         cardsLeftText = findViewById(R.id.cards_left);
-        mStepsProgressBar.findViewById(R.id.remaining_cards_progress_bar);
+//        mStepsProgressBar.findViewById(R.id.remaining_cards_progress_bar);
 
         mTextViewAnswerStep3Item1 = findViewById(R.id.answer_side_item1);
         mTextViewAnswerStep3Item2 = findViewById(R.id.answer_side_item2);

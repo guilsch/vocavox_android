@@ -81,7 +81,7 @@
             app:spb_animateToCurrentProgressState="true"
             app:spb_checkStateCompleted="true"
             app:spb_currentStateDescriptionColor="@color/blue7"
-            app:spb_currentStateNumber="one"
+            app:spb_currentStateNumber="three"
             app:spb_maxStateNumber="three"
             app:spb_stateBackgroundColor="#BDBDBD"
             app:spb_stateDescriptionColor="#808080"

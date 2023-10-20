@@ -27,6 +27,7 @@ public class Card implements Serializable {
     private String pack;
     private String uuid;
     private int rowIndexInExcel;
+    private Boolean isSelected;
 
     Card (String item1, String item2, int state, String pack, Date nextPracticeDate, Date creationDate, int repetitions,
           float easinessFactor, int interval, String uuid, int rowIndexInExcel){
@@ -41,6 +42,7 @@ public class Card implements Serializable {
         this.pack = pack;
         this.uuid = uuid;
         this.rowIndexInExcel = rowIndexInExcel;
+        this.isSelected = false;
     }
 
     public void updateParameters(Date nextPracticeDate, int repetitions, float easinessFactor, int interval) {
@@ -237,6 +239,10 @@ public class Card implements Serializable {
         return rowIndexInExcel;
     }
 
+    public Boolean getSelected() {
+        return isSelected;
+    }
+
     // Setters
 
     public void setItem1(String item1) {
@@ -278,4 +284,6 @@ public class Card implements Serializable {
     public void setRowIndexInExcel(int rowIndex) {
         this.rowIndexInExcel = rowIndex;
     }
+
+    public void setIsSelected(Boolean isSelected) { this.isSelected = isSelected;}
 }

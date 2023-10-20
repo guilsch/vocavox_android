@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
+import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 import org.w3c.dom.Text;
 
 import java.io.File;
@@ -29,7 +30,7 @@ public class ActivitySettings extends AppCompatActivity {
     private EditText folderPathText;
     private TextView langDirectionFreqSaveButton;
     private TextView langDirectionFreqIndicator;
-//    private DiscreteSeekBar langDirectionFreqSeekBar;
+    private DiscreteSeekBar langDirectionFreqSeekBar;
     private ConstraintLayout backLayout;
 
     @Override
@@ -48,12 +49,12 @@ public class ActivitySettings extends AppCompatActivity {
 
 //      Language direction frequency
         langDirectionFreqSaveButton = findViewById(R.id.lang_direction_save_button);
-//        langDirectionFreqSeekBar = findViewById(R.id.lang_direction_freq_seekBar);
+        langDirectionFreqSeekBar = findViewById(R.id.lang_direction_freq_seekBar);
         langDirectionFreqIndicator = findViewById(R.id.lang_direction_freq_indicator);
 
         langDirectionFreqIndicator.setText(Param.LANG_DIRECTION_FREQ + "/10");
 
-//        langDirectionFreqSeekBar.setProgress(Param.LANG_DIRECTION_FREQ);
+        langDirectionFreqSeekBar.setProgress(Param.LANG_DIRECTION_FREQ);
         langDirectionFreqSaveButton.setOnClickListener(view -> langDirectionFreqSaveClick());
 
     }
@@ -139,7 +140,7 @@ public class ActivitySettings extends AppCompatActivity {
     }
 
     public void langDirectionFreqSaveClick() {
-//        Param.LANG_DIRECTION_FREQ = langDirectionFreqSeekBar.getProgress();
+        Param.LANG_DIRECTION_FREQ = langDirectionFreqSeekBar.getProgress();
         Pref.savePreference(ActivitySettings.this, Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ);
         langDirectionFreqIndicator.setText(Param.LANG_DIRECTION_FREQ + "/10");
     }

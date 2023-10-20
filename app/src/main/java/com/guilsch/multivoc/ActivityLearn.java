@@ -95,8 +95,6 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
         learningCardsQueue3 = new LinkedList<>();
         processedCardsQueue = new LinkedList<>();
 
-//        descriptionData = new String[]{"Step 1", "Step 2", "Step 3"};
-
         toLearnCardsList = Param.GLOBAL_DECK.getCardsToLearnList();
 
         setLayoutCardsSelection();
@@ -240,23 +238,33 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
 
         // Start learning button
         mStartLearningButton = findViewById(R.id.cards_selection_start_button);
-        mStartLearningButton.setOnClickListener(v -> setLayoutTransition0to1());
+        mStartLearningButton.setOnClickListener(v -> onStartLearningButton());
 
         cardsSelectionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Card selectedCard = (Card) parent.getItemAtPosition(position);
+                selectedCard.setIsSelected(!selectedCard.getSelected());
 
-                if (!learningQueueContains(selectedCard)) {
+                if (selectedCard.getSelected()) {
                     ActivityLearn.addToLearningQueue(selectedCard);
-                    view.setBackgroundResource(R.color.card_selected);
-                }
-                else {
+                } else {
                     ActivityLearn.removeFromLearningQueue(selectedCard);
-                    view.setBackgroundResource(R.color.white);
                 }
+                adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    private void onStartLearningButton() {
+        resetLearningCardsQueue1();
+        setLayoutTransition0to1();
+    }
+
+    private void resetLearningCardsQueue1() {
+        for (Card card:learningCardsQueue1){
+            card.setIsSelected(false);
+        }
     }
 
     private void setLayoutStep1QuestionSide() {
@@ -482,6 +490,8 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onBackPressed() {
+        resetLearningCardsQueue1();
+
         Utils.threadShutdown(singleThreadExecutor);
 
         Intent menuActivity = new Intent(getApplicationContext(), ActivityMenu.class);

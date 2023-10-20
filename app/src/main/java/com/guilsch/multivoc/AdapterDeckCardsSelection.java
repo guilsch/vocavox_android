@@ -40,8 +40,16 @@ public class AdapterDeckCardsSelection extends BaseAdapter implements ListAdapte
 
         view = inflater.inflate(R.layout.activity_learn_cards_selection_list_view, null);
 
+        Card card = cardsList.get(i);
+
         TextView item1 = view.findViewById(R.id.adapter_card_list_view_item1_textView);
         TextView item2 = view.findViewById(R.id.item2_textView);
+
+        if (card.getSelected()) {
+            view.setBackgroundResource(R.drawable.bg_adapter_card_selection_list_view_selected);
+        } else {
+            view.setBackgroundResource(R.drawable.bg_adapter_card_selection_list_view);
+        }
 
         item1.setText(cardsList.get(i).getItem1());
         item2.setText(cardsList.get(i).getItem2());

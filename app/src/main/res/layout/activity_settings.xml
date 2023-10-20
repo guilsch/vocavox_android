@@ -145,19 +145,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-<!--                <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar-->
-<!--                    android:id="@+id/lang_direction_freq_seekBar"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="39dp"-->
-<!--                    app:dsb_indicatorColor="@color/blue10"-->
-<!--                    app:dsb_max="10"-->
-<!--                    app:dsb_min="0"-->
-<!--                    app:dsb_progressColor="@color/blue10"-->
-<!--                    app:dsb_rippleColor="@color/blue10"-->
-<!--                    app:dsb_trackColor="@color/blue10"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toStartOf="@+id/lang_direction_save_button"-->
-<!--                    app:layout_constraintStart_toEndOf="@+id/lang_direction_freq_indicator" />-->
+                <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+                    android:id="@+id/lang_direction_freq_seekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="39dp"
+                    app:dsb_indicatorColor="@color/blue10"
+                    app:dsb_max="10"
+                    app:dsb_min="0"
+                    app:dsb_progressColor="@color/blue10"
+                    app:dsb_rippleColor="@color/blue10"
+                    app:dsb_trackColor="@color/blue10"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/lang_direction_save_button"
+                    app:layout_constraintStart_toEndOf="@+id/lang_direction_freq_indicator" />
 
                 <TextView
                     android:id="@+id/lang_direction_save_button"

@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import life.sabujak.roundedbutton.RoundedButton;
-
+import android.speech.tts.TextToSpeech;
 /**
  * This class is the activity corresponding to the training activity
  *
@@ -58,6 +58,9 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
     // Thread
     private ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
 
+    // Text to speech
+    TextToSpeech textToSpeech;
+
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,9 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
         // Initialize variables
         rand = new Random();
         processedCardsQueue = new LinkedList<>();
+
+        // Initialize text to speech
+        textToSpeech = Pronunciator.initPronunciator(this, Param.TARGET_LANGUAGE_ISO);
 
         // Get cards to train in revision_queue
         trainingCardsQueue = Param.GLOBAL_DECK.getTrainingQueue();
@@ -265,6 +271,9 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
         mAnswerButton3.setOnClickListener(this);
         mAnswerButton4.setOnClickListener(this);
 
+        // Pronunciation
+        textToSpeech.speak(currentCard.getItem2(), TextToSpeech.QUEUE_FLUSH, null, null);
+
         // Depends on the direction of revision for each card
         if (this.langDirection == 1) {
             mTextViewQuestion.setText(this.currentCard.getItem2());
@@ -300,6 +309,17 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
         // Returns the header text with the number of cards to train left
         return getResources().getString(R.string.revision_header) + " - " + (trainingCardsQueue.size() + 1);
     }
+
+
+    @Override
+    protected void onDestroy() {
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+        }
+        super.onDestroy();
+    }
+
 
     /**
      * Manage click on the back arrow

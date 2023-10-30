@@ -4,15 +4,14 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.animation.ObjectAnimator;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -36,7 +35,8 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
 
     private RoundedButton mStartLearningButton;
 
-    private TextView mTextViewQuestionStep1;
+    private TextView mTextViewItem1Step1;
+    private TextView mTextViewItem2Step1;
     private RoundedButton mNextCardButtonStep1;
 
     private RoundedButton mSeeAnswerButtonStep2;
@@ -50,6 +50,8 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     private Button mStartStep2Button;
     private Button mSkipStep2Button;
     private Button mStartStep3Button;
+
+    private ImageView speaker;
 
     private RoundedButton mSeeAnswerButtonStep3;
     private RoundedButton mAnswerButton1Step3;
@@ -84,6 +86,9 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     // Thread
     private ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
 
+    // Text to speech
+    TextToSpeech textToSpeech;
+
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +101,9 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
         processedCardsQueue = new LinkedList<>();
 
         toLearnCardsList = Param.GLOBAL_DECK.getCardsToLearnList();
+
+        // Initialize text to speech
+        textToSpeech = Pronunciator.initPronunciator(this, Param.TARGET_LANGUAGE_ISO);
 
         setLayoutCardsSelection();
     }
@@ -270,13 +278,24 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     private void setLayoutStep1QuestionSide() {
         setContentView(R.layout.activity_learn_step1);
 
-        mTextViewQuestionStep1 = findViewById(R.id.question_side_item1_step1);
+        mTextViewItem1Step1 = findViewById(R.id.answer_side_item1);
+        mTextViewItem2Step1 = findViewById(R.id.answer_side_item2);
         mNextCardButtonStep1 = findViewById(R.id.next_card_button_step1);
         backLayout = findViewById(R.id.back_layout);
+        speaker = findViewById(R.id.speaker_ic);
+
+
+        // Pronunciation
+        textToSpeech.speak(currentCard.getItem2(), TextToSpeech.QUEUE_FLUSH, null, null);
+        speaker.setOnClickListener(v -> textToSpeech.speak(currentCard.getItem2(),
+                TextToSpeech.QUEUE_FLUSH, null, null));
+
+
         backLayout.setOnClickListener(v -> onBackToSelectionPressed());
 
         mNextCardButtonStep1.setOnClickListener(v -> scrollCardsStep1());
-        mTextViewQuestionStep1.setText(this.currentCard.getItem1() + " = " + this.currentCard.getItem2());
+        mTextViewItem1Step1.setText(this.currentCard.getItem1());
+        mTextViewItem2Step1.setText(this.currentCard.getItem2());
     }
 
     private void setLayoutStep2QuestionSide() {
@@ -296,6 +315,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
     private void setLayoutStep2AnswerSide() {
         setContentView(R.layout.activity_learn_step2_answer_side);
         backLayout = findViewById(R.id.back_layout);
+        speaker = findViewById(R.id.speaker_ic);
         backLayout.setOnClickListener(v -> onBackToSelectionPressed());
 
         // Initialization
@@ -309,6 +329,11 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
         mAnswerWrongButtonStep2.setOnClickListener(this);
         mTextViewQuestionStep2.setText(this.currentCard.getItem1());
         mTextViewAnswerStep2.setText(this.currentCard.getItem2());
+
+        // Pronunciation
+        textToSpeech.speak(currentCard.getItem2(), TextToSpeech.QUEUE_FLUSH, null, null);
+        speaker.setOnClickListener(v -> textToSpeech.speak(currentCard.getItem2(),
+                TextToSpeech.QUEUE_FLUSH, null, null));
     }
 
     private void setLayoutTransition0to1() {
@@ -421,6 +446,7 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
         mAnswerButton2Step3 = findViewById(R.id.answer_side_button2);
         mAnswerButton3Step3 = findViewById(R.id.answer_side_button3);
         mAnswerButton4Step3 = findViewById(R.id.answer_side_button4);
+        speaker = findViewById(R.id.speaker_ic);
 
         mAnswerButton1Step3.setOnClickListener(this);
         mAnswerButton2Step3.setOnClickListener(this);
@@ -429,6 +455,11 @@ public class ActivityLearn extends AppCompatActivity implements View.OnClickList
 
         mTextViewAnswerStep3Item1.setText(this.currentCard.getItem1());
         mTextViewAnswerStep3Item2.setText(this.currentCard.getItem2());
+
+        // Pronunciation
+        textToSpeech.speak(currentCard.getItem2(), TextToSpeech.QUEUE_FLUSH, null, null);
+        speaker.setOnClickListener(v -> textToSpeech.speak(currentCard.getItem2(),
+                TextToSpeech.QUEUE_FLUSH, null, null));
 
         updateCardsRemainingProgressBar();
         cardsLeftText.setText(String.valueOf(cardsNBInit - processedCardsQueue.size()));

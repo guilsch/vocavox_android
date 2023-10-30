@@ -115,10 +115,10 @@
 
             <TextView
                 android:id="@+id/answer_side_item1"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="bottom|center_horizontal"
+                android:padding="15dp"
                 android:text="item1"
                 android:textColor="@color/blue3"
                 android:textSize="@dimen/XXL"
@@ -127,15 +127,23 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/speaker_ic"
+                android:layout_width="@dimen/ic_size"
+                android:layout_height="@dimen/ic_size"
+                app:layout_constraintBottom_toTopOf="@+id/answer_side_item1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/selector_speaker" />
 
             <TextView
                 android:id="@+id/answer_side_item2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:padding="15dp"
                 android:gravity="center|top"
+                android:padding="15dp"
                 android:text="TextView"
                 android:textColor="@color/blue3"
                 android:textSize="@dimen/XXL"
@@ -143,10 +151,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/answer_side_item1"
+                app:layout_constraintTop_toTopOf="@+id/separation_guideline"
                 app:layout_constraintVertical_bias="0.441"
                 tools:ignore="MissingConstraints" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

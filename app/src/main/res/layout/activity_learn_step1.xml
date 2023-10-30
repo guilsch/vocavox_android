@@ -67,35 +67,67 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header_layout">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/question_card_bg"
+            android:background="@drawable/answer_card_bg"
             app:layout_constraintBottom_toTopOf="@+id/horizontal_central_guideline2"
             app:layout_constraintEnd_toStartOf="@+id/right_guideline"
             app:layout_constraintStart_toStartOf="@+id/left_guideline"
             app:layout_constraintTop_toTopOf="@+id/top_guideline">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/separation_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
             <TextView
-                android:id="@+id/question_side_item1_step1"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textColor="@color/white"
-                android:textSize="30sp"
+                android:id="@+id/answer_side_item1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|center_horizontal"
+                android:padding="15dp"
+                android:text="item1"
+                android:textColor="@color/blue3"
+                android:textSize="@dimen/XXL"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/separation_guideline"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.441"
                 tools:ignore="MissingConstraints" />
 
+            <ImageView
+                android:id="@+id/speaker_ic"
+                android:layout_width="@dimen/ic_size"
+                android:layout_height="@dimen/ic_size"
+                app:layout_constraintBottom_toTopOf="@+id/answer_side_item1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/selector_speaker" />
+
+            <TextView
+                android:id="@+id/answer_side_item2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center|top"
+                android:text="TextView"
+                android:textColor="@color/blue3"
+                android:textSize="@dimen/XXL"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/separation_guideline"
+                app:layout_constraintVertical_bias="0" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

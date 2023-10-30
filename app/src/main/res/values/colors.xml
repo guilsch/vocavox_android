@@ -90,7 +90,7 @@
     <color name="back_button_stroke">#8A8A8A</color>
 
     <!-- Header -->
-    <color name="header_bg">#FBFBFB</color>
+    <color name="header_bg">#FAEFEFEF</color>
 
     <!-- Explore activity -->
     <color name="adapter_card_list_view_bg">#FFFFFF</color>

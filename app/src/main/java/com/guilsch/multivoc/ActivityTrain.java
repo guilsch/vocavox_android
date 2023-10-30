@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -37,6 +38,8 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
     private TextView mTextViewQuestion;
     private TextView mTextViewItem2;
     private TextView cardsLeftText;
+
+    private ImageView speaker;
 
     // Progress Bar
     private ProgressBar CardsRemainingPB;
@@ -190,8 +193,8 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
 
         } else if (v == mBackToMenuRevisionButton) {
             onBackPressed();
-
-        } else {
+        }
+        else {
             throw new IllegalStateException("Unknown clicked view : " + v);
         }
     }
@@ -262,6 +265,7 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
         mTextViewQuestion = findViewById(R.id.answer_side_item2);
         mTextViewItem2 = findViewById(R.id.answer_side_item1);
         cardsLeftText = findViewById(R.id.cards_left);
+        speaker = findViewById(R.id.speaker_ic);
 
         cardsLeftText.setText(String.valueOf(Param.GLOBAL_DECK.getCardsToReviewNb()));
         updateCardsRemainingProgressBar();
@@ -273,6 +277,8 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
 
         // Pronunciation
         textToSpeech.speak(currentCard.getItem2(), TextToSpeech.QUEUE_FLUSH, null, null);
+        speaker.setOnClickListener(v -> textToSpeech.speak(currentCard.getItem2(),
+                TextToSpeech.QUEUE_FLUSH, null, null));
 
         // Depends on the direction of revision for each card
         if (this.langDirection == 1) {

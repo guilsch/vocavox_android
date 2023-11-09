@@ -12,24 +12,8 @@ import java.util.Set;
  */
 public class Pref {
 
-    SharedPreferences prefs;
-    Context context;
-
     public static SharedPreferences getPrefs(Context context){
         return context.getSharedPreferences(Param.APP_PREF, Context.MODE_PRIVATE);
-    }
-
-    public static void saveAllPreferences (Context context) {
-        SharedPreferences.Editor editor = getPrefs(context).edit();
-        editor.putString(Param.FOLDER_PATH_KEY, Param.FOLDER_PATH);
-        editor.putString(Param.EN_FILE_ID_KEY, Param.EN_FILE_ID);
-        editor.putString(Param.FR_FILE_ID_KEY, Param.FR_FILE_ID);
-        editor.putString(Param.GE_FILE_ID_KEY, Param.GE_FILE_ID);
-        editor.putString(Param.RU_FILE_ID_KEY, Param.RU_FILE_ID);
-        editor.putString(Param.IT_FILE_ID_KEY, Param.IT_FILE_ID);
-        editor.putString(Param.SP_FILE_ID_KEY, Param.SP_FILE_ID);
-        editor.putString(Param.FOLDER_ID_KEY, Param.FOLDER_ID);
-        editor.commit();
     }
 
     /**
@@ -49,6 +33,7 @@ public class Pref {
         Param.FOLDER_ID = getPrefs(context).getString(Param.FOLDER_ID_KEY, Param.FOLDER_ID_DEFAULT);
         Param.LANG_DIRECTION_FREQ = getPrefs(context).getInt(Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ_DEFAULT);
         Param.LAST_LANG = getPrefs(context).getInt(Param.LAST_LANG_KEY, Param.LAST_LANG_DEFAULT);
+        Param.AUTOMATIC_SPEECH = getPrefs(context).getBoolean(Param.AUTOMATIC_SPEECH_KEY, Param.AUTOMATIC_SPEECH_DEFAULT);
         editor.commit();
     }
 

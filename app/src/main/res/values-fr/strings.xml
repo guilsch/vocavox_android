@@ -73,6 +73,7 @@
     <string name="lang_direction_freq_setting">Proportion de cartes revues dans le sens inverse :</string>
     <string name="folder_path_setting">Chemin du dossier :</string>
     <string name="default_setting">Défaut</string>
+    <string name="setting_play_speech">Prononciation automatique des mots :</string>
 
     <!-- Learn   -->
     <string name="learn_header_str">Apprendre</string>

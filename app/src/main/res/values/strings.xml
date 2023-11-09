@@ -74,6 +74,7 @@
     <string name="lang_direction_freq_setting">Language direction frequency :</string>
     <string name="folder_path_setting">Folder path :</string>
     <string name="default_setting">Default</string>
+    <string name="setting_play_speech">Automatic pronounciation of words :</string>
 
     <!-- Learn   -->
     <string name="learn_header_str">Learn</string>

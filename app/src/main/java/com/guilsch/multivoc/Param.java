@@ -85,7 +85,10 @@ public class Param {
 
     public static String FILE_ID;
 
+    // Settings
     public static final int LANG_DIRECTION_FREQ_DEFAULT = 0;
+    public static final boolean AUTOMATIC_SPEECH_DEFAULT = true;
+
 
     public static String APP_PREF = "app_pref";
 
@@ -109,11 +112,10 @@ public class Param {
     public static String FOLDER_ID = "Undefined";
     public static int LANG_DIRECTION_FREQ;
     public static int LAST_LANG;
-
+    public static boolean AUTOMATIC_SPEECH;
 
     // Keys
     public static final String FOLDER_PATH_KEY = "folder_path_key";
-//    public static final String USER_LANGUAGE_KEY = "user_language_key";
     public static final String EN_FILE_ID_KEY = "en_file_id_key";
     public static final String FR_FILE_ID_KEY = "fr_file_id_key";
     public static final String GE_FILE_ID_KEY = "ge_file_id_key";
@@ -123,6 +125,7 @@ public class Param {
     public static final String FOLDER_ID_KEY = "folder_id_key";
     public static final String LANG_DIRECTION_FREQ_KEY = "lang_direction_freq_key";
     public static final String LAST_LANG_KEY = "last_lang_key";
+    public static final String AUTOMATIC_SPEECH_KEY = "automatic_speech_key";
 
     // First launch check
     public static Boolean FIRST_LAUNCH = Boolean.TRUE;

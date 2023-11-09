@@ -8,16 +8,14 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 //import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,6 +30,7 @@ public class ActivitySettings extends AppCompatActivity {
     private TextView langDirectionFreqIndicator;
     private DiscreteSeekBar langDirectionFreqSeekBar;
     private ConstraintLayout backLayout;
+    private Switch automaticSpeech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +56,12 @@ public class ActivitySettings extends AppCompatActivity {
         langDirectionFreqSeekBar.setProgress(Param.LANG_DIRECTION_FREQ);
         langDirectionFreqSaveButton.setOnClickListener(view -> langDirectionFreqSaveClick());
 
-    }
+        // Automatic switch
+        automaticSpeech = findViewById(R.id.play_speech_switch);
+        automaticSpeech.setChecked(Param.AUTOMATIC_SPEECH);
+        automaticSpeech.setOnClickListener(v -> automaticSpeechSwitch());
 
+    }
     /***
      * Launch dialog box to select data folder
      */
@@ -143,6 +146,11 @@ public class ActivitySettings extends AppCompatActivity {
         Param.LANG_DIRECTION_FREQ = langDirectionFreqSeekBar.getProgress();
         Pref.savePreference(ActivitySettings.this, Param.LANG_DIRECTION_FREQ_KEY, Param.LANG_DIRECTION_FREQ);
         langDirectionFreqIndicator.setText(Param.LANG_DIRECTION_FREQ + "/10");
+    }
+
+    public void automaticSpeechSwitch() {
+        Param.AUTOMATIC_SPEECH = !Param.AUTOMATIC_SPEECH;
+        Pref.savePreference(ActivitySettings.this, Param.AUTOMATIC_SPEECH_KEY, Param.AUTOMATIC_SPEECH);
     }
 
     @Override

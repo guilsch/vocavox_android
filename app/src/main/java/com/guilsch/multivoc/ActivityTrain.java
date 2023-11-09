@@ -276,7 +276,9 @@ public class ActivityTrain extends AppCompatActivity implements View.OnClickList
         mAnswerButton4.setOnClickListener(this);
 
         // Pronunciation
-        textToSpeech.speak(currentCard.getItem2(), TextToSpeech.QUEUE_FLUSH, null, null);
+        if (Param.AUTOMATIC_SPEECH) {
+            textToSpeech.speak(currentCard.getItem2(), TextToSpeech.QUEUE_FLUSH, null, null);
+        }
         speaker.setOnClickListener(v -> textToSpeech.speak(currentCard.getItem2(),
                 TextToSpeech.QUEUE_FLUSH, null, null));
 

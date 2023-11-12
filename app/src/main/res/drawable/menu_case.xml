@@ -8,12 +8,9 @@
                 android:width="0dp"
                 android:color="#BABABA" />
 
-            <gradient
-                android:startColor="@color/menu_layouts_bg_on_touch"
-                android:endColor="@color/menu_layouts_bg_on_touch"
-                android:type="linear"
-                android:gradientRadius="10dp"
-                android:angle="0"/>
+            <solid
+                android:color="@color/main_orange4"
+                />
         </shape>
     </item>
 
@@ -26,12 +23,9 @@
                 android:width="0dp"
                 android:color="#BABABA" />
 
-            <gradient
-                android:startColor="@color/menu_layouts_bg"
-                android:endColor="@color/menu_layouts_bg"
-                android:type="linear"
-                android:gradientRadius="10dp"
-                android:angle="0"/>
+            <solid
+                android:color="@color/grey5"
+                />
         </shape>
     </item>
 </selector>

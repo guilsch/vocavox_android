@@ -35,7 +35,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_chevron" />
+                app:srcCompat="@drawable/ic_chevron_back" />
 
             <TextView
                 android:id="@+id/back_text"
@@ -44,7 +44,7 @@
                 android:layout_marginStart="5dp"
                 android:gravity="center"
                 android:text="@string/button_back_str"
-                android:textColor="#000000"
+                android:textColor="@color/header_back"
                 android:textSize="@dimen/back_text"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -148,8 +148,7 @@
                 android:textSize="@dimen/button_std_text_size"
                 android:textStyle="bold"
                 app:buttonCornerRadius="10dp"
-                app:buttonGradientEndColor="@color/main"
-                app:buttonGradientStartColor="#FF9800"
+                app:buttonColor="@color/button_std_bg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

@@ -38,11 +38,34 @@
 
     <color name="orange1">#FA6D00</color>
 
+
+
+    <color name="main_orange1">#ff8500</color>
+    <color name="main_orange2">#ff9100</color>
+    <color name="main_orange3">#ff9e00</color>
+    <color name="main_orange4">#FFC360</color>
+    <color name="main_orange5">#FDCB79</color>
+    <color name="main_orange6">#FFDBA0</color>
+    <color name="main_orange7">#FFE5BB</color>
+    <color name="main_orange8">#FFF1DB</color>
+    <color name="main_orange9">#FFFCF8</color>
+
+    <color name="sec_blue1">#0077b6</color>
+    <color name="sec_blue2">#0096c7</color>
+    <color name="sec_blue3">#00b4d8</color>
+
+    <color name="th_grey1">#0E1013</color>
+    <color name="th_grey2">#191D22</color>
+
+<!--    icons-->
+    <color name="ic_std">@color/th_grey1</color>
+
+
 <!--buttons-->
     <color name="button_std_text">@color/white</color>
-    <color name="button_std_bg">@color/blue9</color>
+    <color name="button_std_bg">@color/main_orange2</color>
     <color name="button_std_bg2">@color/blue_standard</color>
-    <color name="button_std_bg_on_click">#84A1B5</color>
+    <color name="button_std_bg_on_click">@color/main_orange4</color>
 
 <!--question-->
     <color name="rectangle_bg">@color/navy1</color>
@@ -79,7 +102,7 @@
     <color name="grey_font">#FF393D40</color>
 
     <!-- Learn Activity -->
-    <color name="card_selected">@color/orange1</color>
+    <color name="card_selected">@color/main_orange7</color>
 
 
     <!-- On click -->
@@ -90,11 +113,12 @@
     <color name="back_button_stroke">#8A8A8A</color>
 
     <!-- Header -->
-    <color name="header_bg">#FAEFEFEF</color>
+    <color name="header_bg">@color/white</color>
+    <color name="header_back">@color/main_orange1</color>
 
     <!-- Explore activity -->
     <color name="adapter_card_list_view_bg">#FFFFFF</color>
-    <color name="adapter_card_list_view_bg_on_touch">#DFDFDF</color>
+    <color name="adapter_card_list_view_bg_on_touch">@color/main_orange8</color>
 
     <!-- Text buttons-->
     <color name="delete_text_button">@color/red</color>
@@ -103,7 +127,7 @@
     <color name="std_text_button_on_click">#000000</color>
 
 <!--    Edit activity-->
-    <color name="radio_button_state_checked_bg_color">@color/orange1</color>
+    <color name="radio_button_state_checked_bg_color">@color/main_orange1</color>
     <color name="radio_button_state_unchecked_bg_color">#E3E3E3</color>
     <color name="radio_button_state_touched_bg_color">#FFFFFF</color>
 

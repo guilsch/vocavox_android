@@ -4,10 +4,10 @@
 
     <stroke
         android:width="0dp"
-        android:color="#E8E8E8" />
+        android:color="@color/black" />
 
     <solid
-        android:color="@color/grey5"
+        android:color="@color/main_orange7"
         />
 
 </shape>

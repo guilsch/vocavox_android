@@ -12,22 +12,12 @@
         android:layout_width="94dp"
         android:layout_height="104dp"
         android:indeterminate="true"
-        android:indeterminateTint="@color/main"
+        android:indeterminateTint="@color/main_orange1"
         android:progressTint="@color/blue4"
         android:thickness="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="46dp"
-        android:layout_height="35dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_planet_earth_global" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

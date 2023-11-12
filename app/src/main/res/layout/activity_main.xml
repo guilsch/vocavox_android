@@ -8,20 +8,49 @@
     tools:context=".ActivityMain">
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/central_guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3"/>
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/central_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.6"/>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/main_orange1"
+        app:layout_constraintBottom_toTopOf="@+id/central_guideline1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="222dp"
+            android:layout_height="183dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_explore" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/gard_blue_bg"
+        android:background="@drawable/ic_waves"
         app:layout_constraintBottom_toTopOf="@+id/central_guideline"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/central_guideline1"
         tools:layout_editor_absoluteX="16dp">
 
         <TextView
@@ -30,28 +59,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="64dp"
             android:fontFamily="@font/oxygen"
             android:gravity="center"
             android:paddingHorizontal="50dp"
             android:text="@string/choose_language"
-            android:textColor="@color/white"
+            android:textColor="@color/grey1"
             android:textSize="20sp"
             android:textStyle="bold"
             android:typeface="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="222dp"
-            android:layout_height="183dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_explore" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -66,8 +84,8 @@
 
         <life.sabujak.roundedbutton.RoundedButton
             android:id="@+id/start"
-            android:layout_width="170dp"
-            android:layout_height="50dp"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
             android:layout_marginBottom="64dp"
             android:gravity="center"
             android:padding="10dp"
@@ -76,9 +94,8 @@
             android:textSize="@dimen/button_std_text_size"
             android:textAllCaps="true"
             android:textStyle="bold"
-            app:buttonCornerRadius="30dp"
-            app:buttonGradientEndColor="@color/button_std_bg"
-            app:buttonGradientStartColor="@color/blue7"
+            app:buttonCornerRadius="5dp"
+            app:buttonColor="@color/main_orange1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -93,12 +110,11 @@
             android:soundEffectsEnabled="false"
             android:spinnerMode="dialog"
             android:textAlignment="center"
+            android:background="@drawable/selector_spinner_language_bg"
             app:layout_constraintBottom_toTopOf="@+id/start"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

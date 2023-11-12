@@ -40,17 +40,17 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:src="@drawable/ic_de"
-            app:civ_border_color="@color/grey_font"
+            app:civ_border_color="@color/grey1"
             app:civ_border_width="2dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/setting_im"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="36dp"
-            android:layout_marginEnd="36dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="31dp"
             android:src="@drawable/setting_wheel_selector"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -114,7 +114,7 @@
                 android:text="@string/menu_train_title_str"
                 android:textAlignment="center"
                 android:textColor="@color/grey_font"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <TextView
                 android:id="@+id/cards_to_train_nb"
@@ -170,7 +170,7 @@
                 android:text="@string/menu_learn_title_str"
                 android:textAlignment="center"
                 android:textColor="@color/grey_font"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <ImageView
                 android:id="@+id/learn_arrow"

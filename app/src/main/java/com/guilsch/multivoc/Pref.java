@@ -23,7 +23,6 @@ public class Pref {
     public static void retrieveAllPreferences (Context context) {
         SharedPreferences.Editor editor = getPrefs(context).edit();
         Param.FIRST_LAUNCH = getPrefs(context).getBoolean(Param.FIRST_LAUNCH_KEY, Boolean.TRUE);
-        Param.FOLDER_PATH = getPrefs(context).getString(Param.FOLDER_PATH_KEY, Param.FOLDER_PATH_DEFAULT);
         Param.EN_FILE_ID = getPrefs(context).getString(Param.EN_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
         Param.FR_FILE_ID = getPrefs(context).getString(Param.FR_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
         Param.GE_FILE_ID = getPrefs(context).getString(Param.GE_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);

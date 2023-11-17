@@ -691,38 +691,6 @@ public class Utils {
         return isConnected;
     }
 
-    /**
-     * Copy the content from a directory to another. Used when changing files directory in settings
-     * @param originalPathStr
-     * @param newPathStr
-     * @throws IOException
-     */
-    public static void moveDirectory(String originalPathStr, String newPathStr) throws IOException {
-        Path originalPath = Paths.get(originalPathStr);
-        Path newPath = Paths.get(newPathStr);
-
-        if (!isDirectoryEmpty(originalPathStr)) {
-            System.out.println("Directory is not empty");
-
-            Files.walk(originalPath).forEach(source -> {
-                if (source.getFileName().toString().startsWith(Param.FILE_NAME_PREFIX)) {
-                    Path destination = newPath.resolve(originalPath.relativize(source));
-                    try {
-                        Files.copy(source, destination);
-                        System.out.println("Files moved");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-        } else {
-            System.out.println("Directory is empty");
-        }
-
-        System.out.println("Moving files task done");
-    }
-
     public static String formatPath(String path) {
         if (path.startsWith("/")) {
             path = path.substring(1);
@@ -731,54 +699,6 @@ public class Utils {
             path = path + "/";
         }
         return path;
-    }
-
-    public static void deleteDirectoryFiles(String path) throws IOException {
-
-        System.out.println("Deleting original directory...");
-
-//        Path directory = Paths.get(path);
-//        if (Files.exists(directory)) {
-//            Files.walk(directory)
-//                    .sorted(Comparator.reverseOrder())
-//                    .map(Path::toFile)
-//                    .forEach(File::delete);
-//        }
-
-        File folder = new File(path);
-
-        if (folder.exists() && folder.isDirectory()) {
-            File[] files = folder.listFiles();
-
-            if (files != null) {
-                for (File file : files) {
-                    if (file.isFile() && file.getName().startsWith(Param.FILE_NAME_PREFIX)) {
-                        file.delete();
-                    }
-                }
-            }
-        }
-        System.out.println("Original directory deleted");
-    }
-
-
-    public static boolean isDirectoryEmpty(String directoryPath) {
-        File directory = new File(directoryPath);
-        if (!directory.isDirectory()) {
-            throw new IllegalArgumentException("Path specified is not a directory");
-        }
-        String[] files = directory.list();
-        return files == null || files.length == 0;
-    }
-
-    /***
-     * Set default folder path to match device files system
-     * @param context
-     */
-    public static void setDefaultPath(Context context) {
-        File file = new File(context.getFilesDir(), "Multivoc");
-        Param.FOLDER_PATH_DEFAULT = formatPath(file.getAbsolutePath());
-        System.out.println("New default path folder : " + Param.FOLDER_PATH_DEFAULT);
     }
 
     /***

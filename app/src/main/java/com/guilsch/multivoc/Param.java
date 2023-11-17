@@ -15,7 +15,6 @@ import java.util.List;
 public class Param {
 
     public static final String FILE_NAME_PREFIX = "words_database_";
-    public static String FOLDER_PATH_DEFAULT = "storage/emulated/0/Multivoc/";
     public static String FOLDER_PATH = "storage/emulated/0/Multivoc/";
     public static final String FOLDER_ID_DEFAULT = "";
     public static final String FILE_ID_UNDEFINED = "undefined";

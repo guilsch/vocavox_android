@@ -1,6 +1,5 @@
 package com.guilsch.multivoc;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -22,7 +21,6 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import java.io.File;
-import java.io.IOException;
 
 import life.sabujak.roundedbutton.RoundedButton;
 import permissions.dispatcher.NeedsPermission;
@@ -55,27 +53,15 @@ public class ActivityMain extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, permissionsWriteStorage, requestWriteExternalStorage);
         }
 
-//        utilsPermissions = new UtilsPermissions(this);
-//        if (!utilsPermissions.checkStoragePermissions(this)) {
-//            utilsPermissions.requestForStoragePermissions(this);
-//        }
-
-//        ActivityMainPermissionsDispatcher.requestStoragePermissionWithPermissionCheck(this);
-
 //        TODO: Ajouter la transition de zoom
 //        Transition zoom = TransitionInflater.from(this).inflateTransition(R.transition.zoom);
 //        getWindow().setEnterTransition(zoom);
 
-        ////// Set default path folder
-        Utils.setDefaultPath(ActivityMain.this);
+        ////// Set path folder
+        setPath();
 
         ////// Retrieve preferences variables
         Pref.retrieveAllPreferences(this);
-
-//        if (Param.FIRST_LAUNCH) {
-//            Intent intent = new Intent(this, ActivityFirstLaunch.class);
-//            startActivity(intent);
-//        }
 
         ////// Setup visuals
         setContentView(R.layout.activity_main);
@@ -86,13 +72,22 @@ public class ActivityMain extends AppCompatActivity {
         ////// Manage events
 
         // Spinner
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Param.TARGET_LANGUAGES);
         AdapterSpinnerLanguage adapter = new AdapterSpinnerLanguage(this);
         spinner.setAdapter(adapter);
         spinner.setSelection(Param.LAST_LANG);
 
         // Buttons
         start.setOnClickListener(v -> onStartClick());
+    }
+
+    /***
+     * Set folder path to match device files system. Folder path is supposed to be the same
+     * everytime and should stay in the application files
+     */
+    public void setPath() {
+        File file = new File(this.getFilesDir(), "database");
+        Param.FOLDER_PATH = Utils.formatPath(file.getAbsolutePath());
+        System.out.println("Path folder : " + Param.FOLDER_PATH);
     }
 
     /**

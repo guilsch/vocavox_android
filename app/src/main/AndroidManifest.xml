@@ -26,9 +26,6 @@
             android:name=".ActivityMenu"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ActivityFirstLaunch"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".ActivityEditCard"
             android:screenOrientation="portrait"/>
         <activity

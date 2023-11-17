@@ -1,5 +1,6 @@
 package com.guilsch.multivoc;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -9,6 +10,7 @@ import androidx.transition.Transition;
 import androidx.transition.TransitionManager;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
@@ -19,8 +21,14 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
-import life.sabujak.roundedbutton.RoundedButton;
+import java.io.File;
+import java.io.IOException;
 
+import life.sabujak.roundedbutton.RoundedButton;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
+
+@RuntimePermissions
 public class ActivityMain extends AppCompatActivity {
 
     private RoundedButton start;
@@ -46,6 +54,13 @@ public class ActivityMain extends AppCompatActivity {
         if (writePermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, permissionsWriteStorage, requestWriteExternalStorage);
         }
+
+//        utilsPermissions = new UtilsPermissions(this);
+//        if (!utilsPermissions.checkStoragePermissions(this)) {
+//            utilsPermissions.requestForStoragePermissions(this);
+//        }
+
+//        ActivityMainPermissionsDispatcher.requestStoragePermissionWithPermissionCheck(this);
 
 //        TODO: Ajouter la transition de zoom
 //        Transition zoom = TransitionInflater.from(this).inflateTransition(R.transition.zoom);
@@ -168,6 +183,13 @@ public class ActivityMain extends AppCompatActivity {
         Utils.saveTempDataFile();
     }
 
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        // Passer les résultats à votre classe utilitaire
+//        UtilsIO.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+//    }
+
     /**
      * Depending on the user language setup in the parameters, defines the corresponding flag in
      * the parameter FLAG_ICON_USER used in the visuals
@@ -253,5 +275,14 @@ public class ActivityMain extends AppCompatActivity {
         Intent menuActivity = new Intent(getApplicationContext(), ActivityMenu.class);
         startActivity(menuActivity);
         finish();
+    }
+
+    /**
+     * Permissions methods
+     */
+    @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void requestStoragePermission() {
+        // Code to be executed when permission is granted
+//        Toast.makeText(this, "Storage permission granted!", Toast.LENGTH_SHORT).show();
     }
 }

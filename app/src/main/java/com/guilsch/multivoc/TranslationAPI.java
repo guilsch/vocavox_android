@@ -3,13 +3,13 @@ package com.guilsch.multivoc;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+
 import org.json.JSONArray;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
 
@@ -20,7 +20,7 @@ public class TranslationAPI extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... strings) {
 
-        String[] strArr = (String[]) strings;
+        String[] strArr = strings;
         String str = "";
 
         try {
@@ -34,55 +34,65 @@ public class TranslationAPI extends AsyncTask<String, String, String> {
             sb.append("&dt=t&q=");
             sb.append(encode);
 
-            HttpResponse execute = new DefaultHttpClient().execute(new HttpGet(sb.toString()));
-            StatusLine statusLine = execute.getStatusLine();
+            OkHttpClient client = new OkHttpClient();
 
-            if (statusLine.getStatusCode() == 200) {
+            Request request = new Request.Builder()
+                    .url(sb.toString())
+                    .build();
 
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                execute.getEntity().writeTo(byteArrayOutputStream);
+            Response response = client.newCall(request).execute();
 
-                String byteArrayOutputStream2 = byteArrayOutputStream.toString();
-                byteArrayOutputStream.close();
+            if (response.isSuccessful()) {
+                ResponseBody responseBody = response.body();
+                if (responseBody != null) {
+                    String responseBodyString = responseBody.string();
 
-                JSONArray jSONArray = new JSONArray(byteArrayOutputStream2).getJSONArray(0);
-                String str2 = str;
+                    JSONArray jsonArray = new JSONArray(responseBodyString).getJSONArray(0);
+                    StringBuilder result = new StringBuilder();
 
-                for (int i = 0; i < jSONArray.length(); i++) {
-                    JSONArray jSONArray2 = jSONArray.getJSONArray(i);
-                    StringBuilder sb2 = new StringBuilder();
-                    sb2.append(str2);
-                    sb2.append(jSONArray2.get(0).toString());
-                    str2 = sb2.toString();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONArray jsonArray2 = jsonArray.getJSONArray(i);
+                        result.append(jsonArray2.get(0).toString());
+                    }
+
+                    return result.toString();
                 }
-
-                return str2;
+            } else {
+                throw new IOException("Request failed with code: " + response.code());
             }
 
-            execute.getEntity().getContent().close();
-            throw new IOException(statusLine.getReasonPhrase());
-
         } catch (Exception e) {
-            Log.e("translate_api",e.getMessage());
-            listener.onError(e);
+            Log.e("translate_api", e.getMessage());
+            if (listener != null) {
+                listener.onError(e);
+            }
             return str;
         }
+        return str;
     }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        listener.onStartTranslation();
+        if (listener != null) {
+            listener.onStartTranslation();
+        }
     }
+
     @Override
     protected void onPostExecute(String text) {
-        listener.onCompleted(text);
+        if (listener != null) {
+            listener.onCompleted(text);
+        }
     }
-    public interface OnTranslationCompleteListener{
+
+    public interface OnTranslationCompleteListener {
         void onStartTranslation();
         void onCompleted(String text);
         void onError(Exception e);
     }
-    public void setOnTranslationCompleteListener(OnTranslationCompleteListener listener){
+
+    public void setOnTranslationCompleteListener(OnTranslationCompleteListener listener) {
         this.listener = listener;
     }
 }

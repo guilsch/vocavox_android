@@ -112,35 +112,6 @@ public class Utils {
         }
     }
 
-    public static void initParam() {
-
-        // Set user language from locale
-        setUserLanguageParam();
-
-        // Set target languages variables
-        Param.TARGET_LANGUAGE_ISO = Utils.getLanguageISOName(Param.TARGET_LANGUAGE);
-
-        // Set Data path
-        Param.DATA_FILE = Utils.generateDataFileName();
-        Param.setDataPath();
-
-        // Set File ID
-        Utils.setFileID();
-
-        // Check data file
-        if (!(new File(Param.DATA_PATH)).exists()) {
-            System.out.println(Param.DATA_PATH + " doesn't exist yet");
-            try {
-                Utils.createDataFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        else {
-            System.out.println(Param.DATA_PATH + " already exists");
-        }
-    }
-
     /**
      * Initializes the global deck that will be used everywhere in the application
      */
@@ -342,39 +313,6 @@ public class Utils {
         return languageStringName;
     }
 
-    public static void createDataFile () throws IOException {
-        // workbook object
-        XSSFWorkbook workbook = new XSSFWorkbook();
-
-        // spreadsheet object
-        XSSFSheet sheet = workbook.createSheet(Param.USER_LANGUAGE + " - " + Param.TARGET_LANGUAGE + " vocabulary");
-
-        // creating a row object
-        XSSFRow header = sheet.createRow(0);
-
-        int cellid = 0;
-
-        for (Object obj : Param.FIELDS) {
-            Cell cell = header.createCell(cellid++);
-            cell.setCellValue((String)obj);
-        }
-
-
-        // Create file with its parents folders
-        File file = new File(Param.DATA_PATH);
-
-        if (!file.getParentFile().exists()) {
-            file.getParentFile().mkdirs();
-        }
-
-        FileOutputStream out = new FileOutputStream(file);
-
-        workbook.write(out);
-        out.close();
-
-        System.out.println(Param.DATA_PATH + " has been created");
-    }
-
     public static int nextStateForButton (int currentState) {
         int nextState;
 
@@ -525,6 +463,31 @@ public class Utils {
         return (index);
     }
 
+    public static void initParam() {
+
+        // Set user language from locale
+        Utils.setUserLanguageParam();
+
+        // Set target languages variables
+        Param.TARGET_LANGUAGE_ISO = Utils.getLanguageISOName(Param.TARGET_LANGUAGE);
+
+        // Set Data path
+        Param.DATA_FILE = Utils.generateDataFileName();
+        Param.setDataPath();
+
+        // Set File ID
+        Utils.setFileID();
+
+        // Check data file
+        if (!(new File(Param.DATA_PATH)).exists()) {
+            System.out.println(Param.DATA_PATH + " doesn't exist yet");
+            createDataFile();
+        }
+        else {
+            System.out.println(Param.DATA_PATH + " already exists");
+        }
+    }
+
     public static void prepareDataFile() {
         try {
             FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
@@ -619,6 +582,45 @@ public class Utils {
             e.printStackTrace();
         }
 
+    }
+
+    static void createDataFile() {
+        // workbook object
+        XSSFWorkbook workbook = new XSSFWorkbook();
+
+        // spreadsheet object
+        XSSFSheet sheet = workbook.createSheet(Param.USER_LANGUAGE + " - " + Param.TARGET_LANGUAGE + " vocabulary");
+
+        // creating a row object
+        XSSFRow header = sheet.createRow(0);
+
+        int cellid = 0;
+
+        for (Object obj : Param.FIELDS) {
+            Cell cell = header.createCell(cellid++);
+            cell.setCellValue((String)obj);
+        }
+
+
+        // Create file with its parents folders
+        File file = new File(Param.DATA_PATH);
+
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
+        }
+
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+
+            workbook.write(out);
+            out.close();
+
+            System.out.println(Param.DATA_PATH + " has been created");
+        } catch (IOException e) {
+            e.printStackTrace();
+
+            // TODO inform the user
+        }
     }
 
     public static String getNewUUID() {

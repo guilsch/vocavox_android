@@ -71,7 +71,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/folder_path_button"
+        android:id="@+id/import_data_file_button"
         android:layout_width="52dp"
         android:layout_height="44dp"
         android:paddingLeft="5dp"

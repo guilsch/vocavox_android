@@ -1,8 +1,13 @@
 package com.guilsch.multivoc;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.DocumentsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,9 +36,12 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
+import java.nio.file.CopyOption;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,6 +52,9 @@ import java.util.Locale;
 import java.util.Queue;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
+import java.util.stream.Stream;
+
+import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 public class Utils {
 
@@ -823,4 +834,77 @@ public class Utils {
             }
         });
     }
+
+    /**
+     * Copy the content from a directory to another. Used when importing files in settings
+     * @param originalPathStr
+     * @param newPathStr
+     * @param overwrite
+     * @throws IOException
+     */
+    public static void moveDirectory(String originalPathStr, String newPathStr, boolean overwrite) throws IOException {
+        Path originalPath = Paths.get(originalPathStr);
+        Path newPath = Paths.get(newPathStr);
+
+        // Check if paths are valid
+        if (!Files.exists(originalPath) || !Files.isDirectory(originalPath) || !Files.exists(newPath)) {
+            throw new IllegalArgumentException("Paths are not valid.");
+        }
+
+        // Check if directory is empty
+        if (!isDirectoryEmpty(originalPath)) {
+            try (Stream<Path> walk = Files.walk(originalPath)) {
+                walk.forEach(source -> {
+                    if (source.getFileName().toString().startsWith(Param.FILE_NAME_PREFIX)) {
+                        Path destination = newPath.resolve(originalPath.relativize(source));
+                        try {
+                            CopyOption[] options = (overwrite) ?
+                                    new CopyOption[]{StandardCopyOption.REPLACE_EXISTING} :
+                                    new CopyOption[]{};
+                            Files.copy(source, destination, options);
+                            System.out.println("File moved : " + source);
+                        } catch (IOException e) {
+                            throw new RuntimeException("Error when moving the file : " + source, e);
+                        }
+                    }
+                });
+            }
+        } else {
+            System.out.println("Source directory is empty : " + originalPathStr);
+        }
+
+        System.out.println("Moving files task completed");
+    }
+
+
+
+    public static boolean isDirectoryEmpty(Path directory) throws IOException {
+//        listFilesAndDirectories(directory);
+        System.out.println("Searching for files and directories...");
+        directory.toFile().listFiles();
+        try (DirectoryStream<Path> dirStream = Files.newDirectoryStream(directory)) {
+            return !dirStream.iterator().hasNext();
+        }
+    }
+
+    private static void listFilesAndDirectories(Path directory) throws IOException {
+        System.out.println("Searching for files and directories...");
+        try (DirectoryStream<Path> dirStream = Files.newDirectoryStream(directory)) {
+            for (Path entry : dirStream) {
+                System.out.println((Files.isDirectory(entry) ? "Dossier : " : "Fichier : ") + entry.getFileName());
+            }
+        }
+    }
+
+//    public static boolean isDirectoryEmpty(String directoryPath) {
+//        File directory = new File(directoryPath);
+//        if (!directory.isDirectory()) {
+//            throw new IllegalArgumentException("Path specified is not a directory");
+//        }
+//        String[] files = directory.list();
+//
+//        System.out.println("Files list : " + files);
+//        return files == null || files.length == 0;
+//    }
+
 }

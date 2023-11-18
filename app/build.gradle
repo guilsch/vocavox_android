@@ -121,4 +121,7 @@ dependencies {
     // Seekbar
     implementation 'org.adw.library:discrete-seekbar:1.0.1'
 
+    // File utils
+    implementation 'androidx.activity:activity:1.3.0'
+
 }

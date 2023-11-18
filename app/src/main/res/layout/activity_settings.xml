@@ -82,6 +82,53 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:paddingVertical="10dp">
+
+<!--                <TextView-->
+<!--                    android:id="@+id/folder_path_title"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="3dp"-->
+<!--                    android:text="@string/folder_path_setting"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:textSize="@dimen/N"-->
+<!--                    android:textStyle="bold"-->
+<!--                    app:layout_constraintBottom_toTopOf="@+id/folder_path_text"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/folder_path_text"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="43dp"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:background="@drawable/bg_edit_card_std"-->
+<!--                    android:ems="10"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:inputType="none"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text="folder Path"-->
+<!--                    android:textSize="@dimen/N"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/folder_path_button"-->
+<!--                    tools:ignore="MissingConstraints" />-->
+
+                <ImageView
+                    android:id="@+id/import_data_file_button"
+                    android:layout_width="@dimen/ic_size"
+                    android:layout_height="@dimen/ic_size"
+                    android:src="@drawable/selector_path_folder"
+                    app:layout_constraintBottom_toBottomOf="@+id/folder_path_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/folder_path_text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:layout_marginTop="10dp"
                 android:paddingVertical="10dp">
 

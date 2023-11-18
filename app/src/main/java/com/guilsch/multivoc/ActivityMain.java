@@ -53,6 +53,13 @@ public class ActivityMain extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, permissionsWriteStorage, requestWriteExternalStorage);
         }
 
+        String[] permissionsManageStorage = {Manifest.permission.MANAGE_EXTERNAL_STORAGE};
+        int requestManageExternalStorage = 1;
+        int managePermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.MANAGE_EXTERNAL_STORAGE);
+        if (managePermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, permissionsManageStorage, requestManageExternalStorage);
+        }
+
 //        TODO: Ajouter la transition de zoom
 //        Transition zoom = TransitionInflater.from(this).inflateTransition(R.transition.zoom);
 //        getWindow().setEnterTransition(zoom);

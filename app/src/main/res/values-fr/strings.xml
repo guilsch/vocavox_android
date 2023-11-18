@@ -98,6 +98,7 @@
     <!-- Toasts   -->
     <string name="toast_msg_no_cards_to_learn">Aucune carte à apprendre...</string>
     <string name="toast_msg_no_cards_to_train">Aucune carte à réviser...</string>
+    <string name="toast_msg_data_file_imported">Le fichier a été importé avec succès !</string>
     <string name="trans_check_header">Editer la carte</string>
 
     <!-- Other -->

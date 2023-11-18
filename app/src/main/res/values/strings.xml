@@ -99,6 +99,7 @@
     <!-- Toasts   -->
     <string name="toast_msg_no_cards_to_learn">No cards to learn...</string>
     <string name="toast_msg_no_cards_to_train">No cards to train...</string>
+    <string name="toast_msg_data_file_imported">The data file has been imported with success!</string>
 
     <!-- Other -->
     <string name="button_back_home">Home</string>

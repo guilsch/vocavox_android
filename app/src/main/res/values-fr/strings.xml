@@ -62,6 +62,7 @@
     <string name="translate_header">Traduire</string>
     <string name="no_connection">Pas de connexion Internet ! Traduction impossible !</string>
     <string name="toast_msg_empty_translation">Pas de traduction</string>
+    <string name="trans_check_header">Editer la carte</string>
 
     <!--  Explore !-->
     <string name="explore_header">Explorer</string>
@@ -74,6 +75,11 @@
     <string name="folder_path_setting">Chemin du dossier :</string>
     <string name="default_setting">Défaut</string>
     <string name="setting_play_speech">Prononciation automatique des mots :</string>
+    <string name="setting_import_title">Importer les fichiers de données</string>
+    <string name="setting_export_title">Exporter les fichiers de données</string>
+    <!--    // Dialog-->
+    <string name="text_button_import">Importer</string>
+    <string name="dialog_import_title_str">Tous les fichiers de données trouvés vont être importés et vont écraser ceux déjà importés possédant les mêmes noms. Es-tu sûr d\'importer des nouveaux fichiers ?</string>
 
     <!-- Learn   -->
     <string name="learn_header_str">Apprendre</string>
@@ -99,7 +105,10 @@
     <string name="toast_msg_no_cards_to_learn">Aucune carte à apprendre...</string>
     <string name="toast_msg_no_cards_to_train">Aucune carte à réviser...</string>
     <string name="toast_msg_data_file_imported">Le fichier a été importé avec succès !</string>
-    <string name="trans_check_header">Editer la carte</string>
+    <string name="toast_msg_data_import_dir_failed">Un problème avec le répertoire est survenu, essaie à nouveau</string>
+    <string name="toast_msg_data_import_copy_failed">L\'importation a échoué, essaie à nouveau</string>
+    <string name="toast_msg_data_import_no_file_found">Aucun fichier de données n\'a été reconnu, vérifie et essaie à nouveau</string>
+    <string name="toast_msg_data_import_error">Erreur, essaie à nouveau</string>
 
     <!-- Other -->
     <string name="button_back_home">Menu</string>

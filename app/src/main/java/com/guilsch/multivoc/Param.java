@@ -141,4 +141,9 @@ public class Param {
     public static final int SORT_BY_TRAINING_DATE = 2;
     public static final int SORT_ALPHABETICALLY_USER = 3;
     public static final int SORT_ALPHABETICALLY_TARGET = 4;
+
+    // Setting activity, import file dialog
+    public static final String CONFIRM_KEY = "confirm_dialog_key";
+    public static final int CONFIRM_IMPORT = 201;
+    public static final int CONFIRM_CANCEL = 202;
 }

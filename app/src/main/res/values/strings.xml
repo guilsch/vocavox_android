@@ -75,6 +75,13 @@
     <string name="folder_path_setting">Folder path :</string>
     <string name="default_setting">Default</string>
     <string name="setting_play_speech">Automatic pronounciation of words :</string>
+    <string name="setting_import_title">Import data file</string>
+    <string name="setting_export_title">Export data file</string>
+
+    <!--    // Dialog-->
+    <string name="text_button_import">Import</string>
+    <string name="dialog_import_title_str">Data files found in this folder will be imported in the application and will overwrite those already imported with the same names. Do you really want to import new data files ?</string>
+
 
     <!-- Learn   -->
     <string name="learn_header_str">Learn</string>
@@ -100,6 +107,10 @@
     <string name="toast_msg_no_cards_to_learn">No cards to learn...</string>
     <string name="toast_msg_no_cards_to_train">No cards to train...</string>
     <string name="toast_msg_data_file_imported">The data file has been imported with success!</string>
+    <string name="toast_msg_data_import_dir_failed">Directory picked has an issue, please try again</string>
+    <string name="toast_msg_data_import_copy_failed">Import failed, please try again</string>
+    <string name="toast_msg_data_import_no_file_found">No data file found, make sure file exists in the chosen directory</string>
+    <string name="toast_msg_data_import_error">Error, please try again</string>
 
     <!-- Other -->
     <string name="button_back_home">Home</string>

@@ -78,6 +78,9 @@
     <string name="setting_import_title">Import data file</string>
     <string name="setting_export_title">Export data file</string>
 
+    <string name="setting_file_title">Data files</string>
+    <string name="setting_training_title">Training</string>
+
     <!--    // Dialog-->
     <string name="text_button_import">Import</string>
     <string name="dialog_import_title_str">Data files found in this folder will be imported in the application and will overwrite those already imported with the same names. Do you really want to import new data files ?</string>
@@ -106,11 +109,18 @@
     <!-- Toasts   -->
     <string name="toast_msg_no_cards_to_learn">No cards to learn...</string>
     <string name="toast_msg_no_cards_to_train">No cards to train...</string>
-    <string name="toast_msg_data_file_imported">The data file has been imported with success!</string>
+
+    <string name="toast_msg_data_file_imported">The importation is done!</string>
     <string name="toast_msg_data_import_dir_failed">Directory picked has an issue, please try again</string>
     <string name="toast_msg_data_import_copy_failed">Import failed, please try again</string>
-    <string name="toast_msg_data_import_no_file_found">No data file found, make sure file exists in the chosen directory</string>
+    <string name="toast_msg_data_import_no_file_found">No data file found, make sure files exist in the chosen directory</string>
     <string name="toast_msg_data_import_error">Error, please try again</string>
+
+    <string name="toast_msg_data_file_exported">The exportation to the download folder is done!</string>
+    <string name="toast_msg_data_export_dir_failed">Directory error, please try again</string>
+    <string name="toast_msg_data_export_copy_failed">Export failed, please try again</string>
+    <string name="toast_msg_data_export_no_file_found">No data file found, make sure file exists</string>
+    <string name="toast_msg_data_export_error">Error, please try again</string>
 
     <!-- Other -->
     <string name="button_back_home">Home</string>

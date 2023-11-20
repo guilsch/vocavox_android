@@ -9,18 +9,20 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.channels.FileChannel;
 
 public class ActivitySettings extends AppCompatActivity {
 
@@ -33,6 +35,7 @@ public class ActivitySettings extends AppCompatActivity {
     private int cptFiles = 0;
 
     private View importDataFileButton;
+    private View exportDataFileButton;
     private TextView langDirectionFreqSaveButton;
     private TextView langDirectionFreqIndicator;
     private DiscreteSeekBar langDirectionFreqSeekBar;
@@ -49,7 +52,11 @@ public class ActivitySettings extends AppCompatActivity {
 
 //       Import data file
         importDataFileButton = findViewById(R.id.import_data_file_button);
-        importDataFileButton.setOnClickListener(view -> importDataFile());
+        importDataFileButton.setOnClickListener(view -> launchImportTreeSelector());
+
+//       Export data file
+        importDataFileButton = findViewById(R.id.export_data_file_button);
+        importDataFileButton.setOnClickListener(view -> export());
 
 //      Language direction frequency
         langDirectionFreqSaveButton = findViewById(R.id.lang_direction_save_button);
@@ -71,7 +78,7 @@ public class ActivitySettings extends AppCompatActivity {
     /**
      * Launch intent to open document tree to choose folder for import
      */
-    public void importDataFile() {
+    public void launchImportTreeSelector() {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
         startActivityForResult(intent, REQUEST_CODE_IMPORT_DATA_FILE);
     }
@@ -117,7 +124,7 @@ public class ActivitySettings extends AppCompatActivity {
         listFiles(pickedDir);
 
         // Import files
-        int ans = copyFilesWithPrefix(pickedDir);
+        int ans = importAllFiles(pickedDir);
 
         return ans;
     }
@@ -151,6 +158,34 @@ public class ActivitySettings extends AppCompatActivity {
     }
 
     /**
+     * Inform the user if exportation went correctly or not
+     * @param ans
+     */
+    private void informExportationStatus(int ans) {
+        switch (ans) {
+            case SUCCESS:
+                Utils.showToast(ActivitySettings.this, getString(R.string.toast_msg_data_file_exported));
+                break;
+
+            case NO_DATA_FILE_FOUND:
+                Utils.showToast(ActivitySettings.this, getString(R.string.toast_msg_data_export_no_file_found));
+                break;
+
+            case COPY_FAILED:
+                Utils.showToast(ActivitySettings.this, getString(R.string.toast_msg_data_export_copy_failed));
+                break;
+
+            case DIR_FAILED:
+                Utils.showToast(ActivitySettings.this, getString(R.string.toast_msg_data_export_dir_failed));
+                break;
+
+            default:
+                Utils.showToast(ActivitySettings.this, getString(R.string.toast_msg_data_export_error));
+                break;
+        }
+    }
+
+    /**
      * List files in a given directory
      * @param directory
      */
@@ -171,7 +206,7 @@ public class ActivitySettings extends AppCompatActivity {
      * @param pickedDir
      * @return
      */
-    private int copyFilesWithPrefix(DocumentFile pickedDir) {
+    private int importAllFiles(DocumentFile pickedDir) {
         if (pickedDir != null && pickedDir.isDirectory()) {
             int ans;
             cptFiles = 0;
@@ -185,7 +220,7 @@ public class ActivitySettings extends AppCompatActivity {
             for (DocumentFile file : pickedDir.listFiles()) {
                 if (file.isFile() && file.getName().startsWith(Param.FILE_NAME_PREFIX)) {
                     File destinationFile = new File(appDirectory, file.getName());
-                    ans = copyFile(file.getUri(), destinationFile);
+                    ans = copyIndividualFileWithUri(file.getUri(), destinationFile);
 
                     if (ans == SUCCESS) {cptFiles += 1;}
                     else {
@@ -210,7 +245,7 @@ public class ActivitySettings extends AppCompatActivity {
      * @param destinationFile
      * @return
      */
-    private int copyFile(Uri sourceUri, File destinationFile) {
+    private int copyIndividualFileWithUri(Uri sourceUri, File destinationFile) {
         try {
             InputStream inputStream = getContentResolver().openInputStream(sourceUri);
             OutputStream outputStream = new FileOutputStream(destinationFile);
@@ -232,6 +267,81 @@ public class ActivitySettings extends AppCompatActivity {
             e.printStackTrace();
             return COPY_FAILED;
         }
+    }
+
+
+    private void export() {
+        int ans = exportAllFiles();
+        informExportationStatus(ans);
+    }
+
+    public static int exportAllFiles() {
+
+        String destinationDirectoryPath = Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                .getAbsolutePath();
+
+        File sourceDirectory = new File(Param.FOLDER_PATH);
+        File destinationDirectory = new File(destinationDirectoryPath);
+
+        if (!sourceDirectory.exists() || !sourceDirectory.isDirectory()) {
+            System.out.println("Source directory doesn't exist or is not valid");
+            return DIR_FAILED;
+        }
+
+        if (!destinationDirectory.exists()) {
+            destinationDirectory.mkdirs();
+        }
+
+        // List files
+        File[] files = sourceDirectory.listFiles();
+
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile() && file.getName().startsWith(Param.FILE_NAME_PREFIX)) {
+                    int ans = copyIndividualFileNoOverwrite(file, destinationDirectory);
+
+                    if (ans == COPY_FAILED){
+                        return COPY_FAILED;
+                    }
+                }
+            }
+        }
+        else {
+            return NO_DATA_FILE_FOUND;
+        }
+
+        return SUCCESS;
+    }
+
+    private static int copyIndividualFileNoOverwrite(File sourceFile, File destinationDirectory) {
+        String fileName = sourceFile.getName();
+        File destinationFile = new File(destinationDirectory, fileName);
+
+        int count = 1;
+        while (destinationFile.exists()) {
+            String baseName = fileName.substring(0, fileName.lastIndexOf('.'));
+            String extension = fileName.substring(fileName.lastIndexOf('.'));
+            String newFileName = baseName + "_" + count + extension;
+            destinationFile = new File(destinationDirectory, newFileName);
+            count++;
+        }
+
+        try (FileInputStream inputStream = new FileInputStream(sourceFile);
+             FileOutputStream outputStream = new FileOutputStream(destinationFile);
+             FileChannel sourceChannel = inputStream.getChannel();
+             FileChannel destinationChannel = outputStream.getChannel()) {
+
+            sourceChannel.transferTo(0, sourceChannel.size(), destinationChannel);
+
+            System.out.println("Copy of file : " + sourceFile.getAbsolutePath() + " towards " + destinationFile.getAbsolutePath());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error during the copy : " + e.getMessage());
+            return COPY_FAILED;
+        }
+        return SUCCESS;
     }
 
     ///// Lang direction

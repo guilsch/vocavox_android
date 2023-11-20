@@ -77,6 +77,10 @@
     <string name="setting_play_speech">Prononciation automatique des mots :</string>
     <string name="setting_import_title">Importer les fichiers de données</string>
     <string name="setting_export_title">Exporter les fichiers de données</string>
+
+    <string name="setting_file_title">Fichiers de données</string>
+    <string name="setting_training_title">Révision</string>
+
     <!--    // Dialog-->
     <string name="text_button_import">Importer</string>
     <string name="dialog_import_title_str">Tous les fichiers de données trouvés vont être importés et vont écraser ceux déjà importés possédant les mêmes noms. Es-tu sûr d\'importer des nouveaux fichiers ?</string>
@@ -104,11 +108,18 @@
     <!-- Toasts   -->
     <string name="toast_msg_no_cards_to_learn">Aucune carte à apprendre...</string>
     <string name="toast_msg_no_cards_to_train">Aucune carte à réviser...</string>
-    <string name="toast_msg_data_file_imported">Le fichier a été importé avec succès !</string>
+
+    <string name="toast_msg_data_file_imported">L\'importation \'est déroulée avec succès !</string>
     <string name="toast_msg_data_import_dir_failed">Un problème avec le répertoire est survenu, essaie à nouveau</string>
     <string name="toast_msg_data_import_copy_failed">L\'importation a échoué, essaie à nouveau</string>
     <string name="toast_msg_data_import_no_file_found">Aucun fichier de données n\'a été reconnu, vérifie et essaie à nouveau</string>
     <string name="toast_msg_data_import_error">Erreur, essaie à nouveau</string>
+
+    <string name="toast_msg_data_file_exported">L\'exportation vers le dossier de téléchargements s\'est déroulée avec succès!</string>
+    <string name="toast_msg_data_export_dir_failed">Un problème avec le répertoire est survenu, essaie à nouveau</string>
+    <string name="toast_msg_data_export_copy_failed">L\'exportation a échoué, essaie à nouveau</string>
+    <string name="toast_msg_data_export_no_file_found">Aucun fichier de données n\'a été reconnu, vérifie et essaie à nouveau</string>
+    <string name="toast_msg_data_export_error">Erreur, essaie à nouveau</string>
 
     <!-- Other -->
     <string name="button_back_home">Menu</string>

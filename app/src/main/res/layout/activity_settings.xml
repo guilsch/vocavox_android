@@ -79,170 +79,223 @@
             app:layout_constraintTop_toBottomOf="@+id/header_layout">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/add_cards_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="40dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:padding="0dp">
+                android:layout_height="wrap_content">
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/central_vert_guideline"
+                <TextView
+                    android:id="@+id/data_files_part_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/setting_file_title"
+                    android:textSize="@dimen/N"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/add_cards_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/add_cards_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent="0.5" />
-
-                <LinearLayout
-                    android:id="@+id/import_data_file_button"
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/bg_menu_square_layout"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/ic_folder" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:text="@string/setting_import_title"
-                        android:textColor="@color/grey_font"
-                        android:textStyle="normal" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/export_data_file_button"
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/bg_menu_square_layout"
-                    android:gravity="center"
-                    android:orientation="vertical"
+                    android:layout_marginHorizontal="0dp"
+                    android:orientation="horizontal"
+                    android:padding="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0">
+                    app:layout_constraintStart_toStartOf="parent">
 
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/ic_folder" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/central_vert_guideline"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:text="@string/setting_export_title"
-                        android:textColor="@color/grey_font"
-                        android:textStyle="normal" />
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="176dp" />
 
-                </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <LinearLayout
+                        android:id="@+id/import_data_file_button"
+                        android:layout_width="125dp"
+                        android:layout_height="125dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_menu_square_layout"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/central_vert_guideline"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:paddingVertical="10dp">
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/ic_import_files" />
 
-                <TextView
-                    android:id="@+id/lang_direction_freq_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:text="@string/lang_direction_freq_setting"
-                    android:textAllCaps="false"
-                    android:textSize="@dimen/N"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/lang_direction_freq_seekBar"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/setting_import_title"
+                            android:textColor="@color/grey_font"
+                            android:textStyle="normal" />
 
-                <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
-                    android:id="@+id/lang_direction_freq_seekBar"
-                    android:layout_width="0dp"
-                    android:layout_height="39dp"
-                    app:dsb_indicatorColor="@color/main_orange1"
-                    app:dsb_max="10"
-                    app:dsb_min="0"
-                    app:dsb_progressColor="@color/main_orange1"
-                    app:dsb_rippleColor="@color/main_orange1"
-                    app:dsb_trackColor="@color/main_orange1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/lang_direction_save_button"
-                    app:layout_constraintStart_toEndOf="@+id/lang_direction_freq_indicator" />
+                    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/lang_direction_save_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:textColor="@drawable/selector_text_button_save"
-                    android:text="@string/button_save"
-                    app:layout_constraintBottom_toBottomOf="@+id/lang_direction_freq_seekBar"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/lang_direction_freq_seekBar" />
+                    <LinearLayout
+                        android:id="@+id/export_data_file_button"
+                        android:layout_width="125dp"
+                        android:layout_height="125dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_menu_square_layout"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/central_vert_guideline"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0">
 
-                <TextView
-                    android:id="@+id/lang_direction_freq_indicator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0/10"
-                    app:layout_constraintBottom_toBottomOf="@+id/lang_direction_freq_seekBar"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/lang_direction_freq_seekBar" />
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/ic_export_files" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/setting_export_title"
+                            android:textColor="@color/grey_font"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:paddingVertical="10dp">
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/play_speech_text"
-                    android:layout_width="0dp"
+                    android:id="@+id/training_part_title"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:text="@string/setting_play_speech"
-                    android:textAllCaps="false"
+                    android:layout_marginVertical="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/setting_training_title"
                     android:textSize="@dimen/N"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/play_speech_switch"
+                    app:layout_constraintBottom_toTopOf="@id/constraintLayout5"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Switch
-                    android:id="@+id/play_speech_switch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:track="@drawable/selector_switch_track"
-                    android:thumb="@drawable/selector_switch_thumb"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingVertical="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/constraintLayout6"
+                    tools:layout_editor_absoluteY="21dp">
+
+                    <TextView
+                        android:id="@+id/lang_direction_freq_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:text="@string/lang_direction_freq_setting"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/N"
+                        android:textStyle="normal"
+                        app:layout_constraintBottom_toTopOf="@+id/lang_direction_freq_seekBar"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+                        android:id="@+id/lang_direction_freq_seekBar"
+                        android:layout_width="0dp"
+                        android:layout_height="39dp"
+                        app:dsb_indicatorColor="@color/main_orange1"
+                        app:dsb_max="10"
+                        app:dsb_min="0"
+                        app:dsb_progressColor="@color/main_orange1"
+                        app:dsb_rippleColor="@color/main_orange1"
+                        app:dsb_trackColor="@color/main_orange1"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/lang_direction_save_button"
+                        app:layout_constraintStart_toEndOf="@+id/lang_direction_freq_indicator" />
+
+                    <TextView
+                        android:id="@+id/lang_direction_save_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/button_save"
+                        android:textColor="@drawable/selector_text_button_save"
+                        app:layout_constraintBottom_toBottomOf="@+id/lang_direction_freq_seekBar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/lang_direction_freq_seekBar" />
+
+                    <TextView
+                        android:id="@+id/lang_direction_freq_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0/10"
+                        app:layout_constraintBottom_toBottomOf="@+id/lang_direction_freq_seekBar"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/lang_direction_freq_seekBar" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingVertical="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <TextView
+                        android:id="@+id/play_speech_text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/setting_play_speech"
+                        android:textAllCaps="false"
+                        android:textSize="@dimen/N"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/play_speech_switch"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Switch
+                        android:id="@+id/play_speech_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:thumb="@drawable/selector_switch_thumb"
+                        android:track="@drawable/selector_switch_track"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

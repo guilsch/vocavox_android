@@ -488,8 +488,9 @@ public class Utils {
 
         // Set File ID
         Utils.setFileID();
+    }
 
-        // Check data file
+    public static void checkFileExistence() {
         if (!(new File(Param.DATA_PATH)).exists()) {
             System.out.println(Param.DATA_PATH + " doesn't exist yet");
             createDataFile();
@@ -500,6 +501,11 @@ public class Utils {
     }
 
     public static void prepareDataFile() {
+
+        // Check data file
+        checkFileExistence();
+
+        // Prepare file
         try {
             FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
             Workbook workbook = WorkbookFactory.create(inputFile);

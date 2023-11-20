@@ -218,7 +218,7 @@
                     android:id="@+id/state_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
+                    android:layout_marginBottom="10dp"
                     android:text="@string/card_state"
                     android:textAllCaps="false"
                     android:textSize="@dimen/XS"

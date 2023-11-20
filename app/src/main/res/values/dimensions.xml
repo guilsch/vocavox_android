@@ -23,6 +23,10 @@
     <dimen name="ic_bg_size">25dp</dimen>
     <dimen name="ic_cross_size">15dp</dimen>
 
-<!--    Activity edit-->
+    <!--    Activity edit-->
     <dimen name="radio_button_state_stroke_size">0dp</dimen>
+
+    <!--    dialogs-->
+    <dimen name="dialog_padding_size">15dp</dimen>
+
 </resources>

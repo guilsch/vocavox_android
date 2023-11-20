@@ -29,7 +29,6 @@ public class ActivityTranslation extends AppCompatActivity {
     private EditText item1TextCheckCardLayout;
     private EditText item2TextCheckCardLayout;
     private EditText packText;
-    private TextView tradCheckMsg;
 
     private TranslationAPI translator;
     private String translationResult;
@@ -138,7 +137,6 @@ public class ActivityTranslation extends AppCompatActivity {
         packText = findViewById(R.id.pack_text);
         targetLanguageFlag = findViewById(R.id.targetLanguageFlag);
         userLanguageFlag = findViewById(R.id.userLanguageFlag);
-        tradCheckMsg = findViewById(R.id.trad_check_msg);
 
         backLayoutCheck = findViewById(R.id.back_layout);
         backLayoutCheck.setOnClickListener(v -> initMainTranslationLayout());
@@ -148,8 +146,6 @@ public class ActivityTranslation extends AppCompatActivity {
 
         saveCardButton = findViewById(R.id.save_card_button);
         saveCardButton.setOnClickListener(view -> saveCardButtonClick());
-
-        tradCheckMsg.setText(R.string.trans_check_header);
 
         String item1 = item1Text.getText().toString();
         String item2 = item2Text.getText().toString();

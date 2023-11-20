@@ -174,23 +174,16 @@ public class ActivityMain extends AppCompatActivity {
         // Clean excel data file
         Utils.prepareDataFile();
 
+        // Make a saved file
+        Utils.saveTempDataFile();
+
         // Init global deck
         Utils.initGlobalDeck();
 
         // Set user and target language flag
         setUserLanguageVisuals();
         setTargetLanguageVisuals();
-
-        // Make a saved file
-        Utils.saveTempDataFile();
     }
-
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        // Passer les résultats à votre classe utilitaire
-//        UtilsIO.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
-//    }
 
     /**
      * Depending on the user language setup in the parameters, defines the corresponding flag in

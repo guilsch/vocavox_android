@@ -10,7 +10,7 @@
         android:id="@+id/dialog_delete_card_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/dialog_import_title_str"
+        android:text="@string/dialog_delete_data_file_title_str"
         android:textAlignment="center"
         android:textSize="@dimen/titles"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,10 +18,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/dialog_import_button"
+        android:id="@+id/dialog_delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_button_import"
+        android:text="@string/text_button_delete_str"
         android:textColor="@color/delete_text_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dialog_cancel_button"
@@ -34,7 +34,7 @@
         android:layout_marginTop="50dp"
         android:text="@string/text_button_cancel_str"
         android:textColor="@color/std_text_button"
-        app:layout_constraintEnd_toStartOf="@+id/dialog_import_button"
+        app:layout_constraintEnd_toStartOf="@+id/dialog_delete_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialog_delete_card_title" />

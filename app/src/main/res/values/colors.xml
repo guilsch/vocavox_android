@@ -113,7 +113,7 @@
     <color name="back_button_stroke">#8A8A8A</color>
 
     <!-- Header -->
-    <color name="header_bg">@color/white</color>
+    <color name="header_bg">@color/back_ground</color>
     <color name="header_back">@color/main_orange1</color>
 
     <!-- Explore activity -->

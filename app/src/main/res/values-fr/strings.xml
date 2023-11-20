@@ -77,6 +77,7 @@
     <string name="setting_play_speech">Prononciation automatique des mots :</string>
     <string name="setting_import_title">Importer les fichiers de données</string>
     <string name="setting_export_title">Exporter les fichiers de données</string>
+    <string name="setting_reset_title">Supprimer les données</string>
 
     <string name="setting_file_title">Fichiers de données</string>
     <string name="setting_training_title">Révision</string>
@@ -113,13 +114,16 @@
     <string name="toast_msg_data_import_dir_failed">Un problème avec le répertoire est survenu, essaie à nouveau</string>
     <string name="toast_msg_data_import_copy_failed">L\'importation a échoué, essaie à nouveau</string>
     <string name="toast_msg_data_import_no_file_found">Aucun fichier de données n\'a été reconnu, vérifie et essaie à nouveau</string>
-    <string name="toast_msg_data_import_error">Erreur, essaie à nouveau</string>
+    <string name="toast_msg_data_error">Erreur, essaie à nouveau</string>
 
     <string name="toast_msg_data_file_exported">L\'exportation vers le dossier de téléchargements s\'est déroulée avec succès!</string>
     <string name="toast_msg_data_export_dir_failed">Un problème avec le répertoire est survenu, essaie à nouveau</string>
     <string name="toast_msg_data_export_copy_failed">L\'exportation a échoué, essaie à nouveau</string>
     <string name="toast_msg_data_export_no_file_found">Aucun fichier de données n\'a été reconnu, vérifie et essaie à nouveau</string>
-    <string name="toast_msg_data_export_error">Erreur, essaie à nouveau</string>
+
+    <string name="toast_msg_data_delete_success">Suppression des données effectuée!</string>
+    <string name="toast_msg_data_delete_failed">Erreur pendant la suppression, essaie à nouveau</string>
+    <string name="toast_msg_data_delete_no_file_found">Fichier non trouvé</string>
 
     <!-- Other -->
     <string name="button_back_home">Menu</string>
@@ -129,6 +133,9 @@
     <string name="dialog_delete_card_title_str">Voulez-vous vraiment supprimer cette carte ?</string>
     <string name="text_button_delete_str">Supprimer</string>
     <string name="text_button_cancel_str">Annuler</string>
+
+    <!-- Dialog delete data file -->
+    <string name="dialog_delete_data_file_title_str">Voulez-vous vraiment supprimer toutes les données pour cette langue ? Les données ne pourront pas être récupérées</string>
 
     <!-- Dialog sort -->
     <string name="dialog_sort_title_str">Trier</string>

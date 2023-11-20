@@ -146,4 +146,5 @@ public class Param {
     public static final String CONFIRM_KEY = "confirm_dialog_key";
     public static final int CONFIRM_IMPORT = 201;
     public static final int CONFIRM_CANCEL = 202;
+    public static final int CONFIRM_DELETE_DATA_FILE = 203;
 }

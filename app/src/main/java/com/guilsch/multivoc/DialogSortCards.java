@@ -21,8 +21,8 @@ public class DialogSortCards {
 
         dialog.show();
 
-        ImageView sortDialogCross = dialog.findViewById(R.id.cross);
-        sortDialogCross.setOnClickListener(v -> dialog.dismiss());
+//        ImageView sortDialogCross = dialog.findViewById(R.id.cross);
+//        sortDialogCross.setOnClickListener(v -> dialog.dismiss());
 
         return customView;
     }

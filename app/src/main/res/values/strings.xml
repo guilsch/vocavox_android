@@ -77,6 +77,7 @@
     <string name="setting_play_speech">Automatic pronounciation of words :</string>
     <string name="setting_import_title">Import data file</string>
     <string name="setting_export_title">Export data file</string>
+    <string name="setting_reset_title">Delete data file</string>
 
     <string name="setting_file_title">Data files</string>
     <string name="setting_training_title">Training</string>
@@ -110,17 +111,21 @@
     <string name="toast_msg_no_cards_to_learn">No cards to learn...</string>
     <string name="toast_msg_no_cards_to_train">No cards to train...</string>
 
-    <string name="toast_msg_data_file_imported">The importation is done!</string>
+    <string name="toast_msg_data_file_imported">The import is done!</string>
     <string name="toast_msg_data_import_dir_failed">Directory picked has an issue, please try again</string>
     <string name="toast_msg_data_import_copy_failed">Import failed, please try again</string>
     <string name="toast_msg_data_import_no_file_found">No data file found, make sure files exist in the chosen directory</string>
-    <string name="toast_msg_data_import_error">Error, please try again</string>
+    <string name="toast_msg_data_error">Error, please try again</string>
 
-    <string name="toast_msg_data_file_exported">The exportation to the download folder is done!</string>
+    <string name="toast_msg_data_file_exported">The export to the download folder is done!</string>
     <string name="toast_msg_data_export_dir_failed">Directory error, please try again</string>
     <string name="toast_msg_data_export_copy_failed">Export failed, please try again</string>
     <string name="toast_msg_data_export_no_file_found">No data file found, make sure file exists</string>
-    <string name="toast_msg_data_export_error">Error, please try again</string>
+
+    <string name="toast_msg_data_delete_success">Reset done!</string>
+    <string name="toast_msg_data_delete_failed">Deletion error, please try again</string>
+    <string name="toast_msg_data_delete_no_file_found">No file found</string>
+
 
     <!-- Other -->
     <string name="button_back_home">Home</string>
@@ -130,6 +135,9 @@
     <string name="dialog_delete_card_title_str">Do you really want to delete this card ?</string>
     <string name="text_button_delete_str">Delete</string>
     <string name="text_button_cancel_str">Cancel</string>
+
+    <!-- Dialog delete data file -->
+    <string name="dialog_delete_data_file_title_str">Do you really want to delete all the data for this language ? Data can\'t be retrieved.</string>
 
     <!-- Dialog sort -->
     <string name="dialog_sort_title_str">Sort</string>

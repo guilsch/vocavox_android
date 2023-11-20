@@ -71,23 +71,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/trad_check_msg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingVertical="10dp"
-                android:text="TextView"
-                android:textSize="@dimen/paragraph_text"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingVertical="10dp"
+            android:paddingBottom="10dp"
             android:layout_weight="1">
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -203,8 +192,7 @@
                 android:textSize="@dimen/button_std_text_size"
                 android:textStyle="bold"
                 app:buttonCornerRadius="10dp"
-                app:buttonGradientEndColor="@color/button_std_bg"
-                app:buttonGradientStartColor="@color/blue7"
+                app:buttonColor="@color/button_std_bg"
                 app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

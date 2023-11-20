@@ -5,24 +5,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="0dp">
+    android:padding="@dimen/dialog_padding_size">
 
-    <TextView
-        android:id="@+id/delete_card_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dialog_sort_title_str"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/delete_card_title"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/dialog_sort_title_str"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="0dp"
         android:layout_marginHorizontal="30dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/delete_card_title"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="40dp">
 
         <RadioButton
@@ -61,12 +61,12 @@
             />
     </RadioGroup>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/order_arrow_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
         <ImageView
@@ -93,16 +93,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/cross"
-        android:layout_width="@dimen/ic_cross_size"
-        android:layout_height="@dimen/ic_size"
-        app:layout_constraintEnd_toEndOf="@+id/order_arrow_group"
-        app:layout_constraintStart_toStartOf="@+id/order_arrow_group"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/selector_cross" />
-
-
-
+<!--    <ImageView-->
+<!--        android:id="@+id/cross"-->
+<!--        android:layout_width="@dimen/ic_cross_size"-->
+<!--        android:layout_height="@dimen/ic_size"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/order_arrow_group"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/order_arrow_group"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/selector_cross" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

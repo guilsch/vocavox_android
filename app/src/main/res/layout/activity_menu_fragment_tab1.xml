@@ -113,7 +113,7 @@
                 android:gravity="center"
                 android:text="@string/menu_train_title_str"
                 android:textAlignment="center"
-                android:textColor="@color/grey_font"
+                android:textColor="@color/black"
                 android:textStyle="normal" />
 
             <TextView
@@ -169,7 +169,7 @@
                 android:gravity="center"
                 android:text="@string/menu_learn_title_str"
                 android:textAlignment="center"
-                android:textColor="@color/grey_font"
+                android:textColor="@color/black"
                 android:textStyle="normal" />
 
             <ImageView

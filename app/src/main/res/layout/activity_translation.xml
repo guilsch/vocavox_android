@@ -173,8 +173,8 @@
 
             <life.sabujak.roundedbutton.RoundedButton
                 android:id="@+id/ok_button"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/button_std_width"
+                android:layout_height="@dimen/button_std_height"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="OK"
@@ -183,8 +183,7 @@
                 android:textSize="@dimen/button_std_text_size"
                 android:textStyle="bold"
                 app:buttonCornerRadius="10dp"
-                app:buttonGradientEndColor="@color/button_std_bg"
-                app:buttonGradientStartColor="@color/blue7"
+                app:buttonColor="@color/button_std_bg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

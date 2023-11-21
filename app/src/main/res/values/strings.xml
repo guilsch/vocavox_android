@@ -47,6 +47,7 @@
     <string name="next_new_card">New</string>
     <string name="card_state">Current state</string>
     <string name="toast_msg_invalid_new_card">Words in both languages have to be set</string>
+    <string name="toast_msg_new_card_saved">The card has been saved!</string>
 
     <!--Edit Card !-->
     <string name="edit_card_msg">Edit the card</string>

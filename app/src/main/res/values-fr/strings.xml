@@ -46,6 +46,7 @@
     <string name="next_new_card">Nouvelle</string>
     <string name="card_state">Etat actuel</string>
     <string name="toast_msg_invalid_new_card">Veuillez remplir les deux mots</string>
+    <string name="toast_msg_new_card_saved">The card has been saved!</string>
 
 
     <!--Edit Card !-->

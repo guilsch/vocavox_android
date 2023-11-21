@@ -3,7 +3,7 @@
     <item android:drawable="@drawable/ic_folder" android:state_focused="true" android:state_enabled="false"/>
     <item android:drawable="@drawable/ic_folder" android:state_focused="true" android:state_enabled="true"/>
     <item android:drawable="@drawable/ic_folder" android:state_enabled="false"/>
-    <item android:drawable="@drawable/ic_folder_touched" android:state_pressed="true"/>
+    <item android:drawable="@drawable/ic_folder_on_touch" android:state_pressed="true"/>
     <item android:drawable="@drawable/ic_folder" />
 
 </selector>

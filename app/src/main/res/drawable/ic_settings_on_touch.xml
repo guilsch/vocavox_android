@@ -5,20 +5,20 @@
     android:viewportHeight="500">
   <path
       android:pathData="M480,275H20c-11,0 -20,-9 -20,-20v-10c0,-11 9,-20 20,-20h460c11,0 20,9 20,20v10C500,266 491,275 480,275z"
-      android:fillColor="#1D1D1B"/>
+      android:fillColor="@color/ic_std_on_click"/>
   <path
       android:pathData="M480,425H20c-11,0 -20,-9 -20,-20v-10c0,-11 9,-20 20,-20h460c11,0 20,9 20,20v10C500,416 491,425 480,425z"
-      android:fillColor="#1D1D1B"/>
+      android:fillColor="@color/ic_std_on_click"/>
   <path
       android:pathData="M480,125H20c-11,0 -20,-9 -20,-20V95c0,-11 9,-20 20,-20h460c11,0 20,9 20,20v10C500,116 491,125 480,125z"
-      android:fillColor="#1D1D1B"/>
+      android:fillColor="@color/ic_std_on_click"/>
   <path
       android:pathData="M420,165h-10c-5.5,0 -10,-4.5 -10,-10V45c0,-5.5 4.5,-10 10,-10h10c5.5,0 10,4.5 10,10v110C430,160.5 425.5,165 420,165z"
-      android:fillColor="#1D1D1B"/>
+      android:fillColor="@color/ic_std_on_click"/>
   <path
       android:pathData="M320,465h-10c-5.5,0 -10,-4.5 -10,-10V345c0,-5.5 4.5,-10 10,-10h10c5.5,0 10,4.5 10,10v110C330,460.5 325.5,465 320,465z"
-      android:fillColor="#1D1D1B"/>
+      android:fillColor="@color/ic_std_on_click"/>
   <path
       android:pathData="M120,315h-10c-5.5,0 -10,-4.5 -10,-10V195c0,-5.5 4.5,-10 10,-10h10c5.5,0 10,4.5 10,10v110C130,310.5 125.5,315 120,315z"
-      android:fillColor="#1D1D1B"/>
+      android:fillColor="@color/ic_std_on_click"/>
 </vector>

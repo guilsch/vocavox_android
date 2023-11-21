@@ -57,12 +57,18 @@ public class ActivityNewCard extends AppCompatActivity {
                     newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), Utils.giveCurrentDate(), Utils.giveCurrentDate(), 0, 0, 0, Utils.getNewUUID(), -1);
                     Utils.manageCardCreation(newCard);
 
-                    Intent saveCardActivity = new Intent(getApplicationContext(), ActivityMenu.class);
-                    startActivity(saveCardActivity);
-                    finish();
+                    cleanAfterSaveCard();
                 }
             }
         });
+    }
+
+    private void cleanAfterSaveCard() {
+        item1Text.setText("");
+        item2Text.setText("");
+        packText.setText("");
+
+        Utils.showToast(ActivityNewCard.this, getString(R.string.toast_msg_new_card_saved));
     }
 
     @Override

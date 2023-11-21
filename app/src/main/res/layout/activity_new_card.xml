@@ -162,7 +162,7 @@
                 android:layout_marginVertical="10dp"
                 android:text="@string/pack"
                 android:textAllCaps="false"
-                android:textSize="18sp"
+                android:textSize="@dimen/N"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/pack_text"
                 app:layout_constraintStart_toStartOf="@+id/left_guideline"
@@ -177,8 +177,8 @@
 
             <life.sabujak.roundedbutton.RoundedButton
                 android:id="@+id/save_card_button"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/button_std_width"
+                android:layout_height="@dimen/button_std_height"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="OK"
@@ -187,8 +187,7 @@
                 android:textSize="@dimen/button_std_text_size"
                 android:textStyle="bold"
                 app:buttonCornerRadius="10dp"
-                app:buttonGradientEndColor="@color/button_std_bg"
-                app:buttonGradientStartColor="@color/blue7"
+                app:buttonColor="@color/button_std_bg"
                 app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -196,6 +195,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

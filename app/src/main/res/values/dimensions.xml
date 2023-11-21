@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="header_size">0.8</dimen>
-    <dimen name="button_std_width">100dp</dimen>
-    <dimen name="button_std_height">40dp</dimen>
-
-    <dimen name="button_ans_width">60dp</dimen>
-    <dimen name="button_ans_height">40dp</dimen>
-
     <!-- Margins -->
     <dimen name="body_horizontal_margin">30dp</dimen>
     <dimen name="body_bottom_margin">30dp</dimen>
@@ -29,4 +23,10 @@
     <!--    dialogs-->
     <dimen name="dialog_padding_size">15dp</dimen>
 
+    <!--    buttons-->
+    <dimen name="button_std_width">100dp</dimen>
+    <dimen name="button_std_height">50dp</dimen>
+
+    <dimen name="button_ans_width">60dp</dimen>
+    <dimen name="button_ans_height">40dp</dimen>
 </resources>

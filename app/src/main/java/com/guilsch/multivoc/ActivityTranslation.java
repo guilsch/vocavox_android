@@ -60,6 +60,9 @@ public class ActivityTranslation extends AppCompatActivity {
         item1Text = findViewById(R.id.item1_text);
         item2Text = findViewById(R.id.item2_text);
 
+        item1Text.setText("");
+        item2Text.setText("");
+
         targetLanguageFlag = findViewById(R.id.targetLanguageFlag);
         userLanguageFlag = findViewById(R.id.userLanguageFlag);
 
@@ -283,9 +286,8 @@ public class ActivityTranslation extends AppCompatActivity {
         newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), Utils.giveCurrentDate(), Utils.giveCurrentDate(), 0, 0, 0, Utils.getNewUUID(), -1);
         Utils.manageCardCreation(newCard);
 
-        Intent saveCardActivity = new Intent(getApplicationContext(), ActivityMenu.class);
-        startActivity(saveCardActivity);
-        finish();
+        initMainTranslationLayout();
+        Utils.showToast(ActivityTranslation.this, getString(R.string.toast_msg_new_card_saved));
 
         return;
     }

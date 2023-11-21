@@ -79,14 +79,13 @@
             app:layout_constraintTop_toTopOf="@+id/top_guideline"
             app:spb_animateToCurrentProgressState="true"
             app:spb_checkStateCompleted="true"
-            app:spb_currentStateDescriptionColor="@color/sec_blue1"
             app:spb_currentStateNumber="two"
             app:spb_maxStateNumber="three"
-            app:spb_stateBackgroundColor="#BDBDBD"
-            app:spb_stateDescriptionColor="#808080"
-            app:spb_stateForegroundColor="@color/sec_blue1"
-            app:spb_stateNumberBackgroundColor="#808080"
-            app:spb_stateNumberForegroundColor="#eeeeee" />
+            app:spb_currentStateDescriptionColor="@color/main_orange1"
+            app:spb_stateBackgroundColor="@color/main_orange5"
+            app:spb_stateForegroundColor="@color/main_orange1"
+            app:spb_stateNumberBackgroundColor="@color/main_orange1"
+            app:spb_stateNumberForegroundColor="@color/white" />
 
         <TextView
             android:id="@+id/transition12_question"

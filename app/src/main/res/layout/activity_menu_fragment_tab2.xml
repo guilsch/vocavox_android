@@ -30,8 +30,8 @@
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="40dp"
             android:text="@string/menu_add_cards_title"
-            android:textColor="@color/black"
-            android:textSize="@dimen/titles"
+            android:textColor="@color/grey3"
+            android:textSize="@dimen/L"
             android:textStyle="bold" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -75,7 +75,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:text="@string/menu_translate_title_str"
-                    android:textColor="@color/grey_font"
+                    android:textColor="@color/black"
                     android:textStyle="normal" />
 
             </LinearLayout>
@@ -106,7 +106,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:text="@string/menu_new_card_title_str"
-                    android:textColor="@color/grey_font"
+                    android:textColor="@color/black"
                     android:textStyle="normal" />
 
             </LinearLayout>
@@ -119,8 +119,8 @@
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="40dp"
             android:text="@string/menu_others_title"
-            android:textColor="@color/black"
-            android:textSize="@dimen/titles"
+            android:textColor="@color/grey3"
+            android:textSize="@dimen/L"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -155,7 +155,7 @@
                 android:gravity="center"
                 android:text="@string/menu_explore_title_str"
                 android:textAlignment="center"
-                android:textColor="@color/grey_font"
+                android:textColor="@color/black"
                 android:textStyle="normal" />
 
             <ImageView

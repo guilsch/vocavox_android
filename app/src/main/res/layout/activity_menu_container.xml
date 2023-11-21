@@ -37,7 +37,7 @@
             app:ipi_dotDiameter="8dp"
             app:ipi_dotGap="8dp"
             app:ipi_animationDuration="320"
-            app:ipi_pageIndicatorColor="@color/button_std_bg_on_click"
-            app:ipi_currentPageIndicatorColor="@color/blue1"/>
+            app:ipi_pageIndicatorColor="@color/main_orange5"
+            app:ipi_currentPageIndicatorColor="@color/main_orange1"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

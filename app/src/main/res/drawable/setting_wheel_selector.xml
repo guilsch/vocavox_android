@@ -1,9 +1,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/ic_settings_outlined_wheel" android:state_focused="true" android:state_enabled="false"/>
-    <item android:drawable="@drawable/ic_settings_outlined_wheel" android:state_focused="true" android:state_enabled="true"/>
-    <item android:drawable="@drawable/ic_settings_outlined_wheel" android:state_enabled="false"/>
-    <item android:drawable="@drawable/ic_settings_outlined_wheel_white" android:state_pressed="true"/>
-    <item android:drawable="@drawable/ic_settings_outlined_wheel" />
+    <item android:drawable="@drawable/ic_settings_on_touch" android:state_focused="true" android:state_enabled="false"/>
+    <item android:drawable="@drawable/ic_settings_on_touch" android:state_focused="true" android:state_enabled="true"/>
+    <item android:drawable="@drawable/ic_settings_on_touch" android:state_enabled="false"/>
+    <item android:drawable="@drawable/ic_settings_on_touch" android:state_pressed="true"/>
+    <item android:drawable="@drawable/ic_settings" />
 
 </selector>

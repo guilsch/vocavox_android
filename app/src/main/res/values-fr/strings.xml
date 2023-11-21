@@ -82,10 +82,6 @@
     <string name="setting_file_title">Fichiers de données</string>
     <string name="setting_training_title">Révision</string>
 
-    <!--    // Dialog-->
-    <string name="text_button_import">Importer</string>
-    <string name="dialog_import_title_str">Tous les fichiers de données trouvés vont être importés et vont écraser ceux déjà importés possédant les mêmes noms. Es-tu sûr d\'importer des nouveaux fichiers ?</string>
-
     <!-- Learn   -->
     <string name="learn_header_str">Apprendre</string>
     <string name="learn_select_cards_msg_str">Sélectionner les cartes à apprendre :</string>
@@ -111,13 +107,11 @@
     <string name="toast_msg_no_cards_to_train">Aucune carte à réviser...</string>
 
     <string name="toast_msg_data_file_imported">L\'importation \'est déroulée avec succès !</string>
-    <string name="toast_msg_data_import_dir_failed">Un problème avec le répertoire est survenu, essaie à nouveau</string>
     <string name="toast_msg_data_import_copy_failed">L\'importation a échoué, essaie à nouveau</string>
-    <string name="toast_msg_data_import_no_file_found">Aucun fichier de données n\'a été reconnu, vérifie et essaie à nouveau</string>
+    <string name="toast_msg_data_import_wrong_file_name">Le fichier sélectionné ne correspond pas à un fichier de l\'application, vérifie et essaie à nouveau</string>
     <string name="toast_msg_data_error">Erreur, essaie à nouveau</string>
 
     <string name="toast_msg_data_file_exported">L\'exportation vers le dossier de téléchargements s\'est déroulée avec succès!</string>
-    <string name="toast_msg_data_export_dir_failed">Un problème avec le répertoire est survenu, essaie à nouveau</string>
     <string name="toast_msg_data_export_copy_failed">L\'exportation a échoué, essaie à nouveau</string>
     <string name="toast_msg_data_export_no_file_found">Aucun fichier de données n\'a été reconnu, vérifie et essaie à nouveau</string>
 
@@ -146,4 +140,9 @@
     <!--    Dialog quit learning-->
     <string name="dialog_quit_learning_title_str">Voulez-vous vraiment quitter l\'apprentissage ?</string>
     <string name="text_button_quit_learning">Quitter</string>
+
+    <!--    // Dialog-->
+    <string name="text_button_import">Importer</string>
+    <string name="dialog_import_title_str">Le fichier sélectionné sera importé et écrasera le fichier de données actuel pour cette langue d\'apprentissage. Es-tu sûr d\'importer des nouveaux fichiers ?</string>
+
 </resources>

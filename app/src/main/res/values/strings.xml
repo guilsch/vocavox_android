@@ -82,11 +82,6 @@
     <string name="setting_file_title">Data files</string>
     <string name="setting_training_title">Training</string>
 
-    <!--    // Dialog-->
-    <string name="text_button_import">Import</string>
-    <string name="dialog_import_title_str">Data files found in this folder will be imported in the application and will overwrite those already imported with the same names. Do you really want to import new data files ?</string>
-
-
     <!-- Learn   -->
     <string name="learn_header_str">Learn</string>
     <string name="learn_select_cards_msg_str">Select the cards to learn :</string>
@@ -112,13 +107,11 @@
     <string name="toast_msg_no_cards_to_train">No cards to train...</string>
 
     <string name="toast_msg_data_file_imported">The import is done!</string>
-    <string name="toast_msg_data_import_dir_failed">Directory picked has an issue, please try again</string>
     <string name="toast_msg_data_import_copy_failed">Import failed, please try again</string>
-    <string name="toast_msg_data_import_no_file_found">No data file found, make sure files exist in the chosen directory</string>
+    <string name="toast_msg_data_import_wrong_file_name">File selected has a wrong name, please change it or pick another file. The file to be imported must match the current learning language</string>
     <string name="toast_msg_data_error">Error, please try again</string>
 
     <string name="toast_msg_data_file_exported">The export to the download folder is done!</string>
-    <string name="toast_msg_data_export_dir_failed">Directory error, please try again</string>
     <string name="toast_msg_data_export_copy_failed">Export failed, please try again</string>
     <string name="toast_msg_data_export_no_file_found">No data file found, make sure file exists</string>
 
@@ -148,5 +141,9 @@
     <!--    Dialog quit learning-->
     <string name="dialog_quit_learning_title_str">Do you really want to quit the training ?</string>
     <string name="text_button_quit_learning">Quit</string>
+
+    <!--    // Dialog-->
+    <string name="text_button_import">Import</string>
+    <string name="dialog_import_title_str">The data file picked will be imported in the application and will overwrite file previously imported with the same name. Do you really want to import a new data file?</string>
 
 </resources>

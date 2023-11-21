@@ -22,6 +22,8 @@ public class Param {
     public static String DATA_PATH;
     public static final int LAST_LANG_DEFAULT = 0;
 
+    public static final String MIME_XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
     public static void setDataPath() {
         DATA_PATH = FOLDER_PATH + DATA_FILE;
     }

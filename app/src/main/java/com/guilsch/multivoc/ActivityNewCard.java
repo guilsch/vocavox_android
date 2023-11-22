@@ -54,7 +54,7 @@ public class ActivityNewCard extends AppCompatActivity {
                     Utils.showToast(ActivityNewCard.this, getString(R.string.toast_msg_invalid_new_card));
                 }
                 else {
-                    newCard = new Card(item1, item2, Param.TO_LEARN, packText.getText().toString(), Utils.giveCurrentDate(), Utils.giveCurrentDate(), 0, 0, 0, Utils.getNewUUID(), -1);
+                    newCard = new Card(item1, item2, Param.INACTIVE, packText.getText().toString(), Utils.giveCurrentDate(), Utils.giveCurrentDate(), 0, 0, 0, Utils.getNewUUID(), -1);
                     Utils.manageCardCreation(newCard);
 
                     cleanAfterSaveCard();

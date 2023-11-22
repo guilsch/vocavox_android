@@ -1,13 +1,8 @@
 package com.guilsch.multivoc;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.DocumentsContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -36,12 +31,6 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import java.nio.file.CopyOption;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,9 +41,6 @@ import java.util.Locale;
 import java.util.Queue;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
-import java.util.stream.Stream;
-
-import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 public class Utils {
 
@@ -329,19 +315,11 @@ public class Utils {
 
         switch (currentState) {
 
-            case Param.INACTIVE:
-                nextState = Param.TO_LEARN;
-                break;
-
             case Param.ACTIVE:
-                nextState = Param.STOP_LEARNING;
+                nextState = Param.IN_PAUSE;
                 break;
 
-            case Param.TO_LEARN:
-                nextState = Param.INACTIVE;
-                break;
-
-            case Param.STOP_LEARNING:
+            case Param.IN_PAUSE:
                 nextState = Param.ACTIVE;
                 break;
 
@@ -352,74 +330,6 @@ public class Utils {
         }
 
         return nextState;
-    }
-
-    public static String getStringStateFromInt(int state) {
-
-        String stringState;
-
-        switch (state){
-
-            case Param.ACTIVE :
-                stringState = "Learning";
-                break;
-
-            case Param.INACTIVE :
-                stringState = "Inactive";
-                break;
-
-            case Param.TO_LEARN :
-                stringState = "To Learn";
-                break;
-
-            case Param.INVALID:
-                stringState = "Invalid";
-                break;
-
-            case Param.STOP_LEARNING:
-                stringState = "On pause";
-                break;
-
-            default:
-                stringState = "Error";
-                break;
-        }
-
-        return stringState;
-    }
-
-    public static int getIntStateFromString (String state) {
-
-        int intState;
-
-        switch (state){
-
-            case  "Learning":
-                intState = Param.ACTIVE;
-                break;
-
-            case "Inactive" :
-                intState = Param.INACTIVE;
-                break;
-
-            case "To Learn" :
-                intState = Param.TO_LEARN;
-                break;
-
-            case "Invalid":
-                intState = Param.INVALID;
-                break;
-
-            case "On pause":
-                intState = Param.STOP_LEARNING;
-                break;
-
-            default:
-                intState = -1;
-                break;
-        }
-
-        return intState;
     }
 
     public static Date toDate(long nextPracticeTime) {
@@ -515,10 +425,10 @@ public class Utils {
             Iterator<Row> rowIterator = sheet.iterator();
             Row header = rowIterator.next();
             Cell currentCell;
-            Cell stateCell;
+//            Cell stateCell;
 
-            int item1Index = Utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
-            int item2Index = Utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
+//            int item1Index = Utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
+//            int item2Index = Utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
             int stateIndex = Utils.getFieldIndex(header, Param.STATE_FIELD_NAME);
             int packIndex = Utils.getFieldIndex(header, Param.PACK_FIELD_NAME);
             int nextPracticeDateIndex = Utils.getFieldIndex(header, Param.NEXT_DATE_FIELD_NAME);
@@ -532,10 +442,10 @@ public class Utils {
 
                 Row row = rowIterator.next();
 
-                if (checkCellEmptiness(row.getCell(item1Index), row) || checkCellEmptiness(row.getCell(item2Index), row)) {
-                    stateCell = row.createCell(stateIndex);
-                    stateCell.setCellValue(Param.INVALID);
-                }
+//                if (checkCellEmptiness(row.getCell(item1Index), row) || checkCellEmptiness(row.getCell(item2Index), row)) {
+//                    stateCell = row.createCell(stateIndex);
+//                    stateCell.setCellValue(Param.INVALID);
+//                }
 
                 currentCell = row.getCell(stateIndex);
                 if (checkCellEmptiness(currentCell, row)) {
@@ -731,7 +641,7 @@ public class Utils {
 
         // Update deck data
         Param.CARDS_NB = Param.CARDS_NB + 1;
-        if(newCard.getState() == Param.TO_LEARN) {
+        if(newCard.getState() == Param.INACTIVE) {
             Param.CARDS_TO_LEARN_NB = Param.CARDS_TO_LEARN_NB + 1;
         }
     }

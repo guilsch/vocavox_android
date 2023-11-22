@@ -64,19 +64,17 @@ public class Param {
     public static final String INTERVAL_FIELD_NAME = "Interval";
     public static final String UUID_FIELD_NAME = "UUID";
 
-    public static final List<String> FIELDS = Arrays.asList(ITEM1_FIELD_NAME, ITEM2_FIELD_NAME,
-            PACK_FIELD_NAME, STATE_FIELD_NAME, NEXT_DATE_FIELD_NAME, CREATION_DATE_FIELD_NAME, REPETITIONS_FIELD_NAME,
-            EF_FIELD_NAME, INTERVAL_FIELD_NAME, UUID_FIELD_NAME);
-    public static final int FIELDS_NB = 10;
+    public static final List<String> FIELDS = Arrays.asList(UUID_FIELD_NAME, ITEM1_FIELD_NAME, ITEM2_FIELD_NAME,
+            PACK_FIELD_NAME, STATE_FIELD_NAME, CREATION_DATE_FIELD_NAME, NEXT_DATE_FIELD_NAME, REPETITIONS_FIELD_NAME,
+            EF_FIELD_NAME, INTERVAL_FIELD_NAME);
+    public static final int FIELDS_NB = FIELDS.size(); // 10
 
 
-    public static final int INACTIVE = 0;
     public static final int ACTIVE = 1;
-    public static final int TO_LEARN = 2;
-    public static final int INVALID = 3;
-    public static final int STOP_LEARNING = 4;
+    public static final int INACTIVE = 2;
+    public static final int IN_PAUSE = 3;
 
-    public static final int DEFAULT_STATE = 2;
+    public static final int DEFAULT_STATE = INACTIVE;
     public static final String DEFAULT_PACK = "";
     public static final Date DEFAULT_NEXT_DATE = Utils.giveCurrentDate();
     public static final Date DEFAULT_CREATION_DATE = Utils.giveCurrentDate();

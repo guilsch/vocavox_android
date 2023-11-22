@@ -1,9 +1,5 @@
 package com.guilsch.multivoc;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -132,7 +128,7 @@ public class Deck extends ArrayList<Card> {
 
                 Cell currentCell = row.getCell(0);
 
-                if (currentCell != null && row.getCell(stateIndex).getNumericCellValue() != Param.INVALID) {
+                if (currentCell != null) {
 
                     String item1 = row.getCell(item1Index).getStringCellValue();
                     String item2 = row.getCell(item2Index).getStringCellValue();
@@ -272,7 +268,7 @@ public class Deck extends ArrayList<Card> {
         List<Card> toLearnList = new ArrayList<Card>();
 
         Iterator<Card> iterator = this.iterator();
-        Predicate<Card> pred = x -> x.getState() == Param.TO_LEARN;
+        Predicate<Card> pred = x -> x.getState() == Param.INACTIVE;
 
         while (iterator.hasNext()) {
             Card card = iterator.next();

@@ -89,7 +89,7 @@ public class ActivityEditCard extends AppCompatActivity {
 
         switch (state) {
 
-            case Param.TO_LEARN:
+            case Param.INACTIVE:
                 radioButton1.setChecked(true);
                 radioButton2.setChecked(false);
                 radioButton3.setChecked(false);
@@ -101,14 +101,16 @@ public class ActivityEditCard extends AppCompatActivity {
                 radioButton3.setChecked(false);
                 break;
 
-            case Param.STOP_LEARNING:
+            case Param.IN_PAUSE:
                 radioButton1.setChecked(false);
                 radioButton2.setChecked(false);
                 radioButton3.setChecked(true);
                 break;
 
             default:
-                throw new IllegalArgumentException("Card state is not usable");
+                radioButton1.setChecked(false);
+                radioButton2.setChecked(false);
+                radioButton3.setChecked(false);
 
         }
     }

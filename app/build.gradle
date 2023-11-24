@@ -123,4 +123,7 @@ dependencies {
 
     // File utils
     implementation 'androidx.activity:activity:1.3.0'
+
+    // Loading
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 }

@@ -17,8 +17,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
 
@@ -32,6 +37,7 @@ public class ActivityMain extends AppCompatActivity {
     private RoundedButton start;
     private Spinner spinner;
     private ProgressBar progressBar;
+    private TextView loadingText;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -107,6 +113,10 @@ public class ActivityMain extends AppCompatActivity {
 
         // Get progressBar of the current layout (loading layout)
         progressBar = findViewById(R.id.progressBar);
+        loadingText = findViewById(R.id.loading_text);
+
+        Animation blinkAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink);
+        loadingText.startAnimation(blinkAnim);
 
         // Manage newly selected language
         Language selectedLanguage = (Language) spinner.getSelectedItem();

@@ -1,5 +1,6 @@
 package com.guilsch.multivoc;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,7 +32,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ActivityMenu extends AppCompatActivity  {
 
     private static boolean isZoomed;
-    private boolean firstTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +86,22 @@ public class ActivityMenu extends AppCompatActivity  {
             learnLayout.setOnClickListener(v -> parentActivity.preChangeToLearnActivity());
             flag.setOnClickListener(v -> parentActivity.changeActivity(ActivityMain.class));
 
-            // Image zoom init
-            isZoomed = false;
+            ObjectAnimator rotateAnimator = ObjectAnimator.ofFloat(menuImageView, View.ROTATION, 0f, 360f);
+            rotateAnimator.setDuration(50000);
+            rotateAnimator.setRepeatCount(ObjectAnimator.INFINITE);
+            rotateAnimator.start();
+
+//            // Créer une animation de rotation de 360 degrés
+//            RotateAnimation rotateAnimation = new RotateAnimation(0, 360,
+//                    Animation.RELATIVE_TO_SELF, 0.5f,
+//                    Animation.RELATIVE_TO_SELF, 0.5f);
+//            rotateAnimation.setDuration(1000);
+//            rotateAnimation.setInterpolator(Animation.);
+//            rotateAnimation.setRepeatCount(Animation.INFINITE);
+//            menuImageView.startAnimation(rotateAnimation);
+
+//            // Image zoom init
+//            isZoomed = false;
 
             // On touch
             flag.setOnTouchListener(new View.OnTouchListener() {
@@ -103,124 +119,10 @@ public class ActivityMenu extends AppCompatActivity  {
                 }
             });
 
-            menuImageView.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    switch (event.getAction()) {
-                        case MotionEvent.ACTION_DOWN:
-                            // L'utilisateur a appuyé sur l'image
-                            if (!isZoomed) {
-                                zoomImageIn(menuImageView, 1.2f, 1000);
-                                isZoomed = true;
-                            }
-                            break;
-                        case MotionEvent.ACTION_UP:
-                        case MotionEvent.ACTION_CANCEL:
-                            // L'utilisateur a relâché l'image
-                            if (isZoomed) {
-                                zoomImageOut(menuImageView, 1.2f, 300);
-                                isZoomed = false;
-                            }
-                            break;
-                    }
-                    return true;
-                }
-            });
-
-//            trainLayout.setOnTouchListener(new View.OnTouchListener() {
-//                @Override
-//                public boolean onTouch(View v, MotionEvent event) {
-//                    switch (event.getAction()) {
-//                        case MotionEvent.ACTION_DOWN:
-//                            // L'utilisateur a appuyé sur l'image
-//                            if (!isZoomed) {
-//                                zoomImageIn(trainLayout, 1.05f, 100);
-//                                isZoomed = true;
-//                            }
-//                            break;
-//                        case MotionEvent.ACTION_UP:
-//                        case MotionEvent.ACTION_CANCEL:
-//                            // L'utilisateur a relâché l'image
-//                            if (isZoomed) {
-//                                zoomImageOut(trainLayout, 1.05f, 100);
-//                                isZoomed = false;
-//                            }
-//                            break;
-//                    }
-//                    return true;
-//                }
-//            });
-
-//            trainLayout.setOnTouchListener(new View.OnTouchListener() {
-//                private float startX, startY;
-//                private boolean isZoomed = false;
-//
-//                @Override
-//                public boolean onTouch(View v, MotionEvent event) {
-//                    switch (event.getAction()) {
-//                        case MotionEvent.ACTION_DOWN:
-//                            startX = event.getX();
-//                            startY = event.getY();
-//                            break;
-//                        case MotionEvent.ACTION_UP:
-//                            float endX = event.getX();
-//                            float endY = event.getY();
-//
-//                            float deltaX = Math.abs(endX - startX);
-//                            float deltaY = Math.abs(endY - startY);
-//
-//                            // Vérifiez si le mouvement est suffisamment petit pour être considéré comme un clic
-//                            if (deltaX < 10 && deltaY < 10) {
-//                                // C'est un clic
-//                                if (!isZoomed) {
-//                                    // Exécutez votre logique de zoom ici si nécessaire
-//                                    zoomImageIn(trainLayout, 1.05f, 100);
-//                                    isZoomed = true;
-//                                } else {
-//                                    // Si déjà agrandi, exécutez votre logique de clic ici
-//                                    parentActivity.preChangeToTrainActivity();
-//                                }
-//                            } else {
-//                                // C'est un mouvement tactile, par exemple un balayage
-//                                if (isZoomed) {
-//                                    // Exécutez votre logique de zoom-out ici si nécessaire
-//                                    zoomImageOut(trainLayout, 1.05f, 100);
-//                                    isZoomed = false;
-//                                }
-//                            }
-//                            break;
-//                    }
-//                    return true;
-//                }
-//            });
-
             return view;
         }
     }
 
-    private static void zoomImageIn(View view, float scale, int speed) {
-        Animation animation = new ScaleAnimation(
-                1f, scale,
-                1f, scale,
-                Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f);
-        animation.setDuration(speed);
-        animation.setFillAfter(true);
-
-        view.startAnimation(animation);
-    }
-
-    private static void zoomImageOut(View view, float scale, int speed) {
-        Animation animation = new ScaleAnimation(
-                scale, 1f,
-                scale, 1f,
-                Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f);
-        animation.setDuration(speed);
-        animation.setFillAfter(true);
-
-        view.startAnimation(animation);
-    }
 
     public static class Tab2Fragment extends Fragment {
         @Nullable

@@ -146,4 +146,7 @@
     <string name="text_button_import">Importer</string>
     <string name="dialog_import_title_str">Le fichier sélectionné sera importé et écrasera le fichier de données actuel pour cette langue d\'apprentissage. Es-tu sûr d\'importer des nouveaux fichiers ?</string>
 
+    <!--    Loading screen-->
+    <string name="loading_text">Chargement en cours...</string>
+
 </resources>

@@ -378,14 +378,14 @@
         android:background="#80000000"
         android:visibility="invisible" />
 
-    <ProgressBar
+    <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="30dp"
+        style="@style/SpinKitView.Large.FoldingCube"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminate="true"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/main_orange1"
         android:visibility="invisible"
-        android:indeterminateTint="@color/main_orange1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

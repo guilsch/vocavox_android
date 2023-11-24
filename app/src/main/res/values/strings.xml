@@ -147,4 +147,7 @@
     <string name="text_button_import">Import</string>
     <string name="dialog_import_title_str">The data file picked will be imported in the application and will overwrite file previously imported with the same name. Do you really want to import a new data file?</string>
 
+    <!--    Loading screen-->
+    <string name="loading_text">Loading...</string>
+
 </resources>

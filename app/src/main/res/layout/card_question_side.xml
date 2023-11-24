@@ -61,7 +61,7 @@
         android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/body_horizontal_margin"
         android:layout_marginBottom="@dimen/body_bottom_margin"
-        android:layout_marginTop="@dimen/body_top_margin"
+        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

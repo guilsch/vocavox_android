@@ -123,5 +123,4 @@ dependencies {
 
     // File utils
     implementation 'androidx.activity:activity:1.3.0'
-
 }

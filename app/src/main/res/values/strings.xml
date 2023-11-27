@@ -150,4 +150,24 @@
     <!--    Loading screen-->
     <string name="loading_text">Loading...</string>
 
+    <!--    Default hint -->
+    <string name="hint_optional">Optional</string>
+
+    <!--    Intro activity-->
+    <string name="intro_title_step1">Step 1</string>
+    <string name="intro_title_step2">Step 2</string>
+    <string name="intro_title_step3">Step 3</string>
+    <string name="intro_title_step4">Step 4</string>
+
+    <string name="intro_text_step1">Add some cards to learn manually or with the translation functionality</string>
+    <string name="intro_text_step2">You can also import an Excel file with words in it (export the file first to see the sheet format)</string>
+    <string name="intro_text_step3">Learn the words you want !</string>
+    <string name="intro_text_step4">When it\'s time, train the words learnt</string>
+
+<!--    datafile error-->
+    <string name="data_file_error_msg">An error occurred when importing the data file which could be
+        corrupted. A backup file and the corrupted file have been copied to the download folder.
+        If you lost your words, please try to import the backup file in the settings (don\'t forget
+        to rename it removing the \"_temp\".</string>
+
 </resources>

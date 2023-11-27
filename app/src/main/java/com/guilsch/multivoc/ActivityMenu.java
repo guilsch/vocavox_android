@@ -2,6 +2,7 @@ package com.guilsch.multivoc;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -19,10 +20,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.RotateAnimation;
-import android.view.animation.ScaleAnimation;
+
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,6 +30,20 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ActivityMenu extends AppCompatActivity  {
 
     private static boolean isZoomed;
+
+    // Frag 1
+    private static CircleImageView flag;
+    private static ImageView settingsIm;
+    private static LinearLayout trainLayout;
+    private static LinearLayout learnLayout;
+    private static TextView cardsToTrainNB;
+    private static ImageView menuImageView;
+    private static ImageView errorButton;
+
+    // frag 2
+    private static LinearLayout translationLayout;
+    private static LinearLayout newCardLayout;
+    private static LinearLayout exploreLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +70,10 @@ public class ActivityMenu extends AppCompatActivity  {
         if (fragmentIndex == 2) {
             viewPager.setCurrentItem(2,true);
         }
+
+        // Manage first launch
+
+
     }
 
     public static class Tab1Fragment extends Fragment {
@@ -69,12 +85,19 @@ public class ActivityMenu extends AppCompatActivity  {
 
             ActivityMenu parentActivity = (ActivityMenu) getActivity();
 
-            CircleImageView flag = view.findViewById(R.id.lang_flag);
-            ImageView settingsIm = view.findViewById(R.id.setting_im);
-            LinearLayout trainLayout = view.findViewById(R.id.train_layout);
-            LinearLayout learnLayout = view.findViewById(R.id.learn_layout);
-            TextView cardsToTrainNB = view.findViewById(R.id.cards_to_train_nb);
-            ImageView menuImageView = view.findViewById(R.id.menu_image_view);
+            flag = view.findViewById(R.id.lang_flag);
+            settingsIm = view.findViewById(R.id.setting_im);
+            trainLayout = view.findViewById(R.id.train_layout);
+            learnLayout = view.findViewById(R.id.learn_layout);
+            cardsToTrainNB = view.findViewById(R.id.cards_to_train_nb);
+            menuImageView = view.findViewById(R.id.menu_image_view);
+
+            errorButton = view.findViewById(R.id.error_button);
+
+            if (Param.DATA_FILE_ERROR) {
+                errorButton.setVisibility(View.VISIBLE);
+                errorButton.setOnClickListener(v -> showErrorDialog());
+            }
 
             // Set variables
             flag.setImageDrawable(Param.FLAG_ICON_TARGET);
@@ -90,18 +113,6 @@ public class ActivityMenu extends AppCompatActivity  {
             rotateAnimator.setDuration(50000);
             rotateAnimator.setRepeatCount(ObjectAnimator.INFINITE);
             rotateAnimator.start();
-
-//            // Créer une animation de rotation de 360 degrés
-//            RotateAnimation rotateAnimation = new RotateAnimation(0, 360,
-//                    Animation.RELATIVE_TO_SELF, 0.5f,
-//                    Animation.RELATIVE_TO_SELF, 0.5f);
-//            rotateAnimation.setDuration(1000);
-//            rotateAnimation.setInterpolator(Animation.);
-//            rotateAnimation.setRepeatCount(Animation.INFINITE);
-//            menuImageView.startAnimation(rotateAnimation);
-
-//            // Image zoom init
-//            isZoomed = false;
 
             // On touch
             flag.setOnTouchListener(new View.OnTouchListener() {
@@ -121,6 +132,11 @@ public class ActivityMenu extends AppCompatActivity  {
 
             return view;
         }
+
+        private void showErrorDialog() {
+            DialogErrorDataFile deleteDialog = new DialogErrorDataFile(getActivity());
+            deleteDialog.show();
+        }
     }
 
 
@@ -132,9 +148,9 @@ public class ActivityMenu extends AppCompatActivity  {
 
             ActivityMenu parentActivity = (ActivityMenu) getActivity();
 
-            LinearLayout translationLayout = view.findViewById(R.id.translation_layout);
-            LinearLayout newCardLayout = view.findViewById(R.id.new_card_layout);
-            LinearLayout exploreLayout = view.findViewById(R.id.explore_layout);
+            translationLayout = view.findViewById(R.id.translation_layout);
+            newCardLayout = view.findViewById(R.id.new_card_layout);
+            exploreLayout = view.findViewById(R.id.explore_layout);
 
             translationLayout.setOnClickListener(v -> parentActivity.preChangeToTranslationActivity());
             newCardLayout.setOnClickListener(v -> parentActivity.changeActivity(ActivityNewCard.class));

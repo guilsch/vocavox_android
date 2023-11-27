@@ -11,7 +11,9 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/back_ground</item>
+        <item name="android:navigationBarColor">@color/back_ground</item>
         <item name="android:windowLightStatusBar">true</item>
+<!--        <item name="android:windowLightNavigationBar">true</item>-->
 
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/oxygen</item>
@@ -21,6 +23,12 @@
     <style name="OrangeStatusBarTheme" parent="Theme.Multivoc">
         <item name="android:statusBarColor">@color/main_orange1</item>
         <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="OrangeBothBarsBarTheme" parent="Theme.Multivoc">
+        <item name="android:statusBarColor">@color/main_orange1</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/main_orange1</item>
     </style>
 
     <!--    font-->

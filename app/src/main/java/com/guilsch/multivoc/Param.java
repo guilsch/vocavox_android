@@ -147,4 +147,6 @@ public class Param {
     public static final int CONFIRM_IMPORT = 201;
     public static final int CONFIRM_CANCEL = 202;
     public static final int CONFIRM_DELETE_DATA_FILE = 203;
+
+    public static Boolean DATA_FILE_ERROR = false;
 }

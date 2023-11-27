@@ -3,6 +3,7 @@ package com.guilsch.multivoc;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -501,12 +502,19 @@ public class Utils {
         workbook.write(outputStream);
         outputStream.close();
 
+        Param.DATA_FILE_ERROR = false;
+
         } catch (InvalidFormatException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            System.err.println("File possibly corrupted : " + e.getMessage());
+            e.printStackTrace();
+            Param.DATA_FILE_ERROR = true;
+            exportSavedFiles();
         }
 
     }
@@ -692,8 +700,8 @@ public class Utils {
     public static void saveTempDataFile() {
 
         String tempSavedFilePath = Param.DATA_PATH
-                .replace(".xlsx", "_temp.xlsx")
-                .replace(Param.FILE_NAME_PREFIX, "." + Param.FILE_NAME_PREFIX);
+                .replace(".xlsx", "_temp.xlsx");
+//                .replace(Param.FILE_NAME_PREFIX, "." + Param.FILE_NAME_PREFIX);
 
         File originalFile = new File(Param.DATA_PATH);
         File tempSavedFile = new File(tempSavedFilePath);
@@ -749,5 +757,72 @@ public class Utils {
                 return false;
             }
         });
+    }
+
+
+    /**
+     * Export data file only for the current language. File is paste in the download folder
+     */
+    public static void exportSavedFiles() {
+
+        System.out.println("Try to recover data");
+
+        String destinationDirectoryPath = Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                .getAbsolutePath();
+        File destinationDirectory = new File(destinationDirectoryPath);
+
+        File sourceFile = new File(Param.DATA_PATH);
+        File sourceFileTemp = new File(Param.DATA_PATH.replace(".xlsx", "_temp.xlsx"));
+
+        if (!sourceFile.exists() || !sourceFile.isFile()) {
+            System.out.println("Temp source file doesn't exist or is not valid");
+        }
+        else {
+            copyIndividualFileNoOverwrite(sourceFileTemp, destinationDirectory);
+        }
+
+        if (!sourceFile.exists() || !sourceFile.isFile()) {
+            System.out.println("Source file doesn't exist or is not valid");
+        }
+        else {
+            copyIndividualFileNoOverwrite(sourceFile, destinationDirectory);
+        }
+    }
+
+    /**
+     * Copy data files without overwriting preexistant ones
+     * @param sourceFile
+     * @param destinationDirectory
+     * @return
+     */
+    private static int copyIndividualFileNoOverwrite(File sourceFile, File destinationDirectory) {
+        String fileName = sourceFile.getName();
+        File destinationFile = new File(destinationDirectory, fileName);
+
+        int count = 1;
+        while (destinationFile.exists()) {
+            String baseName = fileName.substring(0, fileName.lastIndexOf('.'));
+            String extension = fileName.substring(fileName.lastIndexOf('.'));
+            String newFileName = baseName + "_" + count + extension;
+            destinationFile = new File(destinationDirectory, newFileName);
+            count++;
+        }
+
+        try (FileInputStream inputStream = new FileInputStream(sourceFile);
+             FileOutputStream outputStream = new FileOutputStream(destinationFile);
+             FileChannel sourceChannel = inputStream.getChannel();
+             FileChannel destinationChannel = outputStream.getChannel()) {
+
+            sourceChannel.transferTo(0, sourceChannel.size(), destinationChannel);
+
+            System.out.println("Copy of file : " + sourceFile.getAbsolutePath() + " towards " + destinationFile.getAbsolutePath());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error during the copy : " + e.getMessage());
+            return 11;
+        }
+        return 10;
     }
 }

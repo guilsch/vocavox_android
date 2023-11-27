@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_orange1">
+
+    <TextView
+        android:id="@+id/slide_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/XS"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:text="@string/intro_title_step4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/slide_explaination"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginHorizontal="@dimen/body_horizontal_margin"
+        android:layout_marginTop="20dp"
+        android:text="@string/intro_text_step4"
+        android:textSize="@dimen/L"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slide_title" />
+
+    <life.sabujak.roundedbutton.RoundedButton
+        android:id="@+id/start_button"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="64dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/start_button"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/button_std_text_size"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        app:buttonCornerRadius="5dp"
+        app:buttonColor="@color/main_orange3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/train_layout"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginHorizontal="40dp"
+        android:background="@drawable/menu_case"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/start_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slide_explaination">
+
+        <ImageView
+            android:id="@+id/menu_train_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="30dp"
+            app:srcCompat="@drawable/ic_revision" />
+
+        <TextView
+            android:id="@+id/menu_train_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="20sp"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:text="@string/menu_train_title_str"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/cards_to_train_nb"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="5sp"
+            android:layout_weight="0"
+            android:text="12"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/train_arrow"
+            android:layout_width="15dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/ic_chevron" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

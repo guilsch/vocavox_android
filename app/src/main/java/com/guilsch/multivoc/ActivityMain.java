@@ -161,7 +161,6 @@ public class ActivityMain extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             // This method is called on the UI thread when you call publishProgress()
-            // TODO : add real progress to the bar
             progressBar.setProgress(values[0]);
         }
 
@@ -270,8 +269,16 @@ public class ActivityMain extends AppCompatActivity {
      * Method to switch to ActivityMenu
      */
     private void changeActivity() {
-        Intent menuActivity = new Intent(getApplicationContext(), ActivityMenu.class);
-        startActivity(menuActivity);
+
+        Intent nextActivity;
+
+        if (Param.FIRST_LAUNCH) {
+            nextActivity = new Intent(getApplicationContext(), ActivityIntro.class);
+        } else {
+            nextActivity = new Intent(getApplicationContext(), ActivityMenu.class);
+        }
+
+        startActivity(nextActivity);
         finish();
     }
 

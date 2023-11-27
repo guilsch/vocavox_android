@@ -154,6 +154,7 @@
                 android:layout_marginBottom="20dp"
                 android:padding="10dp"
                 android:inputType="text"
+                android:hint="@string/hint_optional"
                 android:background="@drawable/bg_edit_card_std"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

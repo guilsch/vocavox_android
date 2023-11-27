@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_orange1">
+
+    <TextView
+        android:id="@+id/slide_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/XS"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:text="@string/intro_title_step1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/slide_explaination"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/body_horizontal_margin"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/intro_text_step1"
+        android:textSize="@dimen/L"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slide_title" />
+
+    <ImageView
+        android:id="@+id/arrow_next"
+        android:layout_width="@dimen/ic_arrow_size"
+        android:layout_height="@dimen/ic_arrow_size"
+        android:rotation="0"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="@dimen/body_bottom_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/selector_arrow" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/add_cards_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:orientation="horizontal"
+        android:padding="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/arrow_next"
+        app:layout_constraintTop_toBottomOf="@+id/slide_explaination"
+        tools:layout_editor_absoluteX="40dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/central_vert_guideline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <LinearLayout
+            android:id="@+id/translation_layout"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_menu_square_layout"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_translate" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/menu_translate_title_str"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/new_card_layout"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_menu_square_layout"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_new_card" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/menu_new_card_title_str"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

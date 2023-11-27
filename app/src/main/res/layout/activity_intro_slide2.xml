@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_orange1">
+
+    <TextView
+        android:id="@+id/slide_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="@dimen/XS"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:text="@string/intro_title_step2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/slide_explaination"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/body_horizontal_margin"
+        android:layout_marginTop="20dp"
+        android:text="@string/intro_text_step2"
+        android:gravity="center"
+        android:textSize="@dimen/L"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slide_title" />
+
+    <ImageView
+        android:id="@+id/arrow_next"
+        android:layout_width="@dimen/ic_arrow_size"
+        android:layout_height="@dimen/ic_arrow_size"
+        android:rotation="0"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="@dimen/body_bottom_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/selector_arrow" />
+
+    <ImageView
+        android:id="@+id/arrow_previous"
+        android:layout_width="@dimen/ic_arrow_size"
+        android:layout_height="@dimen/ic_arrow_size"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="@dimen/body_bottom_margin"
+        android:rotation="180"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/selector_arrow" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/import_data_file_button"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_menu_square_layout"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="10dp"
+            android:src="@drawable/ic_import_files"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_settings_data_case_title"
+            android:gravity="center"
+            android:text="@string/setting_import_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/XS"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

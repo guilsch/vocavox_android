@@ -149,4 +149,23 @@
     <!--    Loading screen-->
     <string name="loading_text">Chargement en cours...</string>
 
+    <!--    Default hint -->
+    <string name="hint_optional">Optionnel</string>
+
+    <!--    Intro activity-->
+    <string name="intro_title_step1">Étape 1</string>
+    <string name="intro_title_step2">Étape 2</string>
+    <string name="intro_title_step3">Étape 3</string>
+    <string name="intro_title_step4">Étape 4</string>
+
+    <string name="intro_text_step1">Ajoute des cartes manuellement ou en utilisant l\'outil de traduction</string>
+    <string name="intro_text_step2">Tu peux aussi importer un fichier Excel de mots (exporte d\'abord le fichier de données dans les paramètres pour voir le format du tableau Excel)</string>
+    <string name="intro_text_step3">Apprend les mots qui t\'intéressent !</string>
+    <string name="intro_text_step4">Révise les mots quand c\'est l\'heure</string>
+
+    <!--    datafile error-->
+    <string name="data_file_error_msg">Une erreur est survenue lors du chargement du fichier de données
+        qui pourrait être corrompu. Un fichier de sauvegarde ainsi que le fichier corrompu ont été copiés
+        dans le dossier de téléchargement. Si tous les mots ont disparu, essaie d\'importer le fichier de
+        sauvegarde dans les réglages (n\'oublie pas de le renommer en retirant le \"_temp\").</string>
 </resources>

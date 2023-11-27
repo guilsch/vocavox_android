@@ -29,7 +29,7 @@
             android:id="@+id/menu_image_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="30dp"
+            android:layout_margin="70dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +71,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/error_button"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/red"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/setting_im"
+            app:layout_constraintEnd_toStartOf="@+id/setting_im"
+            app:layout_constraintTop_toTopOf="@+id/setting_im"
+            app:srcCompat="@android:drawable/stat_sys_warning" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

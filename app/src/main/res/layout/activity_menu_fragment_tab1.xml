@@ -115,7 +115,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_margin="30dp"
-                app:srcCompat="@drawable/ic_revision" />
+                app:srcCompat="@drawable/ic_train" />
 
             <TextView
                 android:id="@+id/menu_train_title"

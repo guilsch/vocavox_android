@@ -1,0 +1,149 @@
+<resources>
+
+    <!-- Willkommensbildschirm -->
+    <string name="choose_language">Wähle die Sprache, die du lernen möchtest:</string>
+    <string name="welcome_msg">Willkommen</string>
+
+    <!-- Seiten für Frage und Antwort -->
+    <string name="revision_header">Überprüfung</string>
+    <string name="see_answer">Zurück</string>
+
+    <!-- Bildschirme beenden -->
+    <string name="end_train">Ende des Trainings!</string>
+    <string name="end_learn">Ende des Lernens!</string>
+    <string name="no_cards_to_learn_message">Keine Karten zum Lernen...</string>
+
+    <!-- Menü -->
+    <string name="menu_nb_of_cards_to_review_title_str">Anzahl der Karten, die heute überprüft werden sollen</string>
+
+    <string name="menu_train_title_str">Überprüfen</string>
+    <string name="menu_learn_title_str">Lernen</string>
+    <string name="menu_new_card_title_str">Neue Karte</string>
+    <string name="menu_translate_title_str">Übersetzen</string>
+    <string name="menu_explore_title_str">Erkunden</string>
+    <string name="menu_settings_title_str">Einstellungen</string>
+
+    <string name="menu_add_cards_title">Karten hinzufügen</string>
+    <string name="menu_others_title">Andere</string>
+
+    <string name="toast_msg_no_connexion">Du benötigst eine Internetverbindung, um zu übersetzen</string>
+
+    <!-- Neue Karte -->
+    <string name="new_card_header">Bearbeiten einer neuen Karte</string>
+    <string name="item1">Ursprüngliches Wort</string>
+    <string name="item2">Übersetzung</string>
+    <string name="pack">Pack</string>
+    <string name="creation_date">Karte erstellt am </string>
+    <string name="save_card">Speichern</string>
+    <string name="next_new_card">Neue</string>
+    <string name="card_state">Aktueller Zustand</string>
+    <string name="toast_msg_invalid_new_card">Beide Wörter müssen angegeben werden</string>
+    <string name="toast_msg_new_card_saved">Die Karte wurde gespeichert</string>
+
+    <!-- Karte bearbeiten -->
+    <string name="edit_card_msg">Bearbeiten der Karte</string>
+    <string name="edit_card_date_sentence_now">Diese Karte muss jetzt überprüft werden \u00A0</string>
+    <string name="edit_card_date_word_now">jetzt</string>
+    <string name="edit_card_date_sentence_on_the">Nächste Überprüfung am \u00A0</string>
+    <string name="edit_card_date_creation_sentence">Karte erstellt am \u00A0</string>
+
+    <!-- Starten -->
+    <string name="start_button">Starten</string>
+
+    <!-- Übersetzung -->
+    <string name="toast_msg_empty_translation">Keine Übersetzung</string>
+
+    <!-- Erkunden -->
+    <string name="no_cards_in_list">Keine Karte</string>
+
+    <!-- Einstellungen -->
+    <string name="lang_direction_freq_setting">Anteil der Karten, die in die entgegengesetzte Richtung überprüft werden:</string>
+    <string name="folder_path_setting">Ordnerpfad:</string>
+    <string name="default_setting">Standard</string>
+    <string name="setting_play_speech">Automatische Aussprache der Wörter:</string>
+    <string name="setting_import_title">Datenfile importieren</string>
+    <string name="setting_export_title">Datenfile exportieren</string>
+    <string name="setting_reset_title">Datenfile zurücksetzen</string>
+
+    <string name="setting_file_title">Datenfile</string>
+    <string name="setting_training_title">Überprüfung</string>
+
+    <!-- Lernen -->
+    <string name="learn_select_cards_msg_str">Wähle die Karten zum Lernen aus:</string>
+
+    <string name="transition01_question">Bereit für Schritt 1?</string>
+    <string name="transition12_question">Bereit für Schritt 2?</string>
+    <string name="transition23_question">Bereit für Schritt 3?</string>
+
+    <string name="transition01_text">Versuche, die Übersetzung jedes Wortes zu merken</string>
+    <string name="transition12_text">Versuche, die Übersetzung jedes Wortes wiederzufinden</string>
+    <string name="transition23_text">Lass uns zur Bewertung übergehen! Versuche, jedes Wort zu übersetzen und bewerte dein Gedächtnis</string>
+
+    <!-- Buttons -->
+    <string name="button_save">Speichern</string>
+
+    <!-- Erste Mal -->
+
+    <!-- Toasts -->
+    <string name="toast_msg_no_cards_to_learn">Keine Karte zum Lernen...</string>
+    <string name="toast_msg_no_cards_to_train">Keine Karte zum Überprüfen...</string>
+
+    <string name="toast_msg_data_file_imported">Import erfolgreich abgeschlossen!</string>
+    <string name="toast_msg_data_import_copy_failed">Import fehlgeschlagen, versuche es erneut</string>
+    <string name="toast_msg_data_import_wrong_file_name">Die ausgewählte Datei entspricht nicht einer Datei der Anwendung, überprüfe und versuche es erneut</string>
+    <string name="toast_msg_data_error">Fehler, versuche es erneut</string>
+
+    <string name="toast_msg_data_file_exported">Export in den Download-Ordner erfolgreich abgeschlossen!</string>
+    <string name="toast_msg_data_export_copy_failed">Export fehlgeschlagen, versuche es erneut</string>
+    <string name="toast_msg_data_export_no_file_found">Keine Daten-Datei erkannt, überprüfe und versuche es erneut</string>
+
+    <string name="toast_msg_data_delete_success">Löschen der Daten abgeschlossen!</string>
+    <string name="toast_msg_data_delete_failed">Fehler beim Löschen, versuche es erneut</string>
+    <string name="toast_msg_data_delete_no_file_found">Datei nicht gefunden</string>
+
+    <!-- Andere -->
+    <string name="button_back_home">Menü</string>
+    <string name="button_back_str">Zurück</string>
+
+    <!-- Dialog zum Löschen der Karte -->
+    <string name="dialog_delete_card_title_str">Möchten Sie diese Karte wirklich löschen?</string>
+    <string name="text_button_delete_str">Löschen</string>
+    <string name="text_button_cancel_str">Abbrechen</string>
+
+    <!-- Dialog zum Löschen der Daten-Datei -->
+    <string name="dialog_delete_data_file_title_str">Möchten Sie wirklich alle Daten für diese Sprache löschen? Die Daten können nicht wiederhergestellt werden</string>
+
+    <!-- Dialog sortieren -->
+    <string name="dialog_sort_title_str">Sortieren</string>
+    <string name="dialog_sort_alphabetical_str">Alphabetisch</string>
+    <string name="dialog_sort_creation_date_str">Erstellungsdatum</string>
+    <string name="dialog_sort_training_date_str">Überprüfungsdatum</string>
+
+    <!-- Dialog zum Verlassen des Lernens-->
+    <string name="dialog_quit_learning_title_str">Möchten Sie das Lernen wirklich beenden?</string>
+    <string name="text_button_quit_learning">Beenden</string>
+
+    <!-- Dialog-->
+    <string name="text_button_import">Importieren</string>
+    <string name="dialog_import_title_str">Die ausgewählte Datei wird importiert und überschreibt die aktuelle Daten-Datei für diese Lernsprache. Sind Sie sicher, dass Sie neue Dateien importieren möchten?</string>
+
+    <!-- Ladescreen -->
+    <string name="loading_text">Laden...</string>
+
+    <!-- Standardhinweis -->
+    <string name="hint_optional">Optional</string>
+
+    <!-- Einführungsaktivität -->
+    <string name="intro_title_step1">Schritt 1</string>
+    <string name="intro_title_step2">Schritt 2</string>
+    <string name="intro_title_step3">Schritt 3</string>
+    <string name="intro_title_step4">Schritt 4</string>
+
+    <string name="intro_text_step1">Füge manuell Karten hinzu oder verwende das Übersetzungstool</string>
+    <string name="intro_text_step2">Sie können auch eine Excel-Datei mit Wörtern importieren (exportieren Sie zuerst die Daten-Datei in den Einstellungen, um das Format der Excel-Tabelle zu sehen)</string>
+    <string name="intro_text_step3">Lerne die Wörter, die dich interessieren!</string>
+    <string name="intro_text_step4">Überprüfen Sie die Wörter, wenn es Zeit ist</string>
+
+    <!-- Datenfile-Fehler -->
+    <string name="data_file_error_msg">Beim Laden der Daten-Datei ist ein Fehler aufgetreten, der beschädigt sein könnte. Eine Sicherungsdatei sowie die beschädigte Datei wurden in den Download-Ordner kopiert. Wenn alle Wörter verschwunden sind, versuchen Sie die Sicherungsdatei in den Einstellungen zu importieren (vergessen Sie nicht, sie durch Entfernen des "_temp" umzubenennen).</string>
+</resources>

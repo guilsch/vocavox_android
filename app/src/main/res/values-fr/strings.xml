@@ -1,17 +1,12 @@
 <resources>
-    <string name="app_name">Multivoc</string>
 
     <!-- Welcome screen -->
-    <string name="choose_language">Sélectionnez la langue que vous voulez apprendre maintenant :</string>
+    <string name="choose_language">Sélectionne la langue que tu veux apprendre :</string>
     <string name="welcome_msg">Bienvenue</string>
 
     <!-- Question Answer Sides  -->
     <string name="revision_header">Révision</string>
-    <string name="see_answer">Voir la réponse</string>
-    <string name="wrong">faux</string>
-    <string name="hard">difficile</string>
-    <string name="good">bien</string>
-    <string name="perfect">parfait</string>
+    <string name="see_answer">Retourner</string>
 
     <!-- Finished screens -->
     <string name="end_train">Fin de l\'entraînement !</string>
@@ -20,9 +15,6 @@
 
     <!-- Menu -->
     <string name="menu_nb_of_cards_to_review_title_str">Nombre de cartes à revoir aujourd\'hui</string>
-    <string name="menu_nb_of_cards_title_str">Nombre total de cartes</string>
-    <string name="menu_msg">Fécilitations ! Vous êtes bien parti pour apprendre une nouvelle langue, continuez !</string>
-    <string name="menu_header_msg">Bienvenue</string>
 
     <string name="menu_train_title_str">Réviser</string>
     <string name="menu_learn_title_str">Apprendre</string>
@@ -37,20 +29,20 @@
     <string name="toast_msg_no_connexion">Vous avez besoin d\'une connexion Internet pour traduire</string>
 
     <!-- New Card !-->
-    <string name="new_card_header">Editer une nouvelle carte</string>
-    <string name="item1">Mot en français</string>
+    <string name="new_card_header">Éditer une nouvelle carte</string>
+    <string name="item1">Mot original</string>
     <string name="item2">Traduction</string>
     <string name="pack">Pack</string>
     <string name="creation_date">Carte créée le </string>
     <string name="save_card">Sauvegarder</string>
     <string name="next_new_card">Nouvelle</string>
-    <string name="card_state">Etat actuel</string>
-    <string name="toast_msg_invalid_new_card">Veuillez remplir les deux mots</string>
-    <string name="toast_msg_new_card_saved">The card has been saved!</string>
+    <string name="card_state">État actuel</string>
+    <string name="toast_msg_invalid_new_card">Les deux mots doivent être donnés</string>
+    <string name="toast_msg_new_card_saved">La carte a été sauvegardée</string>
 
 
     <!--Edit Card !-->
-    <string name="edit_card_msg">Edition de la card</string>
+    <string name="edit_card_msg">Édition de la card</string>
     <string name="edit_card_date_sentence_now">Cette carte doit être revue \u00A0</string>
     <string name="edit_card_date_word_now">maintenant</string>
     <string name="edit_card_date_sentence_on_the">Prochaine révision le \u00A0</string>
@@ -60,32 +52,25 @@
     <string name="start_button">Commencer</string>
 
     <!-- Translation !-->
-    <string name="translate_header">Traduire</string>
-    <string name="no_connection">Pas de connexion Internet ! Traduction impossible !</string>
     <string name="toast_msg_empty_translation">Pas de traduction</string>
-    <string name="trans_check_header">Editer la carte</string>
 
     <!--  Explore !-->
-    <string name="explore_header">Explorer</string>
     <string name="no_cards_in_list">Pas de carte</string>
 
     <!-- Settings   -->
-    <string name="settings_header">Paramètres</string>
-    <string name="save_setting">Sauvegarder</string>
     <string name="lang_direction_freq_setting">Proportion de cartes revues dans le sens inverse :</string>
     <string name="folder_path_setting">Chemin du dossier :</string>
     <string name="default_setting">Défaut</string>
     <string name="setting_play_speech">Prononciation automatique des mots :</string>
-    <string name="setting_import_title">Importer les fichiers de données</string>
-    <string name="setting_export_title">Exporter les fichiers de données</string>
-    <string name="setting_reset_title">Supprimer les données</string>
+    <string name="setting_import_title">Importer un fichier de données</string>
+    <string name="setting_export_title">Exporter le fichier de données</string>
+    <string name="setting_reset_title">Réinitialiser le fichier de données</string>
 
-    <string name="setting_file_title">Fichiers de données</string>
+    <string name="setting_file_title">Fichier de données</string>
     <string name="setting_training_title">Révision</string>
 
     <!-- Learn   -->
-    <string name="learn_header_str">Apprendre</string>
-    <string name="learn_select_cards_msg_str">Sélectionner les cartes à apprendre :</string>
+    <string name="learn_select_cards_msg_str">Sélectionne les cartes à apprendre :</string>
 
     <string name="transition01_question">Prêt pour l\'étape 1 ?</string>
     <string name="transition12_question">Prêt pour l\'étape 2 ?</string>
@@ -96,12 +81,9 @@
     <string name="transition23_text">Passons à l\'évaluation ! Essaie de traduire chaque mot et évalue ta mémoire</string>
 
     <!-- Buttons   -->
-    <string name="button_start">Commencer</string>
     <string name="button_save">Sauvegarder</string>
-    <string name="button_cancel">Annuler</string>
 
     <!-- First Time  -->
-    <string name="first_time_path_msg_str">Entrez l\'emplacement du dossier où les fichers Excel regroupant vos mots doivent être enregistrés</string>
 
     <!-- Toasts   -->
     <string name="toast_msg_no_cards_to_learn">Aucune carte à apprendre...</string>
@@ -112,13 +94,13 @@
     <string name="toast_msg_data_import_wrong_file_name">Le fichier sélectionné ne correspond pas à un fichier de l\'application, vérifie et essaie à nouveau</string>
     <string name="toast_msg_data_error">Erreur, essaie à nouveau</string>
 
-    <string name="toast_msg_data_file_exported">L\'exportation vers le dossier de téléchargements s\'est déroulée avec succès!</string>
+    <string name="toast_msg_data_file_exported">L\'exportation vers le dossier de téléchargements s\'est déroulée avec succès !</string>
     <string name="toast_msg_data_export_copy_failed">L\'exportation a échoué, essaie à nouveau</string>
     <string name="toast_msg_data_export_no_file_found">Aucun fichier de données n\'a été reconnu, vérifie et essaie à nouveau</string>
 
-    <string name="toast_msg_data_delete_success">Suppression des données effectuée!</string>
+    <string name="toast_msg_data_delete_success">Suppression des données effectuée !</string>
     <string name="toast_msg_data_delete_failed">Erreur pendant la suppression, essaie à nouveau</string>
-    <string name="toast_msg_data_delete_no_file_found">Fichier non trouvé</string>
+    <string name="toast_msg_data_delete_no_file_found">Fichier introuvable</string>
 
     <!-- Other -->
     <string name="button_back_home">Menu</string>

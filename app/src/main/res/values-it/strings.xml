@@ -1,0 +1,149 @@
+<resources>
+
+    <!-- Schermata di benvenuto -->
+    <string name="choose_language">Seleziona la lingua che vuoi imparare:</string>
+    <string name="welcome_msg">Benvenuto</string>
+
+    <!-- Lati di domande e risposte -->
+    <string name="revision_header">Revisione</string>
+    <string name="see_answer">Torna</string>
+
+    <!-- Schermate di completamento -->
+    <string name="end_train">Allenamento completato!</string>
+    <string name="end_learn">Apprendimento completato!</string>
+    <string name="no_cards_to_learn_message">Nessuna carta da imparare...</string>
+
+    <!-- Menu -->
+    <string name="menu_nb_of_cards_to_review_title_str">Numero di carte da rivedere oggi</string>
+
+    <string name="menu_train_title_str">Rivedi</string>
+    <string name="menu_learn_title_str">Impara</string>
+    <string name="menu_new_card_title_str">Nuova carta</string>
+    <string name="menu_translate_title_str">Traduci</string>
+    <string name="menu_explore_title_str">Esplora</string>
+    <string name="menu_settings_title_str">Impostazioni</string>
+
+    <string name="menu_add_cards_title">Aggiungi carte</string>
+    <string name="menu_others_title">Altro</string>
+
+    <string name="toast_msg_no_connexion">È necessaria una connessione Internet per tradurre</string>
+
+    <!-- Nuova carta -->
+    <string name="new_card_header">Modifica nuova carta</string>
+    <string name="item1">Parola originale</string>
+    <string name="item2">Traduzione</string>
+    <string name="pack">Pacco</string>
+    <string name="creation_date">Carta creata il </string>
+    <string name="save_card">Salva</string>
+    <string name="next_new_card">Nuova</string>
+    <string name="card_state">Stato attuale</string>
+    <string name="toast_msg_invalid_new_card">Entrambe le parole devono essere fornite</string>
+    <string name="toast_msg_new_card_saved">La carta è stata salvata</string>
+
+    <!-- Modifica carta -->
+    <string name="edit_card_msg">Modifica carta</string>
+    <string name="edit_card_date_sentence_now">Questa carta deve essere rivista \u00A0</string>
+    <string name="edit_card_date_word_now">ora</string>
+    <string name="edit_card_date_sentence_on_the">Prossima revisione il \u00A0</string>
+    <string name="edit_card_date_creation_sentence">Carta creata il \u00A0</string>
+
+    <!-- Inizia -->
+    <string name="start_button">Inizia</string>
+
+    <!-- Traduzione -->
+    <string name="toast_msg_empty_translation">Nessuna traduzione</string>
+
+    <!-- Esplora -->
+    <string name="no_cards_in_list">Nessuna carta</string>
+
+    <!-- Impostazioni -->
+    <string name="lang_direction_freq_setting">Proporzione di carte riviste in direzione inversa:</string>
+    <string name="folder_path_setting">Percorso della cartella:</string>
+    <string name="default_setting">Predefinito</string>
+    <string name="setting_play_speech">Pronuncia automatica delle parole:</string>
+    <string name="setting_import_title">Importa un file di dati</string>
+    <string name="setting_export_title">Esporta il file di dati</string>
+    <string name="setting_reset_title">Reimposta il file di dati</string>
+
+    <string name="setting_file_title">File di dati</string>
+    <string name="setting_training_title">Revisione</string>
+
+    <!-- Impara -->
+    <string name="learn_select_cards_msg_str">Seleziona le carte da imparare:</string>
+
+    <string name="transition01_question">Pronto per la fase 1?</string>
+    <string name="transition12_question">Pronto per la fase 2?</string>
+    <string name="transition23_question">Pronto per la fase 3?</string>
+
+    <string name="transition01_text">Cerca di memorizzare la traduzione di ogni parola</string>
+    <string name="transition12_text">Cerca di recuperare la traduzione di ogni parola</string>
+    <string name="transition23_text">Passiamo alla valutazione! Cerca di tradurre ogni parola e valuta la tua memoria</string>
+
+    <!-- Pulsanti -->
+    <string name="button_save">Salva</string>
+
+    <!-- Prima volta -->
+
+    <!-- Toast -->
+    <string name="toast_msg_no_cards_to_learn">Nessuna carta da imparare...</string>
+    <string name="toast_msg_no_cards_to_train">Nessuna carta da rivedere...</string>
+
+    <string name="toast_msg_data_file_imported">Importazione riuscita!</string>
+    <string name="toast_msg_data_import_copy_failed">Importazione fallita, riprova</string>
+    <string name="toast_msg_data_import_wrong_file_name">Il file selezionato non corrisponde a un file dell\'applicazione, controlla e riprova</string>
+    <string name="toast_msg_data_error">Errore, riprova</string>
+
+    <string name="toast_msg_data_file_exported">Esportazione nella cartella Download riuscita!</string>
+    <string name="toast_msg_data_export_copy_failed">Esportazione fallita, riprova</string>
+    <string name="toast_msg_data_export_no_file_found">Nessun file di dati riconosciuto, controlla e riprova</string>
+
+    <string name="toast_msg_data_delete_success">Cancellazione dati riuscita!</string>
+    <string name="toast_msg_data_delete_failed">Errore durante la cancellazione, riprova</string>
+    <string name="toast_msg_data_delete_no_file_found">File non trovato</string>
+
+    <!-- Altro -->
+    <string name="button_back_home">Menu</string>
+    <string name="button_back_str">Indietro</string>
+
+    <!-- Dialogo elimina carta -->
+    <string name="dialog_delete_card_title_str">Vuoi davvero eliminare questa carta?</string>
+    <string name="text_button_delete_str">Elimina</string>
+    <string name="text_button_cancel_str">Annulla</string>
+
+    <!-- Dialogo elimina file di dati -->
+    <string name="dialog_delete_data_file_title_str">Vuoi davvero eliminare tutti i dati per questa lingua? I dati non possono essere recuperati</string>
+
+    <!-- Dialogo ordinamento -->
+    <string name="dialog_sort_title_str">Ordina</string>
+    <string name="dialog_sort_alphabetical_str">Alfabetico</string>
+    <string name="dialog_sort_creation_date_str">Data di creazione</string>
+    <string name="dialog_sort_training_date_str">Data di revisione</string>
+
+    <!-- Dialogo uscita dall'apprendimento-->
+    <string name="dialog_quit_learning_title_str">Vuoi davvero uscire dall\'apprendimento?</string>
+    <string name="text_button_quit_learning">Esci</string>
+
+    <!-- Dialogo-->
+    <string name="text_button_import">Importa</string>
+    <string name="dialog_import_title_str">Il file selezionato verrà importato e sovrascriverà il file di dati attuale per questa lingua di apprendimento. Sei sicuro di voler importare nuovi file?</string>
+
+    <!-- Schermata di caricamento -->
+    <string name="loading_text">Caricamento in corso...</string>
+
+    <!-- Suggerimento predefinito -->
+    <string name="hint_optional">Opzionale</string>
+
+    <!-- Attività di introduzione -->
+    <string name="intro_title_step1">Fase 1</string>
+    <string name="intro_title_step2">Fase 2</string>
+    <string name="intro_title_step3">Fase 3</string>
+    <string name="intro_title_step4">Fase 4</string>
+
+    <string name="intro_text_step1">Aggiungi carte manualmente o utilizza lo strumento di traduzione</string>
+    <string name="intro_text_step2">Puoi anche importare un file Excel di parole (esporta prima il file di dati nelle impostazioni per vedere il formato della tabella Excel)</string>
+    <string name="intro_text_step3">Impara le parole che ti interessano!</string>
+    <string name="intro_text_step4">Rivedi le parole quando è il momento</string>
+
+    <!-- Errore file di dati -->
+    <string name="data_file_error_msg">Si è verificato un errore durante il caricamento del file di dati, che potrebbe essere danneggiato. Un file di backup e il file danneggiato sono stati copiati nella cartella Download. Se tutte le parole sono scomparse, prova a importare il file di backup nelle impostazioni (ricordati di rinominarlo rimuovendo il "_temp").</string>
+</resources>

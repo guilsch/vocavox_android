@@ -1,0 +1,152 @@
+<resources>
+
+    <!-- Экран приветствия -->
+    <string name="choose_language">Выберите язык, который вы хотите изучить:</string>
+    <string name="welcome_msg">Добро пожаловать</string>
+
+    <!-- Стороны вопроса и ответа -->
+    <string name="revision_header">Повторение</string>
+    <string name="see_answer">Вернуться</string>
+
+    <!-- Экраны завершения -->
+    <string name="end_train">Конец тренировки!</string>
+    <string name="end_learn">Конец обучения!</string>
+    <string name="no_cards_to_learn_message">Нет карточек для изучения...</string>
+
+    <!-- Меню -->
+    <string name="menu_nb_of_cards_to_review_title_str">Количество карточек для повторения сегодня</string>
+
+    <string name="menu_train_title_str">Повторить</string>
+    <string name="menu_learn_title_str">Учить</string>
+    <string name="menu_new_card_title_str">Новая карточка</string>
+    <string name="menu_translate_title_str">Перевести</string>
+    <string name="menu_explore_title_str">Исследовать</string>
+    <string name="menu_settings_title_str">Настройки</string>
+
+    <string name="menu_add_cards_title">Добавить карточки</string>
+    <string name="menu_others_title">Другое</string>
+
+    <string name="toast_msg_no_connexion">Требуется подключение к Интернету для перевода</string>
+
+    <!-- Новая карточка !-->
+    <string name="new_card_header">Редактировать новую карточку</string>
+    <string name="item1">Оригинальное слово</string>
+    <string name="item2">Перевод</string>
+    <string name="pack">Пакет</string>
+    <string name="creation_date">Карточка создана </string>
+    <string name="save_card">Сохранить</string>
+    <string name="next_new_card">Новая</string>
+    <string name="card_state">Текущее состояние</string>
+    <string name="toast_msg_invalid_new_card">Необходимо предоставить оба слова</string>
+    <string name="toast_msg_new_card_saved">Карточка сохранена</string>
+
+    <!-- Редактировать карточку !-->
+    <string name="edit_card_msg">Редактирование карточки</string>
+    <string name="edit_card_date_sentence_now">Эту карточку нужно повторить \u00A0</string>
+    <string name="edit_card_date_word_now">сейчас</string>
+    <string name="edit_card_date_sentence_on_the">Следующее повторение \u00A0</string>
+    <string name="edit_card_date_creation_sentence">Карточка создана \u00A0</string>
+
+    <!-- Начать !-->
+    <string name="start_button">Начать</string>
+
+    <!-- Перевод !-->
+    <string name="toast_msg_empty_translation">Нет перевода</string>
+
+    <!-- Исследовать !-->
+    <string name="no_cards_in_list">Нет карточек</string>
+
+    <!-- Настройки   -->
+    <string name="lang_direction_freq_setting">Пропорция карточек для повторения в обратном направлении:</string>
+    <string name="folder_path_setting">Путь к папке:</string>
+    <string name="default_setting">По умолчанию</string>
+    <string name="setting_play_speech">Автоматическое произношение слов:</string>
+    <string name="setting_import_title">Импортировать файл данных</string>
+    <string name="setting_export_title">Экспортировать файл данных</string>
+    <string name="setting_reset_title">Сбросить файл данных</string>
+
+    <string name="setting_file_title">Файл данных</string>
+    <string name="setting_training_title">Повторение</string>
+
+    <!-- Учить   -->
+    <string name="learn_select_cards_msg_str">Выберите карточки для изучения:</string>
+
+    <string name="transition01_question">Готовы к шагу 1?</string>
+    <string name="transition12_question">Готовы к шагу 2?</string>
+    <string name="transition23_question">Готовы к шагу 3?</string>
+
+    <string name="transition01_text">Попробуйте запомнить перевод каждого слова</string>
+    <string name="transition12_text">Попробуйте вспомнить перевод каждого слова</string>
+    <string name="transition23_text">Переходим к оценке! Попробуйте перевести каждое слово и оцените свою память</string>
+
+    <!-- Кнопки   -->
+    <string name="button_save">Сохранить</string>
+
+    <!-- Первый раз  -->
+
+    <!-- Подсказки   -->
+    <string name="toast_msg_no_cards_to_learn">Нет карточек для изучения...</string>
+    <string name="toast_msg_no_cards_to_train">Нет карточек для повторения...</string>
+
+    <string name="toast_msg_data_file_imported">Импорт прошел успешно!</string>
+    <string name="toast_msg_data_import_copy_failed">Ошибка при импорте, попробуйте еще раз</string>
+    <string name="toast_msg_data_import_wrong_file_name">Выбранный файл не соответствует файлу приложения, проверьте и попробуйте еще раз</string>
+    <string name="toast_msg_data_error">Ошибка, попробуйте еще раз</string>
+
+    <string name="toast_msg_data_file_exported">Экспорт в папку загрузок прошел успешно!</string>
+    <string name="toast_msg_data_export_copy_failed">Ошибка при экспорте, попробуйте еще раз</string>
+    <string name="toast_msg_data_export_no_file_found">Файл данных не найден, проверьте и попробуйте еще раз</string>
+
+    <string name="toast_msg_data_delete_success">Данные успешно удалены!</string>
+    <string name="toast_msg_data_delete_failed">Ошибка при удалении, попробуйте еще раз</string>
+    <string name="toast_msg_data_delete_no_file_found">Файл не найден</string>
+
+    <!-- Другое -->
+    <string name="button_back_home">Меню</string>
+    <string name="button_back_str">Назад</string>
+
+    <!-- Диалог удаления карточки -->
+    <string name="dialog_delete_card_title_str">Вы действительно хотите удалить эту карточку?</string>
+    <string name="text_button_delete_str">Удалить</string>
+    <string name="text_button_cancel_str">Отмена</string>
+
+    <!-- Диалог удаления файла данных -->
+    <string name="dialog_delete_data_file_title_str">Вы действительно хотите удалить все данные для этого языка? Данные не могут быть восстановлены</string>
+
+    <!-- Диалог сортировки -->
+    <string name="dialog_sort_title_str">Сортировать</string>
+    <string name="dialog_sort_alphabetical_str">По алфавиту</string>
+    <string name="dialog_sort_creation_date_str">По дате создания</string>
+    <string name="dialog_sort_training_date_str">По дате повторения</string>
+
+    <!--    Диалог выхода из обучения-->
+    <string name="dialog_quit_learning_title_str">Вы действительно хотите выйти из обучения?</string>
+    <string name="text_button_quit_learning">Выйти</string>
+
+    <!--    // Диалог-->
+    <string name="text_button_import">Импорт</string>
+    <string name="dialog_import_title_str">Выбранный файл будет импортирован и перезапишет текущий файл данных для этого языка обучения. Вы уверены, что хотите импортировать новые файлы?</string>
+
+    <!--    Экран загрузки-->
+    <string name="loading_text">Загрузка...</string>
+
+    <!--    Подсказка по умолчанию -->
+    <string name="hint_optional">Необязательно</string>
+
+    <!--    Вводная активность-->
+    <string name="intro_title_step1">Шаг 1</string>
+    <string name="intro_title_step2">Шаг 2</string>
+    <string name="intro_title_step3">Шаг 3</string>
+    <string name="intro_title_step4">Шаг 4</string>
+
+    <string name="intro_text_step1">Добавьте карточки вручную или используя инструмент перевода</string>
+    <string name="intro_text_step2">Вы также можете импортировать файл Excel со словами (сначала экспортируйте файл данных в настройках, чтобы увидеть формат таблицы Excel)</string>
+    <string name="intro_text_step3">Изучайте слова, которые вас интересуют!</string>
+    <string name="intro_text_step4">Повторяйте слова вовремя</string>
+
+    <!--    Ошибка файла данных-->
+    <string name="data_file_error_msg">Произошла ошибка при загрузке файла данных,
+        который может быть поврежден. Резервная копия файла и поврежденный файл были скопированы
+        в папку загрузок. Если все слова исчезли, попробуйте импортировать резервный файл
+        в настройках (не забудьте переименовать его, удалив "_temp").</string>
+</resources>

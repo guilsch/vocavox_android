@@ -1,17 +1,13 @@
 <resources>
-    <string name="app_name">Multivoc</string>
+    <string name="app_name" translatable="false">Vocavox</string>
 
     <!-- Welcome screen -->
-    <string name="choose_language">Please select the language you want to learn today :</string>
+    <string name="choose_language">Please select the language you want to learn:</string>
     <string name="welcome_msg">Welcome</string>
 
     <!-- Question Answer Sides  -->
-    <string name="revision_header">Revision</string>
-    <string name="see_answer">See answer</string>
-    <string name="wrong">wrong</string>
-    <string name="hard">hard</string>
-    <string name="good">good</string>
-    <string name="perfect">perfect</string>
+    <string name="revision_header">Training</string>
+    <string name="see_answer">Flip</string>
 
     <!-- Finished screens -->
     <string name="end_train">End of training !</string>
@@ -20,9 +16,6 @@
 
     <!-- Menu -->
     <string name="menu_nb_of_cards_to_review_title_str">Number of cards to review now</string>
-    <string name="menu_nb_of_cards_title_str">Total number of cards</string>
-    <string name="menu_msg">Congratulations ! You are on your way to speak a new language, keep going !</string>
-    <string name="menu_header_msg">Welcome</string>
 
     <string name="menu_train_title_str">Train</string>
     <string name="menu_learn_title_str">Learn</string>
@@ -39,8 +32,8 @@
 
     <!-- New Card !-->
     <string name="new_card_header">Edit new card</string>
-    <string name="item1">First word</string>
-    <string name="item2">Second word</string>
+    <string name="item1">Original word</string>
+    <string name="item2">Translation</string>
     <string name="pack">Pack</string>
     <string name="creation_date">Card created on </string>
     <string name="save_card">Save</string>
@@ -54,54 +47,44 @@
     <string name="edit_card_date_sentence_now">This card must be reviewed \u00A0</string>
     <string name="edit_card_date_word_now">now</string>
     <string name="edit_card_date_sentence_on_the">Next training on \u00A0</string>
-    <string name="edit_card_date_creation_sentence">Card created \u00A0</string>
+    <string name="edit_card_date_creation_sentence">Card created on \\u00A0</string>
 
     <!-- Start !-->
     <string name="start_button">Start</string>
 
     <!-- Translation !-->
-    <string name="translate_header">Translate</string>
-    <string name="no_connection">No internet connection! Cannot be translated!</string>
-    <string name="trans_check_header">Edit your card</string>
     <string name="toast_msg_empty_translation">Translation is empty</string>
 
     <!--  Explore !-->
-    <string name="explore_header">Explore</string>
     <string name="no_cards_in_list">No card</string>
 
     <!-- Settings   -->
-    <string name="settings_header">Settings</string>
-    <string name="save_setting">Save</string>
     <string name="lang_direction_freq_setting">Language direction frequency :</string>
     <string name="folder_path_setting">Folder path :</string>
     <string name="default_setting">Default</string>
     <string name="setting_play_speech">Automatic pronounciation of words :</string>
     <string name="setting_import_title">Import data file</string>
     <string name="setting_export_title">Export data file</string>
-    <string name="setting_reset_title">Delete data file</string>
+    <string name="setting_reset_title">Reset data file</string>
 
     <string name="setting_file_title">Data files</string>
     <string name="setting_training_title">Training</string>
 
     <!-- Learn   -->
-    <string name="learn_header_str">Learn</string>
     <string name="learn_select_cards_msg_str">Select the cards to learn :</string>
 
-    <string name="transition01_question">Ready for step 1 ?</string>
-    <string name="transition12_question">Ready for step 2 ?</string>
-    <string name="transition23_question">Ready for step 3 ?</string>
+    <string name="transition01_question">Ready for step 1?</string>
+    <string name="transition12_question">Ready for step 2?</string>
+    <string name="transition23_question">Ready for step 3?</string>
 
     <string name="transition01_text">Try to remember the translation of the words</string>
     <string name="transition12_text">Try to guess the translation of the words</string>
     <string name="transition23_text">Time for evaluation ! Try to remember each word and assess your memory</string>
 
     <!-- Buttons   -->
-    <string name="button_start">Start</string>
     <string name="button_save">Save</string>
-    <string name="button_cancel">Cancel</string>
 
     <!-- First Time  -->
-    <string name="first_time_path_msg_str">Enter the location of the directory where the Excel files containing your words must be saved</string>
 
     <!-- Toasts   -->
     <string name="toast_msg_no_cards_to_learn">No cards to learn...</string>
@@ -131,7 +114,7 @@
     <string name="text_button_cancel_str">Cancel</string>
 
     <!-- Dialog delete data file -->
-    <string name="dialog_delete_data_file_title_str">Do you really want to delete all the data for this language ? Data can\'t be retrieved.</string>
+    <string name="dialog_delete_data_file_title_str">Do you really want to delete all the data for this language? Data can\'t be retrieved.</string>
 
     <!-- Dialog sort -->
     <string name="dialog_sort_title_str">Sort</string>
@@ -140,7 +123,7 @@
     <string name="dialog_sort_training_date_str">Next training date</string>
 
     <!--    Dialog quit learning-->
-    <string name="dialog_quit_learning_title_str">Do you really want to quit the training ?</string>
+    <string name="dialog_quit_learning_title_str">Do you really want to quit the training?</string>
     <string name="text_button_quit_learning">Quit</string>
 
     <!--    // Dialog-->
@@ -161,7 +144,7 @@
 
     <string name="intro_text_step1">Add some cards to learn manually or with the translation functionality</string>
     <string name="intro_text_step2">You can also import an Excel file with words in it (export the file first to see the sheet format)</string>
-    <string name="intro_text_step3">Learn the words you want !</string>
+    <string name="intro_text_step3">Learn the words you want!</string>
     <string name="intro_text_step4">When it\'s time, train the words learnt</string>
 
 <!--    datafile error-->

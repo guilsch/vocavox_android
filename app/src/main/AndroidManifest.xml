@@ -16,9 +16,9 @@
     <application
         android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
-        android:icon="@drawable/ic_main_icon"
+        android:icon="@raw/app_icon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_main_icon"
+        android:roundIcon="@raw/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Multivoc"
         android:usesCleartextTraffic="true">

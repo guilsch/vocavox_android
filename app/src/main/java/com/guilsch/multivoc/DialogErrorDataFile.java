@@ -21,6 +21,6 @@ public class DialogErrorDataFile extends Dialog {
 
         setContentView(customView);
 
-        this.getWindow().getDecorView().setBackgroundResource(R.drawable.dialog_background);
+        this.getWindow().getDecorView().setBackgroundResource(R.drawable.bg_dialog);
     }
 }

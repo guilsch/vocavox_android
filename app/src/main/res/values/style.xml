@@ -1,76 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- ... -->
-        <item name="android:windowContentTransitions">true</item>
-    </style>
-
-
-    <style name="BigButtonStyle" parent="Widget.AppCompat.Button">
-        <item name="android:layout_width">150dp</item>
-        <item name="android:layout_height">60dp</item>
-        <item name="android:background">@color/blue5</item>
-    </style>
-
     <style name="SpinnerStyle" parent="Widget.AppCompat.Spinner.DropDown">
-        <item name="android:background">@drawable/custom_spinner_background</item>
+        <item name="android:background">@drawable/bg_spinner_custom</item>
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingRight">8dp</item>
     </style>
 
-    <style name="DialogAnimation">
-        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
-        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
-    </style>
-
-<!--    <style name="FilterDialogStyle" parent="Theme.AppCompat.Dialog">-->
-<!--        <item name="android:windowBackground">@drawable/dialog_background</item>-->
-<!--        <item name="android:windowIsFloating">true</item>-->
-<!--        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>-->
-<!--        <item name="android:windowNoTitle">false</item>-->
-<!--        <item name="android:backgroundDimEnabled">true</item>-->
-<!--    </style>-->
-
-    <style name="SearchViewStyle" parent="@style/Widget.AppCompat.SearchView">
-        <item name="queryBackground">?attr/colorSurface</item>
-        <item name="submitBackground">@null</item>
-    </style>
-
-<!-- Rounded image styles -->
+    <!-- Rounded image styles -->
     <style name="Circular">
         <item name="cornerSize">50%</item>
     </style>
 
-    <style name="RoundedSquare">
-        <item name="cornerSize">10%</item>
-    </style>
 
-    <style name="CornerCut">
-        <item name="cornerSize">15dp</item>
-        <item name="cornerFamily">cut</item>
-    </style>
-
-    <style name="DiamondCut">
-        <item name="cornerSize">75dp</item>
-        <item name="cornerFamily">cut</item>
-    </style>
-
-    <style name="SpecificCornerCut">
-        <item name="cornerSizeTopRight">75dp</item>
-        <item name="cornerFamilyTopRight">cut</item>
-        <item name="cornerSizeBottomLeft">75dp</item>
-        <item name="cornerFamilyBottomLeft">cut</item>
-    </style>
-
-    <style name="SpecificCornerRounded">
-        <item name="cornerSizeTopRight">75dp</item>
-        <item name="cornerFamilyTopRight">rounded</item>
-        <item name="cornerSizeBottomLeft">75dp</item>
-        <item name="cornerFamilyBottomLeft">rounded</item>
-    </style>
-
-
-<!--    Scroll view-->
+    <!--    Scroll view-->
     <style name="NoScrollViewEdgeEffect">
         <item name="android:overScrollMode">never</item>
         <item name="android:fadingEdgeLength">0dp</item>

@@ -1,5 +1,6 @@
 package com.guilsch.multivoc;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -21,8 +22,6 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-//import org.apache.poi.xssf.usermodel.XSSFSheet;
-//import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -39,62 +38,14 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import java.util.Queue;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 
 public class Utils {
 
-    public static void printNBCards() {
-        System.out.println("Cards to train :" + Param.GLOBAL_DECK.getCardsToReviewNb());
-    }
-
-    public static void cleanDataFile() {
-        try {
-            FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
-            Workbook workbook = WorkbookFactory.create(inputFile);
-            Sheet sheet = workbook.getSheetAt(0);
-
-            List<Integer> rowsToRemoveIndex = new ArrayList<Integer>();
-
-            // Iterate through each rows one by one
-            Iterator<Row> rowIterator = sheet.iterator();
-            Row header = rowIterator.next();
-            Row row;
-
-            int item1Index = Utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
-            int item2Index = Utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
-            int rowIndex;
-
-            while (rowIterator.hasNext()) {
-
-                row = rowIterator.next();
-                Cell item1Cell = row.getCell(item1Index);
-                Cell item2Cell = row.getCell(item2Index);
-
-                if (item1Cell == null || item2Cell == null) {
-//                    System.out.println("Removed : " + row.getRowNum());
-//                    sheet.removeRow(row);
-                    rowsToRemoveIndex.add(row.getRowNum());
-                }
-            }
-
-            Iterator<Integer> rowToRemoveIndexIterator = rowsToRemoveIndex.iterator();
-            while (rowToRemoveIndexIterator.hasNext()) {
-                rowIndex = rowToRemoveIndexIterator.next();
-                sheet.removeRow(sheet.getRow(rowIndex));
-                System.out.println("Removed : " + rowIndex);
-            }
-
-            inputFile.close();
-            FileOutputStream outputStream = new FileOutputStream(Param.DATA_PATH);
-            workbook.write(outputStream);
-            outputStream.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    //////////////////////
+    /// Language utils ///
+    //////////////////////
 
     public static void setUserLanguageParam(){
         Locale userLocale = Locale.getDefault();
@@ -108,135 +59,6 @@ public class Utils {
             Param.USER_LANGUAGE_ISO = Param.USER_LANGUAGE_ISO_DEFAULT;
             Param.USER_LANGUAGE = Param.USER_LANGUAGE_DEFAULT;
         }
-    }
-
-    /**
-     * Initializes the global deck that will be used everywhere in the application
-     */
-    public static void initGlobalDeck() {
-        // Set global deck
-        Param.GLOBAL_DECK = new Deck();
-        Param.GLOBAL_DECK.init();
-
-        // Get deck data (nb of cards to review...)
-        Param.GLOBAL_DECK.updateDeckDataVariables();
-    }
-
-    public static void setFileID () {
-        switch (Param.TARGET_LANGUAGE) {
-            case "English":
-                Param.FILE_ID = Param.EN_FILE_ID;
-                break;
-
-            case "Deutsch":
-                Param.FILE_ID = Param.GE_FILE_ID;
-                break;
-
-            case "Français":
-                Param.FILE_ID = Param.FR_FILE_ID;
-                break;
-
-            case "Italiano":
-                Param.FILE_ID = Param.IT_FILE_ID;
-                break;
-
-            case "Русский":
-                Param.FILE_ID = Param.RU_FILE_ID;
-                break;
-
-            case "Español":
-                Param.FILE_ID = Param.SP_FILE_ID;
-                break;
-
-            default:
-                Param.FILE_ID = Param.FILE_ID_UNDEFINED;
-                break;
-        }
-    }
-
-    public static void resetFileID (Context context) {
-        switch (Param.TARGET_LANGUAGE) {
-            case "English":
-                Param.EN_FILE_ID = Param.FILE_ID_UNDEFINED;
-                Pref.savePreference(context, Param.EN_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
-                break;
-
-            case "Deutsch":
-                Param.GE_FILE_ID = Param.FILE_ID_UNDEFINED;
-                Pref.savePreference(context, Param.GE_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
-                break;
-
-            case "Français":
-                Param.FR_FILE_ID = Param.FILE_ID_UNDEFINED;
-                Pref.savePreference(context, Param.FR_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
-                break;
-
-            case "Italiano":
-                Param.IT_FILE_ID = Param.FILE_ID_UNDEFINED;
-                Pref.savePreference(context, Param.IT_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
-                break;
-
-            case "Русский":
-                Param.RU_FILE_ID = Param.FILE_ID_UNDEFINED;
-                Pref.savePreference(context, Param.RU_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
-                break;
-
-            case "Español":
-                Param.SP_FILE_ID = Param.FILE_ID_UNDEFINED;
-                Pref.savePreference(context, Param.SP_FILE_ID_KEY, Param.FILE_ID_UNDEFINED);
-                break;
-
-            default:
-                System.out.println("Target language error");
-                break;
-        }
-
-        Param.FILE_ID = Param.FILE_ID_UNDEFINED;
-
-    }
-
-    public static void setAndSaveFileID (Context context, String fileID) {
-        switch (Param.TARGET_LANGUAGE) {
-            case "English":
-                Param.EN_FILE_ID = fileID;
-                Pref.savePreference(context, Param.EN_FILE_ID_KEY, fileID);
-                break;
-
-            case "Deutsch":
-                Param.GE_FILE_ID = fileID;
-                Pref.savePreference(context, Param.GE_FILE_ID_KEY, fileID);
-                break;
-
-            case "Français":
-                Param.FR_FILE_ID = fileID;
-                Pref.savePreference(context, Param.FR_FILE_ID_KEY, fileID);
-                break;
-
-            case "Italiano":
-                Param.IT_FILE_ID = fileID;
-                Pref.savePreference(context, Param.IT_FILE_ID_KEY, fileID);
-                break;
-
-            case "Русский":
-                Param.RU_FILE_ID = fileID;
-                Pref.savePreference(context, Param.RU_FILE_ID_KEY, fileID);
-                break;
-
-            case "Español":
-                Param.SP_FILE_ID = fileID;
-                Pref.savePreference(context, Param.SP_FILE_ID_KEY, fileID);
-                break;
-
-            default:
-                System.out.println("Error : target language unknown");
-                break;
-        }
-
-        Param.FILE_ID = fileID;
-    }
-
-    public static String generateDataFileName () {
-        return Param.FILE_NAME_PREFIX + Param.TARGET_LANGUAGE_ISO + ".xlsx";
     }
 
     public static String getLanguageISOName(String language) {
@@ -311,6 +133,10 @@ public class Utils {
         return languageStringName;
     }
 
+    //////////////////////
+    ///// Card utils /////
+    //////////////////////
+
     public static int nextStateForButton (int currentState) {
         int nextState;
 
@@ -332,6 +158,70 @@ public class Utils {
 
         return nextState;
     }
+
+    /***
+     * When a new card is created in translation or newCard activities, this method add it to the
+     * deck and makes the necessary updates
+     * @param newCard
+     */
+    public static void manageCardCreation(Card newCard) {
+        Param.GLOBAL_DECK.add(newCard);
+        newCard.addToDatabaseOnSeparateThread();
+        newCard.info();
+
+
+        // Update deck data
+        Param.CARDS_NB = Param.CARDS_NB + 1;
+        if(newCard.getState() == Param.INACTIVE) {
+            Param.CARDS_TO_LEARN_NB = Param.CARDS_TO_LEARN_NB + 1;
+        }
+    }
+
+    public static String getNewUUID() {
+        return UUID.randomUUID().toString();
+    }
+
+
+    // Thread mgmt
+    /**
+     * Update the card in the database on a seperate thread. Don't use it repeatedly (not in train
+     * or learn session)
+     * @param card
+     */
+    public static void updateInDatabaseOnSeparateThreadOneShot(Card card) {
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                card.updateInDatabase();
+            }
+        };
+
+        Thread thread = new Thread(myRunnable);
+        thread.start();
+    }
+
+    /**
+     * Same as previous but use one thread for different updates. Use this method in train or learn
+     * activities. Don't forget to close the singleThreadExecutor (use thread shutdown) after that.
+     * @param singleThreadExecutor
+     * @param card
+     */
+    public static void updateInDatabaseOnSeparateThreadMultiShot(ExecutorService singleThreadExecutor, Card card) {
+        singleThreadExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                card.updateInDatabase();
+            }
+        });
+    }
+
+    public static void threadShutdown(ExecutorService singleThreadExecutor) {
+        singleThreadExecutor.shutdown();
+    }
+
+    //////////////////////
+    ///// Date utils /////
+    //////////////////////
 
     public static Date toDate(long nextPracticeTime) {
         Date nextPracticeDate = new Date(nextPracticeTime);
@@ -362,28 +252,9 @@ public class Utils {
         return formattedDate;
     }
 
-    public static int getFieldIndex(Row header, String field) {
-
-        Iterator<Cell> cellIterator = header.cellIterator();
-        int index = -1;
-
-        while (cellIterator.hasNext()) {
-            Cell cell = cellIterator.next();
-
-            if (field.compareTo(cell.getStringCellValue()) == 0) {
-                index = cell.getColumnIndex();
-            }
-        }
-
-        if (index == -1) {
-            System.out.println("No field named : " + field);
-            index = header.getLastCellNum();
-            header.createCell(index).setCellValue(field);
-            System.out.println("Added new field : " + field);
-        }
-
-        return (index);
-    }
+    //////////////////////
+    ///// Init utils /////
+    //////////////////////
 
     public static void initParam() {
 
@@ -401,6 +272,18 @@ public class Utils {
         Utils.setFileID();
     }
 
+    /**
+     * Initializes the global deck that will be used everywhere in the application
+     */
+    public static void initGlobalDeck() {
+        // Set global deck
+        Param.GLOBAL_DECK = new Deck();
+        Param.GLOBAL_DECK.init();
+
+        // Get deck data (nb of cards to review...)
+        Param.GLOBAL_DECK.updateDeckDataVariables();
+    }
+
     public static void checkFileExistence() {
         if (!(new File(Param.DATA_PATH)).exists()) {
             System.out.println(Param.DATA_PATH + " doesn't exist yet");
@@ -408,6 +291,163 @@ public class Utils {
         }
         else {
             System.out.println(Param.DATA_PATH + " already exists");
+        }
+    }
+
+    public static Boolean checkCellEmptiness(Cell cell, Row row) {
+        if (cell == null) {
+            return Boolean.TRUE;
+        }
+        else if (cell.getCellType() == Cell.CELL_TYPE_BLANK) {
+            row.removeCell(cell);
+            return Boolean.TRUE;
+        }
+        else {
+            return Boolean.FALSE;
+        }
+    }
+
+    public static String formatPath(String path) {
+        if (path.startsWith("/")) {
+            path = path.substring(1);
+        }
+        if (!path.endsWith("/")) {
+            path = path + "/";
+        }
+        return path;
+    }
+
+    public static void printNBCards() {
+        System.out.println("Cards to train :" + Param.GLOBAL_DECK.getCardsToReviewNb());
+    }
+
+    //////////////////////
+    /// File name utils //
+    //////////////////////
+
+    public static void setFileID () {
+        switch (Param.TARGET_LANGUAGE) {
+            case "English":
+                Param.FILE_ID = Param.EN_FILE_ID;
+                break;
+
+            case "Deutsch":
+                Param.FILE_ID = Param.GE_FILE_ID;
+                break;
+
+            case "Français":
+                Param.FILE_ID = Param.FR_FILE_ID;
+                break;
+
+            case "Italiano":
+                Param.FILE_ID = Param.IT_FILE_ID;
+                break;
+
+            case "Русский":
+                Param.FILE_ID = Param.RU_FILE_ID;
+                break;
+
+            case "Español":
+                Param.FILE_ID = Param.SP_FILE_ID;
+                break;
+
+            default:
+                Param.FILE_ID = Param.FILE_ID_UNDEFINED;
+                break;
+        }
+    }
+
+    public static String generateDataFileName () {
+        return Param.FILE_NAME_PREFIX + Param.TARGET_LANGUAGE_ISO + ".xlsx";
+    }
+
+    //////////////////////
+    // Data file utils ///
+    //////////////////////
+
+    static void createDataFile() {
+        // workbook object
+        XSSFWorkbook workbook = new XSSFWorkbook();
+
+        // spreadsheet object
+        XSSFSheet sheet = workbook.createSheet(Param.USER_LANGUAGE + " - " + Param.TARGET_LANGUAGE + " vocabulary");
+
+        // creating a row object
+        XSSFRow header = sheet.createRow(0);
+
+        int cellid = 0;
+
+        for (Object obj : Param.FIELDS) {
+            Cell cell = header.createCell(cellid++);
+            cell.setCellValue((String)obj);
+        }
+
+
+        // Create file with its parents folders
+        File file = new File(Param.DATA_PATH);
+
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
+        }
+
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+
+            workbook.write(out);
+            out.close();
+
+            System.out.println(Param.DATA_PATH + " has been created");
+        } catch (IOException e) {
+            e.printStackTrace();
+
+            // TODO inform the user
+        }
+    }
+
+    public static void cleanDataFile() {
+        try {
+            FileInputStream inputFile = new FileInputStream(new File(Param.DATA_PATH));
+            Workbook workbook = WorkbookFactory.create(inputFile);
+            Sheet sheet = workbook.getSheetAt(0);
+
+            List<Integer> rowsToRemoveIndex = new ArrayList<Integer>();
+
+            // Iterate through each rows one by one
+            Iterator<Row> rowIterator = sheet.iterator();
+            Row header = rowIterator.next();
+            Row row;
+
+            int item1Index = Utils.getFieldIndex(header, Param.ITEM1_FIELD_NAME);
+            int item2Index = Utils.getFieldIndex(header, Param.ITEM2_FIELD_NAME);
+            int rowIndex;
+
+            while (rowIterator.hasNext()) {
+
+                row = rowIterator.next();
+                Cell item1Cell = row.getCell(item1Index);
+                Cell item2Cell = row.getCell(item2Index);
+
+                if (item1Cell == null || item2Cell == null) {
+//                    System.out.println("Removed : " + row.getRowNum());
+//                    sheet.removeRow(row);
+                    rowsToRemoveIndex.add(row.getRowNum());
+                }
+            }
+
+            Iterator<Integer> rowToRemoveIndexIterator = rowsToRemoveIndex.iterator();
+            while (rowToRemoveIndexIterator.hasNext()) {
+                rowIndex = rowToRemoveIndexIterator.next();
+                sheet.removeRow(sheet.getRow(rowIndex));
+                System.out.println("Removed : " + rowIndex);
+            }
+
+            inputFile.close();
+            FileOutputStream outputStream = new FileOutputStream(Param.DATA_PATH);
+            workbook.write(outputStream);
+            outputStream.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -497,12 +537,12 @@ public class Utils {
                 }
             }
 
-        inputFile.close();
-        FileOutputStream outputStream = new FileOutputStream(Param.DATA_PATH);
-        workbook.write(outputStream);
-        outputStream.close();
+            inputFile.close();
+            FileOutputStream outputStream = new FileOutputStream(Param.DATA_PATH);
+            workbook.write(outputStream);
+            outputStream.close();
 
-        Param.DATA_FILE_ERROR = false;
+            Param.DATA_FILE_ERROR = false;
 
         } catch (InvalidFormatException e) {
             e.printStackTrace();
@@ -516,183 +556,7 @@ public class Utils {
             Param.DATA_FILE_ERROR = true;
             exportSavedFiles();
         }
-
     }
-
-    static void createDataFile() {
-        // workbook object
-        XSSFWorkbook workbook = new XSSFWorkbook();
-
-        // spreadsheet object
-        XSSFSheet sheet = workbook.createSheet(Param.USER_LANGUAGE + " - " + Param.TARGET_LANGUAGE + " vocabulary");
-
-        // creating a row object
-        XSSFRow header = sheet.createRow(0);
-
-        int cellid = 0;
-
-        for (Object obj : Param.FIELDS) {
-            Cell cell = header.createCell(cellid++);
-            cell.setCellValue((String)obj);
-        }
-
-
-        // Create file with its parents folders
-        File file = new File(Param.DATA_PATH);
-
-        if (!file.getParentFile().exists()) {
-            file.getParentFile().mkdirs();
-        }
-
-        try {
-            FileOutputStream out = new FileOutputStream(file);
-
-            workbook.write(out);
-            out.close();
-
-            System.out.println(Param.DATA_PATH + " has been created");
-        } catch (IOException e) {
-            e.printStackTrace();
-
-            // TODO inform the user
-        }
-    }
-
-    public static String getNewUUID() {
-        return UUID.randomUUID().toString();
-    }
-
-    public static Boolean checkCellEmptiness(Cell cell, Row row) {
-        if (cell == null) {
-            return Boolean.TRUE;
-        }
-        else if (cell.getCellType() == Cell.CELL_TYPE_BLANK) {
-            row.removeCell(cell);
-            return Boolean.TRUE;
-        }
-        else {
-            return Boolean.FALSE;
-        }
-    }
-
-    public static String URLtoID(String url) {
-        return url.substring(url.lastIndexOf("/") + 1);
-    }
-
-    /**
-     * Returns a list containing all uuid from the cards in the provided queue
-     */
-    public static List<String> getUUIDListFromCardsQueue(Queue<Card> queue) {
-        List<String> uuidList = new ArrayList<String>();
-
-        Iterator<Card> iterator = queue.iterator();
-        while (iterator.hasNext()) {
-            uuidList.add(iterator.next().getUuid());
-        }
-
-        return uuidList;
-    }
-
-    /**
-     * Get a list of cards containing all the cards in the queue
-     * @param cardsQueue
-     * @return
-     */
-    public static List<Card> getCardsListFromCardsQueue(Queue<Card> cardsQueue) {
-        return Arrays.asList(cardsQueue.toArray(new Card[0]));
-    }
-
-    static void showToast(Context context, String message) {
-
-        Toast toast = new Toast(context);
-
-        View view = LayoutInflater.from(context)
-                .inflate(R.layout.toast_layout, null);
-
-        TextView tvMessage = view.findViewById(R.id.tvMessage);
-        tvMessage.setText(message);
-
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.setView(view);
-        toast.show();
-    }
-
-    public static Boolean checkConnexion(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-
-        return isConnected;
-    }
-
-    public static String formatPath(String path) {
-        if (path.startsWith("/")) {
-            path = path.substring(1);
-        }
-        if (!path.endsWith("/")) {
-            path = path + "/";
-        }
-        return path;
-    }
-
-    /***
-     * When a new card is created in translation or newCard activities, this method add it to the
-     * deck and makes the necessary updates
-     * @param newCard
-     */
-    public static void manageCardCreation(Card newCard) {
-        Param.GLOBAL_DECK.add(newCard);
-        newCard.addToDatabaseOnSeparateThread();
-        newCard.info();
-
-
-        // Update deck data
-        Param.CARDS_NB = Param.CARDS_NB + 1;
-        if(newCard.getState() == Param.INACTIVE) {
-            Param.CARDS_TO_LEARN_NB = Param.CARDS_TO_LEARN_NB + 1;
-        }
-    }
-
-    // Thread management
-
-    /**
-     * Update the card in the database on a seperate thread. Don't use it repeatedly (not in train
-     * or learn session)
-     * @param card
-     */
-    public static void updateInDatabaseOnSeparateThreadOneShot(Card card) {
-        Runnable myRunnable = new Runnable() {
-            @Override
-            public void run() {
-                card.updateInDatabase();
-            }
-        };
-
-        Thread thread = new Thread(myRunnable);
-        thread.start();
-    }
-
-    /**
-     * Same as previous but use one thread for different updates. Use this method in train or learn
-     * activities. Don't forget to close the singleThreadExecutor (use thread shutdown) after that.
-     * @param singleThreadExecutor
-     * @param card
-     */
-    public static void updateInDatabaseOnSeparateThreadMultiShot(ExecutorService singleThreadExecutor, Card card) {
-        singleThreadExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                card.updateInDatabase();
-            }
-        });
-    }
-
-    public static void threadShutdown(ExecutorService singleThreadExecutor) {
-        singleThreadExecutor.shutdown();
-    }
-
-    // File save
 
     /**
      * Create a copy of the data file in case of file corruption
@@ -719,46 +583,6 @@ public class Utils {
             e.printStackTrace();
         }
     }
-
-
-
-    // Debug
-
-    public static void writeDebugLine(String line) {
-        try {
-            FileWriter writer = new FileWriter(Param.FOLDER_PATH + Param.DEBUG_FILE_NAME, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);
-
-            bufferedWriter.newLine();
-            bufferedWriter.write(line);
-
-            bufferedWriter.close();
-            writer.close();
-
-            System.out.println("Successfully written in debug file");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Manage text color on click
-    public static void setTextViewTextColorChangeOnTouch(final TextView button, final int pressedColor, final int normalColor) {
-        button.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    button.setTextColor(ContextCompat.getColor(button.getContext(), pressedColor));
-                }
-
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    button.setTextColor(ContextCompat.getColor(button.getContext(), normalColor));
-                }
-                return false;
-            }
-        });
-    }
-
 
     /**
      * Export data file only for the current language. File is paste in the download folder
@@ -824,5 +648,103 @@ public class Utils {
             return 11;
         }
         return 10;
+    }
+
+    public static int getFieldIndex(Row header, String field) {
+
+        Iterator<Cell> cellIterator = header.cellIterator();
+        int index = -1;
+
+        while (cellIterator.hasNext()) {
+            Cell cell = cellIterator.next();
+
+            if (field.compareTo(cell.getStringCellValue()) == 0) {
+                index = cell.getColumnIndex();
+            }
+        }
+
+        if (index == -1) {
+            System.out.println("No field named : " + field);
+            index = header.getLastCellNum();
+            header.createCell(index).setCellValue(field);
+            System.out.println("Added new field : " + field);
+        }
+
+        return (index);
+    }
+
+    ///////////////////////
+    ///// Toast utils /////
+    ///////////////////////
+
+    static void showToast(Context context, String message) {
+
+        Toast toast = new Toast(context);
+
+        View view = LayoutInflater.from(context)
+                .inflate(R.layout.toast_layout, null);
+
+        TextView tvMessage = view.findViewById(R.id.tvMessage);
+        tvMessage.setText(message);
+
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(view);
+        toast.show();
+    }
+
+    ///////////////////////
+    /// Connexion utils ///
+    ///////////////////////
+
+    public static Boolean checkConnexion(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+
+        return isConnected;
+    }
+
+    ///////////////////////
+    ///// Debug utils /////
+    ///////////////////////
+
+    public static void writeDebugLine(String line) {
+        try {
+            FileWriter writer = new FileWriter(Param.FOLDER_PATH + Param.DEBUG_FILE_NAME, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+
+            bufferedWriter.newLine();
+            bufferedWriter.write(line);
+
+            bufferedWriter.close();
+            writer.close();
+
+            System.out.println("Successfully written in debug file");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    ///////////////////////
+    ///// Text utils /////
+    ///////////////////////
+
+    @SuppressLint("ClickableViewAccessibility")
+    public static void setTextViewTextColorChangeOnTouch(final TextView button, final int pressedColor, final int normalColor) {
+        button.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    button.setTextColor(ContextCompat.getColor(button.getContext(), pressedColor));
+                }
+
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    button.setTextColor(ContextCompat.getColor(button.getContext(), normalColor));
+                }
+                return false;
+            }
+        });
     }
 }

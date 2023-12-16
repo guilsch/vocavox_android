@@ -35,7 +35,7 @@ public class DialogDeleteDataFile extends Dialog {
         // Manage release buttons colors
         Utils.setTextViewTextColorChangeOnTouch(deleteButton, R.color.black, R.color.red);
         Utils.setTextViewTextColorChangeOnTouch(cancelButton, R.color.black, R.color.grey);
-        this.getWindow().getDecorView().setBackgroundResource(R.drawable.dialog_background);
+        this.getWindow().getDecorView().setBackgroundResource(R.drawable.bg_dialog);
     }
 
     private void setDecisionAndLeave(int decision) {

@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 
 public class DialogSortCards {
 
@@ -17,7 +16,7 @@ public class DialogSortCards {
 
         AlertDialog dialog = builder.create();
 
-        dialog.getWindow().getDecorView().setBackgroundResource(R.drawable.dialog_background);
+        dialog.getWindow().getDecorView().setBackgroundResource(R.drawable.bg_dialog);
 
         dialog.show();
 

@@ -9,7 +9,6 @@ import androidx.transition.Transition;
 import androidx.transition.TransitionManager;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
@@ -22,8 +21,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.io.File;
 
@@ -201,27 +198,27 @@ public class ActivityMain extends AppCompatActivity {
     public void setUserLanguageVisuals() {
         switch (Param.USER_LANGUAGE) {
             case "English" :
-                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_gb);
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.flag_ic_gb);
                 break;
 
             case "Français" :
-                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_fr);
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.flag_ic_fr);
                 break;
 
             case "Deutsch" :
-                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_de);
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.flag_ic_de);
                 break;
 
             case "Italiano" :
-                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_it);
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.flag_ic_it);
                 break;
 
             case "Русский" :
-                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_ru);
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.flag_ic_ru);
                 break;
 
             case "Español" :
-                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.ic_es);
+                Param.FLAG_ICON_USER = getResources().getDrawable(R.drawable.flag_ic_es);
                 break;
 
             default:
@@ -237,27 +234,27 @@ public class ActivityMain extends AppCompatActivity {
     public void setTargetLanguageVisuals() {
         switch (Param.TARGET_LANGUAGE) {
             case "English" :
-                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_gb);
+                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.flag_ic_gb);
                 break;
 
             case "Français" :
-                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_fr);
+                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.flag_ic_fr);
                 break;
 
             case "Deutsch" :
-                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_de);
+                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.flag_ic_de);
                 break;
 
             case "Italiano" :
-                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_it);
+                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.flag_ic_it);
                 break;
 
             case "Русский" :
-                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_ru);
+                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.flag_ic_ru);
                 break;
 
             case "Español" :
-                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.ic_es);
+                Param.FLAG_ICON_TARGET = getResources().getDrawable(R.drawable.flag_ic_es);
                 break;
 
             default:

@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:background="@drawable/back_layout_selector"
+            android:background="@drawable/selector_back_layout"
             android:paddingVertical="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,6 @@
                 app:srcCompat="@drawable/ic_chevron_back" />
 
             <TextView
-                android:id="@+id/back_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -57,7 +56,6 @@
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/body_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -88,7 +86,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/Circular"
-                app:srcCompat="@drawable/ic_gb"
+                app:srcCompat="@drawable/flag_ic_gb"
                 tools:ignore="VectorDrawableCompat" />
 
             <EditText
@@ -121,7 +119,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/Circular"
-                app:srcCompat="@drawable/ic_it"
+                app:srcCompat="@drawable/flag_ic_it"
                 tools:ignore="VectorDrawableCompat" />
 
             <EditText

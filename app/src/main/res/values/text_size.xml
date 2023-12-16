@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="header">@dimen/L</dimen>
     <dimen name="button_std_text_size">@dimen/N</dimen>
-    <dimen name="text_input">@dimen/N</dimen>
     <dimen name="titles">@dimen/XL</dimen>
     <dimen name="paragraph_text">@dimen/N</dimen>
-    <dimen name="list_items">@dimen/N</dimen>
     <dimen  name="back_text">@dimen/XS</dimen>
 
-    <dimen  name="XXS">10sp</dimen>
     <dimen  name="XS">12sp</dimen>
     <dimen  name="N">14sp</dimen>
-    <dimen  name="M">16sp</dimen>
     <dimen  name="L">18sp</dimen>
     <dimen  name="XL">20sp</dimen>
     <dimen  name="XXL">24sp</dimen>

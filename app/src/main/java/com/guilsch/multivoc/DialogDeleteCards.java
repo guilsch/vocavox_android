@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
@@ -33,7 +32,7 @@ public class DialogDeleteCards {
         Utils.setTextViewTextColorChangeOnTouch(deleteButton, R.color.black, R.color.red);
         Utils.setTextViewTextColorChangeOnTouch(cancelButton, R.color.black, R.color.grey);
 
-        dialog.getWindow().getDecorView().setBackgroundResource(R.drawable.dialog_background);
+        dialog.getWindow().getDecorView().setBackgroundResource(R.drawable.bg_dialog);
 
 
         dialog.show();

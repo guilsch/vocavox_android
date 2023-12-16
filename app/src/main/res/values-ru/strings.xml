@@ -6,22 +6,18 @@
 
     <!-- Стороны вопроса и ответа -->
     <string name="revision_header">Повторение</string>
-    <string name="see_answer">Вернуться</string>
 
     <!-- Экраны завершения -->
     <string name="end_train">Конец тренировки!</string>
     <string name="end_learn">Конец обучения!</string>
-    <string name="no_cards_to_learn_message">Нет карточек для изучения...</string>
 
     <!-- Меню -->
-    <string name="menu_nb_of_cards_to_review_title_str">Количество карточек для повторения сегодня</string>
 
     <string name="menu_train_title_str">Повторить</string>
     <string name="menu_learn_title_str">Учить</string>
     <string name="menu_new_card_title_str">Новая карточка</string>
     <string name="menu_translate_title_str">Перевести</string>
     <string name="menu_explore_title_str">Исследовать</string>
-    <string name="menu_settings_title_str">Настройки</string>
 
     <string name="menu_add_cards_title">Добавить карточки</string>
     <string name="menu_others_title">Другое</string>
@@ -29,19 +25,13 @@
     <string name="toast_msg_no_connexion">Требуется подключение к Интернету для перевода</string>
 
     <!-- Новая карточка !-->
-    <string name="new_card_header">Редактировать новую карточку</string>
-    <string name="item1">Оригинальное слово</string>
-    <string name="item2">Перевод</string>
     <string name="pack">Пакет</string>
-    <string name="creation_date">Карточка создана </string>
     <string name="save_card">Сохранить</string>
-    <string name="next_new_card">Новая</string>
     <string name="card_state">Текущее состояние</string>
     <string name="toast_msg_invalid_new_card">Необходимо предоставить оба слова</string>
     <string name="toast_msg_new_card_saved">Карточка сохранена</string>
 
     <!-- Редактировать карточку !-->
-    <string name="edit_card_msg">Редактирование карточки</string>
     <string name="edit_card_date_sentence_now">Эту карточку нужно повторить \u00A0</string>
     <string name="edit_card_date_word_now">сейчас</string>
     <string name="edit_card_date_sentence_on_the">Следующее повторение \u00A0</string>
@@ -58,8 +48,6 @@
 
     <!-- Настройки   -->
     <string name="lang_direction_freq_setting">Пропорция карточек для повторения в обратном направлении:</string>
-    <string name="folder_path_setting">Путь к папке:</string>
-    <string name="default_setting">По умолчанию</string>
     <string name="setting_play_speech">Автоматическое произношение слов:</string>
     <string name="setting_import_title">Импортировать файл данных</string>
     <string name="setting_export_title">Экспортировать файл данных</string>
@@ -114,7 +102,6 @@
     <string name="dialog_delete_data_file_title_str">Вы действительно хотите удалить все данные для этого языка? Данные не могут быть восстановлены</string>
 
     <!-- Диалог сортировки -->
-    <string name="dialog_sort_title_str">Сортировать</string>
     <string name="dialog_sort_alphabetical_str">По алфавиту</string>
     <string name="dialog_sort_creation_date_str">По дате создания</string>
     <string name="dialog_sort_training_date_str">По дате повторения</string>

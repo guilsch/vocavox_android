@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="header_size">0.8</dimen>
     <!-- Margins -->
     <dimen name="body_horizontal_margin">30dp</dimen>
     <dimen name="body_bottom_margin">30dp</dimen>
@@ -15,7 +14,6 @@
     <!-- Icon size -->
     <dimen name="ic_size">20dp</dimen>
     <dimen name="ic_bg_size">25dp</dimen>
-    <dimen name="ic_cross_size">15dp</dimen>
 
     <!--    Activity edit-->
     <dimen name="radio_button_state_stroke_size">0dp</dimen>

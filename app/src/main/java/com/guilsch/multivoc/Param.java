@@ -31,12 +31,12 @@ public class Param {
 
     public static final String[] TARGET_LANGUAGES = {"English", "German", "French", "Italian", "Russian", "Spanish"};
     public static final Language[] TARGET_LANGUAGES_FULL = {
-            new Language("English", "en", R.drawable.ic_gb),
-            new Language("Deutsch", "de", R.drawable.ic_de),
-            new Language("Français", "fr", R.drawable.ic_fr),
-            new Language("Italiano", "it", R.drawable.ic_it),
-            new Language("Русский", "ru", R.drawable.ic_ru),
-            new Language("Español", "es", R.drawable.ic_es)
+            new Language("English", "en", R.drawable.flag_ic_gb),
+            new Language("Deutsch", "de", R.drawable.flag_ic_de),
+            new Language("Français", "fr", R.drawable.flag_ic_fr),
+            new Language("Italiano", "it", R.drawable.flag_ic_it),
+            new Language("Русский", "ru", R.drawable.flag_ic_ru),
+            new Language("Español", "es", R.drawable.flag_ic_es)
     };
     public static final String[] USER_LANGUAGES = {"English", "German", "French", "Italian", "Russian", "Spanish"};
     public static final String[] USER_LANGUAGES_ISO = {"en", "de", "fr", "it", "ru", "es"};

@@ -30,16 +30,4 @@
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:navigationBarColor">@color/main_orange1</item>
     </style>
-
-    <!--    font-->
-
-    <style name="Theme.Multivoc.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.Multivoc.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.Multivoc.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
 </resources>

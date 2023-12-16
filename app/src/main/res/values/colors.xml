@@ -1,32 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="bg">#E4F0F8</color>
-    <color name="head_color">#3100BCD4</color>
     <color name="red">#E53935</color>
 
     <color name="main">#C24F25</color>
 
     <color name="back_ground">#FAFDFF</color>
     <color name="back_ground2">#F3F2ED</color>
-    <color name="back_ground3">#D3F0FF</color>
 
     <color name="blue1">#00111C</color>
     <color name="blue2">#001523</color>
     <color name="blue3">#001A2C</color>
-    <color name="blue4">#002137</color>
     <color name="blue5">#00253E</color>
-    <color name="blue6">#002945</color>
-    <color name="blue7">#002E4E</color>
-    <color name="blue8">#003356</color>
-    <color name="blue9">#003A61</color>
-    <color name="blue10">#00406C</color>
 
     <color name="grey">#323232</color>
     <color name="grey1">#323232</color>
@@ -36,100 +22,56 @@
     <color name="grey5">#F8F8F8</color>
 
 
-    <color name="orange1">#FA6D00</color>
-
-
-
     <color name="main_orange1">#ff8500</color>
     <color name="main_orange2">#ff9100</color>
     <color name="main_orange3">#ff9e00</color>
     <color name="main_orange4">#FFC360</color>
     <color name="main_orange5">#FDCB79</color>
-    <color name="main_orange6">#FFDBA0</color>
     <color name="main_orange7">#FFE5BB</color>
     <color name="main_orange8">#FFF1DB</color>
-    <color name="main_orange9">#FFFCF8</color>
 
     <color name="sec_blue1">#0077b6</color>
-    <color name="sec_blue2">#0096c7</color>
     <color name="sec_blue3">#00b4d8</color>
 
     <color name="th_grey1">#0E1013</color>
-    <color name="th_grey2">#191D22</color>
 
-<!--    icons-->
+    <!--    altrenative palette-->
+    <color name="navy1">#06283D</color>
+
+    <!--    icons-->
     <color name="ic_std">@color/th_grey1</color>
     <color name="ic_std_on_click">@color/main_orange1</color>
 
 
-<!--buttons-->
+    <!--buttons-->
     <color name="button_std_text">@color/white</color>
     <color name="button_std_bg">@color/main_orange2</color>
-    <color name="button_std_bg2">@color/blue_standard</color>
     <color name="button_std_bg_on_click">@color/main_orange4</color>
 
-<!--question-->
-    <color name="rectangle_bg">@color/navy1</color>
-
-<!--    Card-->
-    <color name="answer_card_bg">#F3F2ED</color>
-    <color name="question_card_bg">#E4F0F8</color>
-
-    <!-- Overscroll edge-->
-    <color name="overscroll_edge_color">@color/navy1</color>
-
-
-<!-- Menu layout -->
-    <color name="menu_layouts_bg">#F6F5FA</color>
-    <color name="menu_layouts_bg_on_touch">#F3F2ED</color>
-
-
-<!--    Font-->
-    <color name="font_hint">#81EFEFEF</color>
-    <color name="font_standard">@color/blue1</color>
-    <color name="button_std_text_on_click">#787E81</color>
-
-<!--    Answer buttons bg -->
-    <color name="ok">#CDDC39</color>
-    <color name="good">#8BC34A</color>
-    <color name="perfect">#4CAF50</color>
-
-<!--    altrenative palette-->
-    <color name="navy1">#06283D</color>
-    <color name="navy2">#1363DF</color>
-    <color name="navy3">#47B5FF</color>
-    <color name="navy4">#DFF6FF</color>
-
-    <color name="blue_standard">#81B4D8</color>
-
-<!--   Font colors  -->
+    <!--   Font colors  -->
     <color name="grey_font">#FF393D40</color>
 
-    <!-- Learn Activity -->
-    <color name="card_selected">@color/main_orange7</color>
+    <!-- Text buttons-->
+    <color name="delete_text_button">@color/red</color>
+    <color name="std_text_button">#4A4E51</color>
+    <color name="std_text_button_on_click">#000000</color>
 
-
-    <!-- On click -->
-    <color name="on_view_click">#D2E9EC</color>
-
-    <!-- Back button -->
-    <color name="back_button_stroke">#8A8A8A</color>
+    <!--    Card-->
+    <color name="answer_card_bg">#F3F2ED</color>
+    <color name="question_card_bg">#E4F0F8</color>
 
     <!-- Header -->
     <color name="header_bg">@color/back_ground</color>
     <color name="header_back">@color/main_orange1</color>
 
-    <!-- Explore activity -->
-    <color name="adapter_card_list_view_bg">#FFFFFF</color>
-    <color name="adapter_card_list_view_bg_on_touch">@color/main_orange8</color>
+    <!-- Menu layout -->
+    <color name="menu_layouts_bg">#F6F5FA</color>
+    <color name="menu_layouts_bg_on_touch">#F3F2ED</color>
 
-    <!-- Text buttons-->
-    <color name="delete_text_button">@color/red</color>
-    <color name="delete_text_button_on_click">#000000</color>
-    <color name="std_text_button">#4A4E51</color>
-    <color name="std_text_button_on_click">#000000</color>
+    <!-- Learn Activity -->
+    <color name="card_selected">@color/main_orange7</color>
 
-<!--    Edit activity-->
+    <!--    Edit activity-->
     <color name="radio_button_state_checked_bg_color">@color/main_orange1</color>
     <color name="radio_button_state_unchecked_bg_color">#E3E3E3</color>
     <color name="radio_button_state_touched_bg_color">#FFFFFF</color>
@@ -137,5 +79,9 @@
     <color name="radio_button_state_checked_stroke_color">#000000</color>
     <color name="radio_button_state_unchecked_stroke_color">#000000</color>
     <color name="radio_button_state_touched_stroke_color">#000000</color>
+
+    <!-- Explore activity -->
+    <color name="adapter_card_list_view_bg">#FFFFFF</color>
+    <color name="adapter_card_list_view_bg_on_touch">@color/main_orange8</color>
 
 </resources>

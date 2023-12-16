@@ -14,7 +14,6 @@
         app:layout_constraintGuide_percent="0.40" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
@@ -42,7 +41,7 @@
             android:layout_height="44dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:src="@drawable/ic_de"
+            android:src="@drawable/flag_ic_de"
             app:civ_border_color="@color/grey1"
             app:civ_border_width="2dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,12 +53,11 @@
             android:layout_height="30dp"
             android:layout_marginTop="31dp"
             android:layout_marginEnd="31dp"
-            android:src="@drawable/setting_wheel_selector"
+            android:src="@drawable/selector_setting_wheel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/menu_welcome_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/welcome_msg"
@@ -102,7 +100,7 @@
             android:layout_height="75dp"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="40dp"
-            android:background="@drawable/menu_case"
+            android:background="@drawable/bg_menu_case"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.312"
@@ -110,7 +108,6 @@
             app:layout_constraintTop_toTopOf="@+id/h_guideline1">
 
             <ImageView
-                android:id="@+id/menu_train_image"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -118,7 +115,6 @@
                 app:srcCompat="@drawable/ic_train" />
 
             <TextView
-                android:id="@+id/menu_train_title"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -141,7 +137,6 @@
                 android:textAlignment="center" />
 
             <ImageView
-                android:id="@+id/train_arrow"
                 android:layout_width="15dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
@@ -157,7 +152,7 @@
             android:layout_height="75dp"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="40dp"
-            android:background="@drawable/menu_case"
+            android:background="@drawable/bg_menu_case"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.312"
@@ -165,7 +160,6 @@
             app:layout_constraintTop_toTopOf="@+id/h_guideline1">
 
             <ImageView
-                android:id="@+id/menu_learn_image"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -173,7 +167,6 @@
                 app:srcCompat="@drawable/ic_learn" />
 
             <TextView
-                android:id="@+id/menu_learn_title"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -187,7 +180,6 @@
                 android:textStyle="normal" />
 
             <ImageView
-                android:id="@+id/learn_arrow"
                 android:layout_width="15dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"

@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:background="@drawable/back_layout_selector"
+            android:background="@drawable/selector_back_layout"
             android:paddingVertical="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,6 @@
                 app:srcCompat="@drawable/ic_chevron_back" />
 
             <TextView
-                android:id="@+id/back_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -54,7 +53,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/body_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -88,7 +86,6 @@
             app:spb_stateNumberForegroundColor="@color/white" />
 
         <TextView
-            android:id="@+id/transition12_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -116,7 +113,6 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <TextView
-            android:id="@+id/transition12_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -140,7 +136,7 @@
                 android:id="@+id/skip_btn"
                 android:layout_width="@dimen/button_std_width"
                 android:layout_height="@dimen/button_std_height"
-                android:background="@drawable/button_selector"
+                android:background="@drawable/selector_button"
                 android:text="Skip"
                 android:textColor="@color/button_std_text"
                 android:textStyle="bold"
@@ -156,7 +152,7 @@
                 android:id="@+id/start_button"
                 android:layout_width="@dimen/button_std_width"
                 android:layout_height="@dimen/button_std_height"
-                android:background="@drawable/button_selector"
+                android:background="@drawable/selector_button"
                 android:text="Start"
                 android:textColor="@color/button_std_text"
                 android:textStyle="bold"

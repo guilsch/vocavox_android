@@ -7,22 +7,18 @@
 
     <!-- Question Answer Sides  -->
     <string name="revision_header">Training</string>
-    <string name="see_answer">Flip</string>
 
     <!-- Finished screens -->
     <string name="end_train">End of training !</string>
     <string name="end_learn">End of learning !</string>
-    <string name="no_cards_to_learn_message">No cards to learn...</string>
 
     <!-- Menu -->
-    <string name="menu_nb_of_cards_to_review_title_str">Number of cards to review now</string>
 
     <string name="menu_train_title_str">Train</string>
     <string name="menu_learn_title_str">Learn</string>
     <string name="menu_new_card_title_str">New Card</string>
     <string name="menu_translate_title_str">Translate</string>
     <string name="menu_explore_title_str">Explore</string>
-    <string name="menu_settings_title_str">Settings</string>
 
     <string name="menu_add_cards_title">Add cards</string>
     <string name="menu_others_title">Others</string>
@@ -31,19 +27,13 @@
 
 
     <!-- New Card !-->
-    <string name="new_card_header">Edit new card</string>
-    <string name="item1">Original word</string>
-    <string name="item2">Translation</string>
     <string name="pack">Pack</string>
-    <string name="creation_date">Card created on </string>
     <string name="save_card">Save</string>
-    <string name="next_new_card">New</string>
     <string name="card_state">Current state</string>
     <string name="toast_msg_invalid_new_card">Words in both languages have to be set</string>
     <string name="toast_msg_new_card_saved">The card has been saved!</string>
 
     <!--Edit Card !-->
-    <string name="edit_card_msg">Edit the card</string>
     <string name="edit_card_date_sentence_now">This card must be reviewed \u00A0</string>
     <string name="edit_card_date_word_now">now</string>
     <string name="edit_card_date_sentence_on_the">Next training on \u00A0</string>
@@ -60,8 +50,6 @@
 
     <!-- Settings   -->
     <string name="lang_direction_freq_setting">Language direction frequency :</string>
-    <string name="folder_path_setting">Folder path :</string>
-    <string name="default_setting">Default</string>
     <string name="setting_play_speech">Automatic pronounciation of words :</string>
     <string name="setting_import_title">Import data file</string>
     <string name="setting_export_title">Export data file</string>
@@ -117,7 +105,6 @@
     <string name="dialog_delete_data_file_title_str">Do you really want to delete all the data for this language? Data can\'t be retrieved.</string>
 
     <!-- Dialog sort -->
-    <string name="dialog_sort_title_str">Sort</string>
     <string name="dialog_sort_alphabetical_str">Alphabetical</string>
     <string name="dialog_sort_creation_date_str">Creation date</string>
     <string name="dialog_sort_training_date_str">Next training date</string>

@@ -6,22 +6,18 @@
 
     <!-- Seiten für Frage und Antwort -->
     <string name="revision_header">Überprüfung</string>
-    <string name="see_answer">Zurück</string>
 
     <!-- Bildschirme beenden -->
     <string name="end_train">Ende des Trainings!</string>
     <string name="end_learn">Ende des Lernens!</string>
-    <string name="no_cards_to_learn_message">Keine Karten zum Lernen...</string>
 
     <!-- Menü -->
-    <string name="menu_nb_of_cards_to_review_title_str">Anzahl der Karten, die heute überprüft werden sollen</string>
 
     <string name="menu_train_title_str">Überprüfen</string>
     <string name="menu_learn_title_str">Lernen</string>
     <string name="menu_new_card_title_str">Neue Karte</string>
     <string name="menu_translate_title_str">Übersetzen</string>
     <string name="menu_explore_title_str">Erkunden</string>
-    <string name="menu_settings_title_str">Einstellungen</string>
 
     <string name="menu_add_cards_title">Karten hinzufügen</string>
     <string name="menu_others_title">Andere</string>
@@ -29,19 +25,13 @@
     <string name="toast_msg_no_connexion">Du benötigst eine Internetverbindung, um zu übersetzen</string>
 
     <!-- Neue Karte -->
-    <string name="new_card_header">Bearbeiten einer neuen Karte</string>
-    <string name="item1">Ursprüngliches Wort</string>
-    <string name="item2">Übersetzung</string>
     <string name="pack">Pack</string>
-    <string name="creation_date">Karte erstellt am </string>
     <string name="save_card">Speichern</string>
-    <string name="next_new_card">Neue</string>
     <string name="card_state">Aktueller Zustand</string>
     <string name="toast_msg_invalid_new_card">Beide Wörter müssen angegeben werden</string>
     <string name="toast_msg_new_card_saved">Die Karte wurde gespeichert</string>
 
     <!-- Karte bearbeiten -->
-    <string name="edit_card_msg">Bearbeiten der Karte</string>
     <string name="edit_card_date_sentence_now">Diese Karte muss jetzt überprüft werden \u00A0</string>
     <string name="edit_card_date_word_now">jetzt</string>
     <string name="edit_card_date_sentence_on_the">Nächste Überprüfung am \u00A0</string>
@@ -58,8 +48,6 @@
 
     <!-- Einstellungen -->
     <string name="lang_direction_freq_setting">Anteil der Karten, die in die entgegengesetzte Richtung überprüft werden:</string>
-    <string name="folder_path_setting">Ordnerpfad:</string>
-    <string name="default_setting">Standard</string>
     <string name="setting_play_speech">Automatische Aussprache der Wörter:</string>
     <string name="setting_import_title">Datenfile importieren</string>
     <string name="setting_export_title">Datenfile exportieren</string>
@@ -114,7 +102,6 @@
     <string name="dialog_delete_data_file_title_str">Möchten Sie wirklich alle Daten für diese Sprache löschen? Die Daten können nicht wiederhergestellt werden</string>
 
     <!-- Dialog sortieren -->
-    <string name="dialog_sort_title_str">Sortieren</string>
     <string name="dialog_sort_alphabetical_str">Alphabetisch</string>
     <string name="dialog_sort_creation_date_str">Erstellungsdatum</string>
     <string name="dialog_sort_training_date_str">Überprüfungsdatum</string>

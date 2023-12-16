@@ -6,22 +6,18 @@
 
     <!-- Lati di domande e risposte -->
     <string name="revision_header">Revisione</string>
-    <string name="see_answer">Torna</string>
 
     <!-- Schermate di completamento -->
     <string name="end_train">Allenamento completato!</string>
     <string name="end_learn">Apprendimento completato!</string>
-    <string name="no_cards_to_learn_message">Nessuna carta da imparare...</string>
 
     <!-- Menu -->
-    <string name="menu_nb_of_cards_to_review_title_str">Numero di carte da rivedere oggi</string>
 
     <string name="menu_train_title_str">Rivedi</string>
     <string name="menu_learn_title_str">Impara</string>
     <string name="menu_new_card_title_str">Nuova carta</string>
     <string name="menu_translate_title_str">Traduci</string>
     <string name="menu_explore_title_str">Esplora</string>
-    <string name="menu_settings_title_str">Impostazioni</string>
 
     <string name="menu_add_cards_title">Aggiungi carte</string>
     <string name="menu_others_title">Altro</string>
@@ -29,19 +25,13 @@
     <string name="toast_msg_no_connexion">È necessaria una connessione Internet per tradurre</string>
 
     <!-- Nuova carta -->
-    <string name="new_card_header">Modifica nuova carta</string>
-    <string name="item1">Parola originale</string>
-    <string name="item2">Traduzione</string>
     <string name="pack">Pacco</string>
-    <string name="creation_date">Carta creata il </string>
     <string name="save_card">Salva</string>
-    <string name="next_new_card">Nuova</string>
     <string name="card_state">Stato attuale</string>
     <string name="toast_msg_invalid_new_card">Entrambe le parole devono essere fornite</string>
     <string name="toast_msg_new_card_saved">La carta è stata salvata</string>
 
     <!-- Modifica carta -->
-    <string name="edit_card_msg">Modifica carta</string>
     <string name="edit_card_date_sentence_now">Questa carta deve essere rivista \u00A0</string>
     <string name="edit_card_date_word_now">ora</string>
     <string name="edit_card_date_sentence_on_the">Prossima revisione il \u00A0</string>
@@ -58,8 +48,6 @@
 
     <!-- Impostazioni -->
     <string name="lang_direction_freq_setting">Proporzione di carte riviste in direzione inversa:</string>
-    <string name="folder_path_setting">Percorso della cartella:</string>
-    <string name="default_setting">Predefinito</string>
     <string name="setting_play_speech">Pronuncia automatica delle parole:</string>
     <string name="setting_import_title">Importa un file di dati</string>
     <string name="setting_export_title">Esporta il file di dati</string>
@@ -114,7 +102,6 @@
     <string name="dialog_delete_data_file_title_str">Vuoi davvero eliminare tutti i dati per questa lingua? I dati non possono essere recuperati</string>
 
     <!-- Dialogo ordinamento -->
-    <string name="dialog_sort_title_str">Ordina</string>
     <string name="dialog_sort_alphabetical_str">Alfabetico</string>
     <string name="dialog_sort_creation_date_str">Data di creazione</string>
     <string name="dialog_sort_training_date_str">Data di revisione</string>

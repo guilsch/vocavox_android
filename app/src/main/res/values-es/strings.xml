@@ -6,22 +6,18 @@
 
     <!-- Lados de pregunta y respuesta -->
     <string name="revision_header">Revisión</string>
-    <string name="see_answer">Volver</string>
 
     <!-- Pantallas finalizadas -->
     <string name="end_train">¡Fin del entrenamiento!</string>
     <string name="end_learn">¡Fin del aprendizaje!</string>
-    <string name="no_cards_to_learn_message">No hay tarjetas para aprender...</string>
 
     <!-- Menú -->
-    <string name="menu_nb_of_cards_to_review_title_str">Número de tarjetas para revisar hoy</string>
 
     <string name="menu_train_title_str">Revisar</string>
     <string name="menu_learn_title_str">Aprender</string>
     <string name="menu_new_card_title_str">Nueva tarjeta</string>
     <string name="menu_translate_title_str">Traducir</string>
     <string name="menu_explore_title_str">Explorar</string>
-    <string name="menu_settings_title_str">Ajustes</string>
 
     <string name="menu_add_cards_title">Agregar tarjetas</string>
     <string name="menu_others_title">Otros</string>
@@ -29,19 +25,13 @@
     <string name="toast_msg_no_connexion">Necesitas una conexión a Internet para traducir</string>
 
     <!-- ¡Nueva tarjeta! -->
-    <string name="new_card_header">Editar una nueva tarjeta</string>
-    <string name="item1">Palabra original</string>
-    <string name="item2">Traducción</string>
     <string name="pack">Paquete</string>
-    <string name="creation_date">Tarjeta creada el </string>
     <string name="save_card">Guardar</string>
-    <string name="next_new_card">Nueva</string>
     <string name="card_state">Estado actual</string>
     <string name="toast_msg_invalid_new_card">Ambas palabras deben ser proporcionadas</string>
     <string name="toast_msg_new_card_saved">La tarjeta ha sido guardada</string>
 
     <!-- ¡Editar tarjeta! -->
-    <string name="edit_card_msg">Edición de la tarjeta</string>
     <string name="edit_card_date_sentence_now">Esta tarjeta debe ser revisada \u00A0</string>
     <string name="edit_card_date_word_now">ahora</string>
     <string name="edit_card_date_sentence_on_the">Próxima revisión el \u00A0</string>
@@ -58,8 +48,6 @@
 
     <!-- Ajustes -->
     <string name="lang_direction_freq_setting">Proporción de tarjetas revisadas en sentido inverso:</string>
-    <string name="folder_path_setting">Ruta de la carpeta:</string>
-    <string name="default_setting">Predeterminado</string>
     <string name="setting_play_speech">Pronunciación automática de las palabras:</string>
     <string name="setting_import_title">Importar un archivo de datos</string>
     <string name="setting_export_title">Exportar el archivo de datos</string>
@@ -114,7 +102,6 @@
     <string name="dialog_delete_data_file_title_str">¿Seguro que quieres eliminar todos los datos para este idioma? Los datos no se pueden recuperar</string>
 
     <!-- Diálogo para ordenar -->
-    <string name="dialog_sort_title_str">Ordenar</string>
     <string name="dialog_sort_alphabetical_str">Alfabético</string>
     <string name="dialog_sort_creation_date_str">Fecha de creación</string>
     <string name="dialog_sort_training_date_str">Fecha de revisión</string>

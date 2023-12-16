@@ -30,7 +30,6 @@
         tools:layout_editor_absoluteX="16dp">
 
         <ImageView
-            android:id="@+id/imageView3"
             android:layout_width="399dp"
             android:layout_height="141dp"
             android:layout_marginTop="10dp"
@@ -46,7 +45,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/ic_waves"
@@ -55,7 +53,6 @@
         tools:layout_editor_absoluteX="16dp">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"

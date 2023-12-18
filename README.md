@@ -6,6 +6,8 @@
 
 Vocavox is a 100% free and ad-free Android application designed to help you translate words and expressions and memorize them for the long term using a flashcard system. It is an open-source project and developers can add custom functionalities and participate in the project.
 
+## Introduction
+
 With spaced repetition, you'll easily and effectively remember all the words you desire! Words will appear as flashcards when it's time for you to recall them.
 
 Add vocabulary to your personal database in the form of an Excel file and manipulate it as you wish. For example, you can easily add thousands of words by copying and pasting into your file. Your data is not locked within the application, as it's easy to export with just one click!

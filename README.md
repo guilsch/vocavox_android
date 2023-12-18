@@ -4,7 +4,7 @@
   <img src="https://github.com/guilsch/vocavox_android/assets/76941153/f9f414d9-e87a-4d92-8500-83952718193c" alt="Vocavox Logo" width="200">
 </div>
 
-Vocavox is a 100% free and ad-free Android application designed to help you translate words and expressions and memorize them for the long term using a flashcard system.
+Vocavox is a 100% free and ad-free Android application designed to help you translate words and expressions and memorize them for the long term using a flashcard system. It is an open-source project and developers can add custom functionalities and participate in the project.
 
 With spaced repetition, you'll easily and effectively remember all the words you desire! Words will appear as flashcards when it's time for you to recall them.
 
@@ -49,11 +49,7 @@ You can also clone this repo and build the apk yourself with Android Studio!
 
 ## Contribution
 
-We welcome contributions from the community. If you'd like to contribute to the improvement of this application, please send an e-mail to guilhem.schena@gmail.com.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+We welcome contributions from the community. If you'd like to contribute to the improvement of this application by adding functionalities or fix bugs, please send an e-mail to guilhem.schena@gmail.com.
 
 ---
 

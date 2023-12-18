@@ -49,6 +49,10 @@ You can learn multiple languages simultaneously, including English, French, Span
 
 You can also clone this repo and build the apk yourself with Android Studio!
 
+## Note
+
+If you have troubles when importing a file, try to create a brand new folder and copy your Excel files in it. The import from this new folder should work properly.
+
 ## Contribution
 
 We welcome contributions from the community. If you'd like to contribute to the improvement of this application by adding functionalities or fix bugs, please send an e-mail to guilhem.schena@gmail.com.

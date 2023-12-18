@@ -1,6 +1,6 @@
 # Vocavox
 
-![Vocavox Logo](images/logo.png)
+![app_icon](https://github.com/guilsch/vocavox_android/assets/76941153/f9f414d9-e87a-4d92-8500-83952718193c)
 
 Vocavox is a language learning application based on spaced repetition. This app helps you efficiently learn new languages by employing scientifically proven techniques to enhance long-term retention.
 
@@ -15,6 +15,8 @@ Vocavox is a language learning application based on spaced repetition. This app 
 - **Interactive Quizzes:** Challenge your knowledge with interactive quizzes to reinforce your language skills.
 
 ## Screenshots
+
+<img src="https://github.com/guilsch/vocavox_android/assets/76941153/a0806345-8eca-49bb-9c53-ffbf23d07f45" alt="Vocavox Logo" width="200" height="200">
 
 ![im7](https://github.com/guilsch/vocavox_android/assets/76941153/a0806345-8eca-49bb-9c53-ffbf23d07f45)
 ![im6](https://github.com/guilsch/vocavox_android/assets/76941153/ae31b838-d5c5-4e0d-8060-bd34841c566b)

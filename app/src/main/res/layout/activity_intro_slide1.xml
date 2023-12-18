@@ -11,7 +11,7 @@
         android:id="@+id/slide_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/body_top_margin"
         android:textSize="@dimen/XS"
         android:textAllCaps="true"
         android:textStyle="bold"
@@ -39,7 +39,7 @@
         android:layout_width="@dimen/ic_arrow_size"
         android:layout_height="@dimen/ic_arrow_size"
         android:rotation="0"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="@dimen/body_horizontal_margin"
         android:layout_marginBottom="@dimen/body_bottom_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,6 +72,7 @@
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/central_vert_guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -103,6 +104,7 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/central_vert_guideline"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0">
 

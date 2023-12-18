@@ -5,6 +5,9 @@
     <dimen name="body_bottom_margin">30dp</dimen>
     <dimen name="body_top_margin">10dp</dimen>
 
+    <!-- menu-->
+    <dimen name="menu_cases_height">75dp</dimen>
+
     <!-- Header size -->
     <dimen name="header_height">50dp</dimen>
 

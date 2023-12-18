@@ -4,17 +4,27 @@
   <img src="https://github.com/guilsch/vocavox_android/assets/76941153/f9f414d9-e87a-4d92-8500-83952718193c" alt="Vocavox Logo" width="200">
 </div>
 
-Vocavox is a language learning application based on spaced repetition. This app helps you efficiently learn new languages by employing scientifically proven techniques to enhance long-term retention.
+Vocavox is a 100% free and ad-free Android application designed to help you translate words and expressions and memorize them for the long term using a flashcard system.
+
+With spaced repetition, you'll easily and effectively remember all the words you desire! Words will appear as flashcards when it's time for you to recall them.
+
+Add vocabulary to your personal database in the form of an Excel file and manipulate it as you wish. For example, you can easily add thousands of words by copying and pasting into your file. Your data is not locked within the application, as it's easy to export with just one click!
+
+Vocavox allows you to translate words or expressions and add them directly to your database using a translation engine integrated into the application!
+
+You can learn multiple languages simultaneously, including English, French, Spanish, Italian, German, or Russian! Ideal for polyglots like you!
 
 ## Features
 
-- **Spaced Repetition:** Utilize the spaced repetition technique to optimize your study time and maximize retention of words and phrases.
-
-- **Customization:** Tailor your learning program based on your skill level and language learning goals.
-
-- **Progress Tracking:** Monitor your progress over time and identify areas for improvement.
-
-- **Interactive Quizzes:** Challenge your knowledge with interactive quizzes to reinforce your language skills.
+- **Available learning languages:** English, French, Spanish, Italian, German, Russian.
+  
+- **Available user languages:** English, French, Spanish, Italian, German, Russian.
+  
+- **Minimum SDK version:** 26.
+    
+- **Target SDK version:** 33.
+  
+- **Main programming language:** Java.
 
 ## Screenshots
 
@@ -28,27 +38,18 @@ Vocavox is a language learning application based on spaced repetition. This app 
 
 ## Installation
 
-1. Clone the repository to your local machine:
+1. Download the apk file
 
-    ```bash
-    git clone https://github.com/your-username/vocavox.git
-    ```
+2. Authorize apk installation from unknown sources
 
-2. Install the necessary dependencies:
+3. Run the apk
 
-    ```bash
-    npm install
-    ```
 
-3. Run the application locally:
-
-    ```bash
-    npm start
-    ```
+You can also clone this repo and build the apk yourself with Android Studio!
 
 ## Contribution
 
-We welcome contributions from the community. If you'd like to contribute to the improvement of this application, please refer to our [contribution guide](CONTRIBUTING.md).
+We welcome contributions from the community. If you'd like to contribute to the improvement of this application, please send an e-mail to guilhem.schena@gmail.com.
 
 ## License
 

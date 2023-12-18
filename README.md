@@ -40,7 +40,7 @@ You can learn multiple languages simultaneously, including English, French, Span
 
 ## Installation
 
-1. Download the apk file
+1. Download the apk file in the release section (https://github.com/guilsch/vocavox_android/releases/tag/release)
 
 2. Authorize apk installation from unknown sources
 

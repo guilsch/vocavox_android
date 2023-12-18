@@ -16,16 +16,13 @@ Vocavox is a language learning application based on spaced repetition. This app 
 
 ## Screenshots
 
-<img src="https://github.com/guilsch/vocavox_android/assets/76941153/a0806345-8eca-49bb-9c53-ffbf23d07f45" alt="Vocavox Logo" width="400">
-*Home page of the application*
-
-![im7](https://github.com/guilsch/vocavox_android/assets/76941153/a0806345-8eca-49bb-9c53-ffbf23d07f45)
-![im6](https://github.com/guilsch/vocavox_android/assets/76941153/ae31b838-d5c5-4e0d-8060-bd34841c566b)
-![im5](https://github.com/guilsch/vocavox_android/assets/76941153/3437a975-336c-4a15-b319-818357c703c0)
-![im4](https://github.com/guilsch/vocavox_android/assets/76941153/f04f9920-71ca-4594-b036-255a828d6536)
-![im3](https://github.com/guilsch/vocavox_android/assets/76941153/112737b7-48e1-4b18-8dcc-2120de1c3248)
-![im2](https://github.com/guilsch/vocavox_android/assets/76941153/e4d0a57c-98f2-431c-a73e-b2a6f46178ee)
-![im1](https://github.com/guilsch/vocavox_android/assets/76941153/bc48c98a-eac6-4750-8f51-90eb841f6d02)
+<img src="https://github.com/guilsch/vocavox_android/assets/76941153/bc48c98a-eac6-4750-8f51-90eb841f6d02" alt="im1" width="400">
+<img src="https://github.com/guilsch/vocavox_android/assets/76941153/e4d0a57c-98f2-431c-a73e-b2a6f46178ee" alt="im2" width="400">
+<img src="https://github.com/guilsch/vocavox_android/assets/76941153/112737b7-48e1-4b18-8dcc-2120de1c3248" alt="im3" width="400">
+<img src="https://github.com/guilsch/vocavox_android/assets/76941153/f04f9920-71ca-4594-b036-255a828d6536" alt="im4" width="400">
+<img src="https://github.com/guilsch/vocavox_android/assets/76941153/3437a975-336c-4a15-b319-818357c703c0" alt="im5" width="400">
+<img src="https://github.com/guilsch/vocavox_android/assets/76941153/ae31b838-d5c5-4e0d-8060-bd34841c566b" alt="im6" width="400">
+<img src="https://github.com/guilsch/vocavox_android/assets/76941153/a0806345-8eca-49bb-9c53-ffbf23d07f45" alt="im7" width="400">
 
 ## Installation
 

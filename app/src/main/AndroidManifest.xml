@@ -54,6 +54,7 @@
             android:theme="@style/OrangeBothBarsBarTheme"/>
         <activity
             android:name="com.guilsch.vocavox.ActivityMain"
+            android:exported="true"
             android:theme="@style/OrangeStatusBarTheme"
             android:screenOrientation="portrait">
             <intent-filter>
